@@ -11,12 +11,14 @@ public class PlayerShoot : MonoBehaviour
     float lookAngle;
     public float shootCoolDown = 0.4f;
 
+    PlayerHealthTEST playerHealthTestScript;
+
     //public AudioSource shootSound; // put this in soon
 
     private void Start()
     {
         rbPlayer = GetComponent<Rigidbody2D>();
-        
+        playerHealthTestScript = GetComponent<PlayerHealthTEST>();
     }
 
     void Update()
@@ -24,11 +26,16 @@ public class PlayerShoot : MonoBehaviour
         shootCoolDown += Time.deltaTime;
         lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        
+
         if (Input.GetMouseButtonDown(0) && shootCoolDown > 0.4f)
         {
+            // take damage
+            playerHealthTestScript.TakeDamage(10);
             Shoot();
         }
+
+        
+
     }
 
     void Shoot()
