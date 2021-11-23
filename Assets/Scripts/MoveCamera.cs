@@ -23,6 +23,7 @@ public class MoveCamera : MonoBehaviour
     void FixedUpdate()
     {
         //convert target pos to 2D
+        
         targetScreenPos = Camera.main.WorldToScreenPoint(targetPosition.position);
 
         if (targetScreenPos.x > (Screen.width / 2) + camWindowDimension)
