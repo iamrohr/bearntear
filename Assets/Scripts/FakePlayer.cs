@@ -28,4 +28,7 @@ public class FakePlayer : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+
+
+
 }
