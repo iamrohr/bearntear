@@ -53,7 +53,20 @@ public class EnemyAggravation : MonoBehaviour
         void StopChasingPlayer()
         {
             float step = returnSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, startPosition, step);
+
+            if (transform.position.x < player.position.x)
+            {
+                //Flip Player towards the starting position
+                transform.position = Vector2.MoveTowards(transform.position, startPosition, step);
+                transform.localScale = new Vector2(-1, 1);
+            }
+            else
+            {
+                //Flip Player towards the starting position
+                transform.position = Vector2.MoveTowards(transform.position, startPosition, step);
+                transform.localScale = new Vector2(1, 1);
+            }
+
         }
 
         void IdleState()
