@@ -55,5 +55,10 @@ public class EnemyAggravation : MonoBehaviour
             float step = returnSpeed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, startPosition, step);
         }
+
+        void IdleState()
+        {
+
+        }
     }
 }
