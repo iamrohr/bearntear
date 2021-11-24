@@ -40,12 +40,8 @@ public class PlayerHealthTEST : MonoBehaviour
             playerSpriteRenderer.enabled = false;
             playerShootScript.enabled = false;
             transform.position = new Vector3(0, 0, 0);
-            // Destroy(player);
-
         }
         
-        //if ()
-        //    TakeDamage(takeDamage);
     }
 
     public void TakeDamage(int damage)
