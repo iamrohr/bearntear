@@ -16,6 +16,8 @@ public class PlayerHealthTEST : MonoBehaviour
     public int takeDamage = 10;
 
     PlayerMovementTEST playerMovementTestScript;
+    PlayerShoot playerShootScript;
+    SpriteRenderer playerSpriteRenderer;
 
     void Start()
     {
@@ -23,6 +25,8 @@ public class PlayerHealthTEST : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         playerMovementTestScript = GetComponent<PlayerMovementTEST>();
+        playerShootScript = GetComponent<PlayerShoot>();
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -33,6 +37,9 @@ public class PlayerHealthTEST : MonoBehaviour
             healthBarCanvas.SetActive(false);
             background.SetActive(false);
             playerMovementTestScript.enabled = false;
+            playerSpriteRenderer.enabled = false;
+            playerShootScript.enabled = false;
+            transform.position = new Vector3(0, 0, 0);
             // Destroy(player);
 
         }
