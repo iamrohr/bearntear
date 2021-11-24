@@ -31,22 +31,30 @@ public class PlayerJump : MonoBehaviour
     {
         while (transform.localPosition.y < 1.2f + jumpHeight)
         {
-            transform.localPosition += (Vector3) Vector2.up * 0.2f; // Time.deltaTime not need because not actually running in Update
+            transform.localPosition += (Vector3) Vector2.up * 0.1f; // Time.deltaTime not need because not actually running in Update
+
+            yield return new WaitForSeconds(0.02f);
+
+            transform.localPosition += (Vector3)Vector2.up * 0.1f; // Time.deltaTime not need because not actually running in Update
+
 
             yield return new WaitForEndOfFrame();
         }    
 
-        yield return new WaitForSeconds(0.3f); // hangtime in air
+        yield return new WaitForSeconds(0.1f); // hangtime in air
 
         while (transform.localPosition.y > 1.2f)
         {
             
-            transform.localPosition += (Vector3)Vector2.down * 0.2f; // Time.deltaTime not need because not actually running in Update
+            transform.localPosition += (Vector3)Vector2.down * 0.1f; // Time.deltaTime not need because not actually running in Update
+
+            yield return new WaitForSeconds(0.02f);
+
+            transform.localPosition += (Vector3)Vector2.down * 0.1f; // Time.deltaTime not need because not actually running in Update
+
 
             yield return new WaitForEndOfFrame();
-        }
-
-        
+        }       
 
         grounded = true;
     }
