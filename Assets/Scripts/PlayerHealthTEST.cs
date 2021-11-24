@@ -6,7 +6,7 @@ public class PlayerHealthTEST : MonoBehaviour
 {
     public HealthBar healthBar;
 
-    public GameObject gameOverScreen;
+    public GameObject gameOverCanvas;
     public GameObject player;
     public GameObject healthBarCanvas;
     public GameObject background;
@@ -21,7 +21,6 @@ public class PlayerHealthTEST : MonoBehaviour
 
     void Start()
     {
-        gameOverScreen.SetActive(false);
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         playerMovementTestScript = GetComponent<PlayerMovementTEST>();
@@ -33,7 +32,7 @@ public class PlayerHealthTEST : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            gameOverScreen.SetActive(true);
+            gameOverCanvas.SetActive(true);
             healthBarCanvas.SetActive(false);
             background.SetActive(false);
             playerMovementTestScript.enabled = false;
