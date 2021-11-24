@@ -29,16 +29,11 @@ public class PlayerMovement : MonoBehaviour
             y *= moveLimiter;
         }
 
+        rb.velocity = new Vector2(x, y);
+        
         if (x > 0)
             horDirection = HorDirection.Right;
         else if (x < 0)
             horDirection = HorDirection.Left;
-
-        Vector2 tempVelocity = rb.velocity;
-        tempVelocity.x = x;
-        if (rb.gravityScale == 0)
-            tempVelocity.y = y;
-
-        rb.velocity = tempVelocity;
     }
 }

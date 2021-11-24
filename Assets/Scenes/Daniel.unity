@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSpeed: 0
   velocity: 0
+  jumpHeight: 2
 --- !u!114 &248796447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +256,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d23958eadaf06648889e4e765dd9a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackHitbox: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
-  attackCooldown: 0
+  swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
+  bashAttack: {fileID: 77544860683481084, guid: a76ea72f68964ee499cd8cfed5682a44, type: 3}
+  attackOffSetX: 1.5
+  swipeCooldown: 0.6
+  bashCooldown: 0.6
+  timeForBash: 0.5
 --- !u!1 &274332182
 GameObject:
   m_ObjectHideFlags: 0
