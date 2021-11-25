@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -17,10 +16,10 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2") && canAttack)
             attackTimer += Time.deltaTime;
         
-        if (Input.GetButtonUp("Fire2"))
+        if (Input.GetButtonUp("Fire2") && canAttack)
         {
             Vector2 attackPos = new Vector2(transform.position.x, transform.position.y);
 

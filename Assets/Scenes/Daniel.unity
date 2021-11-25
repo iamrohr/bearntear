@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 248796443}
   - component: {fileID: 248796444}
   - component: {fileID: 248796446}
-  - component: {fileID: 248796445}
   - component: {fileID: 248796447}
+  - component: {fileID: 248796448}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -208,27 +208,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &248796445
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248796442}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &248796446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,10 +237,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
   bashAttack: {fileID: 77544860683481084, guid: a76ea72f68964ee499cd8cfed5682a44, type: 3}
-  attackOffSetX: 1.5
-  swipeCooldown: 0.6
-  bashCooldown: 0.6
+  attackOffSetX: 1
+  swipeCooldown: 0.5
+  bashCooldown: 0.5
   timeForBash: 0.5
+--- !u!114 &248796448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248796442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ae92caf0c7e6d4091aafc76fc4becc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 30
+  dashTime: 0.15
+  dashCooldown: 1
 --- !u!1 &274332182
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +357,7 @@ MonoBehaviour:
   vertSpeed: 2.5
   jumpSpeed: 10
   horDirection: 0
+  isDashing: 0
 --- !u!50 &274332186
 Rigidbody2D:
   serializedVersion: 4
