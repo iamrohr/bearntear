@@ -6,8 +6,10 @@ public class EnemyAggravation : MonoBehaviour
 {
     [SerializeField] Transform player;
     [SerializeField] float agroRange;
+    [SerializeField]  float attackRange;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float returnSpeed = 5f;
+    [SerializeField] GameObject attackBox;
     
     Vector2 startPosition;
 
@@ -17,6 +19,7 @@ public class EnemyAggravation : MonoBehaviour
     {
         playerRb2D = GameObject.Find("Player").GetComponent<Rigidbody2D>();
         startPosition = new Vector2(transform.position.x, transform.position.y);
+        attackBox.SetActive(false);
     }
 
     void Update()
@@ -26,6 +29,15 @@ public class EnemyAggravation : MonoBehaviour
         if (distToPlayer < agroRange)
         {
             ChasePlayer();
+        }
+        if (distToPlayer < agroRange && distToPlayer < attackRange)
+        {
+            //do
+            //{
+                StartCoroutine(AttackPlayer());
+            //}
+            //while (distToPlayer < attackRange);
+
         }
         else
         {
@@ -66,6 +78,15 @@ public class EnemyAggravation : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, startPosition, step);
                 transform.localScale = new Vector2(1, 1);
             }
+
+        }
+
+        IEnumerator AttackPlayer()
+        {
+
+            attackBox.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            attackBox.SetActive(false);
 
         }
 
