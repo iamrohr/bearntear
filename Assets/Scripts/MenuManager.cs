@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     public GameObject controlsCanvas;
     public GameObject gameOverCanvas;
     public GameObject imageGameOver;
+    
 
     void Start()
     {
@@ -46,16 +47,6 @@ public class MenuManager : MonoBehaviour
         imageGameOver.SetActive(true);
     }
 
-    private void Update()
-    {
-        if(Input.GetKey(KeyCode.Escape))
-        {
-            // pause
+    
 
-            // player stops moving
-            // time stops
-            // buttons are shown - Controls, MainMenu, Quit
-
-        }
-    }
 }
