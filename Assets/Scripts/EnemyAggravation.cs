@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,11 @@ public class EnemyAggravation : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float returnSpeed = 5f;
     [SerializeField] GameObject attackBox;
-    
+
+   public bool attackActive = true;
+   private bool canAttackPlayer = true;
+
+
     Vector2 startPosition;
 
     Rigidbody2D playerRb2D;
@@ -29,70 +34,79 @@ public class EnemyAggravation : MonoBehaviour
         if (distToPlayer < agroRange)
         {
             ChasePlayer();
-        }
-        if (distToPlayer < agroRange && distToPlayer < attackRange)
-        {
-            //do
-            //{
-                StartCoroutine(AttackPlayer());
-            //}
-            //while (distToPlayer < attackRange);
 
+            if (canAttackPlayer && distToPlayer < attackRange)
+            {
+                canAttackPlayer = false;
+
+                StartCoroutine(AttackPlayer());
+            }
+            else
+                StopCoroutine(AttackPlayer());
         }
+
         else
         {
             StopChasingPlayer();
         }
+    }
 
-        void ChasePlayer()
+    void ChasePlayer()
+    {
+        float step = moveSpeed * Time.deltaTime;
+
+        if (transform.position.x < player.position.x)
         {
-            float step = moveSpeed * Time.deltaTime;
+            //Enemy is to the left side of the player so move right
+            transform.position = Vector2.MoveTowards(transform.position, playerRb2D.position, step);
+            transform.localScale = new Vector2(1, 1);
+        }
+        else
+        {
+            //Enemy is to the left side of the player so move left
+            transform.position = Vector2.MoveTowards(transform.position, playerRb2D.position, step);
+            transform.localScale = new Vector2(-1, 1);
+        }
+    }
 
-            if (transform.position.x < player.position.x)
-            {
-                //Enemy is to the left side of the player so move right
-                transform.position = Vector2.MoveTowards(transform.position, playerRb2D.position, step);
-                transform.localScale = new Vector2(1, 1);
-            }
-            else
-            {
-                //Enemy is to the left side of the player so move left
-                transform.position = Vector2.MoveTowards(transform.position, playerRb2D.position, step);
-                transform.localScale = new Vector2(-1, 1);
-            }
+    void StopChasingPlayer()
+    {
+        float step = returnSpeed * Time.deltaTime;
+
+        if (transform.position.x < player.position.x)
+        {
+            //Flip Player towards the starting position
+            transform.position = Vector2.MoveTowards(transform.position, startPosition, step);
+            transform.localScale = new Vector2(-1, 1);
+        }
+        else
+        {
+            //Flip Player towards the starting position
+            transform.position = Vector2.MoveTowards(transform.position, startPosition, step);
+            transform.localScale = new Vector2(1, 1);
         }
 
-        void StopChasingPlayer()
-        {
-            float step = returnSpeed * Time.deltaTime;
+    }
 
-            if (transform.position.x < player.position.x)
-            {
-                //Flip Player towards the starting position
-                transform.position = Vector2.MoveTowards(transform.position, startPosition, step);
-                transform.localScale = new Vector2(-1, 1);
-            }
-            else
-            {
-                //Flip Player towards the starting position
-                transform.position = Vector2.MoveTowards(transform.position, startPosition, step);
-                transform.localScale = new Vector2(1, 1);
-            }
+    IEnumerator AttackPlayer()
+    {
+      
+        attackBox.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+       
+        attackBox.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
 
-        }
+        canAttackPlayer = true;
+    }
 
-        IEnumerator AttackPlayer()
-        {
+    void IdleState()
+    {
 
-            attackBox.SetActive(true);
-            yield return new WaitForSeconds(2f);
-            attackBox.SetActive(false);
+    }
 
-        }
-
-        void IdleState()
-        {
-
-        }
+    private void TurnOffAttackBox()
+    {
+        attackBox.SetActive(false);
     }
 }

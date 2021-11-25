@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 280005662}
   - component: {fileID: 280005663}
   - component: {fileID: 280005664}
+  - component: {fileID: 280005665}
   m_Layer: 0
   m_Name: AttackBox
   m_TagString: Untagged
@@ -232,6 +233,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &280005665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280005661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e304a78628bdeb48bf836ff0b5bc900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1718582992}
+  damage: 10
 --- !u!1 &371221417
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +586,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1323361644}
   - component: {fileID: 1323361643}
-  - component: {fileID: 1323361642}
   - component: {fileID: 1323361645}
   - component: {fileID: 1323361646}
   - component: {fileID: 1323361647}
@@ -582,22 +596,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1323361642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323361641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3626138b52339644dadc9ac5196b7fc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 517383102}
-  maxHealth: 100
-  currentHealth: 0
-  takeDamage: 20
 --- !u!212 &1323361643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -677,11 +675,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1718582997}
-  agroRange: 10
-  attackRange: 4
+  agroRange: 8
+  attackRange: 2
   moveSpeed: 10
   returnSpeed: 5
   attackBox: {fileID: 280005661}
+  attackActive: 1
 --- !u!50 &1323361646
 Rigidbody2D:
   serializedVersion: 4
@@ -874,7 +873,7 @@ GameObject:
   - component: {fileID: 1718582993}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -888,9 +887,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1718582992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d4ba18475cd3924c8f51071cd6474a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3626138b52339644dadc9ac5196b7fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 517383102}
+  maxHealth: 100
+  currentHealth: 0
+  takeDamage: 20
 --- !u!50 &1718582994
 Rigidbody2D:
   serializedVersion: 4
@@ -987,7 +990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718582992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.97, y: -1.57, z: 0}
+  m_LocalPosition: {x: 9.8, y: 7.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
