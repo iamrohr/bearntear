@@ -13,7 +13,7 @@ public class PlayerShoot : MonoBehaviour
 
     PlayerHealthTEST playerHealthTestScript;
 
-    //public AudioSource shootSound; // put this in soon
+    public AudioSource shootSound;
 
     private void Start()
     {
@@ -46,6 +46,6 @@ public class PlayerShoot : MonoBehaviour
         GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(rbPlayer.position.x, rbPlayer.position.y, 0), Quaternion.identity);
         newProjectile.transform.up = lookDirection;
                 
-        //shootSound.Play(); // put this in soon
+        shootSound.Play();
     }
 }
