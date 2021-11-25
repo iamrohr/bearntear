@@ -18,11 +18,11 @@ public class EnemyAggravation : MonoBehaviour
 
     Vector2 startPosition;
 
-    Rigidbody2D playerRb2D;
+    //Rigidbody2D playerRb2D;
 
     void Start()
     {
-        playerRb2D = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+       //playerRb2D = GameObject.Find("Player").GetComponent<Rigidbody2D>();
         startPosition = new Vector2(transform.position.x, transform.position.y);
         attackBox.SetActive(false);
     }
@@ -30,7 +30,6 @@ public class EnemyAggravation : MonoBehaviour
     void Update()
     {
         float distToPlayer = Vector2.Distance(transform.position, player.position);
-
         if (distToPlayer < agroRange)
         {
             ChasePlayer();
@@ -58,13 +57,13 @@ public class EnemyAggravation : MonoBehaviour
         if (transform.position.x < player.position.x)
         {
             //Enemy is to the left side of the player so move right
-            transform.position = Vector2.MoveTowards(transform.position, playerRb2D.position, step);
+            transform.position = Vector2.MoveTowards(transform.position, player.position, step);
             transform.localScale = new Vector2(1, 1);
         }
         else
         {
             //Enemy is to the left side of the player so move left
-            transform.position = Vector2.MoveTowards(transform.position, playerRb2D.position, step);
+            transform.position = Vector2.MoveTowards(transform.position, player.position, step);
             transform.localScale = new Vector2(-1, 1);
         }
     }

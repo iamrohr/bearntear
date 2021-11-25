@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemyAttackBox : MonoBehaviour
 {
     public GameObject player;
-    FakePlayer pl;
+    Player pl;
     public int damage = 10;
 
     private void Start()
     {
-          pl = player.GetComponent<FakePlayer>();
+          pl = player.GetComponent<Player>();
     
     }
 
@@ -18,7 +18,7 @@ public class EnemyAttackBox : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            Debug.Log("I touched the player");
+            //Debug.Log("I touched the player");
             pl.TakeDamage(damage);
 
         }
