@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        SceneManager.LoadScene("James");
+        SceneManager.LoadScene("Main");
     }
 
     public void ControlsMenu()

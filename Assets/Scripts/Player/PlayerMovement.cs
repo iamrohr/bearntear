@@ -4,7 +4,7 @@ public enum HorDirection {Right, Left};
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float horSpeed, vertSpeed, jumpSpeed;
+    public float horSpeed, vertSpeed;
     public HorDirection horDirection;
     public bool isDashing = false;
 

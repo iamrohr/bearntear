@@ -6,19 +6,17 @@ public class PlayerShoot : MonoBehaviour
 {
     public GameObject projectilePrefab;
     //public GameObject player;
-    public Rigidbody2D rbPlayer;
     Vector2 lookDirection;
     float lookAngle;
     public float shootCoolDown = 0.4f;
 
-    PlayerHealthTEST playerHealthTestScript;
+    PlayerHealth playerHealthTestScript;
 
     public AudioSource shootSound;
 
     private void Start()
     {
-        rbPlayer = GetComponent<Rigidbody2D>();
-        playerHealthTestScript = GetComponent<PlayerHealthTEST>();
+        playerHealthTestScript = GetComponent<PlayerHealth>();
     }
 
     void Update()
@@ -43,7 +41,7 @@ public class PlayerShoot : MonoBehaviour
     {
         shootCoolDown = 0;
 
-        GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(rbPlayer.position.x, rbPlayer.position.y, 0), Quaternion.identity);
+        GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
         newProjectile.transform.up = lookDirection;
                 
         shootSound.Play();

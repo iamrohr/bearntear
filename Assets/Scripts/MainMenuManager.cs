@@ -15,7 +15,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void MainMenuStart()
     {
-        SceneManager.LoadScene("James");
+        SceneManager.LoadScene("Main");
     }
 
     public void MainMenuControls()
