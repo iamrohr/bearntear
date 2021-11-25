@@ -45,4 +45,17 @@ public class MenuManager : MonoBehaviour
         controlsCanvas.SetActive(false);
         imageGameOver.SetActive(true);
     }
+
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            // pause
+
+            // player stops moving
+            // time stops
+            // buttons are shown - Controls, MainMenu, Quit
+
+        }
+    }
 }
