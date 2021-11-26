@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public int takeDamage = 10;
 
+    public bool invulnerable = false;
     PlayerShoot playerShootScript;
     SpriteRenderer playerSpriteRenderer;
     PlayerMovement playerMovementScript;
@@ -33,6 +34,9 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (invulnerable)
+            return;
+
         if (currentHealth <= 0)
         {
             gameOverCanvas.SetActive(true);

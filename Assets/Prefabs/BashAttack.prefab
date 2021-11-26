@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 77544860683481087}
   - component: {fileID: 77544860683481086}
   - component: {fileID: 77544860683480961}
-  - component: {fileID: 1698521187171587677}
+  - component: {fileID: 6612661945481151288}
   m_Layer: 0
   m_Name: BashAttack
   m_TagString: Untagged
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1698521187171587677
+--- !u!114 &6612661945481151288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 77544860683481084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14e82665e3fa39a4d880e3906344402f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8930311120b669149babb58abf8814b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20

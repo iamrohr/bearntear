@@ -7,21 +7,48 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject pauseControlsCanvas;
     public GameObject pauseCanvas;
+    public GameObject background;
+    public GameObject playerShadow;
+    public GameObject player;
+    public GameObject healthBarCanvas;
+
+    SpriteRenderer playerShadowSpriteRenderer;
+    SpriteRenderer playerRenderer;
+
+    PlayerShoot playerShootScript;
 
     private void Awake()
     {
         pauseControlsCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
+        playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
+        playerRenderer = player.GetComponent<SpriteRenderer>();
+        playerShootScript = player.GetComponent<PlayerShoot>();
     }
 
     public void PauseControls()
     {
+        background.SetActive(false);
+        pauseCanvas.SetActive(false);
+        playerShadowSpriteRenderer.enabled = false;
+        playerRenderer.enabled = false;
+        healthBarCanvas.SetActive(false);
+        playerShootScript.enabled = false;
         pauseControlsCanvas.SetActive(true);
+        
+
     }
 
     public void PauseBack()
     {
         pauseControlsCanvas.SetActive(false);
+        playerShootScript.enabled = true;
+        pauseCanvas.SetActive(true);
+        background.SetActive(true);
+        playerShadowSpriteRenderer.enabled = true;
+        playerRenderer.enabled = true;
+        healthBarCanvas.SetActive(true);
+
     }
 
     public void PauseMainMenu()
