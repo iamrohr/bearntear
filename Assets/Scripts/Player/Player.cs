@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public HealthBar healthBar;
 
@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
         playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    public void TakeDamage(int damage)
     {
         if (currentHealth <= 0)
         {
@@ -45,11 +45,7 @@ public class PlayerHealth : MonoBehaviour
             transform.position = new Vector3(0, 0, 0);
             playerShadow.transform.position = new Vector3(0, 0, 0);
         }
-        
-    }
 
-    public void TakeDamage(int damage)
-    {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }

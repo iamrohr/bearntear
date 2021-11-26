@@ -10,13 +10,13 @@ public class PlayerShoot : MonoBehaviour
     float lookAngle;
     public float shootCoolDown = 0.4f;
 
-    PlayerHealth playerHealthTestScript;
+    Player playerHealthTestScript;
 
     public AudioSource shootSound;
 
     private void Start()
     {
-        playerHealthTestScript = GetComponent<PlayerHealth>();
+        playerHealthTestScript = GetComponent<Player>();
     }
 
     void Update()

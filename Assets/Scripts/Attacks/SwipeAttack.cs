@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SwipeAttack : MonoBehaviour
 {
+    public int damage = 10;
+    
     void Start()
     {
         Destroy(gameObject, 0.1f);
@@ -12,7 +14,7 @@ public class SwipeAttack : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            //TODO: Damage enemies
+            other.GetComponent<Enemy>().TakeDamage(10);
         }
     }
 
