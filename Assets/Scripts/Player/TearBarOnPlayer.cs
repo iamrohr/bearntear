@@ -7,6 +7,9 @@ public class TearBarOnPlayer : MonoBehaviour
     public int maxHealth = 100;
     public int currentEnergy;
 
+    //ndra denna
+    public int currentHealth;
+
     public HealthBar tearBar;
 
     //Counter
