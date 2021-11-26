@@ -154,6 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseControlsCanvas: {fileID: 1852824929}
   pauseCanvas: {fileID: 1744992213}
+  background: {fileID: 0}
+  playerShadow: {fileID: 0}
+  player: {fileID: 0}
+  healthBarCanvas: {fileID: 0}
 --- !u!4 &162717712
 Transform:
   m_ObjectHideFlags: 0
@@ -2054,6 +2058,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   takeDamage: 10
+  invulnerable: 0
 --- !u!70 &1209019650
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
