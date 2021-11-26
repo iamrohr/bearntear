@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
 
         if (currentHealth <= 0)
+        {
             Destroy(gameObject);
+            SceneManager.LoadScene("Main");
+        }
+
     }
 }

@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public GameObject player;
     public GameObject healthBarCanvas;
     public GameObject background;
+    public GameObject background1;
+    public GameObject background2;
     public GameObject playerShadow;
 
     public int maxHealth = 100;
@@ -42,6 +44,8 @@ public class Player : MonoBehaviour
             gameOverCanvas.SetActive(true);
             healthBarCanvas.SetActive(false);
             background.SetActive(false);
+            background1.SetActive(false);
+            background2.SetActive(false);
             playerMovementScript.enabled = false;
             playerSpriteRenderer.enabled = false;
             playerShootScript.enabled = false;
