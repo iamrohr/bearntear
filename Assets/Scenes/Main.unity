@@ -790,7 +790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 491798621}
   - component: {fileID: 491798622}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ShootSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,11 +918,12 @@ GameObject:
   - component: {fileID: 497601511}
   - component: {fileID: 497601510}
   - component: {fileID: 497601509}
+  - component: {fileID: 497601512}
   - component: {fileID: 497601508}
   - component: {fileID: 497601507}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1059,6 +1060,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &497601512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497601506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd5290f9c1f59340a103be6f7a6f674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 30
 --- !u!1 &499268904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,7 +1570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 971129765}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2158,8 +2173,7 @@ GameObject:
   - component: {fileID: 1209019649}
   - component: {fileID: 1209019648}
   - component: {fileID: 1209019650}
-  - component: {fileID: 1209019651}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2175,7 +2189,7 @@ Transform:
   m_GameObject: {fileID: 1209019642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.2, z: 0}
-  m_LocalScale: {x: 0.4609, y: 1.1277, z: 1}
+  m_LocalScale: {x: 0.9218, y: 2.2554, z: 2}
   m_Children:
   - {fileID: 971129765}
   m_Father: {fileID: 1934876603}
@@ -2316,6 +2330,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   takeDamage: 10
+  invulnerable: 0
 --- !u!70 &1209019650
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2332,22 +2347,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.00000011920929}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &1209019651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209019642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d748644e326f7d74fa3797442ca67e6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 1994586768}
-  maxHealth: 100
-  currentHealth: 0
-  takeDamage: 20
 --- !u!1 &1212162825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,6 +3326,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   takeDamage: 10
+  invulnerable: 0
 --- !u!114 &1704355884
 MonoBehaviour:
   m_ObjectHideFlags: 0
