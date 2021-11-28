@@ -1,8 +1,9 @@
-using System;
 using UnityEngine;
 
-public class BashAttack : MonoBehaviour
+public class PlayerMeleeAttack : MonoBehaviour
 {
+    public int damage;
+    
     void Start()
     {
         Destroy(gameObject, 0.1f);
@@ -12,9 +13,7 @@ public class BashAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
-        {
-            //TODO: Damage enemies
-        }
+            other.GetComponent<Enemy>().TakeDamage(damage);
     }
 
 }

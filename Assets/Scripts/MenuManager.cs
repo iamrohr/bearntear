@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     public GameObject controlsCanvas;
     public GameObject gameOverCanvas;
     public GameObject imageGameOver;
+    
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        SceneManager.LoadScene("James");
+        SceneManager.LoadScene("Main");
     }
 
     public void ControlsMenu()
@@ -45,4 +46,7 @@ public class MenuManager : MonoBehaviour
         controlsCanvas.SetActive(false);
         imageGameOver.SetActive(true);
     }
+
+    
+
 }

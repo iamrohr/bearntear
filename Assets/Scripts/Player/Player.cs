@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthTEST : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public HealthBar healthBar;
 
@@ -10,41 +10,50 @@ public class PlayerHealthTEST : MonoBehaviour
     public GameObject player;
     public GameObject healthBarCanvas;
     public GameObject background;
+    public GameObject background1;
+    public GameObject background2;
+    public GameObject playerShadow;
 
     public int maxHealth = 100;
     public int currentHealth;
     public int takeDamage = 10;
 
-    PlayerMovementTEST playerMovementTestScript;
+    public bool invulnerable = false;
     PlayerShoot playerShootScript;
     SpriteRenderer playerSpriteRenderer;
+    PlayerMovement playerMovementScript;
+    SpriteRenderer playerShadowSpriteRenderer;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        playerMovementTestScript = GetComponent<PlayerMovementTEST>();
+        playerMovementScript = playerShadow.GetComponent<PlayerMovement>();
         playerShootScript = GetComponent<PlayerShoot>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    public void TakeDamage(int damage)
     {
+        if (invulnerable)
+            return;
+
         if (currentHealth <= 0)
         {
             gameOverCanvas.SetActive(true);
             healthBarCanvas.SetActive(false);
             background.SetActive(false);
-            playerMovementTestScript.enabled = false;
+            background1.SetActive(false);
+            background2.SetActive(false);
+            playerMovementScript.enabled = false;
             playerSpriteRenderer.enabled = false;
             playerShootScript.enabled = false;
+            playerShadowSpriteRenderer.enabled = false;
             transform.position = new Vector3(0, 0, 0);
+            playerShadow.transform.position = new Vector3(0, 0, 0);
         }
-        
-    }
 
-    public void TakeDamage(int damage)
-    {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
