@@ -5,10 +5,12 @@ public class EnemyReturnHomeState : EnemyBaseState
     public override void EnterState(EnemyStateManager enemy)
     {
         Debug.Log("Dang, where did she go, I better get back home");
+        enemy.attackBox.SetActive(false);
     }
 
     public override void UpdateState(EnemyStateManager enemy)
     {
+        Vector2 currentposition = enemy.transform.position;
 
         float step = enemy.returnSpeed * Time.deltaTime;
 
@@ -18,11 +20,20 @@ public class EnemyReturnHomeState : EnemyBaseState
             enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.startPosition, step);
             enemy.transform.localScale = new Vector2(-1, 1);
         }
-        else
+        if (enemy.transform.position.x > enemy.player.position.x)
         {
             //Flip Player towards the starting position
             enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.startPosition, step);
             enemy.transform.localScale = new Vector2(1, 1);
+        }
+        else if (currentposition == enemy.startPosition)
+        {
+            if (enemy.transform.position.x > enemy.player.position.x)
+            {
+                enemy.transform.localScale = new Vector2(1, 1);
+            }
+            Debug.Log("Borde vara i idle nu");
+            enemy.SwitchState(enemy.IdleState);
         }
 
     }

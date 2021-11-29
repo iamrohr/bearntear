@@ -4,7 +4,8 @@ public class EnemyChaseState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
-        Debug.Log("Hello, I am now chasing the player");
+        Debug.Log("Chase State");
+        enemy.attackBox.SetActive(false);
     }
 
     public override void UpdateState(EnemyStateManager enemy)
@@ -30,7 +31,7 @@ public class EnemyChaseState : EnemyBaseState
         }
         else if(distToPlayer >= enemy.agroRange)
         {
-            enemy.SwitchState(enemy.IdleState);
+            enemy.SwitchState(enemy.ReturnHomeState);
         }
 
     }

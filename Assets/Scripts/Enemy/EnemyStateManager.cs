@@ -20,6 +20,7 @@ public class EnemyStateManager : MonoBehaviour
     public float attackRange = 5f;
     public float moveSpeed = 5f;
     public float returnSpeed = 5f;
+    public bool canAttackPlayer = true; 
 
     //Fetch Attributes
     public Vector2 startPosition;
@@ -32,6 +33,7 @@ public class EnemyStateManager : MonoBehaviour
 
         //Get enemy start position
         startPosition = new Vector2(transform.position.x, transform.position.y);
+        attackBox.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,5 +54,16 @@ public class EnemyStateManager : MonoBehaviour
     }
 
     //State Machines can only be in one state at a time.
+
+    public IEnumerator AttackPlayer()
+    {
+        attackBox.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        attackBox.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+
+        canAttackPlayer = true;
+    }
 
 }
