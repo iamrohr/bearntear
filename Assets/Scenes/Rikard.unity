@@ -300,6 +300,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   takeDamage: 10
+  state: 0
   invulnerable: 0
 --- !u!114 &401681348
 MonoBehaviour:
@@ -839,6 +840,7 @@ GameObject:
   - component: {fileID: 675128071}
   - component: {fileID: 675128070}
   - component: {fileID: 675128079}
+  - component: {fileID: 675128080}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -912,6 +914,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   takeDamage: 10
+  state: 0
   invulnerable: 0
 --- !u!114 &675128074
 MonoBehaviour:
@@ -958,11 +961,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecbb49c3eac3464bbe5f95559e0e977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 0
-  jumpHeight: 3
-  hangTime: 0
-  jumpCurveFactor: 0
-  minJumpHeight: 0
+  jumpSpeed: 15
+  jumpHeight: 5
+  hangTime: 0.1
+  jumpCurveFactor: 1.003
+  minJumpHeight: 2
 --- !u!212 &675128077
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1045,6 +1048,22 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   timeSpeed: 1
+--- !u!114 &675128080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675128069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df35d44ac343d4c439451d900fb09ebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horSpeed: 10
+  vertSpeed: 10
+  turnDelay: 1
+  horFacing: 0
 --- !u!1 &762969153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1458,6 @@ GameObject:
   m_Component:
   - component: {fileID: 844883966}
   - component: {fileID: 844883970}
-  - component: {fileID: 844883969}
   - component: {fileID: 844883968}
   - component: {fileID: 844883967}
   m_Layer: 7
@@ -1550,22 +1568,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &844883969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844883965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df35d44ac343d4c439451d900fb09ebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horSpeed: 6
-  vertSpeed: 2.5
-  horDirection: 0
-  isDashing: 0
 --- !u!212 &844883970
 SpriteRenderer:
   m_ObjectHideFlags: 0

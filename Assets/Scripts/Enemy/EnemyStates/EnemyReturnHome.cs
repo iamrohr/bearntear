@@ -26,12 +26,8 @@ public class EnemyReturnHomeState : EnemyBaseState
             enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.startPosition, step);
             enemy.transform.localScale = new Vector2(1, 1);
         }
-        else if (currentposition == enemy.startPosition)
+        if (currentposition.y == enemy.startPosition.y)
         {
-            if (enemy.transform.position.x > enemy.player.position.x)
-            {
-                enemy.transform.localScale = new Vector2(1, 1);
-            }
             Debug.Log("Borde vara i idle nu");
             enemy.SwitchState(enemy.IdleState);
         }

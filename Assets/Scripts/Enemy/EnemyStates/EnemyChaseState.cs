@@ -4,7 +4,6 @@ public class EnemyChaseState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
-        Debug.Log("Chase State");
         enemy.attackBox.SetActive(false);
     }
 
