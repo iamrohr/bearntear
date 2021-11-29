@@ -3174,6 +3174,7 @@ GameObject:
   - component: {fileID: 1544066347}
   - component: {fileID: 1544066346}
   - component: {fileID: 1544066350}
+  - component: {fileID: 1544066351}
   m_Layer: 0
   m_Name: Hexagon Flat-Top
   m_TagString: Untagged
@@ -3303,6 +3304,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e92aacbeec679e419e3abe2ad237be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1544066351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544066345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd0ae4527da86f4c9d9a5f72134de1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1559092460
