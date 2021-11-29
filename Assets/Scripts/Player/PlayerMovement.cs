@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public enum HorFacing {Right, Left};
@@ -53,9 +52,7 @@ public class PlayerMovement : MonoBehaviour
                 goto case PlayerState.Idle;
         }
 
-        if (x > 0 && horFacing == HorFacing.Left)
-            Invoke(nameof(ChangeHorFacing), turnDelay);
-        else if (x < 0 && horFacing == HorFacing.Right)
+        if (x > 0 && horFacing == HorFacing.Left || x < 0 && horFacing == HorFacing.Right)
             Invoke(nameof(ChangeHorFacing), turnDelay);
     }
 

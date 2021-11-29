@@ -8,7 +8,6 @@ public class PlayerDash : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerMovement pm;
     private Player player;
-    private Vector2 dashDirection;
 
     void Start()
     {
@@ -19,17 +18,19 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
-        var xInput = Input.GetAxisRaw("Horizontal") != 0;
-        if (Input.GetButtonDown("Fire3") && xInput && canDash)
-            Dash();
+        float xInput = Input.GetAxisRaw("Horizontal");
+        if (Input.GetButtonDown("Fire3") && xInput != 0 && canDash)
+            Dash(xInput);
     }
 
-    private void Dash()
+    private void Dash(float xInput)
     {
         player.invulnerable = true;
         canDash = false;
         player.state = PlayerState.Dashing;
-        if (pm.horFacing == HorFacing.Right)
+
+        Vector2 dashDirection;
+        if (xInput > 0)
             dashDirection = Vector2.right;
         else
             dashDirection = Vector2.left;
