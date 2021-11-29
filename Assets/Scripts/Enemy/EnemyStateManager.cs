@@ -10,6 +10,8 @@ public class EnemyStateManager : MonoBehaviour
     EnemyTriggerState TriggerState = new  EnemyTriggerState();
     EnemyPunchState PunchState = new EnemyPunchState();
 
+    public Transform player; 
+
     void Start()
     {
         //Starting state for the Enemy state machine
