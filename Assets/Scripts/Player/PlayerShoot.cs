@@ -23,6 +23,7 @@ public class PlayerShoot : MonoBehaviour
     {
         shootCoolDown += Time.deltaTime;
         lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        lookDirection.Normalize();
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
         if (Input.GetMouseButtonDown(0) && shootCoolDown > 0.4f)
@@ -32,8 +33,6 @@ public class PlayerShoot : MonoBehaviour
             Shoot();
         }
 
-        
-
     }
 
     void Shoot()
@@ -42,8 +41,9 @@ public class PlayerShoot : MonoBehaviour
         shootCoolDown = 0;
 
         GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
-        newProjectile.transform.up = lookDirection;
-                
+        Vector3 shootDir = new Vector3(lookDirection.x, lookDirection.y, 0);
+        newProjectile.GetComponent<Projectile>().Setup(shootDir);
+
         shootSound.Play();
     }
 }
