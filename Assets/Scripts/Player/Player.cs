@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     PlayerMovement playerMovementScript;
     SpriteRenderer playerShadowSpriteRenderer;
 
+    GameObject[] enemyGameObjects;
+    
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -32,6 +35,7 @@ public class Player : MonoBehaviour
         playerShootScript = GetComponent<PlayerShoot>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
+        enemyGameObjects = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     public void TakeDamage(int damage)
@@ -41,6 +45,11 @@ public class Player : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            foreach (var enemy in enemyGameObjects)
+            {
+                enemy.SetActive(false);
+            }
+
             gameOverCanvas.SetActive(true);
             healthBarCanvas.SetActive(false);
             background.SetActive(false);

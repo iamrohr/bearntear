@@ -41,4 +41,11 @@ public class MainMenuManager : MonoBehaviour
         // Application.Quit(); to be added to build
     }
 
+    private void Update()
+    {
+        if(controlsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            MainMenuBack();
+        }
+    }
 }

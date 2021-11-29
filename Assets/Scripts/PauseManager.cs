@@ -20,6 +20,8 @@ public class PauseManager : MonoBehaviour
 
     PlayerShoot playerShootScript;
 
+    GameObject[] projectileGameObjects;
+
     private void Awake()
     {
         pauseControlsCanvas.SetActive(false);
@@ -40,14 +42,20 @@ public class PauseManager : MonoBehaviour
         healthBarCanvas.SetActive(false);
         playerShootScript.enabled = false;
         pauseControlsCanvas.SetActive(true);
-        
+        projectileGameObjects = GameObject.FindGameObjectsWithTag("Projectile");
+
+        foreach (var projectile in projectileGameObjects)
+        {
+            projectile.SetActive(false);
+        }
+
 
     }
 
     public void PauseBack()
     {
         pauseControlsCanvas.SetActive(false);
-        playerShootScript.enabled = true;
+        playerShootScript.enabled = true; // this should be disabled
         pauseCanvas.SetActive(true);
         background.SetActive(true);
         background1.SetActive(true);
@@ -55,6 +63,11 @@ public class PauseManager : MonoBehaviour
         playerShadowSpriteRenderer.enabled = true;
         playerRenderer.enabled = true;
         healthBarCanvas.SetActive(true);
+
+        foreach (var projectile in projectileGameObjects)
+        {
+            projectile.SetActive(true);
+        }
 
     }
 
@@ -72,7 +85,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !pauseControlsCanvas.activeSelf)
         {
             if (Time.timeScale == 1)
             {
@@ -87,6 +100,11 @@ public class PauseManager : MonoBehaviour
                     Time.timeScale = 1; // ie. Not Paused
                     pauseCanvas.SetActive(false);
             }
+        }
+
+        if(pauseControlsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseBack();
         }
     }
 }

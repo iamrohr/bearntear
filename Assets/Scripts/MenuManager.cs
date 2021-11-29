@@ -25,7 +25,8 @@ public class MenuManager : MonoBehaviour
     public void ControlsMenu()
     {
         controlsCanvas.SetActive(true);
-        imageGameOver.SetActive(false);
+        gameOverCanvas.SetActive(false);
+        //imageGameOver.SetActive(false);
     }
 
     public void MainMenu()
@@ -44,9 +45,13 @@ public class MenuManager : MonoBehaviour
     {
         gameOverCanvas.SetActive(true);
         controlsCanvas.SetActive(false);
-        imageGameOver.SetActive(true);
+        gameOverCanvas.SetActive(true);
+
+        //imageGameOver.SetActive(true);
     }
 
     
+
+
 
 }
