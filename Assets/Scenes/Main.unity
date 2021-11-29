@@ -1001,8 +1001,8 @@ GameObject:
   m_Component:
   - component: {fileID: 497601511}
   - component: {fileID: 497601510}
-  - component: {fileID: 497601509}
   - component: {fileID: 497601512}
+  - component: {fileID: 497601509}
   - component: {fileID: 497601508}
   - component: {fileID: 497601507}
   m_Layer: 8
@@ -1068,16 +1068,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 497601506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23368d475043f4d4db404f62118b749a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e92aacbeec679e419e3abe2ad237be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1209019643}
+  attackBox: {fileID: 1951540365}
   agroRange: 8
   attackRange: 2
   moveSpeed: 2
   returnSpeed: 5
-  attackBox: {fileID: 1951540365}
-  attackActive: 1
+  canAttackPlayer: 1
+  startPosition: {x: 0, y: 0}
 --- !u!212 &497601510
 SpriteRenderer:
   m_ObjectHideFlags: 0
