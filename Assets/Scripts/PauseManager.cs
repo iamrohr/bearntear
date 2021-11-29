@@ -21,6 +21,7 @@ public class PauseManager : MonoBehaviour
     PlayerShoot playerShootScript;
 
     GameObject[] projectileGameObjects;
+    GameObject[] enemyGameObjects;
 
     private void Awake()
     {
@@ -43,10 +44,17 @@ public class PauseManager : MonoBehaviour
         playerShootScript.enabled = false;
         pauseControlsCanvas.SetActive(true);
         projectileGameObjects = GameObject.FindGameObjectsWithTag("Projectile");
-
+        
         foreach (var projectile in projectileGameObjects)
         {
             projectile.SetActive(false);
+        }
+
+        enemyGameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (var enemy in enemyGameObjects)
+        {
+            enemy.SetActive(false);
         }
 
 
@@ -67,6 +75,11 @@ public class PauseManager : MonoBehaviour
         foreach (var projectile in projectileGameObjects)
         {
             projectile.SetActive(true);
+        }
+
+        foreach (var enemy in enemyGameObjects)
+        {
+            enemy.SetActive(true);
         }
 
     }

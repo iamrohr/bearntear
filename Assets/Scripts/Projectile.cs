@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float projectileSpeed;
+    public int bulletDamage;
 
     private Vector3 shootDir;
 
@@ -21,6 +22,7 @@ public class Projectile : MonoBehaviour
     {
         this.shootDir = shootDir;
         transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
+        Destroy(gameObject, 1f);
     }
 
     void Update()
@@ -31,6 +33,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // add damage to enemyNPCs
+        if(other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Enemy>().TakeDamage(bulletDamage);
+            Destroy(gameObject);
+        }
     }
 }
