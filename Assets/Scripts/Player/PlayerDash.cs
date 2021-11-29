@@ -19,7 +19,8 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire3") && canDash)
+        var xInput = Input.GetAxisRaw("Horizontal") != 0;
+        if (Input.GetButtonDown("Fire3") && xInput && canDash)
             Dash();
     }
 
