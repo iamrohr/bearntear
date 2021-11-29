@@ -13,7 +13,7 @@ public class PlayerDash : MonoBehaviour
     void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
-        pm = GetComponentInParent<PlayerMovement>();
+        pm = GetComponent<PlayerMovement>();
         player = GetComponent<Player>();
     }
 
@@ -28,8 +28,8 @@ public class PlayerDash : MonoBehaviour
     {
         player.invulnerable = true;
         canDash = false;
-        pm.isDashing = true;
-        if (pm.horDirection == HorDirection.Right)
+        player.state = PlayerState.Dashing;
+        if (pm.horFacing == HorFacing.Right)
             dashDirection = Vector2.right;
         else
             dashDirection = Vector2.left;
@@ -43,7 +43,7 @@ public class PlayerDash : MonoBehaviour
     private void CancelDash()
     {
         rb.velocity = Vector2.zero;
-        pm.isDashing = false;
+        player.state = PlayerState.Idle;
         player.invulnerable = false;
     }
 

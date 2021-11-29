@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+public enum PlayerState {Idle, Moving, Attacking, Jumping, Dashing}
 
 public class Player : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public int takeDamage = 10;
+    public PlayerState state;
 
     public bool invulnerable = false;
     PlayerShoot playerShootScript;
@@ -25,13 +26,13 @@ public class Player : MonoBehaviour
     SpriteRenderer playerShadowSpriteRenderer;
 
     GameObject[] enemyGameObjects;
-    
 
     void Start()
     {
+        state = PlayerState.Idle;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        playerMovementScript = playerShadow.GetComponent<PlayerMovement>();
+        playerMovementScript = player.GetComponent<PlayerMovement>();
         playerShootScript = GetComponent<PlayerShoot>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();

@@ -7,9 +7,13 @@ public class PlayerJump : MonoBehaviour
 
     private bool grounded = true;
     private float defaultYOffSet;
+    private PlayerMovement pm;
+    private Player player;
 
     void Start()
     {
+        pm = GetComponent<PlayerMovement>();
+        player = GetComponent<Player>();
         defaultYOffSet = transform.localPosition.y;
     }
 
@@ -31,17 +35,21 @@ public class PlayerJump : MonoBehaviour
         {
             transform.localPosition += (Vector3)Vector2.up * tempJumpSpeed * Time.deltaTime; // Time.deltaTime not need because not actually running in Update
             tempJumpSpeed /= jumpCurveFactor;
-            Debug.Log(tempJumpSpeed);
             yield return new WaitForEndOfFrame();
+            if (player.state == PlayerState.Dashing)
+                break;
         }
 
         yield return new WaitForSeconds(hangTime); // hangtime in air
-        Debug.Log("Going down");
+
         while (transform.localPosition.y >= defaultYOffSet)
         {
-            transform.localPosition += (Vector3)Vector2.down * tempJumpSpeed * Time.deltaTime; // Time.deltaTime not need because not actually running in Update
-            tempJumpSpeed *= jumpCurveFactor;
-            Debug.Log(tempJumpSpeed);
+            if (player.state != PlayerState.Dashing)
+            {
+                transform.localPosition += (Vector3)Vector2.down * tempJumpSpeed * Time.deltaTime; // Time.deltaTime not need because not actually running in Update
+                tempJumpSpeed *= jumpCurveFactor;
+            }
+
             yield return new WaitForEndOfFrame();
         }
 

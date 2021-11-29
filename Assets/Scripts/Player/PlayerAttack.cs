@@ -8,10 +8,11 @@ public class PlayerAttack : MonoBehaviour
     private float attackTimer = 0;
     private bool canAttack = true;
     private PlayerMovement pm;
+    private Player player;
 
     void Start()
     {
-        pm = gameObject.GetComponentInParent<PlayerMovement>();
+        pm = gameObject.GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -23,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
         {
             Vector2 attackPos = new Vector2(transform.position.x, transform.position.y);
 
-            if (pm.horDirection == HorDirection.Left)
+            if (pm.horFacing == HorFacing.Left)
                 attackPos += Vector2.left * attackOffSetX;
             else
                 attackPos += Vector2.right * attackOffSetX;
