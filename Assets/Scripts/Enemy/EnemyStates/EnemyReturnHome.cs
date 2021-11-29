@@ -14,18 +14,13 @@ public class EnemyReturnHomeState : EnemyBaseState
 
         float step = enemy.returnSpeed * Time.deltaTime;
 
-        if (enemy.transform.position.x < enemy.player.position.x)
-        {
-            //Flip Player towards the starting position
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.startPosition, step);
-            enemy.transform.localScale = new Vector2(-1, 1);
-        }
-        if (enemy.transform.position.x > enemy.player.position.x)
-        {
-            //Flip Player towards the starting position
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.startPosition, step);
-            enemy.transform.localScale = new Vector2(1, 1);
-        }
+        
+        //Lägg till så den flippar sprite render. 
+
+        //Gör en Gamecomponent som är public som är just den spriten.
+
+        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.startPosition, step);
+
         if (currentposition.y == enemy.startPosition.y)
         {
             Debug.Log("Borde vara i idle nu");

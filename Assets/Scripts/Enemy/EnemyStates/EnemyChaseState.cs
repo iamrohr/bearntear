@@ -28,7 +28,7 @@ public class EnemyChaseState : EnemyBaseState
         {
             enemy.SwitchState(enemy.AttackState);
         }
-        else if(distToPlayer >= enemy.agroRange)
+        if(distToPlayer >= enemy.agroRange)
         {
             enemy.SwitchState(enemy.ReturnHomeState);
         }
