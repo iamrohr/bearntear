@@ -2422,6 +2422,7 @@ GameObject:
   - component: {fileID: 1209019649}
   - component: {fileID: 1209019648}
   - component: {fileID: 1209019650}
+  - component: {fileID: 1209019651}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2489,11 +2490,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecbb49c3eac3464bbe5f95559e0e977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 0
-  jumpHeight: 3
-  hangTime: 0
-  jumpCurveFactor: 0
-  minJumpHeight: 0
+  jumpSpeed: 15
+  jumpHeight: 5
+  hangTime: 0.1
+  jumpCurveFactor: 1.003
+  minJumpHeight: 2
 --- !u!212 &1209019647
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2583,6 +2584,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   takeDamage: 10
+  state: 0
   invulnerable: 0
 --- !u!70 &1209019650
 CapsuleCollider2D:
@@ -2600,6 +2602,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.00000011920929}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &1209019651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209019642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df35d44ac343d4c439451d900fb09ebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horSpeed: 6
+  vertSpeed: 2.5
+  turnDelay: 0
+  horFacing: 0
 --- !u!1 &1212162825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3581,6 +3599,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   takeDamage: 10
+  state: 0
   invulnerable: 0
 --- !u!114 &1704355884
 MonoBehaviour:
@@ -4208,7 +4227,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1934876603}
   - component: {fileID: 1934876602}
-  - component: {fileID: 1934876601}
   - component: {fileID: 1934876600}
   - component: {fileID: 1934876604}
   m_Layer: 7
@@ -4239,22 +4257,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1934876601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934876599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df35d44ac343d4c439451d900fb09ebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horSpeed: 6
-  vertSpeed: 2.5
-  horDirection: 0
-  isDashing: 0
 --- !u!212 &1934876602
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4417,8 +4419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e304a78628bdeb48bf836ff0b5bc900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1209019642}
-  damage: 10
 --- !u!61 &1951540367
 BoxCollider2D:
   m_ObjectHideFlags: 0
