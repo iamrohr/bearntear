@@ -41,7 +41,7 @@ public class PauseManager : MonoBehaviour
         playerShadowSpriteRenderer.enabled = false;
         playerRenderer.enabled = false;
         healthBarCanvas.SetActive(false);
-        playerShootScript.enabled = false;
+        //playerShootScript.enabled = false;
         pauseControlsCanvas.SetActive(true);
         projectileGameObjects = GameObject.FindGameObjectsWithTag("Projectile");
         
@@ -63,7 +63,7 @@ public class PauseManager : MonoBehaviour
     public void PauseBack()
     {
         pauseControlsCanvas.SetActive(false);
-        playerShootScript.enabled = true; // this should be disabled
+        //playerShootScript.enabled = false;
         pauseCanvas.SetActive(true);
         background.SetActive(true);
         background1.SetActive(true);
@@ -104,14 +104,16 @@ public class PauseManager : MonoBehaviour
             {
                     Time.timeScale = 0; // ie. Pause
                     pauseCanvas.SetActive(true);
-
-                    // player stops moving
+                    playerShootScript.enabled = false;
+                // player stops moving
             }
 
             else
             {
                     Time.timeScale = 1; // ie. Not Paused
                     pauseCanvas.SetActive(false);
+                    playerShootScript.enabled = true;
+
             }
         }
 
