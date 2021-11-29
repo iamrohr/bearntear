@@ -6,7 +6,7 @@ public abstract class EnemyBaseState
 
    public abstract void UpdateState(EnemyStateManager enemy);
 
-   public abstract void OnCollisionEnter(EnemyStateManager enemy);
+   public abstract void OnCollisionEnter2D(EnemyStateManager enemy, Collision2D collision);
 }
 
 

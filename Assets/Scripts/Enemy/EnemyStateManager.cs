@@ -5,12 +5,24 @@ using UnityEngine;
 public class EnemyStateManager : MonoBehaviour
 {
 
-    EnemyBaseState currentState;
-    EnemyIdleState IdleState = new EnemyIdleState();
-    EnemyTriggerState TriggerState = new  EnemyTriggerState();
-    EnemyPunchState PunchState = new EnemyPunchState();
+    public EnemyBaseState currentState;
+    public EnemyIdleState IdleState = new EnemyIdleState();
+    public EnemyChaseState ChaseState = new  EnemyChaseState();
+    public EnemyAttackState AttackState = new EnemyAttackState();
+    public EnemyReturnHomeState ReturnHomeState = new EnemyReturnHomeState();
 
-    public Transform player; 
+    [Header("Components")]
+    public Transform player;
+    public GameObject attackBox;
+
+    [Header("Attributes")]
+    public float agroRange = 5f;
+    public float attackRange = 5f;
+    public float moveSpeed = 5f;
+    public float returnSpeed = 5f;
+
+    //Fetch Attributes
+    public Vector2 startPosition;
 
     void Start()
     {
@@ -18,6 +30,13 @@ public class EnemyStateManager : MonoBehaviour
         currentState = IdleState;
         currentState.EnterState(this);
 
+        //Get enemy start position
+        startPosition = new Vector2(transform.position.x, transform.position.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        currentState.OnCollisionEnter2D(this, collision);
     }
 
     // Update is called once per frame
@@ -33,4 +52,5 @@ public class EnemyStateManager : MonoBehaviour
     }
 
     //State Machines can only be in one state at a time.
+
 }

@@ -959,8 +959,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSpeed: 0
-  velocity: 0
   jumpHeight: 3
+  hangTime: 0
+  jumpCurveFactor: 0
+  minJumpHeight: 0
 --- !u!212 &675128077
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2898,6 +2900,7 @@ GameObject:
   - component: {fileID: 1408785263}
   - component: {fileID: 1408785262}
   - component: {fileID: 1408785261}
+  - component: {fileID: 1408785266}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -2959,7 +2962,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408785260}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23368d475043f4d4db404f62118b749a, type: 3}
   m_Name: 
@@ -3037,6 +3040,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408785266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408785260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e92aacbeec679e419e3abe2ad237be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 675128078}
+  attackBox: {fileID: 1447456562}
+  agroRange: 8
+  attackRange: 1.5
+  moveSpeed: 5
+  returnSpeed: 5
+  startPosition: {x: 0, y: 0}
 --- !u!1 &1447456562
 GameObject:
   m_ObjectHideFlags: 0
@@ -3069,6 +3091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 675128069}
+  pl: {fileID: 0}
   damage: 10
 --- !u!61 &1447456564
 BoxCollider2D:
@@ -3300,12 +3323,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544066345}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e92aacbeec679e419e3abe2ad237be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 675128078}
+  attackBox: {fileID: 0}
+  agroRange: 5
+  attackRange: 5
+  moveSpeed: 5
+  returnSpeed: 5
+  startPosition: {x: 0, y: 0}
 --- !u!1 &1559092460
 GameObject:
   m_ObjectHideFlags: 0
