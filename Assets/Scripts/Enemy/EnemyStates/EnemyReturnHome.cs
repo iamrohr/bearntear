@@ -14,10 +14,13 @@ public class EnemyReturnHomeState : EnemyBaseState
 
         float step = enemy.returnSpeed * Time.deltaTime;
 
-        
+
         //Lägg till så den flippar sprite render. 
 
         //Gör en Gamecomponent som är public som är just den spriten.
+        
+        enemy.transform.localScale = new Vector2(1, 1);
+
 
         enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.startPosition, step);
 
