@@ -7,15 +7,19 @@ public class PlayerMovement : MonoBehaviour
     public float horSpeed, vertSpeed, turnDelay;
     public HorFacing horFacing;
 
+    private bool canTurn;
+    private float moveLimiter = 0.7f;
     private Rigidbody2D rb;
     private Player player;
-    private float moveLimiter = 0.7f;
+    private SpriteRenderer sr;
 
     void Start()
     {
-        player = GetComponent<Player>();
+        canTurn = true;
         horFacing = HorFacing.Right;
+        player = GetComponent<Player>();
         rb = GetComponentInParent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -52,15 +56,25 @@ public class PlayerMovement : MonoBehaviour
                 goto case PlayerState.Idle;
         }
 
-        if (x > 0 && horFacing == HorFacing.Left || x < 0 && horFacing == HorFacing.Right)
+        if (canTurn && (x > 0 && horFacing == HorFacing.Left || x < 0 && horFacing == HorFacing.Right))
+        {
+            canTurn = false;
             Invoke(nameof(ChangeHorFacing), turnDelay);
+        }
     }
 
     private void ChangeHorFacing()
     {
         if (horFacing == HorFacing.Left)
+        {
             horFacing = HorFacing.Right;
+            sr.flipX = false;
+        }
         else
+        {
             horFacing = HorFacing.Left;
+            sr.flipX = true;
+        }
+        canTurn = true;
     }
 }
