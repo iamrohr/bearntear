@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e92aacbeec679e419e3abe2ad237be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1209019643}
   attackBox: {fileID: 2054639954}
   agroRange: 8
   attackRange: 2
@@ -4594,7 +4594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ad4a0bd7358b34db0a9532343b65eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  giveDamage: 2
+  giveDamage: 5
 --- !u!61 &2054639956
 BoxCollider2D:
   m_ObjectHideFlags: 0
