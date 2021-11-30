@@ -13,14 +13,21 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         pm = gameObject.GetComponent<PlayerMovement>();
+        player = GetComponent<Player>();
     }
 
     void Update()
     {
-        if (Input.GetButton("Fire2") && canAttack)
+        if (player.state == PlayerState.Dashing)
+            return;
+
+        if (Input.GetButtonDown("Fire1") && canAttack)
+            player.state = PlayerState.Attacking;
+
+        if (Input.GetButton("Fire1") && canAttack)
             attackTimer += Time.deltaTime;
         
-        if (Input.GetButtonUp("Fire2") && canAttack)
+        if (Input.GetButtonUp("Fire1") && canAttack)
         {
             Vector2 attackPos = new Vector2(transform.position.x, transform.position.y);
 
@@ -60,6 +67,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void CanAttackToTrue()
     {
+        player.state = PlayerState.Idle;
         canAttack = true;
     }
 }

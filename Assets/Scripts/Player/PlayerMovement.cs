@@ -4,11 +4,11 @@ public enum HorFacing {Right, Left};
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float horSpeed, vertSpeed, turnDelay;
+    public float speed, vertSpeedFactor, turnDelay, atkSpeedFactor;
     public HorFacing horFacing;
 
     private bool canTurn;
-    private float moveLimiter = 0.7f;
+    private float diagonalMoveLimiter = 0.7f;
     private Rigidbody2D rb;
     private Player player;
     private SpriteRenderer sr;
@@ -24,16 +24,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal") * horSpeed;
-        float y = Input.GetAxisRaw("Vertical") * vertSpeed;
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
 
         Vector2 newVelocity = new Vector2(x, y);
-        
-        if (x != 0 && y != 0)
-        {
-            x *= moveLimiter;
-            y *= moveLimiter;
-        }
+        newVelocity = newVelocity.normalized * speed;
+        newVelocity = new Vector2(newVelocity.x, newVelocity.y * vertSpeedFactor);
+
+        //if (x != 0 && y != 0)
+        //{
+        //    x *= diagonalMoveLimiter;
+        //    y *= diagonalMoveLimiter;
+        //}
 
         switch (player.state)
         {
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
                     player.state = PlayerState.Idle;
                 break;
             case PlayerState.Attacking:
+                rb.velocity = newVelocity * atkSpeedFactor;
                 break;
             case PlayerState.Jumping:
                 break;
@@ -56,7 +59,9 @@ public class PlayerMovement : MonoBehaviour
                 goto case PlayerState.Idle;
         }
 
-        if (canTurn && (x > 0 && horFacing == HorFacing.Left || x < 0 && horFacing == HorFacing.Right))
+        if (canTurn && 
+            (x > 0 && horFacing == HorFacing.Left 
+            || x < 0 && horFacing == HorFacing.Right))
         {
             canTurn = false;
             Invoke(nameof(ChangeHorFacing), turnDelay);
