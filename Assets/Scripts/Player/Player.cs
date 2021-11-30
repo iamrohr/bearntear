@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState {Idle, Moving, Attacking, Jumping, Dashing}
 
@@ -6,12 +7,8 @@ public class Player : MonoBehaviour
 {
     public HealthBar healthBar;
 
-    public GameObject gameOverCanvas;
     public GameObject player;
     public GameObject healthBarCanvas;
-    public GameObject background;
-    public GameObject background1;
-    public GameObject background2;
     public GameObject playerShadow;
 
     public int maxHealth = 100;
@@ -20,23 +17,20 @@ public class Player : MonoBehaviour
     public PlayerState state;
 
     public bool invulnerable = false;
-    PlayerShoot playerShootScript;
+    //PlayerShoot playerShootScript; // isn't needed?
     SpriteRenderer playerSpriteRenderer;
-    PlayerMovement playerMovementScript;
+    //PlayerMovement playerMovementScript; // isn't needed?
     SpriteRenderer playerShadowSpriteRenderer;
-
-    GameObject[] enemyGameObjects;
 
     void Start()
     {
         state = PlayerState.Idle;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        playerMovementScript = player.GetComponent<PlayerMovement>();
-        playerShootScript = GetComponent<PlayerShoot>();
+        //playerMovementScript = player.GetComponent<PlayerMovement>(); // isn't needed?
+        //playerShootScript = GetComponent<PlayerShoot>(); // isn't needed?
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
-        enemyGameObjects = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     public void TakeDamage(int damage)
@@ -46,22 +40,7 @@ public class Player : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            foreach (var enemy in enemyGameObjects)
-            {
-                enemy.SetActive(false);
-            }
-
-            gameOverCanvas.SetActive(true);
-            healthBarCanvas.SetActive(false);
-            background.SetActive(false);
-            background1.SetActive(false);
-            background2.SetActive(false);
-            playerMovementScript.enabled = false;
-            playerSpriteRenderer.enabled = false;
-            playerShootScript.enabled = false;
-            playerShadowSpriteRenderer.enabled = false;
-            transform.position = new Vector3(0, 0, 0);
-            playerShadow.transform.position = new Vector3(0, 0, 0);
+            SceneManager.LoadScene("GameOver");
         }
 
         currentHealth -= damage;
