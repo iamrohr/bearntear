@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         controlsCanvas.SetActive(false);
-        gameOverCanvas.SetActive(false);
+        //gameOverCanvas.SetActive(false);
     }
 
     public void StartNewGame()
