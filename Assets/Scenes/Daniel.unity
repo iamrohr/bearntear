@@ -2320,6 +2320,7 @@ MonoBehaviour:
   swipeCooldown: 0.5
   bashCooldown: 0.5
   timeForBash: 0.2
+  comboTotal: 4
 --- !u!114 &1209019646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2416,12 +2417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1994586768}
-  gameOverCanvas: {fileID: 2011767329}
   player: {fileID: 1209019642}
   healthBarCanvas: {fileID: 1119809325}
-  background: {fileID: 1212162825}
-  background1: {fileID: 569088152}
-  background2: {fileID: 702931057}
   playerShadow: {fileID: 1934876599}
   maxHealth: 100
   currentHealth: 0

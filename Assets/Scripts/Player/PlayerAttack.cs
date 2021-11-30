@@ -4,6 +4,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject swipeAttack, bashAttack;
     public float attackOffSetX, swipeCooldown, bashCooldown, timeForBash;
+    public int comboTotal;
 
     private float attackTimer = 0;
     private bool canAttack = true;
