@@ -11,12 +11,14 @@ public class PlayerShoot : MonoBehaviour
     public float shootCoolDown = 0.4f;
 
     Player playerHealthTestScript;
+    PlayerMovement playerMovementScript;
 
     public AudioSource shootSound;
 
     private void Start()
     {
         playerHealthTestScript = GetComponent<Player>();
+        playerMovementScript = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -38,12 +40,33 @@ public class PlayerShoot : MonoBehaviour
     void Shoot()
 
     {
-        shootCoolDown = 0;
+            shootCoolDown = 0;
 
-        GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
-        Vector3 shootDir = new Vector3(lookDirection.x, lookDirection.y, 0);
-        newProjectile.GetComponent<Projectile>().Setup(shootDir);
 
-        shootSound.Play();
+        if (playerMovementScript.horFacing == HorFacing.Left)
+        {
+            GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+            Vector3 shootDir = new Vector3(-1, 0, 0);
+            newProjectile.GetComponent<Projectile>().Setup(shootDir);
+
+            shootSound.Play();
+        }
+
+        if (playerMovementScript.horFacing == HorFacing.Right)
+        {
+            GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+            Vector3 shootDir = new Vector3(1, 0, 0);
+            newProjectile.GetComponent<Projectile>().Setup(shootDir);
+
+            shootSound.Play();
+        }
+
+
+
+        //GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+        //Vector3 shootDir = new Vector3(lookDirection.x, lookDirection.y, 0);
+        //newProjectile.GetComponent<Projectile>().Setup(shootDir);
+
+        //shootSound.Play();
     }
 }
