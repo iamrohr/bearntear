@@ -1507,8 +1507,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ef62948d136bf45b589cd519e49ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyRB: {fileID: 0}
+  cottonDrop: {fileID: 5335850060171322549, guid: d12341d4347410448896b6d0af746cd0, type: 3}
   currentHealth: 0
   maxHealth: 20
+  dropRange: 3
+  enemyPos: {x: 0, y: 0}
 --- !u!114 &711828001
 MonoBehaviour:
   m_ObjectHideFlags: 0

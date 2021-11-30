@@ -46,4 +46,13 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
+
+    public void GetLife(int hp)
+    {
+        //if (currentHealth <= 100)
+        //{
+            currentHealth += hp;
+             
+        healthBar.SetHealth(currentHealth);
+    }
 }
