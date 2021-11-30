@@ -2316,7 +2316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
   bashAttack: {fileID: 77544860683481084, guid: a76ea72f68964ee499cd8cfed5682a44, type: 3}
-  attackOffSetX: 1.5
+  attackOffSetX: 1.8
   swipeCooldown: 0.5
   bashCooldown: 0.5
   timeForBash: 0.2
@@ -2458,7 +2458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horSpeed: 6
   vertSpeed: 3
-  turnDelay: 0.3
+  turnDelay: 0.25
   horFacing: 0
 --- !u!1 &1212162825
 GameObject:
@@ -4100,8 +4100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e304a78628bdeb48bf836ff0b5bc900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1209019642}
-  damage: 10
 --- !u!61 &1951540367
 BoxCollider2D:
   m_ObjectHideFlags: 0
