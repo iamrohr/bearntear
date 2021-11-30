@@ -16,9 +16,9 @@ public class EnemyStateManager : MonoBehaviour
     public GameObject attackBox;
 
     [Header("Attributes")]
-    public float agroRange = 5f;
-    public float attackRange = 5f;
-    public float moveSpeed = 5f;
+    public float agroRange = 8f;
+    public float attackRange = 2f;
+    public float moveSpeed = 3f;
     public float returnSpeed = 5f;
     public bool canAttackPlayer = true; 
 
