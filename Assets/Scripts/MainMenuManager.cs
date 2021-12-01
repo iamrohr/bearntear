@@ -7,9 +7,11 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject backgroundCanvas;
     public GameObject controlsCanvas;
+    public GameObject creditsCanvas;
 
     private void Start()
     {
+        creditsCanvas.SetActive(false);
         controlsCanvas.SetActive(false);
     }
 
@@ -28,10 +30,25 @@ public class MainMenuManager : MonoBehaviour
         controlsCanvas.SetActive(true);
     }
 
+    public void MainMenuCredits()
+    {
+        backgroundCanvas.SetActive(false);
+        creditsCanvas.SetActive(true);
+
+    }
+
     public void MainMenuBack()
     {
         backgroundCanvas.SetActive(true);
         controlsCanvas.SetActive(false);
+
+    }
+
+    public void MainMenuCreditsBack()
+    {
+        backgroundCanvas.SetActive(true);
+        creditsCanvas.SetActive(false);
+
     }
 
     public void MainMenuQuit()
@@ -43,7 +60,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if(controlsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        if (controlsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape) || creditsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
             MainMenuBack();
         }
