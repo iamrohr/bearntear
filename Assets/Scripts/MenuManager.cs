@@ -14,6 +14,8 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         controlsCanvas.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         //gameOverCanvas.SetActive(false);
     }
 

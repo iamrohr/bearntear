@@ -100,7 +100,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !pauseControlsCanvas.activeSelf)
+        if (Input.GetButtonDown("Cancel") && !pauseControlsCanvas.activeSelf)
         {
             if (Time.timeScale == 1)
             {
@@ -122,7 +122,7 @@ public class PauseManager : MonoBehaviour
             }
         }
 
-        if(pauseControlsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        if(pauseControlsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape) || pauseControlsCanvas.activeSelf && Input.GetButtonDown("EscControls"))
         {
             PauseBack();
         }
