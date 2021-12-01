@@ -1126,8 +1126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd5290f9c1f59340a103be6f7a6f674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 30
 --- !u!1 &499268904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,6 +2336,7 @@ MonoBehaviour:
   hangTime: 0.1
   jumpCurveFactor: 1.003
   minJumpHeight: 2
+  jumpTime: 0.5
 --- !u!212 &1209019647
 SpriteRenderer:
   m_ObjectHideFlags: 0
