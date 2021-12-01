@@ -30,6 +30,8 @@ public class PauseManager : MonoBehaviour
         playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
         playerRenderer = player.GetComponent<SpriteRenderer>();
         playerShootScript = player.GetComponent<PlayerShoot>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void PauseControls()
@@ -105,6 +107,8 @@ public class PauseManager : MonoBehaviour
                     Time.timeScale = 0; // ie. Pause
                     pauseCanvas.SetActive(true);
                     playerShootScript.enabled = false;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                 // player stops moving
             }
 
@@ -113,7 +117,8 @@ public class PauseManager : MonoBehaviour
                     Time.timeScale = 1; // ie. Not Paused
                     pauseCanvas.SetActive(false);
                     playerShootScript.enabled = true;
-
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
             }
         }
 
