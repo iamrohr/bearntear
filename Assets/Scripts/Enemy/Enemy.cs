@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Rigidbody2D enemyRB;
+    [HideInInspector] public Rigidbody2D enemyRB;
     public GameObject cottonDrop;
 
     public int currentHealth, maxHealth;
