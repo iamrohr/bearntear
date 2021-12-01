@@ -9,7 +9,7 @@ public class GiveLife : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<Player>().GetLife(giveLife);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 

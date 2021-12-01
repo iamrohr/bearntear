@@ -49,10 +49,10 @@ public class Player : MonoBehaviour
 
     public void GetLife(int hp)
     {
-        //if (currentHealth <= 100)
-        //{
             currentHealth += hp;
+
+            currentHealth = Mathf.Clamp(currentHealth, 0, 100);
              
-        healthBar.SetHealth(currentHealth);
+            healthBar.SetHealth(currentHealth);
     }
 }
