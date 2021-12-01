@@ -763,7 +763,7 @@ MonoBehaviour:
   startTearLevel: 0
   currentTear: 0
   tearPauseTime: 2
-  maxTearTime: 8
+  maxTearTime: 0
   timeSpeed: 1
 --- !u!114 &409176365
 MonoBehaviour:
@@ -835,7 +835,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 5
   hangTime: 0.1
-  minJumpHeight: 2
   jumpTime: 0.4
 --- !u!212 &409176369
 SpriteRenderer:
