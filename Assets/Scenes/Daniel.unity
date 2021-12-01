@@ -2331,12 +2331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecbb49c3eac3464bbe5f95559e0e977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 15
   jumpHeight: 5
   hangTime: 0.1
-  jumpCurveFactor: 1.003
-  minJumpHeight: 2
-  jumpTime: 0.5
+  minJumpHeight: 3
+  jumpTime: 0.4
 --- !u!212 &1209019647
 SpriteRenderer:
   m_ObjectHideFlags: 0
