@@ -714,36 +714,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292664920}
   m_CullTransparentMesh: 1
---- !u!1 &295926749
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 295926750}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &295926750
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295926749}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0632198, y: 0.41427714, z: -2.5901594}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &302700559
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,7 +2173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {fileID: 1934876603}
   camWindowDimension: 100
-  smoothFloat: 0.01
+  smoothFloat: 0.001
 --- !u!81 &1107126506
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2628,7 +2598,7 @@ MonoBehaviour:
   jumpHeight: 5
   hangTime: 0.1
   minJumpHeight: 2
-  jumpTime: 0.4
+  jumpTime: 0.5
 --- !u!212 &1209019647
 SpriteRenderer:
   m_ObjectHideFlags: 0

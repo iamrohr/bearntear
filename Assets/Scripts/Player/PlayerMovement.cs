@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
+
     void Update()
     {
         float x = Input.GetAxisRaw("Horizontal");
@@ -30,12 +31,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 newVelocity = new Vector2(x, y);
         newVelocity = newVelocity.normalized * speed;
         newVelocity = new Vector2(newVelocity.x, newVelocity.y * vertSpeedFactor);
-
-        //if (x != 0 && y != 0)
-        //{
-        //    x *= diagonalMoveLimiter;
-        //    y *= diagonalMoveLimiter;
-        //}
 
         switch (player.state)
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    public float jumpHeight, hangTime, minJumpHeight, jumpTime;
+    public float jumpHeight, hangTime, /*minJumpHeight,*/ jumpTime;
 
     private bool grounded = true;
     private float defaultStartY;
@@ -22,7 +22,8 @@ public class PlayerJump : MonoBehaviour
         if (Input.GetButtonDown("Jump") && grounded)
         {
             grounded = false;
-            StartCoroutine(Jump());
+            if (jumpTime > 0)
+                StartCoroutine(Jump());
         }
     }
 
@@ -32,8 +33,8 @@ public class PlayerJump : MonoBehaviour
         float t = 0;
         float distance = localStartY + jumpHeight - transform.localPosition.y;
         while (transform.localPosition.y < localStartY + jumpHeight
-                && Input.GetButton("Jump")
-                || transform.localPosition.y < localStartY + minJumpHeight)
+                /*&& Input.GetButton("Jump")
+                || transform.localPosition.y < localStartY + minJumpHeight*/)
         {
             float smoothFactor = SmoothStop(t / jumpTime);
             float y = transform.localPosition.y;

@@ -23,28 +23,34 @@ public class PlayerAttack : MonoBehaviour
             return;
 
         if (Input.GetButtonDown("Fire1") && canAttack)
+        {
             player.state = PlayerState.Attacking;
+            CancelInvoke(nameof(CanAttackToTrue));
+        }
 
         if (Input.GetButton("Fire1") && canAttack)
             attackTimer += Time.deltaTime;
         
-        if (Input.GetButtonUp("Fire1") && canAttack)
-        {
-            Vector2 attackPos = new Vector2(transform.position.x, transform.position.y);
+        if (Input.GetButtonUp("Fire1") && player.state == PlayerState.Attacking)
+            Attack();
+    }
 
-            if (pm.horFacing == HorFacing.Left)
-                attackPos += Vector2.left * attackOffSetX;
-            else
-                attackPos += Vector2.right * attackOffSetX;
-    
-            if (attackTimer < timeForBash)
-                SwipeAttack(attackPos);
-            else
-                BashAttack(attackPos);
+    private void Attack()
+    {
+        Vector2 attackPos = new Vector2(transform.position.x, transform.position.y);
 
-            attackTimer = 0;
-            canAttack = false;
-        }
+        if (pm.horFacing == HorFacing.Left)
+            attackPos += Vector2.left * attackOffSetX;
+        else
+            attackPos += Vector2.right * attackOffSetX;
+
+        if (attackTimer < timeForBash)
+            SwipeAttack(attackPos);
+        else
+            BashAttack(attackPos);
+
+        attackTimer = 0;
+        canAttack = false;
     }
 
     private void SwipeAttack(Vector2 attackPos)
