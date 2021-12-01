@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D enemyRB;
     public GameObject cottonDrop;
+    public GameObject player;
 
     public int currentHealth, maxHealth;
     public int dropRange;
+    public int giveTear = 50;
     
     public Vector2 enemyPos;
 
@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             InstansiateDrop();
+            player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
             Destroy(this.gameObject);
         }
     }

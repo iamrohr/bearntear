@@ -1,34 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TearBarOnPlayer : MonoBehaviour
 {
-    public HealthBar tearBar;
+    public TearBar tearBar;
 
-    public int maxHealth = 100;
-    public int currentHealth;
-    
+    public int maxTear = 100;
+    public float currentTear;
+    public int startTearLevel = 0;
+   
     //Counter
     float timeElapsed = 100; //Count time down from 100 
-    public float timeSpeed = 1;    //Acceleration
+    public float timeSpeed = 1; //Acceleration
 
     void Start()
     {
-        currentHealth = maxHealth;
-        tearBar.SetMaxHealth(maxHealth);
+        currentTear = maxTear;
+        tearBar.SetMaxTearLevel(100);
+        RemoveTear(60);
     }
 
     void Update()
     {
+        tearBar.SetTearLevel(startTearLevel);
         //decrease tear
-        if (currentHealth > 0)
+        if (currentTear >= 0)
         { 
-            timeElapsed -= timeSpeed * Time.deltaTime;
-            currentHealth = (int)timeElapsed;
-            tearBar.SetHealth(currentHealth);
-        }
-        
+            currentTear -= timeSpeed * Time.deltaTime;
+            tearBar.SetTearLevel((int)currentTear);
+        }   
+    }
+
+    public void GetTear(int tear)
+    {
+        currentTear += tear;
+        currentTear = Mathf.Clamp(currentTear, 0, 100);
+        tearBar.SetTearLevel((int)currentTear);
+    }
+
+    public void RemoveTear(int tear)
+    {
+        currentTear -= tear;
+        currentTear = Mathf.Clamp(currentTear, 0, 100);
+        tearBar.SetTearLevel((int)currentTear); 
     }
 
 }

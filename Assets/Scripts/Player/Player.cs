@@ -6,6 +6,7 @@ public enum PlayerState {Idle, Moving, Attacking, Jumping, Dashing}
 public class Player : MonoBehaviour
 {
     public HealthBar healthBar;
+    public HealthBar tearBar;
 
     public GameObject player;
     public GameObject healthBarCanvas;
@@ -49,10 +50,8 @@ public class Player : MonoBehaviour
 
     public void GetLife(int hp)
     {
-            currentHealth += hp;
-
-            currentHealth = Mathf.Clamp(currentHealth, 0, 100);
-             
-            healthBar.SetHealth(currentHealth);
+        currentHealth += hp;
+        currentHealth = Mathf.Clamp(currentHealth, 0, 100);
+        healthBar.SetHealth(currentHealth);
     }
 }
