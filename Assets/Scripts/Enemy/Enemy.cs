@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public int currentHealth, maxHealth;
     public int dropRange;
     public int giveTear = 50;
+    public int pauseTearDecrease = 3;
     
     public Vector2 enemyPos;
 
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
         {
             InstansiateDrop();
             player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
+            player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
             Destroy(this.gameObject);
         }
     }
@@ -41,8 +43,7 @@ public class Enemy : MonoBehaviour
 
         if(RandomNumber == dropRange)
         {
-            Instantiate(cottonDrop, new Vector2(enemyPos.x, enemyPos.y), Quaternion.identity);
-           
+            Instantiate(cottonDrop, new Vector2(enemyPos.x, enemyPos.y), Quaternion.identity);           
         }
         
     }
