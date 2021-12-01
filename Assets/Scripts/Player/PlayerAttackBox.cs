@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMeleeAttack : MonoBehaviour
+public class PlayerAttackBox : MonoBehaviour
 {
     public int damage;
     
