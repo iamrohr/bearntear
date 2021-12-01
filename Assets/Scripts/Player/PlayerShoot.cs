@@ -28,7 +28,7 @@ public class PlayerShoot : MonoBehaviour
         lookDirection.Normalize();
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
-        if (Input.GetMouseButtonDown(1) && shootCoolDown > 0.4f)
+        if (Input.GetButton("Shoot") && shootCoolDown > 0.4f)
         {
             // take damage
             playerHealthTestScript.TakeDamage(10);
