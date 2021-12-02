@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject startButton;
     public GameObject controlsBackButton;
     public GameObject creditsBackButton;
+    public AudioSource buttonClickSound;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void MainMenuStart()
     {
+        buttonClickSound.Play();
         SceneManager.LoadScene("Main");
         if (Time.timeScale == 0)
         {
@@ -33,6 +35,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void MainMenuControls()
     {
+        buttonClickSound.Play();
         backgroundCanvas.SetActive(false);
         controlsCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -41,6 +44,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void MainMenuCredits()
     {
+        buttonClickSound.Play();
         backgroundCanvas.SetActive(false);
         creditsCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -50,6 +54,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void MainMenuBack()
     {
+        buttonClickSound.Play();
         backgroundCanvas.SetActive(true);
         controlsCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
@@ -59,6 +64,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void MainMenuCreditsBack()
     {
+        buttonClickSound.Play();
         backgroundCanvas.SetActive(true);
         creditsCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
@@ -68,6 +74,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void MainMenuQuit()
     {
+        buttonClickSound.Play();
         UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
 
         // Application.Quit(); to be added to build
