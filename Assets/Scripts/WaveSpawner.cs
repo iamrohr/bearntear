@@ -39,12 +39,9 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Listan" + GameObject.FindGameObjectsWithTag("Enemy"));
-
         if (state == SpawnState.waiting)
         {
-            Debug.Log("Waiting");
-                        if (!EnemyIsAlive())
+            if (!EnemyIsAlive())
             {
                 WaveCompleted();
                 return;
@@ -71,16 +68,12 @@ public class WaveSpawner : MonoBehaviour
 
     void WaveCompleted()
     {
-        Debug.Log("Wave completed)");
-
         state = SpawnState.counting;
         waveCountDown = timeBetweenWaves;
 
         if(nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
-            Debug.Log("All waves complete! Looping");
-
             //Could add on stat multiplier here or something else that makes it harder.
         }
         else
@@ -103,7 +96,6 @@ public class WaveSpawner : MonoBehaviour
                 return false;
             }
     }
-    Debug.Log("Enemies are alive");
         return true;
     }
 
@@ -126,8 +118,6 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy (Transform _enemy)
     {
-        Debug.Log("Spawning enemy" + _enemy.name);
-
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);
     }
