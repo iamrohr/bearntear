@@ -107,6 +107,7 @@ public class PauseManager : MonoBehaviour
     public void PauseQuit()
     {
         buttonClickSound.Play();
+        // Invoke("Quit()", 1); FUNCTION needs to be added here to delay quit
         UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
 
         // Application.Quit(); to be added to build
