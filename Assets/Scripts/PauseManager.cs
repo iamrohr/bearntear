@@ -27,6 +27,8 @@ public class PauseManager : MonoBehaviour
     public GameObject continueButton;
     public GameObject backButton;
 
+    public GameObject backgroundMusic;
+
 
     private void Awake()
     {
@@ -66,8 +68,6 @@ public class PauseManager : MonoBehaviour
         {
             enemy.SetActive(false);
         }
-
-
     }
 
     public void PauseBack()
@@ -93,7 +93,6 @@ public class PauseManager : MonoBehaviour
         {
             enemy.SetActive(true);
         }
-
     }
 
     public void PauseMainMenu()
@@ -115,6 +114,7 @@ public class PauseManager : MonoBehaviour
         playerShootScript.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        backgroundMusic.SetActive(true);
     }
 
     private void Update()
@@ -130,6 +130,7 @@ public class PauseManager : MonoBehaviour
                     Cursor.visible = true;
                     EventSystem.current.SetSelectedGameObject(null);
                     EventSystem.current.SetSelectedGameObject(continueButton);
+                    backgroundMusic.SetActive(false);
                 // player stops moving
             }
 
@@ -140,6 +141,7 @@ public class PauseManager : MonoBehaviour
                     playerShootScript.enabled = true;
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
+                    backgroundMusic.SetActive(true);
             }
         }
 
