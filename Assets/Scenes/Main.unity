@@ -206,6 +206,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
+      propertyPath: waves.Array.data[2].rate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 210339778}
@@ -217,13 +221,17 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[2]
       value: 
       objectReference: {fileID: 1617212753}
+    - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
+      propertyPath: waves.Array.data[2].count
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 194471299876561927, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
     - target: {fileID: 194471299876561929, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 194471299876561929, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4561,7 +4569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7664358605108912620, guid: c90032c085ceedf49ac8d3841f8fba7e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7664358605108912620, guid: c90032c085ceedf49ac8d3841f8fba7e, type: 3}
       propertyPath: m_LocalPosition.x
