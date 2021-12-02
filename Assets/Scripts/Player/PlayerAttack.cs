@@ -3,16 +3,17 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject swipeAttack, bashAttack;
-    public float attackOffSetX, swipeCooldown, bashCooldown, timeForBash;
-    public int comboTotal;
+    public float attackOffSetX, swipeCooldown, bashCooldown, timeForBash, comboInterval;
+    public int comboTotal, comboCurrent;
 
-    private float attackTimer = 0;
-    private bool canAttack = true;
+    private float attackTimer, prevComboTime;
+    public bool canAttack = true;
     private PlayerMovement pm;
     private Player player;
 
     void Start()
     {
+        comboCurrent = 1;
         pm = gameObject.GetComponent<PlayerMovement>();
         player = GetComponent<Player>();
     }
@@ -31,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButton("Fire1") && canAttack)
             attackTimer += Time.deltaTime;
         
-        if (Input.GetButtonUp("Fire1") && player.state == PlayerState.Attacking)
+        if (Input.GetButtonUp("Fire1") && canAttack && player.state == PlayerState.Attacking)
             Attack();
     }
 
@@ -55,16 +56,41 @@ public class PlayerAttack : MonoBehaviour
 
     private void SwipeAttack(Vector2 attackPos)
     {
-        //TODO: Trigger animation
+        var attackObject = Instantiate(swipeAttack, attackPos, Quaternion.identity);
+        attackObject.transform.SetParent(gameObject.transform);
+
+        if (comboCurrent > 1 && comboInterval < Time.time - prevComboTime)
+            comboCurrent = 1;
+
+        prevComboTime = Time.time;
+
+        if (comboCurrent >= comboTotal)
+        {
+            //TODO: Trigger Swipe Animation final
+            attackObject.GetComponent<PlayerAttackBox>().comboFinal = true;
+            attackObject.GetComponent<SpriteRenderer>().color = Color.cyan; //Temp check
+            comboCurrent = 1;
+        }
+        else if (comboCurrent % 2 == 0)
+        {
+            //TODO: Trigger Swipe Animation A
+            comboCurrent++;
+        }
+        else
+        {
+            //TODO: Trigger Swipe Animation B
+            attackObject.GetComponent<SpriteRenderer>().color = Color.blue; //Temp check
+            comboCurrent++;
+        }
         AttackCooldown(swipeCooldown);
-        Instantiate(swipeAttack, attackPos, Quaternion.identity);
     }
   
     private void BashAttack(Vector2 attackPos)
     {
-        //TODO: Trigger animation
+        comboCurrent = 1;
         AttackCooldown(bashCooldown);
         Instantiate(bashAttack, attackPos, Quaternion.identity);
+        //TODO: Trigger animation
     }
 
     private void AttackCooldown(float cooldownTime)
