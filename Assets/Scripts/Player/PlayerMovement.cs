@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     public HorFacing horFacing;
 
     private bool canTurn;
-    private float diagonalMoveLimiter = 0.7f;
     private Rigidbody2D rb;
     private Player player;
     private SpriteRenderer sr;

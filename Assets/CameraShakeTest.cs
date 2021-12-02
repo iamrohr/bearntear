@@ -10,7 +10,7 @@ public class CameraShakeTest : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.T)) 
         {
-            StartCoroutine(cameraShake.Shake(0.15f, 0.4f));
+            StartCoroutine(cameraShake.Shake(0.3f, 0.2f));
         }
     }
 }
