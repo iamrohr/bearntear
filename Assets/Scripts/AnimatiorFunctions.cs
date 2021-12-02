@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimatiorFunctions : MonoBehaviour
 {
-    [SerializeField] private AudioClip sound;
+    [SerializeField] private AudioClip enemyDie;
     
     public GameObject audioManager;
     public GameObject enemy;
@@ -12,7 +12,7 @@ public class AnimatiorFunctions : MonoBehaviour
 
     private void Start()
     {
-        audioManager.GetComponent<AudioManager>().PlayOneShot();
+        //audioManager.GetComponent<AudioManager>().sfxAudioSource.PlayOneShot(enemyDie);
     }
 
     void PlaySound()
