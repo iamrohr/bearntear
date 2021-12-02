@@ -24,7 +24,7 @@ public class PauseManager : MonoBehaviour
     GameObject[] projectileGameObjects;
     GameObject[] enemyGameObjects;
 
-    public GameObject controlsButton;
+    public GameObject continueButton;
     public GameObject backButton;
 
 
@@ -82,7 +82,7 @@ public class PauseManager : MonoBehaviour
         playerRenderer.enabled = true;
         healthBarCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(controlsButton);
+        EventSystem.current.SetSelectedGameObject(continueButton);
 
         foreach (var projectile in projectileGameObjects)
         {
@@ -108,6 +108,15 @@ public class PauseManager : MonoBehaviour
         // Application.Quit(); to be added to build
     }
 
+    public void Continue()
+    {
+        Time.timeScale = 1; // ie. Not Paused
+        pauseCanvas.SetActive(false);
+        playerShootScript.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown("Cancel") && !pauseControlsCanvas.activeSelf)
@@ -120,7 +129,7 @@ public class PauseManager : MonoBehaviour
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     EventSystem.current.SetSelectedGameObject(null);
-                    EventSystem.current.SetSelectedGameObject(controlsButton);
+                    EventSystem.current.SetSelectedGameObject(continueButton);
                 // player stops moving
             }
 
