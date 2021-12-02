@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public int takeDamage = 10;
     public PlayerState state;
-
     public bool invulnerable = false;
+
     //PlayerShoot playerShootScript; // isn't needed?
     SpriteRenderer playerSpriteRenderer;
     //PlayerMovement playerMovementScript; // isn't needed?

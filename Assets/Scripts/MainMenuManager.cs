@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+
 
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject backgroundCanvas;
     public GameObject controlsCanvas;
     public GameObject creditsCanvas;
+    public GameObject startButton;
+    public GameObject controlsBackButton;
+    public GameObject creditsBackButton;
 
     private void Start()
     {
         creditsCanvas.SetActive(false);
         controlsCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton);
     }
 
     public void MainMenuStart()
@@ -28,12 +35,16 @@ public class MainMenuManager : MonoBehaviour
     {
         backgroundCanvas.SetActive(false);
         controlsCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(controlsBackButton);
     }
 
     public void MainMenuCredits()
     {
         backgroundCanvas.SetActive(false);
         creditsCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(creditsBackButton);
 
     }
 
@@ -41,6 +52,8 @@ public class MainMenuManager : MonoBehaviour
     {
         backgroundCanvas.SetActive(true);
         controlsCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton);
 
     }
 
@@ -48,6 +61,8 @@ public class MainMenuManager : MonoBehaviour
     {
         backgroundCanvas.SetActive(true);
         creditsCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton);
 
     }
 
@@ -60,7 +75,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (controlsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape) || creditsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        if (controlsCanvas.activeSelf && Input.GetButtonDown("Cancel") || creditsCanvas.activeSelf && Input.GetButtonDown("Cancel"))
         {
             MainMenuBack();
         }
