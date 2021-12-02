@@ -92,7 +92,6 @@ public class WaveSpawner : MonoBehaviour
             searchCountdown = 1f;
             if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
             {
-                Debug.Log("Enemies are not alive");
                 return false;
             }
     }
@@ -101,7 +100,6 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave (Wave _wave)
     {
-        Debug.Log("Spawning wave: " + _wave.name);
         state = SpawnState.spawning;
 
         for (int i = 0; i < _wave.count; i++)
