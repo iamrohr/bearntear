@@ -21,7 +21,7 @@ public class WaveSpawner : MonoBehaviour
     public float timeBetweenWaves = 5f;
     public float waveCountDown;
 
-    private float searchCountdown = 1f;
+    public float searchCountdown = 1f;
 
     private SpawnState state = SpawnState.counting;
 
@@ -32,10 +32,10 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-
         if (state == SpawnState.waiting)
         {
-            if (!EnemyIsAlive())
+            Debug.Log("Waiting");
+                        if (!EnemyIsAlive())
             {
                 WaveCompleted();
                 return;
@@ -74,24 +74,27 @@ public class WaveSpawner : MonoBehaviour
 
             //Could add on stat multiplier here or something else that makes it harder.
         }
-
+        else
+        {
         nextWave++;
-    }
+        }
 
+    }
 
     bool EnemyIsAlive()
     {
         searchCountdown -= Time.deltaTime;
 
-        if(searchCountdown <= 0f)
+        if (searchCountdown <= 0f)
         {
             searchCountdown = 1f;
-            if (GameObject.FindGameObjectsWithTag("Enemy") == null)
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
             {
+                Debug.Log("Enemies are not alive");
                 return false;
             }
-
-        }
+    }
+    Debug.Log("Enemies are alive");
         return true;
     }
 
