@@ -123,7 +123,7 @@ public class PauseManager : MonoBehaviour
         {
             if (Time.timeScale == 1)
             {
-                    Time.timeScale = 0; // ie. Pause
+                    Time.timeScale = 0; // Paused
                     pauseCanvas.SetActive(true);
                     playerShootScript.enabled = false;
                     Cursor.lockState = CursorLockMode.None;
@@ -135,7 +135,7 @@ public class PauseManager : MonoBehaviour
 
             else
             {
-                    Time.timeScale = 1; // ie. Not Paused
+                    Time.timeScale = 1; // Not Paused
                     pauseCanvas.SetActive(false);
                     playerShootScript.enabled = true;
                     Cursor.lockState = CursorLockMode.Locked;
