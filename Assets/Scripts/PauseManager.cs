@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class PauseManager : MonoBehaviour
 
     GameObject[] projectileGameObjects;
     GameObject[] enemyGameObjects;
+
+    public GameObject controlsButton;
+    public GameObject backButton;
+
 
     private void Awake()
     {
@@ -45,6 +50,9 @@ public class PauseManager : MonoBehaviour
         healthBarCanvas.SetActive(false);
         //playerShootScript.enabled = false;
         pauseControlsCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(backButton);
+
         projectileGameObjects = GameObject.FindGameObjectsWithTag("Projectile");
         
         foreach (var projectile in projectileGameObjects)
@@ -73,6 +81,8 @@ public class PauseManager : MonoBehaviour
         playerShadowSpriteRenderer.enabled = true;
         playerRenderer.enabled = true;
         healthBarCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(controlsButton);
 
         foreach (var projectile in projectileGameObjects)
         {
@@ -109,6 +119,8 @@ public class PauseManager : MonoBehaviour
                     playerShootScript.enabled = false;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
+                    EventSystem.current.SetSelectedGameObject(null);
+                    EventSystem.current.SetSelectedGameObject(controlsButton);
                 // player stops moving
             }
 
@@ -122,7 +134,7 @@ public class PauseManager : MonoBehaviour
             }
         }
 
-        if(pauseControlsCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape) || pauseControlsCanvas.activeSelf && Input.GetButtonDown("EscControls"))
+        if(pauseControlsCanvas.activeSelf && Input.GetButtonDown("Cancel"))
         {
             PauseBack();
         }
