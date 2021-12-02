@@ -232,8 +232,8 @@ MonoBehaviour:
   background: {fileID: 1212162825}
   background1: {fileID: 569088152}
   background2: {fileID: 702931057}
-  playerShadow: {fileID: 0}
-  player: {fileID: 0}
+  playerShadow: {fileID: 1100776256}
+  player: {fileID: 484428085}
   healthBarCanvas: {fileID: 1119809325}
   controlsButton: {fileID: 1163440046}
   backButton: {fileID: 1574144650}
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f1e7ebb7d445748b0c2aefd89072cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tearBar: {fileID: 0}
+  tearBar: {fileID: 242019153}
   maxTear: 100
   startTearLevel: 0
   currentTear: 0
@@ -1081,10 +1081,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24bc6914e2d51a49a3eb715aa5985a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1994586768}
   tearBar: {fileID: 0}
   player: {fileID: 484428085}
-  healthBarCanvas: {fileID: 0}
+  healthBarCanvas: {fileID: 242019152}
   playerShadow: {fileID: 1100776256}
   maxHealth: 100
   currentHealth: 0
@@ -2452,7 +2452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4fc4242ff06a941a68063719153825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {fileID: 0}
+  targetPosition: {fileID: 484428086}
   camWindowDimension: 100
   smoothFloat: 0.001
 --- !u!81 &1107126506
