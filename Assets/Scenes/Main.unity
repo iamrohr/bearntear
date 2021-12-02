@@ -557,7 +557,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 202.8, y: -80}
+  m_AnchoredPosition: {x: 221, y: -79.5}
   m_SizeDelta: {x: 286.6641, y: 27.266205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &282208409
@@ -1692,6 +1692,7 @@ MonoBehaviour:
   maxHealth: 20
   dropRange: 1
   giveTear: 50
+  pauseTearDecrease: 3
   enemyPos: {x: 0, y: 0}
 --- !u!114 &711828001
 MonoBehaviour:
@@ -2597,7 +2598,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 5
   hangTime: 0.1
-  minJumpHeight: 2
   jumpTime: 0.5
 --- !u!212 &1209019647
 SpriteRenderer:
@@ -2734,8 +2734,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tearBar: {fileID: 242019153}
   maxTear: 100
-  currentTear: 0
   startTearLevel: 0
+  currentTear: 0
+  tearPauseTime: 0
+  maxTearTime: 0
   timeSpeed: 1
 --- !u!1 &1212162825
 GameObject:
@@ -4333,7 +4335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4.8}
+  m_AnchoredPosition: {x: -34.8, y: -10.2}
   m_SizeDelta: {x: 79.079, y: 65.0021}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1952856509
@@ -4411,7 +4413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 202.8, y: -54.1}
+  m_AnchoredPosition: {x: 220.5, y: -54.1}
   m_SizeDelta: {x: 286.6641, y: 27.266205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1994586768
