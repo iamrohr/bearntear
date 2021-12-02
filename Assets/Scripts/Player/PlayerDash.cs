@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     public float dashSpeed, dashTime, dashCooldown;
+    public AudioSource dashSound;
     
     private bool canDash = true;
     private Rigidbody2D rb;
@@ -25,6 +26,7 @@ public class PlayerDash : MonoBehaviour
 
     private void Dash(float xInput)
     {
+        dashSound.Play();
         player.invulnerable = true;
         canDash = false;
         player.state = PlayerState.Dashing;

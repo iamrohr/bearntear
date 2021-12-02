@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     public float jumpHeight, hangTime, /*minJumpHeight,*/ jumpTime;
+    public AudioSource jumpSound;
 
     private bool grounded = true;
     private float defaultStartY;
@@ -29,6 +30,8 @@ public class PlayerJump : MonoBehaviour
 
     private IEnumerator Jump()
     {
+        jumpSound.Play();
+
         float localStartY = defaultStartY;
         float t = 0;
         float distance = localStartY + jumpHeight - transform.localPosition.y;

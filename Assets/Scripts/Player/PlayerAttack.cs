@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -104,7 +103,8 @@ public class PlayerAttack : MonoBehaviour
     {
         comboCurrent = 1;
         AttackCooldown(bashCooldown);
-        Instantiate(bashAttack, attackPos, Quaternion.identity);
+        var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
+        attackObject.transform.SetParent(gameObject.transform);
         //TODO: Trigger animation
     }
 
