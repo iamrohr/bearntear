@@ -52,6 +52,8 @@ public class MainMenuManager : MonoBehaviour
     {
         backgroundCanvas.SetActive(true);
         controlsCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton);
 
     }
 
@@ -59,6 +61,8 @@ public class MainMenuManager : MonoBehaviour
     {
         backgroundCanvas.SetActive(true);
         creditsCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton);
 
     }
 
