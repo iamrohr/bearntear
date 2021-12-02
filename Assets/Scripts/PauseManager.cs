@@ -28,6 +28,7 @@ public class PauseManager : MonoBehaviour
     public GameObject backButton;
 
     public GameObject backgroundMusic;
+    public AudioSource buttonClickSound;
 
 
     private void Awake()
@@ -43,6 +44,7 @@ public class PauseManager : MonoBehaviour
 
     public void PauseControls()
     {
+        buttonClickSound.Play();
         background.SetActive(false);
         background1.SetActive(false);
         background2.SetActive(false);
@@ -72,6 +74,7 @@ public class PauseManager : MonoBehaviour
 
     public void PauseBack()
     {
+        buttonClickSound.Play();
         pauseControlsCanvas.SetActive(false);
         //playerShootScript.enabled = false;
         pauseCanvas.SetActive(true);
@@ -97,11 +100,13 @@ public class PauseManager : MonoBehaviour
 
     public void PauseMainMenu()
     {
+        buttonClickSound.Play();
         SceneManager.LoadScene("MainMenu");
     }
 
     public void PauseQuit()
     {
+        buttonClickSound.Play();
         UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
 
         // Application.Quit(); to be added to build
@@ -115,6 +120,7 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         backgroundMusic.SetActive(true);
+        buttonClickSound.Play();
     }
 
     private void Update()
