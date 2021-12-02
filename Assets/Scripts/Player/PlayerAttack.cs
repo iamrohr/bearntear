@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -7,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public int comboTotal, comboCurrent;
 
     private float attackTimer, prevComboTime;
-    public bool canAttack = true;
+    public bool canAttack = true, queuedAttack;
     private PlayerMovement pm;
     private Player player;
 
@@ -25,15 +26,29 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && canAttack)
         {
-            player.state = PlayerState.Attacking;
             CancelInvoke(nameof(CanAttackToTrue));
         }
 
         if (Input.GetButton("Fire1") && canAttack)
+        {
             attackTimer += Time.deltaTime;
+            if (player.state != PlayerState.Attacking)
+                player.state = PlayerState.Attacking;
+        }
         
-        if (Input.GetButtonUp("Fire1") && canAttack && player.state == PlayerState.Attacking)
-            Attack();
+        if (Input.GetButtonUp("Fire1"))
+        {
+            if (canAttack)
+            {
+                if (player.state == PlayerState.Attacking)
+                {
+                    CancelInvoke(nameof(AttackIfQueued));
+                    Attack();
+                }
+            }
+            else
+                queuedAttack = true;
+        }
     }
 
     private void Attack()
@@ -96,11 +111,24 @@ public class PlayerAttack : MonoBehaviour
     private void AttackCooldown(float cooldownTime)
     {
         Invoke(nameof(CanAttackToTrue), cooldownTime);
+        Invoke(nameof(AttackIfQueued), cooldownTime);
+    }
+
+    private void AttackIfQueued()
+    {
+        if (queuedAttack)
+        {
+            Attack();
+            queuedAttack = false;
+        }
     }
 
     private void CanAttackToTrue()
     {
-        player.state = PlayerState.Idle;
-        canAttack = true;
+        if (!queuedAttack)
+        {
+            player.state = PlayerState.Idle;
+            canAttack = true;
+        }
     }
 }
