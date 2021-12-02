@@ -9,19 +9,19 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void UpdateState(EnemyStateManager enemy)
     {
-        float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.position);
+        float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.transform.position);
         float step = enemy.moveSpeed * Time.deltaTime;
 
-        if (enemy.transform.position.x < enemy.player.position.x)
+        if (enemy.transform.position.x < enemy.player.transform.position.x)
         {
             //Enemy is to the left side of the player so move right
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.player.position, step);
+            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.player.transform.position, step);
             enemy.transform.localScale = new Vector2(1, 1);
         }
-        if (enemy.transform.position.x > enemy.player.position.x)
+        if (enemy.transform.position.x > enemy.player.transform.position.x)
         {
             //Enemy is to the left side of the player so move left
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.player.position, step);
+            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.player.transform.position, step);
             enemy.transform.localScale = new Vector2(-1, 1);
         }
         if(distToPlayer <= enemy.attackRange)

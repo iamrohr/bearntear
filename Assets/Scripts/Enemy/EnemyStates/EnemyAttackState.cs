@@ -9,7 +9,7 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void UpdateState(EnemyStateManager enemy)
     {
-        float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.position);
+        float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.transform.position);
 
         if (enemy.canAttackPlayer && distToPlayer < enemy.attackRange)
         {

@@ -12,7 +12,7 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyReturnHomeState ReturnHomeState = new EnemyReturnHomeState();
 
     [Header("Components")]
-    public Transform player;
+    public GameObject player;
     public GameObject attackBox;
 
     [Header("Attributes")]
@@ -27,6 +27,8 @@ public class EnemyStateManager : MonoBehaviour
 
     void Start()
     {
+        //Find the player
+        player = GameObject.FindGameObjectWithTag("Player");
         //Starting state for the Enemy state machine
         currentState = IdleState;
         currentState.EnterState(this);

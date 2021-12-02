@@ -3,8 +3,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D enemyRB;
-    public GameObject cottonDrop;
     public GameObject player;
+    public GameObject cottonDrop;
 
     public int currentHealth, maxHealth;
     public int dropRange;
@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         enemyRB = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
