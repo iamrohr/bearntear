@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+
 
 public class MenuManager : MonoBehaviour
 {
@@ -9,14 +11,16 @@ public class MenuManager : MonoBehaviour
     public GameObject controlsCanvas;
     public GameObject gameOverCanvas;
     public GameObject imageGameOver;
-    
+    public GameObject startButton;
+    public GameObject controlsBackButton;
 
     void Start()
     {
         controlsCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        //gameOverCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton);
     }
 
     public void StartNewGame()
@@ -28,7 +32,8 @@ public class MenuManager : MonoBehaviour
     {
         controlsCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
-        //imageGameOver.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(controlsBackButton);
     }
 
     public void MainMenu()
@@ -48,8 +53,8 @@ public class MenuManager : MonoBehaviour
         gameOverCanvas.SetActive(true);
         controlsCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
-
-        //imageGameOver.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton);
     }
 
     
