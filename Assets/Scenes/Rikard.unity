@@ -1656,6 +1656,7 @@ MonoBehaviour:
   dashSpeed: 30
   dashTime: 0.18
   dashCooldown: 1
+  dashSound: {fileID: 0}
 --- !u!114 &1407357430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1694,6 +1695,7 @@ MonoBehaviour:
   jumpHeight: 5
   hangTime: 0.1
   jumpTime: 0.5
+  jumpSound: {fileID: 0}
 --- !u!212 &1407357432
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2426,9 +2428,69 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: enemyDie1
+      value: 
+      objectReference: {fileID: 8300000, guid: 22acbe9d35a02ab4bb6a3f949f4f8b7b, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: enemyDie2
+      value: 
+      objectReference: {fileID: 8300000, guid: b8f77d448c38b4a499bc0bd317dfb06d, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: enemyDie3
+      value: 
+      objectReference: {fileID: 8300000, guid: 0eecc845bc4d3e24eaa85aef47fb8347, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: enemyDie4
+      value: 
+      objectReference: {fileID: 8300000, guid: 1e22cb0ee8a459243a26b037ebe6f465, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: enemyDie5
+      value: 
+      objectReference: {fileID: 8300000, guid: 84a79d51d7723124794203ab3baa1cdd, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: PlayerDash
+      value: 
+      objectReference: {fileID: 8300000, guid: 9bdc2e6da7598ad4e921650750195d2b, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: playerDash
+      value: 
+      objectReference: {fileID: 8300000, guid: 9bdc2e6da7598ad4e921650750195d2b, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: playerHurt
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d28de4d375411d4e9519e0f6d3c8f52, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: playerJump
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b67e5e4b02546149ab74767185a1c20, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: PlayerSwing
+      value: 
+      objectReference: {fileID: 8300000, guid: 6acdc548b2967b54fa2ed087dc413186, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: playerSwing
+      value: 
+      objectReference: {fileID: 8300000, guid: 6acdc548b2967b54fa2ed087dc413186, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 2596543494050019244}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: enemyDie.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: enemyDie.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 22acbe9d35a02ab4bb6a3f949f4f8b7b, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: enemyDie.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b8f77d448c38b4a499bc0bd317dfb06d, type: 3}
+    - target: {fileID: 4235394859506149558, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
+      propertyPath: enemyDie.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0eecc845bc4d3e24eaa85aef47fb8347, type: 3}
     - target: {fileID: 6045913137315072531, guid: 90e42553414da5c42b618f70ca34c451, type: 3}
       propertyPath: m_Name
       value: Animator Functions

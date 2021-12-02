@@ -6,6 +6,11 @@ public class GiveLife : MonoBehaviour
     public Sprite[] cottonSprites;
     public int giveLife;
 
+    [SerializeField] private AudioClip cottonPickupSound;
+    [SerializeField] private float cottonPickupSoundVolume= 1f;
+
+    public GameObject audioManager;
+
     private void Start()
     {
         rand = Random.Range(0, cottonSprites.Length);
@@ -16,9 +21,12 @@ public class GiveLife : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+           if(cottonPickupSound) audioManager.GetComponent<AudioManager>().sfxAudioSource.PlayOneShot(cottonPickupSound, cottonPickupSoundVolume);
+
             other.GetComponent<Player>().GetLife(giveLife);
             Destroy(gameObject);
         }
     }
 
 }
+
