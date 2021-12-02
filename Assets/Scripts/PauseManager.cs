@@ -27,6 +27,9 @@ public class PauseManager : MonoBehaviour
     public GameObject continueButton;
     public GameObject backButton;
 
+    public GameObject backgroundMusic;
+    public AudioSource buttonClickSound;
+
 
     private void Awake()
     {
@@ -41,6 +44,7 @@ public class PauseManager : MonoBehaviour
 
     public void PauseControls()
     {
+        buttonClickSound.Play();
         background.SetActive(false);
         background1.SetActive(false);
         background2.SetActive(false);
@@ -66,12 +70,11 @@ public class PauseManager : MonoBehaviour
         {
             enemy.SetActive(false);
         }
-
-
     }
 
     public void PauseBack()
     {
+        buttonClickSound.Play();
         pauseControlsCanvas.SetActive(false);
         //playerShootScript.enabled = false;
         pauseCanvas.SetActive(true);
@@ -93,16 +96,18 @@ public class PauseManager : MonoBehaviour
         {
             enemy.SetActive(true);
         }
-
     }
 
     public void PauseMainMenu()
     {
+        buttonClickSound.Play();
         SceneManager.LoadScene("MainMenu");
     }
 
     public void PauseQuit()
     {
+        buttonClickSound.Play();
+        // Invoke("Quit()", 1); FUNCTION needs to be added here to delay quit
         UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
 
         // Application.Quit(); to be added to build
@@ -115,6 +120,8 @@ public class PauseManager : MonoBehaviour
         playerShootScript.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        backgroundMusic.SetActive(true);
+        buttonClickSound.Play();
     }
 
     private void Update()
@@ -123,23 +130,25 @@ public class PauseManager : MonoBehaviour
         {
             if (Time.timeScale == 1)
             {
-                    Time.timeScale = 0; // ie. Pause
+                    Time.timeScale = 0; // Paused
                     pauseCanvas.SetActive(true);
                     playerShootScript.enabled = false;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     EventSystem.current.SetSelectedGameObject(null);
                     EventSystem.current.SetSelectedGameObject(continueButton);
+                    backgroundMusic.SetActive(false);
                 // player stops moving
             }
 
             else
             {
-                    Time.timeScale = 1; // ie. Not Paused
+                    Time.timeScale = 1; // Not Paused
                     pauseCanvas.SetActive(false);
                     playerShootScript.enabled = true;
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
+                    backgroundMusic.SetActive(true);
             }
         }
 

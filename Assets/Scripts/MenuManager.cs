@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     public GameObject imageGameOver;
     public GameObject startButton;
     public GameObject controlsBackButton;
+    public AudioSource buttonClickSound;
 
     void Start()
     {
@@ -25,11 +26,13 @@ public class MenuManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        buttonClickSound.Play();
         SceneManager.LoadScene("Main");
     }
 
     public void ControlsMenu()
     {
+        buttonClickSound.Play();
         controlsCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
@@ -38,11 +41,13 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu()
     {
+        buttonClickSound.Play();
         SceneManager.LoadScene("MainMenu");
     }
 
     public void Quit()
     {
+        buttonClickSound.Play();
         UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
 
         // Application.Quit(); to be added to build
@@ -50,6 +55,7 @@ public class MenuManager : MonoBehaviour
 
     public void Back()
     {
+        buttonClickSound.Play();
         gameOverCanvas.SetActive(true);
         controlsCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);

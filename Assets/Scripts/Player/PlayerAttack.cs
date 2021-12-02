@@ -5,6 +5,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject swipeAttack, bashAttack;
     public float attackOffSetX, swipeCooldown, bashCooldown, timeForBash, comboInterval;
     public int comboTotal, comboCurrent;
+    public AudioSource swingSound;
 
     private float attackTimer, prevComboTime;
     public bool canAttack = true, queuedAttack;
@@ -52,6 +53,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
+
         Vector2 attackPos = new Vector2(transform.position.x, transform.position.y);
 
         if (pm.horFacing == HorFacing.Left)
@@ -80,6 +82,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (comboCurrent >= comboTotal)
         {
+            swingSound.pitch = 1;
             //TODO: Trigger Swipe Animation final
             attackObject.GetComponent<PlayerAttackBox>().comboFinal = true;
             attackObject.GetComponent<SpriteRenderer>().color = Color.cyan; //Temp check
@@ -87,20 +90,26 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (comboCurrent % 2 == 0)
         {
+            swingSound.pitch = 1.2f;
             //TODO: Trigger Swipe Animation A
             comboCurrent++;
         }
         else
         {
+            swingSound.pitch = 1.1f;
             //TODO: Trigger Swipe Animation B
             attackObject.GetComponent<SpriteRenderer>().color = Color.blue; //Temp check
             comboCurrent++;
         }
+ 
+        swingSound.Play();
         AttackCooldown(swipeCooldown);
     }
   
     private void BashAttack(Vector2 attackPos)
     {
+        swingSound.pitch = 0.85f;
+        swingSound.Play();
         comboCurrent = 1;
         AttackCooldown(bashCooldown);
         var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
