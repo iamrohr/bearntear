@@ -8,13 +8,15 @@ public class Enemy : MonoBehaviour
 
     public int currentHealth, maxHealth;
     public int dropRange;
-    public int giveTear = 50;
+    public int giveTear = 20;
     public int pauseTearDecrease = 3;
   
     public Vector2 enemyPos;
 
     public AudioClip [] enemyDie;
     public float enemyDieVolume = 1f;
+
+    public ParticleSystem psDie;
 
     private void Start()
     {
@@ -36,6 +38,8 @@ public class Enemy : MonoBehaviour
         {
             InstansiateDrop();
             EnemyDieSound();
+            psDie.gameObject.SetActive(true);
+            psDie.transform.parent = null;
             player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
             player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
             Destroy(this.gameObject);
@@ -57,4 +61,5 @@ public class Enemy : MonoBehaviour
     {
         AudioManager.Instance.sfxAudioSource.PlayOneShot(enemyDie[Random.Range(0, enemyDie.Length)], enemyDieVolume);
     }
+
 }
