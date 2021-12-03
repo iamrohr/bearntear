@@ -25,7 +25,7 @@ public class MoveCamera : MonoBehaviour
         //convert target pos to 2D
         
         targetScreenPos = Camera.main.WorldToScreenPoint(targetPosition.position);
-
+        
         if (targetScreenPos.x > (Screen.width / 2) + camWindowDimension)
         {
             deltaX = targetScreenPos.x - ((Screen.width / 2) + camWindowDimension);
@@ -42,21 +42,21 @@ public class MoveCamera : MonoBehaviour
 
         }
 
-        if (targetScreenPos.y > (Screen.height / 2) + camWindowDimension)
-        {
-            deltaY = targetScreenPos.y - ((Screen.height / 2) + camWindowDimension);
+        //if (targetScreenPos.y > (Screen.height / 2) + camWindowDimension)
+        //{
+        //    deltaY = targetScreenPos.y - ((Screen.height / 2) + camWindowDimension);
             
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + deltaY, transform.position.z), smoothFloat);
+        //    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + deltaY, transform.position.z), smoothFloat);
 
-        }
+        //}
 
-        if (targetScreenPos.y < (Screen.height / 2) - camWindowDimension)
-        {
-            deltaY = targetScreenPos.y - ((Screen.height / 2) - camWindowDimension);
+        //if (targetScreenPos.y < (Screen.height / 2) - camWindowDimension)
+        //{
+        //    deltaY = targetScreenPos.y - ((Screen.height / 2) - camWindowDimension);
             
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + deltaY, transform.position.z), smoothFloat);
+        //    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + deltaY, transform.position.z), smoothFloat);
 
-        }
+        //}
 
 
 

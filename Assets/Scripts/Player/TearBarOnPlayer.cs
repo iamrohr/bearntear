@@ -24,7 +24,7 @@ public class TearBarOnPlayer : MonoBehaviour
         currentTear = maxTear;
         tearBar.SetMaxTearLevel(100);
         tearBar.SetTearLevel((int)maxTear);
-        RemoveTear(60);
+        RemoveTear(100);
     }
 
     void Update()
