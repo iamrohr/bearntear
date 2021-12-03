@@ -15,6 +15,7 @@ public class GiveLife : MonoBehaviour
     {
         rand = Random.Range(0, cottonSprites.Length);
         GetComponent<SpriteRenderer>().sprite = cottonSprites[rand];
+        audioManager = GameObject.FindGameObjectWithTag("Audio Manager");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
