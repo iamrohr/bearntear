@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,8 +10,11 @@ public class Enemy : MonoBehaviour
     public int dropRange;
     public int giveTear = 50;
     public int pauseTearDecrease = 3;
-    
+  
     public Vector2 enemyPos;
+
+    public AudioClip [] enemyDie;
+    public float enemyDieVolume = 1f;
 
     private void Start()
     {
@@ -32,6 +35,7 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             InstansiateDrop();
+            EnemyDieSound();
             player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
             player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
             Destroy(this.gameObject);
@@ -47,5 +51,10 @@ public class Enemy : MonoBehaviour
             Instantiate(cottonDrop, new Vector2(enemyPos.x, enemyPos.y), Quaternion.identity);           
         }
         
+    }
+
+    void EnemyDieSound()
+    {
+        AudioManager.Instance.sfxAudioSource.PlayOneShot(enemyDie[Random.Range(0, enemyDie.Length)], enemyDieVolume);
     }
 }

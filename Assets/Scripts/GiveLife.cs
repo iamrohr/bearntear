@@ -16,20 +16,17 @@ public class GiveLife : MonoBehaviour
     {
         rand = Random.Range(0, cottonSprites.Length);
         GetComponent<SpriteRenderer>().sprite = cottonSprites[rand];
-        audioManager = GameObject.FindGameObjectWithTag("Audio Manager");
-        audioManagerScript = audioManager.GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-           if(cottonPickupSound) audioManagerScript.sfxAudioSource.PlayOneShot(cottonPickupSound, cottonPickupSoundVolume);
+           if(cottonPickupSound) AudioManager.Instance.sfxAudioSource.PlayOneShot(cottonPickupSound, cottonPickupSoundVolume);
 
             other.GetComponent<Player>().GetLife(giveLife);
             Destroy(gameObject);
         }
     }
-
 }
 

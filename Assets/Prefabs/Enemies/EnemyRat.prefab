@@ -274,6 +274,11 @@ MonoBehaviour:
   giveTear: 50
   pauseTearDecrease: 3
   enemyPos: {x: 0, y: 0}
+  enemyDie:
+  - {fileID: 8300000, guid: 22acbe9d35a02ab4bb6a3f949f4f8b7b, type: 3}
+  - {fileID: 8300000, guid: b8f77d448c38b4a499bc0bd317dfb06d, type: 3}
+  - {fileID: 8300000, guid: 0eecc845bc4d3e24eaa85aef47fb8347, type: 3}
+  enemyDieVolume: 1
 --- !u!50 &4394604815340158450
 Rigidbody2D:
   serializedVersion: 4
