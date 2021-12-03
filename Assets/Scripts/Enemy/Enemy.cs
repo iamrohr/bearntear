@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
             InstansiateDrop();
             EnemyDieSound();
             psDie.gameObject.SetActive(true);
-            psDie.transform.parent = null;
+            //psDie.transform.parent = null;
             player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
             player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
             Destroy(this.gameObject);
