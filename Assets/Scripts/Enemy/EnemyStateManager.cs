@@ -63,6 +63,7 @@ public class EnemyStateManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         attackBox.SetActive(false);
+
         yield return new WaitForSeconds(0.5f);
 
         canAttackPlayer = true;
