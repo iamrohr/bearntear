@@ -1155,6 +1155,7 @@ GameObject:
   - component: {fileID: 484428088}
   - component: {fileID: 484428087}
   - component: {fileID: 484428096}
+  - component: {fileID: 484428097}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1305,6 +1306,8 @@ MonoBehaviour:
   comboTotal: 4
   comboCurrent: 0
   swingSound: {fileID: 2026715899}
+  attackTimer: 0
+  prevComboTime: 0
   canAttack: 1
   queuedAttack: 0
   cameraShake: {fileID: 1156334062}
@@ -1388,6 +1391,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpriteRenderer: {fileID: 484428095}
+--- !u!95 &484428097
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484428085}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57ac5b3cd0a51fc4fbc77545e390a172, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &499268904
 GameObject:
   m_ObjectHideFlags: 0
