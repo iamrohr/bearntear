@@ -5,33 +5,20 @@ public enum PlayerState {Idle, Moving, Attacking, Jumping, Dashing}
 
 public class Player : MonoBehaviour
 {
-    public HealthBar healthBar;
-    public HealthBar tearBar;
-
-    public GameObject player;
-    public GameObject healthBarCanvas;
-    public GameObject playerShadow;
-
-    public int maxHealth = 100;
-    public int currentHealth;
-    public int takeDamage = 10;
-    public PlayerState state;
+    public int maxHealth = 100, currentHealth;
     public bool invulnerable = false;
+    public PlayerState state;
+    public HealthBar healthBar, tearBar;
+    public GameObject player, healthBarCanvas, playerShadow;
 
-    //PlayerShoot playerShootScript; // isn't needed?
-    SpriteRenderer playerSpriteRenderer;
-    //PlayerMovement playerMovementScript; // isn't needed?
-    SpriteRenderer playerShadowSpriteRenderer;
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         state = PlayerState.Idle;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        //playerMovementScript = player.GetComponent<PlayerMovement>(); // isn't needed?
-        //playerShootScript = GetComponent<PlayerShoot>(); // isn't needed?
-        playerSpriteRenderer = GetComponent<SpriteRenderer>();
-        playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage)
@@ -51,7 +38,30 @@ public class Player : MonoBehaviour
     public void GetLife(int hp)
     {
         currentHealth += hp;
-        currentHealth = Mathf.Clamp(currentHealth, 0, 100);
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthBar.SetHealth(currentHealth);
+    }
+
+    public void SwitchState(PlayerState newState)
+    {
+        state = newState;
+
+        switch (state)
+        {
+            case PlayerState.Idle:
+                animator.SetTrigger("Idle");
+                break;
+            case PlayerState.Moving:
+                break;
+            case PlayerState.Attacking:
+                break;
+            case PlayerState.Jumping:
+                break;
+            case PlayerState.Dashing:
+                animator.SetTrigger("Dash");
+                break;
+            default:
+                break;
+        }
     }
 }
