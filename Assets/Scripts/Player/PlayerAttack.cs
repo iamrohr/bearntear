@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMovement pm;
     private Player player;
 
+    public CameraShake cameraShake; // JAMES KALNINS
+
     void Start()
     {
         comboCurrent = 1;
@@ -114,6 +116,7 @@ public class PlayerAttack : MonoBehaviour
         AttackCooldown(bashCooldown);
         var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
         attackObject.transform.SetParent(gameObject.transform);
+        StartCoroutine(cameraShake.Shake(0.3f, 0.2f)); // JAMES KALNINS
         //TODO: Trigger animation
     }
 
