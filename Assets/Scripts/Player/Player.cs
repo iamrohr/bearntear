@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public PlayerState state;
     public HealthBar healthBar, tearBar;
     public GameObject player, healthBarCanvas, playerShadow;
+    public AudioSource damageSound;
 
     private Animator animator;
 
@@ -25,8 +26,6 @@ public class Player : MonoBehaviour
         //playerShootScript = GetComponent<PlayerShoot>(); // isn't needed?
         //playerSpriteRenderer = GetComponent<SpriteRenderer>();
         //playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
-        
-
     }
 
     public void TakeDamage(int damage)
@@ -41,6 +40,7 @@ public class Player : MonoBehaviour
 
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        damageSound.Play();
         StartCoroutine(playerFlashScript.Flash());
     }
 
