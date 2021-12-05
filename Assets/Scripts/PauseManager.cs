@@ -21,6 +21,7 @@ public class PauseManager : MonoBehaviour
 
     PlayerShoot playerShootScript;
     PlayerJump playerJumpScript;
+    PlayerAttack playerAttackScript;
 
     GameObject[] projectileGameObjects;
     GameObject[] enemyGameObjects;
@@ -40,6 +41,7 @@ public class PauseManager : MonoBehaviour
         playerRenderer = player.GetComponent<SpriteRenderer>();
         playerShootScript = player.GetComponent<PlayerShoot>();
         playerJumpScript = player.GetComponent<PlayerJump>();
+        playerAttackScript = player.GetComponent<PlayerAttack>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -121,6 +123,7 @@ public class PauseManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         playerShootScript.enabled = true;
         playerJumpScript.enabled = true;
+        playerAttackScript.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         backgroundMusic.SetActive(true);
@@ -137,6 +140,7 @@ public class PauseManager : MonoBehaviour
                     pauseCanvas.SetActive(true);
                     playerShootScript.enabled = false;
                     playerJumpScript.enabled = false;
+                    playerAttackScript.enabled = false;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     EventSystem.current.SetSelectedGameObject(null);
@@ -151,6 +155,7 @@ public class PauseManager : MonoBehaviour
                     pauseCanvas.SetActive(false);
                     playerShootScript.enabled = true;
                     playerJumpScript.enabled = true;
+                    playerAttackScript.enabled = true;
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                     backgroundMusic.SetActive(true);
