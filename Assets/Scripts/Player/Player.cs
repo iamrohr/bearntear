@@ -13,12 +13,22 @@ public class Player : MonoBehaviour
 
     private Animator animator;
 
+    public PlayerFlash playerFlashScript;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         state = PlayerState.Idle;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+<<<<<<< Updated upstream
+=======
+        //playerMovementScript = player.GetComponent<PlayerMovement>(); // isn't needed?
+        //playerShootScript = GetComponent<PlayerShoot>(); // isn't needed?
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
+        
+>>>>>>> Stashed changes
     }
 
     public void TakeDamage(int damage)
@@ -33,6 +43,7 @@ public class Player : MonoBehaviour
 
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        StartCoroutine(playerFlashScript.Flash());
     }
 
     public void GetLife(int hp)
