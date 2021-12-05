@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public int comboTotal, comboCurrent;
     public AudioSource swingSound;
 
-    private float attackTimer, prevComboTime;
+    public float attackTimer, prevComboTime;
     public bool canAttack = true, queuedAttack;
     private PlayerMovement pm;
     private Player player;
@@ -29,27 +29,31 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && canAttack)
         {
             CancelInvoke(nameof(CanAttackToTrue));
+            player.state = PlayerState.Attacking;
         }
 
         if (Input.GetButton("Fire1") && canAttack)
         {
-            attackTimer += Time.deltaTime;
-            if (player.state != PlayerState.Attacking)
-                player.state = PlayerState.Attacking;
+            if (player.state == PlayerState.Attacking)
+                attackTimer += Time.deltaTime;
+            else
+                attackTimer = 0;
         }
         
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1") && player.state == PlayerState.Attacking)
         {
             if (canAttack)
             {
-                if (player.state == PlayerState.Attacking)
-                {
+                //if (player.state == PlayerState.Attacking)
+                //{
                     CancelInvoke(nameof(AttackIfQueued));
                     Attack();
-                }
+                //}
             }
             else
                 queuedAttack = true;
+            
+            attackTimer = 0;
         }
     }
 
@@ -68,7 +72,6 @@ public class PlayerAttack : MonoBehaviour
         else
             BashAttack(attackPos);
 
-        attackTimer = 0;
         canAttack = false;
     }
 
@@ -112,6 +115,7 @@ public class PlayerAttack : MonoBehaviour
     {
         swingSound.pitch = 0.85f;
         swingSound.Play();
+
         comboCurrent = 1;
         AttackCooldown(bashCooldown);
         var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
@@ -130,6 +134,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (queuedAttack)
         {
+            player.state = PlayerState.Attacking;
             Attack();
             queuedAttack = false;
         }
@@ -139,7 +144,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!queuedAttack)
         {
-            player.state = PlayerState.Idle;
+            if (!Input.GetButton("Fire1"))
+                player.state = PlayerState.Idle;
+
             canAttack = true;
         }
     }
