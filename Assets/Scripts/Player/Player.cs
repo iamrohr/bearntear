@@ -21,14 +21,12 @@ public class Player : MonoBehaviour
         state = PlayerState.Idle;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-<<<<<<< Updated upstream
-=======
         //playerMovementScript = player.GetComponent<PlayerMovement>(); // isn't needed?
         //playerShootScript = GetComponent<PlayerShoot>(); // isn't needed?
-        playerSpriteRenderer = GetComponent<SpriteRenderer>();
-        playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
+        //playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        //playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
         
->>>>>>> Stashed changes
+
     }
 
     public void TakeDamage(int damage)
