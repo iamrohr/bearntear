@@ -9,6 +9,15 @@ public class Projectile : MonoBehaviour
 
     private Vector3 shootDir;
 
+    CameraShake cameraShake;
+    FreezeGame freezeGame;
+
+    private void Start()
+    {
+        cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
+        freezeGame = gameObject.GetComponent<FreezeGame>();
+    }
+
     public static float GetAngleFromVectorFloat(Vector3 dir)
     {
         dir = dir.normalized;
@@ -36,7 +45,10 @@ public class Projectile : MonoBehaviour
         if(other.CompareTag("Enemy"))
         {
             other.GetComponent<Enemy>().TakeDamage(bulletDamage);
-            Destroy(gameObject);
+            StartCoroutine(cameraShake.Shake(0.3f, 0.2f));
+            gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            StartCoroutine(freezeGame.Freeze(0.1f));
+            // Destroy(gameObject);
         }
     }
 }
