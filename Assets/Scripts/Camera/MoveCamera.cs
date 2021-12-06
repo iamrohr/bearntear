@@ -12,8 +12,8 @@ public class MoveCamera : MonoBehaviour
     float deltaY;
 
     public float smoothFloat;
-    public float clampedLeftPos = -32.5f;
-    public float clampedRightPos = 32f;
+    public float clampedLeftPos;
+    public float clampedRightPos;
 
     void Start()
     {
