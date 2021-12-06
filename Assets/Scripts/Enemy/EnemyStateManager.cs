@@ -26,6 +26,8 @@ public class EnemyStateManager : MonoBehaviour
     public float reactionTimeRand;
     public bool canAttackPlayer = true;
 
+    public Vector2[] enemyRandPos;
+
     //Fetch Attributes
     public Vector2 startPosition;
 
@@ -48,6 +50,16 @@ public class EnemyStateManager : MonoBehaviour
         //Set Random Agro Range
         agroRangeRand = Random.Range(agroRange, agroRange + agroRangeMultiplier);
         agroRange = agroRangeRand;
+
+        
+    enemyRandPos = new Vector2[]
+    {
+     new Vector2( 2, 2 ),
+     new Vector2( 2, -2 ),
+     new Vector2( -2, 2 ),
+     new Vector2( -2, -2 ),
+    };
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -86,6 +98,34 @@ public class EnemyStateManager : MonoBehaviour
         if (reactionTime <= 0f)
         {
             reactionTime = reactionTimeRand;
+            return true;
+        }
+        return false;
+    }
+
+    public bool EnemyMoveRandPos()
+    {
+        reactionTime -= Time.deltaTime;
+        Debug.Log("Reaction time is " + reactionTime);
+        if (reactionTime <= 0f)
+        {
+            Vector3 enemyMoveTowards;
+            enemyMoveTowards = enemyRandPos[Random.Range(1, enemyRandPos.Length)];
+
+            float step = moveSpeed * Time.deltaTime;
+        // move sprite towards the target location
+
+//        Loop:
+
+//            Move towards random target
+//Wait for X sek
+//Move Back to position.
+//Wait for X sek.
+
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + enemyMoveTowards, step);
+
+
+
             return true;
         }
         return false;

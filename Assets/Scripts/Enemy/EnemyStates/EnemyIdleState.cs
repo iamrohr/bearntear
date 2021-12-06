@@ -10,11 +10,12 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void UpdateState(EnemyStateManager enemy)
     {
+
         float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.transform.position);
 
         if (distToPlayer > enemy.agroRange)
         {
-             
+            
         }
         if (distToPlayer < enemy.agroRange && enemy.ReactionTime())
         {
@@ -29,3 +30,5 @@ public class EnemyIdleState : EnemyBaseState
 
     }
 }
+
+
