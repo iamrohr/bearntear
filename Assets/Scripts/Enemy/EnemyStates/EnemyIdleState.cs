@@ -16,7 +16,7 @@ public class EnemyIdleState : EnemyBaseState
         {
              
         }
-        else
+        if (distToPlayer < enemy.agroRange && enemy.ReactionTime())
         {
             //Immediately switch to
             enemy.SwitchState(enemy.ChaseState);

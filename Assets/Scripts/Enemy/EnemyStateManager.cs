@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyStateManager : MonoBehaviour
 {
-
     public EnemyBaseState currentState;
     public EnemyIdleState IdleState = new EnemyIdleState();
     public EnemyChaseState ChaseState = new  EnemyChaseState();
@@ -20,7 +19,9 @@ public class EnemyStateManager : MonoBehaviour
     public float attackRange = 2f;
     public float moveSpeed = 3f;
     public float returnSpeed = 5f;
-    public bool canAttackPlayer = true; 
+    public float reactionTime;
+    public float reactionTimeRand;
+    public bool canAttackPlayer = true;
 
     //Fetch Attributes
     public Vector2 startPosition;
@@ -36,6 +37,10 @@ public class EnemyStateManager : MonoBehaviour
         //Get enemy start position
         startPosition = new Vector2(transform.position.x, transform.position.y);
         attackBox.SetActive(false);
+
+        //Set Random Reaction time
+        reactionTimeRand = Random.Range(0.1f, 2f);
+        reactionTime = reactionTimeRand;    
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -61,12 +66,22 @@ public class EnemyStateManager : MonoBehaviour
     {
         attackBox.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-
         attackBox.SetActive(false);
 
         yield return new WaitForSeconds(0.5f);
-
         canAttackPlayer = true;
+    }
+
+    public bool ReactionTime()
+    {
+        reactionTime -= Time.deltaTime;
+        Debug.Log("Reaction time is " + reactionTime);
+        if (reactionTime <= 0f)
+        {
+            reactionTime = reactionTimeRand;
+            return true;
+        }
+        return false;
     }
 
 }

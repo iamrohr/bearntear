@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyChaseState : EnemyBaseState
 {
+
     public override void EnterState(EnemyStateManager enemy)
     {
         enemy.attackBox.SetActive(false);
@@ -20,15 +21,15 @@ public class EnemyChaseState : EnemyBaseState
         }
         if (enemy.transform.position.x > enemy.player.transform.position.x)
         {
-            //Enemy is to the left side of the player so move left
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.player.transform.position, step);
-            enemy.transform.localScale = new Vector2(-1, 1);
+                //Enemy is to the left side of the player so move left
+                enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.player.transform.position, step);
+                enemy.transform.localScale = new Vector2(-1, 1);
         }
-        if(distToPlayer <= enemy.attackRange)
+        if (distToPlayer <= enemy.attackRange)
         {
             enemy.SwitchState(enemy.AttackState);
         }
-        if(distToPlayer >= enemy.agroRange)
+        if (distToPlayer >= enemy.agroRange)
         {
             enemy.SwitchState(enemy.ReturnHomeState);
         }
@@ -39,4 +40,5 @@ public class EnemyChaseState : EnemyBaseState
     {
 
     }
+
 }
