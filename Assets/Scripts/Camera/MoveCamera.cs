@@ -27,25 +27,28 @@ public class MoveCamera : MonoBehaviour
         
         targetScreenPos = Camera.main.WorldToScreenPoint(targetPosition.position);
 
-        if(targetPosition.position.x >= clampedLeftPos && targetPosition.position.x <= clampedRightPos)
-        {
+        //if(targetPosition.position.x >= clampedLeftPos && targetPosition.position.x <= clampedRightPos)
+        //{
             if (targetScreenPos.x > (Screen.width / 2) + camWindowDimension)
             {
                 deltaX = targetScreenPos.x - ((Screen.width / 2) + camWindowDimension);
 
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + deltaX, transform.position.y, transform.position.z), smoothFloat);
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, clampedLeftPos, clampedRightPos), transform.position.y, transform.position.z);
             }
-        }
+        //}
 
-        if(targetPosition.position.x >= clampedLeftPos && targetPosition.position.x <= clampedRightPos)
-        {
+        //if (targetPosition.position.x >= clampedLeftPos && targetPosition.position.x <= clampedRightPos)
+        //{
             if (targetScreenPos.x < (Screen.width / 2) - camWindowDimension)
             {
                 deltaX = targetScreenPos.x - ((Screen.width / 2) - camWindowDimension);
 
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + deltaX, transform.position.y, transform.position.z), smoothFloat);
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, clampedLeftPos, clampedRightPos), transform.position.y, transform.position.z);
+
             }
-        }
+        //}
 
         
 
