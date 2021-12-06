@@ -1,11 +1,12 @@
+using System;
 using UnityEngine;
 
 public enum HorFacing {Right, Left};
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed, vertSpeedFactor, turnDelay, atkSpeedFactor;
-    public HorFacing horFacing;
+    public float speed, vertSpeedFactor, turnDelay, speedMulWhenAttacking;
+    [NonSerialized] public HorFacing horFacing;
 
     private bool canTurn;
     private Rigidbody2D rb;
@@ -35,15 +36,15 @@ public class PlayerMovement : MonoBehaviour
         {
             case PlayerState.Idle:
                 if (newVelocity.magnitude > 0)
-                    player.state = PlayerState.Moving;
+                    player.EnterState(PlayerState.Moving);
                 break;
             case PlayerState.Moving:
                 rb.velocity = newVelocity;
                 if (rb.velocity.magnitude <= 0)
-                    player.state = PlayerState.Idle;
+                    player.EnterState(PlayerState.Idle);
                 break;
             case PlayerState.Attacking:
-                rb.velocity = newVelocity * atkSpeedFactor;
+                rb.velocity = newVelocity * speedMulWhenAttacking;
                 break;
             case PlayerState.Jumping:
                 break;

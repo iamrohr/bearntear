@@ -7,8 +7,8 @@ public class PlayerAttack : MonoBehaviour
     public int comboTotal, comboCurrent;
     public AudioSource swingSound;
 
-    public float attackTimer, prevComboTime;
-    public bool canAttack = true, queuedAttack;
+    private float attackTimer, prevComboTime;
+    private bool canAttack = true, queuedAttack;
     private PlayerMovement pm;
     private Player player;
 
@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && canAttack)
         {
             CancelInvoke(nameof(CanAttackToTrue));
-            player.SwitchState(PlayerState.Attacking);
+            player.EnterState(PlayerState.Attacking);
         }
 
         if (Input.GetButton("Fire1") && canAttack)
@@ -137,7 +137,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (queuedAttack)
         {
-            player.SwitchState(PlayerState.Attacking);
+            player.EnterState(PlayerState.Attacking);
             Attack();
             queuedAttack = false;
         }
@@ -148,7 +148,7 @@ public class PlayerAttack : MonoBehaviour
         if (!queuedAttack)
         {
             if (!Input.GetButton("Fire1"))
-                player.SwitchState(PlayerState.Idle);
+                player.LeaveState(PlayerState.Attacking);
 
             canAttack = true;
         }

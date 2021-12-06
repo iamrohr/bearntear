@@ -7,18 +7,20 @@ public enum PlayerState {Idle, Moving, Attacking, Jumping, Dashing}
 public class Player : MonoBehaviour
 {
     public int maxHealth = 100, currentHealth;
+    public float invulnerableTime;
     public bool invulnerable = false;
     public PlayerState state;
-    public HealthBar healthBar, tearBar;
-    public GameObject player, healthBarCanvas, playerShadow;
+    public HealthBar healthBar;
     public AudioSource damageSound;
-    public PlayerFlash playerFlashScript;
+    
+    private PlayerFlash playerFlashScript;
 
     [NonSerialized] public Animator animator;
 
 
     void Start()
     {
+        playerFlashScript = GetComponent<PlayerFlash>();
         animator = GetComponent<Animator>();
         state = PlayerState.Idle;
         currentHealth = maxHealth;
@@ -29,18 +31,19 @@ public class Player : MonoBehaviour
     {
         if (invulnerable)
             return;
-
-        if (currentHealth <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
-
+        
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        MakeInvulnerable(invulnerableTime);
 
         damageSound.Play();
         StartCoroutine(playerFlashScript.Flash());
         animator.SetTrigger("Hurt");
+        
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     public void GetLife(int hp)
@@ -50,7 +53,18 @@ public class Player : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
-    public void SwitchState(PlayerState newState)
+    public void MakeInvulnerable(float time)
+    {
+        invulnerable = true;
+        Invoke(nameof(TurnOffInvulnerable), time);
+    }
+
+    private void TurnOffInvulnerable()
+    {
+        invulnerable = false;
+    }
+
+    public void EnterState(PlayerState newState)
     {
         state = newState;
 
@@ -71,6 +85,29 @@ public class Player : MonoBehaviour
                 break;
             default:
                 goto case PlayerState.Idle;
+        }
+    }
+
+    public void LeaveState(PlayerState state)
+    {
+        if (state != this.state)
+            return;
+
+        switch (state)
+        {
+            //case PlayerState.Idle:
+            //    break;
+            //case PlayerState.Moving:
+            //    break;
+            //case PlayerState.Attacking:
+            //    break;
+            //case PlayerState.Jumping:
+            //    break;
+            //case PlayerState.Dashing:
+            //    break;
+            default:
+                EnterState(PlayerState.Idle);
+                break;
         }
     }
 }
