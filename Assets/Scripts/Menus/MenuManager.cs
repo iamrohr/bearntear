@@ -14,9 +14,12 @@ public class MenuManager : MonoBehaviour
     public GameObject startButton;
     public GameObject controlsBackButton;
     public AudioSource buttonClickSound;
+    public Score scoreScript;
+    public GameObject scoreCanvas;
 
     void Start()
     {
+        scoreCanvas.SetActive(true);
         controlsCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -26,6 +29,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        scoreScript.ResetScore();
         buttonClickSound.Play();
         SceneManager.LoadScene("Main");
     }
@@ -41,12 +45,15 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu()
     {
+        scoreCanvas.SetActive(false);
+        scoreScript.ResetScore();
         buttonClickSound.Play();
         SceneManager.LoadScene("MainMenu");
     }
 
     public void Quit()
     {
+        scoreScript.ResetScore();
         buttonClickSound.Play();
         UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
 

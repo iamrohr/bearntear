@@ -17,6 +17,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        Score.scoreValue = 0;
         creditsCanvas.SetActive(false);
         controlsCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
