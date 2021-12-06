@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,10 +12,10 @@ public class Player : MonoBehaviour
     public HealthBar healthBar, tearBar;
     public GameObject player, healthBarCanvas, playerShadow;
     public AudioSource damageSound;
-
-    private Animator animator;
-
     public PlayerFlash playerFlashScript;
+
+    [NonSerialized] public Animator animator;
+
 
     void Start()
     {
@@ -22,10 +23,6 @@ public class Player : MonoBehaviour
         state = PlayerState.Idle;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        //playerMovementScript = player.GetComponent<PlayerMovement>(); // isn't needed?
-        //playerShootScript = GetComponent<PlayerShoot>(); // isn't needed?
-        //playerSpriteRenderer = GetComponent<SpriteRenderer>();
-        //playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage)
@@ -40,8 +37,10 @@ public class Player : MonoBehaviour
 
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+
         damageSound.Play();
         StartCoroutine(playerFlashScript.Flash());
+        animator.SetTrigger("Hurt");
     }
 
     public void GetLife(int hp)
@@ -61,6 +60,7 @@ public class Player : MonoBehaviour
                 animator.SetTrigger("Idle");
                 break;
             case PlayerState.Moving:
+                animator.SetTrigger("Idle"); //Temp anim state
                 break;
             case PlayerState.Attacking:
                 break;
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
                 animator.SetTrigger("Dash");
                 break;
             default:
-                break;
+                goto case PlayerState.Idle;
         }
     }
 }

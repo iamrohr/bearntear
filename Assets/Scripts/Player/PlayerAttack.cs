@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && canAttack)
         {
             CancelInvoke(nameof(CanAttackToTrue));
-            player.state = PlayerState.Attacking;
+            player.SwitchState(PlayerState.Attacking);
         }
 
         if (Input.GetButton("Fire1") && canAttack)
@@ -44,11 +44,8 @@ public class PlayerAttack : MonoBehaviour
         {
             if (canAttack)
             {
-                //if (player.state == PlayerState.Attacking)
-                //{
-                    CancelInvoke(nameof(AttackIfQueued));
-                    Attack();
-                //}
+                CancelInvoke(nameof(AttackIfQueued));
+                Attack();
             }
             else
                 queuedAttack = true;
@@ -88,7 +85,8 @@ public class PlayerAttack : MonoBehaviour
         if (comboCurrent >= comboTotal)
         {
             swingSound.pitch = 1;
-            //TODO: Trigger Swipe Animation final
+            player.animator.SetTrigger("Swipe1");
+
             attackObject.GetComponent<PlayerAttackBox>().comboFinal = true;
             attackObject.GetComponent<SpriteRenderer>().color = Color.cyan; //Temp check
             comboCurrent = 1;
@@ -96,13 +94,15 @@ public class PlayerAttack : MonoBehaviour
         else if (comboCurrent % 2 == 0)
         {
             swingSound.pitch = 1.2f;
-            //TODO: Trigger Swipe Animation A
+            player.animator.SetTrigger("Swipe1");
+
             comboCurrent++;
         }
         else
         {
             swingSound.pitch = 1.1f;
-            //TODO: Trigger Swipe Animation B
+            player.animator.SetTrigger("Swipe2");
+
             attackObject.GetComponent<SpriteRenderer>().color = Color.blue; //Temp check
             comboCurrent++;
         }
@@ -118,10 +118,13 @@ public class PlayerAttack : MonoBehaviour
 
         comboCurrent = 1;
         AttackCooldown(bashCooldown);
+
         var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
         attackObject.transform.SetParent(gameObject.transform);
+
         StartCoroutine(cameraShake.Shake(0.3f, 0.2f)); // JAMES KALNINS
-        //TODO: Trigger animation
+
+        player.animator.SetTrigger("Bash");
     }
 
     private void AttackCooldown(float cooldownTime)
@@ -134,7 +137,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (queuedAttack)
         {
-            player.state = PlayerState.Attacking;
+            player.SwitchState(PlayerState.Attacking);
             Attack();
             queuedAttack = false;
         }
@@ -145,7 +148,7 @@ public class PlayerAttack : MonoBehaviour
         if (!queuedAttack)
         {
             if (!Input.GetButton("Fire1"))
-                player.state = PlayerState.Idle;
+                player.SwitchState(PlayerState.Idle);
 
             canAttack = true;
         }
