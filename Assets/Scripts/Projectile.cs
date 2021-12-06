@@ -10,12 +10,12 @@ public class Projectile : MonoBehaviour
     private Vector3 shootDir;
 
     CameraShake cameraShake;
-    FreezeGame freezeGame;
+
+    public bool projectileIsMoving = true;
 
     private void Start()
     {
         cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
-        freezeGame = gameObject.GetComponent<FreezeGame>();
     }
 
     public static float GetAngleFromVectorFloat(Vector3 dir)
@@ -37,7 +37,21 @@ public class Projectile : MonoBehaviour
     void Update()
 
     {
-        transform.position += shootDir * projectileSpeed * Time.deltaTime;
+        if(projectileIsMoving)
+        {
+            transform.position += shootDir * projectileSpeed * Time.deltaTime;
+        }
+
+        if (!projectileIsMoving)
+        {
+            transform.position += shootDir * 5 * Time.deltaTime;
+
+        }
+    }
+
+    void ProjectileWait()
+    {
+        projectileIsMoving = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -47,8 +61,10 @@ public class Projectile : MonoBehaviour
             other.GetComponent<Enemy>().TakeDamage(bulletDamage);
             StartCoroutine(cameraShake.Shake(0.3f, 0.2f));
             gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
-            StartCoroutine(freezeGame.Freeze(0.1f));
-            // Destroy(gameObject);
+            projectileIsMoving = false;
+            Invoke(nameof(ProjectileWait), 0.1f);
         }
     }
+
+    
 }

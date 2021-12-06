@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6617662076513660424}
   - component: {fileID: 7645673260963565267}
   - component: {fileID: 1474539451296381270}
-  - component: {fileID: 1755783297033959450}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -105,7 +104,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &7645673260963565267
 BoxCollider2D:
@@ -147,15 +146,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   bulletDamage: 10
---- !u!114 &1755783297033959450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474539451296381271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b2dbe3d4a43604f889ec60bcd12f6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
