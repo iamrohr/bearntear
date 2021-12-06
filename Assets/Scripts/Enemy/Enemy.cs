@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        Score.scoreValue += 100;
 
         if (currentHealth <= 0)
         {

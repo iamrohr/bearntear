@@ -27,9 +27,10 @@ public class PlayerDash : MonoBehaviour
     private void Dash(float xInput)
     {
         dashSound.Play();
-        player.invulnerable = true;
+
         canDash = false;
-        player.SwitchState(PlayerState.Dashing);
+        player.EnterState(PlayerState.Dashing);
+        player.MakeInvulnerable(dashTime);
 
         Vector2 dashDirection;
         if (xInput > 0)
@@ -46,8 +47,7 @@ public class PlayerDash : MonoBehaviour
     private void CancelDash()
     {
         rb.velocity = Vector2.zero;
-        player.SwitchState(PlayerState.Idle);
-        player.invulnerable = false;
+        player.LeaveState(PlayerState.Dashing);
     }
 
     private void TurnOnCanDash()

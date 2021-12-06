@@ -2785,10 +2785,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1901140492}
   attackBox: {fileID: 1300220421}
+  agroRangeRand: 0
   agroRange: 8
+  agroRangeMultiplier: 5
   attackRange: 2
   moveSpeed: 2
   returnSpeed: 5
+  reactionTime: 0
+  reactionTimeRand: 0
   canAttackPlayer: 1
   startPosition: {x: 0, y: 0}
 --- !u!212 &995585092
@@ -5168,7 +5172,7 @@ MonoBehaviour:
   speed: 6
   vertSpeedFactor: 0.5
   turnDelay: 0.15
-  atkSpeedFactor: 0.5
+  speedMulWhenAttacking: 0.5
   horFacing: 0
 --- !u!114 &1901140485
 MonoBehaviour:
@@ -5221,12 +5225,7 @@ MonoBehaviour:
   invulnerable: 0
   state: 0
   healthBar: {fileID: 768426852}
-  tearBar: {fileID: 0}
-  player: {fileID: 1901140482}
-  healthBarCanvas: {fileID: 735599363}
-  playerShadow: {fileID: 675913593}
   damageSound: {fileID: 567895091}
-  playerFlashScript: {fileID: 1901140494}
 --- !u!114 &1901140488
 MonoBehaviour:
   m_ObjectHideFlags: 0
