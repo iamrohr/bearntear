@@ -35,17 +35,10 @@ public class Projectile : MonoBehaviour
     }
 
     void Update()
-
     {
         if(projectileIsMoving)
         {
             transform.position += shootDir * projectileSpeed * Time.deltaTime;
-        }
-
-        if (!projectileIsMoving)
-        {
-            transform.position += shootDir * 5 * Time.deltaTime;
-
         }
     }
 
@@ -65,6 +58,4 @@ public class Projectile : MonoBehaviour
             Invoke(nameof(ProjectileWait), 0.1f);
         }
     }
-
-    
 }
