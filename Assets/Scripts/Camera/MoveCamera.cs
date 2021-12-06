@@ -25,6 +25,8 @@ public class MoveCamera : MonoBehaviour
     {
         //convert target pos to 2D
         
+
+
         targetScreenPos = Camera.main.WorldToScreenPoint(targetPosition.position);
 
         //if(targetPosition.position.x >= clampedLeftPos && targetPosition.position.x <= clampedRightPos)
