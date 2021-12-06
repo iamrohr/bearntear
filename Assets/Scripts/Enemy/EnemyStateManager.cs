@@ -27,6 +27,8 @@ public class EnemyStateManager : MonoBehaviour
     public float enemyWaitTime = 2f;
     public bool canAttackPlayer = true;
 
+    public Vector2 newEnemyPosition;
+
     //Fetch Attributes
     public Vector2 enemyStartPosition;
 
@@ -50,7 +52,9 @@ public class EnemyStateManager : MonoBehaviour
         agroRangeRand = Random.Range(agroRange, agroRange + agroRangeMultiplier);
         agroRange = agroRangeRand;
 
-    }
+        //Set first move to true (Idle move)
+        newEnemyPosition = new Vector2(enemyStartPosition.x + (Random.Range(-3, 3)), enemyStartPosition.y + Random.Range(-3, 3));
+}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -93,31 +97,12 @@ public class EnemyStateManager : MonoBehaviour
         return false;
     }
 
-    public bool EnemyRandPos()
+    public void EnemyRandPos()
     {
+    float step = moveSpeed * Time.deltaTime;
         
-        //Move Enemy to random pos
-        //Wait
-        //Move Enemy Back to origin
-        //Wait
-        //Loop
+    transform.position = Vector2.MoveTowards(transform.position, newEnemyPosition, step); //Move to random location
 
-        enemyWaitTime -= Time.deltaTime;
-        if (enemyWaitTime <= 0f)
-        {
-            float step = moveSpeed * Time.deltaTime;
-
-            transform.position = new Vector2(enemyStartPosition.x + Random.Range(-2, 2), enemyStartPosition.y + Random.Range(-2, 2)); //Move enemy 
-            Vector2 newEnemyPosition = transform.position;
-            
-            if(transform.position.x == newEnemyPosition.x && transform.position.y == newEnemyPosition.y)
-            { 
-            transform.position = Vector2.MoveTowards(transform.position, enemyStartPosition, step); //Return home
-            return true;
-            }
-
-        }
-        return false;
     }
 
 }
