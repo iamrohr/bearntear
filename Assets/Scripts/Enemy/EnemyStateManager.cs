@@ -15,7 +15,10 @@ public class EnemyStateManager : MonoBehaviour
     public GameObject attackBox;
 
     [Header("Attributes")]
-    public float agroRange = 8f;
+    public float agroRangeRand;
+    public float agroRange = 5f;
+    public float agroRangeMultiplier = 5f;
+
     public float attackRange = 2f;
     public float moveSpeed = 3f;
     public float returnSpeed = 5f;
@@ -40,7 +43,11 @@ public class EnemyStateManager : MonoBehaviour
 
         //Set Random Reaction time
         reactionTimeRand = Random.Range(0.1f, 2f);
-        reactionTime = reactionTimeRand;    
+        reactionTime = reactionTimeRand;
+
+        //Set Random Agro Range
+        agroRangeRand = Random.Range(agroRange, agroRange + agroRangeMultiplier);
+        agroRange = agroRangeRand;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -83,5 +90,4 @@ public class EnemyStateManager : MonoBehaviour
         }
         return false;
     }
-
 }
