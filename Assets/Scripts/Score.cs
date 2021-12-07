@@ -34,6 +34,7 @@ public class Score : MonoBehaviour
     public void AddScore(int addScore)
     {
         scoreValue += addScore;
+        score.text = "Score: " + scoreValue;
         UpdateHighScore();
     }
 
