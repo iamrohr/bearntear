@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     {
         playerFlashScript = GetComponent<PlayerFlash>();
         animator = GetComponent<Animator>();
-        state = PlayerState.Idle;
+
+        EnterState(PlayerState.Idle);
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -41,10 +42,7 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Hurt");
         
         if (currentHealth <= 0)
-        {
-
             SceneManager.LoadScene("GameOver");
-        }
     }
 
     public void GetLife(int hp)
