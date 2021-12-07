@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (player.state == PlayerState.Dashing)
+        if (player.state == PlayerState.Dashing || player.state == PlayerState.Jumping)
             return;
 
         if (Input.GetButtonDown("Fire1") && canAttack)

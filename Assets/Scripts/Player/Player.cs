@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum PlayerState {Idle, Moving, Attacking, Jumping, Dashing}
+public enum PlayerState { Idle, Moving, Attacking, Jumping, Dashing }
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public PlayerState state;
     public HealthBar healthBar;
     public AudioSource damageSound;
-    
+
     private PlayerFlash playerFlashScript;
 
     [NonSerialized] public Animator animator;
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     {
         if (invulnerable)
             return;
-        
+
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         MakeInvulnerable(invulnerableTime);
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         damageSound.Play();
         StartCoroutine(playerFlashScript.Flash());
         animator.SetTrigger("Hurt");
-        
+
         if (currentHealth <= 0)
             SceneManager.LoadScene("GameOver");
     }
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
         invulnerable = false;
     }
 
-    public void EnterState(PlayerState newState)
+    public void EnterState(PlayerState newState, float invTime = 0)
     {
         state = newState;
 
@@ -85,6 +85,9 @@ public class Player : MonoBehaviour
             default:
                 goto case PlayerState.Idle;
         }
+
+        if (invTime > 0)
+            MakeInvulnerable(invTime);
     }
 
     public void LeaveState(PlayerState state)

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5533406952303444440}
   m_Layer: 9
   m_Name: CottonDrop
-  m_TagString: Untagged
+  m_TagString: Cotton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   cottonPickupSound: {fileID: 8300000, guid: a2afddbbbc1c41b4e874ed1f79d7172e, type: 3}
   cottonPickupSoundVolume: 1
   audioManager: {fileID: 946796549373559502, guid: 515821a88e568bd4f98b805213647516, type: 3}
+  audioManagerScript: {fileID: 0}
 --- !u!50 &5533406952303444440
 Rigidbody2D:
   serializedVersion: 4

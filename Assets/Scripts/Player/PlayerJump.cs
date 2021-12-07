@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,15 +6,13 @@ public class PlayerJump : MonoBehaviour
 {
     public float jumpHeight, hangTime, jumpTime;
     public AudioSource jumpSound;
+    [NonSerialized] public bool grounded = true;
 
-    private bool grounded = true;
     private float defaultStartY;
-    private PlayerMovement pm;
     private Player player;
 
     void Start()
     {
-        pm = GetComponent<PlayerMovement>();
         player = GetComponent<Player>();
         defaultStartY = transform.localPosition.y;
     }
@@ -30,16 +29,21 @@ public class PlayerJump : MonoBehaviour
 
     private IEnumerator Jump()
     {
+        player.EnterState(PlayerState.Jumping, jumpTime * 2);
+
         jumpSound.Play();
 
         float t = 0;
         float localStartY = defaultStartY;
+
         while (t < 1)
         {
             float smoothFactor = SmoothStop(t);
             float y = transform.localPosition.y;
+
             y = localStartY + jumpHeight * smoothFactor;
             transform.localPosition = new Vector2(transform.localPosition.x, y);
+
             t += Time.deltaTime / jumpTime;
             yield return new WaitForEndOfFrame();
             if (player.state == PlayerState.Dashing)
@@ -50,14 +54,17 @@ public class PlayerJump : MonoBehaviour
 
         t = 0;
         localStartY = transform.localPosition.y;
+
         while (t < 1 && transform.localPosition.y > defaultStartY)
         {
             if (player.state != PlayerState.Dashing)
             {
                 float smoothFactor = SmoothStart(t);
                 float y = transform.localPosition.y;
+
                 y = localStartY - jumpHeight * smoothFactor;
                 transform.localPosition = new Vector2(transform.localPosition.x, y);
+
                 t += Time.deltaTime / jumpTime;
             }
 
@@ -66,7 +73,7 @@ public class PlayerJump : MonoBehaviour
 
         transform.localPosition = new Vector2(transform.localPosition.x, defaultStartY);
         grounded = true;
-        StopCoroutine(nameof(Jump));
+        player.LeaveState(PlayerState.Jumping);
     }
 
     private float SmoothStart(float t)

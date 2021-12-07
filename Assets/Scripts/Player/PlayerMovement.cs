@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = newVelocity * speedMulWhenAttacking;
                 break;
             case PlayerState.Jumping:
+                rb.velocity = newVelocity;
                 break;
             case PlayerState.Dashing:
                 break;
