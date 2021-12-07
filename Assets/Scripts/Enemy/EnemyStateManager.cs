@@ -10,6 +10,7 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyAttackState AttackState = new EnemyAttackState();
     public EnemyReturnHomeState ReturnHomeState = new EnemyReturnHomeState();
     public EnemyPatrolState PatrolState = new EnemyPatrolState();
+    public EnemyWaitState WaitState = new EnemyWaitState();
 
     [Header("Components")]
     public GameObject player;
@@ -27,6 +28,8 @@ public class EnemyStateManager : MonoBehaviour
     public float enemyWaitTime = 2f;
     public bool canAttackPlayer = true;
 
+    public Rigidbody2D rb;
+
     public Vector2 newEnemyPosition;
 
     //Fetch Attributes
@@ -37,6 +40,8 @@ public class EnemyStateManager : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         //Find the player
         player = GameObject.FindGameObjectWithTag("Player");
         //Starting state for the Enemy state machine
@@ -73,14 +78,21 @@ public class EnemyStateManager : MonoBehaviour
 
     public void SwitchState(EnemyBaseState state, float switchTime = 0)
     {
+        
+        //StopCoroutine(nameof(SwitchStateInTime));
         StartCoroutine(SwitchStateInTime(state, switchTime));
     }
 
     private IEnumerator SwitchStateInTime(EnemyBaseState state, float switchTime)
     {
+        currentState = WaitState;
+        WaitState.EnterState(this);
+
         yield return new WaitForSeconds(switchTime);
+        
         currentState = state;
         state.EnterState(this);
+        Debug.Log("coroutine??");
     }
 
     //State Machines can only be in one state at a time.

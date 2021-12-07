@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
+    private bool waiting;
+    private float waitTime = 1;
 
     public override void EnterState(EnemyStateManager enemy)
     {
@@ -15,7 +17,7 @@ public class EnemyIdleState : EnemyBaseState
 
         if (distToPlayer > enemy.agroRange)
         {
-            enemy.SwitchState(enemy.PatrolState);
+            enemy.SwitchState(enemy.PatrolState, 3);
         }
         if (distToPlayer < enemy.agroRange)
         {

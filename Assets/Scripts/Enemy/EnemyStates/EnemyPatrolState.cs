@@ -9,6 +9,13 @@ public class EnemyPatrolState : EnemyBaseState
         enemy.newEnemyPosition = enemy.EnemyRandPos(3);
         Debug.Log("Enemy Patrol State");
 
+        if (enemy.transform.position.x < enemy.newEnemyPosition.x)
+        {
+            enemy.transform.localScale = new Vector2(1, 1);
+        }
+        else
+            enemy.transform.localScale = new Vector2(-1, 1);
+
     }
 
     public override void UpdateState(EnemyStateManager enemy)
@@ -25,7 +32,7 @@ public class EnemyPatrolState : EnemyBaseState
         float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.transform.position);
         if (distToPlayer < enemy.agroRange)
         {
-            enemy.SwitchState(enemy.ChaseState, 0.5f);
+            enemy.SwitchState(enemy.IdleState, 0.5f);
         }
     }
 
