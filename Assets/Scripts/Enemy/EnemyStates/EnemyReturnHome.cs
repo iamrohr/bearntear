@@ -13,10 +13,10 @@ public class EnemyReturnHomeState : EnemyBaseState
         Vector2 currentposition = enemy.transform.position;
         float step = enemy.returnSpeed * Time.deltaTime;
 
-        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.startPosition, step);
+        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.enemyStartPosition, step);
 
         //Flips the enemy towards the start position.
-        if (enemy.transform.position.x < enemy.startPosition.x)
+        if (enemy.transform.position.x < enemy.enemyStartPosition.x)
         {
             enemy.transform.localScale = new Vector2(1, 1);
         }
@@ -24,7 +24,7 @@ public class EnemyReturnHomeState : EnemyBaseState
             enemy.transform.localScale = new Vector2(-1, 1);
 
 
-        if (currentposition.y == enemy.startPosition.y)
+        if (currentposition.y == enemy.enemyStartPosition.y)
         {
             enemy.SwitchState(enemy.IdleState);
         }

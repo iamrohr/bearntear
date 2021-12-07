@@ -24,12 +24,13 @@ public class EnemyStateManager : MonoBehaviour
     public float returnSpeed = 5f;
     public float reactionTime;
     public float reactionTimeRand;
+    public float enemyWaitTime = 2f;
     public bool canAttackPlayer = true;
 
-    public Vector2[] enemyRandPos;
+    public Vector2 newEnemyPosition;
 
     //Fetch Attributes
-    public Vector2 startPosition;
+    public Vector2 enemyStartPosition;
 
     void Start()
     {
@@ -40,7 +41,7 @@ public class EnemyStateManager : MonoBehaviour
         currentState.EnterState(this);
 
         //Get enemy start position
-        startPosition = new Vector2(transform.position.x, transform.position.y);
+        enemyStartPosition = new Vector2(transform.position.x, transform.position.y);
         attackBox.SetActive(false);
 
         //Set Random Reaction time
@@ -51,16 +52,9 @@ public class EnemyStateManager : MonoBehaviour
         agroRangeRand = Random.Range(agroRange, agroRange + agroRangeMultiplier);
         agroRange = agroRangeRand;
 
-        
-    enemyRandPos = new Vector2[]
-    {
-     new Vector2( 2, 2 ),
-     new Vector2( 2, -2 ),
-     new Vector2( -2, 2 ),
-     new Vector2( -2, -2 ),
-    };
-
-    }
+        //Set first move to true (Idle move)
+        newEnemyPosition = new Vector2(enemyStartPosition.x + (Random.Range(-3, 3)), enemyStartPosition.y + Random.Range(-3, 3));
+}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -103,31 +97,12 @@ public class EnemyStateManager : MonoBehaviour
         return false;
     }
 
-    public bool EnemyMoveRandPos()
+    public void EnemyRandPos()
     {
-        reactionTime -= Time.deltaTime;
-        Debug.Log("Reaction time is " + reactionTime);
-        if (reactionTime <= 0f)
-        {
-            Vector3 enemyMoveTowards;
-            enemyMoveTowards = enemyRandPos[Random.Range(1, enemyRandPos.Length)];
+    float step = moveSpeed * Time.deltaTime;
+        
+    transform.position = Vector2.MoveTowards(transform.position, newEnemyPosition, step); //Move to random location
 
-            float step = moveSpeed * Time.deltaTime;
-        // move sprite towards the target location
-
-//        Loop:
-
-//            Move towards random target
-//Wait for X sek
-//Move Back to position.
-//Wait for X sek.
-
-            transform.position = Vector2.MoveTowards(transform.position, transform.position + enemyMoveTowards, step);
-
-
-
-            return true;
-        }
-        return false;
     }
+
 }
