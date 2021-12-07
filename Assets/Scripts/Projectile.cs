@@ -56,6 +56,11 @@ public class Projectile : MonoBehaviour
             gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
             projectileIsMoving = false;
             Invoke(nameof(ProjectileWait), 0.1f);
+
+            if(gameObject.transform.localScale == new Vector3(0f, 0f, 0f))
+                {
+                    Destroy(gameObject);
+                }
         }
     }
 }
