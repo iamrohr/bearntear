@@ -284,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 1617212753}
     - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: waves.Array.data[0].count
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: waves.Array.data[1].count
@@ -686,10 +686,6 @@ MonoBehaviour:
   comboTotal: 4
   comboCurrent: 0
   swingSound: {fileID: 1120508442}
-  attackTimer: 0
-  prevComboTime: 0
-  canAttack: 1
-  queuedAttack: 0
   cameraShake: {fileID: 1156334062}
 --- !u!114 &175791236
 MonoBehaviour:
@@ -722,8 +718,7 @@ MonoBehaviour:
   speed: 6
   vertSpeedFactor: 0.5
   turnDelay: 0.15
-  atkSpeedFactor: 0.5
-  horFacing: 0
+  speedMulWhenAttacking: 0
 --- !u!114 &175791238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,15 +733,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  invulnerableTime: 0
   invulnerable: 0
   state: 0
   healthBar: {fileID: 1994586768}
-  tearBar: {fileID: 0}
-  player: {fileID: 175791228}
-  healthBarCanvas: {fileID: 1119809325}
-  playerShadow: {fileID: 2116937254}
   damageSound: {fileID: 1873662695}
-  playerFlashScript: {fileID: 175791240}
 --- !u!212 &175791239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -909,7 +900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194867873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.14, y: -3.38, z: 0}
+  m_LocalPosition: {x: -25.34, y: -3.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 175791229}

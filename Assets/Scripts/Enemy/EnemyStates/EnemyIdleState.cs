@@ -15,7 +15,7 @@ public class EnemyIdleState : EnemyBaseState
 
         if (distToPlayer > enemy.agroRange)
         {
-            enemy.EnemyRandPos();
+            enemy.SwitchState(enemy.PatrolState);
         }
         if (distToPlayer < enemy.agroRange && enemy.ReactionTime())
         {

@@ -9,6 +9,7 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyChaseState ChaseState = new  EnemyChaseState();
     public EnemyAttackState AttackState = new EnemyAttackState();
     public EnemyReturnHomeState ReturnHomeState = new EnemyReturnHomeState();
+    public EnemyPatrolState PatrolState = new EnemyPatrolState();
 
     [Header("Components")]
     public GameObject player;
@@ -32,6 +33,9 @@ public class EnemyStateManager : MonoBehaviour
     //Fetch Attributes
     public Vector2 enemyStartPosition;
 
+    public bool arrivedAtRandPos;
+    public bool moveToStart;
+
     void Start()
     {
         //Find the player
@@ -53,7 +57,7 @@ public class EnemyStateManager : MonoBehaviour
         agroRange = agroRangeRand;
 
         //Set first move to true (Idle move)
-        newEnemyPosition = new Vector2(enemyStartPosition.x + (Random.Range(-3, 3)), enemyStartPosition.y + Random.Range(-3, 3));
+        
 }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -67,8 +71,14 @@ public class EnemyStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void SwitchState(EnemyBaseState state)
+    public void SwitchState(EnemyBaseState state, float switchTime = 0)
     {
+        StartCoroutine(SwitchStateInTime(state, switchTime));
+    }
+
+    private IEnumerator SwitchStateInTime(EnemyBaseState state, float switchTime)
+    {
+        yield return new WaitForSeconds(switchTime);
         currentState = state;
         state.EnterState(this);
     }
@@ -97,12 +107,8 @@ public class EnemyStateManager : MonoBehaviour
         return false;
     }
 
-    public void EnemyRandPos()
+    public Vector2 EnemyRandPos(float distance)
     {
-    float step = moveSpeed * Time.deltaTime;
-        
-    transform.position = Vector2.MoveTowards(transform.position, newEnemyPosition, step); //Move to random location
-
+        return new Vector2((Random.Range(distance * -1, distance)),  Random.Range(distance * -1, distance)) + (Vector2)transform.position;
     }
-
 }
