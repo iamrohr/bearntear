@@ -5,7 +5,7 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void EnterState(EnemyStateManager enemy)
     {
-
+        Debug.Log("Enemy Idle State");
     }
 
     public override void UpdateState(EnemyStateManager enemy)
@@ -17,10 +17,9 @@ public class EnemyIdleState : EnemyBaseState
         {
             enemy.SwitchState(enemy.PatrolState);
         }
-        if (distToPlayer < enemy.agroRange && enemy.ReactionTime())
+        if (distToPlayer < enemy.agroRange)
         {
-            //Immediately switch to
-            enemy.SwitchState(enemy.ChaseState);
+            enemy.SwitchState(enemy.ChaseState, 0.5f);
         }
 
     }

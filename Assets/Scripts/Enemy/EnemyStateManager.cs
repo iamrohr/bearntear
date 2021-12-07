@@ -22,7 +22,6 @@ public class EnemyStateManager : MonoBehaviour
 
     public float attackRange = 2f;
     public float moveSpeed = 3f;
-    public float returnSpeed = 5f;
     public float reactionTime;
     public float reactionTimeRand;
     public float enemyWaitTime = 2f;
@@ -57,7 +56,8 @@ public class EnemyStateManager : MonoBehaviour
         agroRange = agroRangeRand;
 
         //Set first move to true (Idle move)
-        
+
+
 }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -87,6 +87,7 @@ public class EnemyStateManager : MonoBehaviour
 
     public IEnumerator AttackPlayer()
     {
+        yield return new WaitForSeconds(0.5f);
         attackBox.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         attackBox.SetActive(false);
@@ -95,17 +96,28 @@ public class EnemyStateManager : MonoBehaviour
         canAttackPlayer = true;
     }
 
-    public bool ReactionTime()
-    {
-        reactionTime -= Time.deltaTime;
-        Debug.Log("Reaction time is " + reactionTime);
-        if (reactionTime <= 0f)
-        {
-            reactionTime = reactionTimeRand;
-            return true;
-        }
-        return false;
-    }
+    //public bool ReactionTime()
+    //{
+    //    reactionTime -= Time.deltaTime;
+    //    Debug.Log("Reaction time is " + reactionTime);
+    //    if (reactionTime <= 0f)
+    //    {
+    //        reactionTime = reactionTimeRand;
+    //        return true;
+    //    }
+    //    return false;
+    //}
+
+    //public bool WaitBeforeAttack(float wait)
+    //{
+    //    wait -= Time.deltaTime;
+    //    Debug.Log("Reaction time is " + wait);
+    //    if (wait <= 0f)
+    //    {
+    //        return true;
+    //    }
+    //    return false;
+    //}
 
     public Vector2 EnemyRandPos(float distance)
     {
