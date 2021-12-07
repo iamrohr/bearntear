@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
-    private bool waiting;
-    private float waitTime = 1;
-
     public override void EnterState(EnemyStateManager enemy)
     {
         Debug.Log("Enemy Idle State");
