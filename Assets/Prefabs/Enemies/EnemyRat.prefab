@@ -254,10 +254,8 @@ MonoBehaviour:
   agroRangeMultiplier: 5
   attackRange: 2
   moveSpeed: 2
-  reactionTime: 0
-  reactionTimeRand: 0
-  enemyWaitTime: 2
   canAttackPlayer: 1
+  waitBetweenAttack: 0.5
   rb: {fileID: 0}
   newEnemyPosition: {x: 0, y: 0}
   enemyStartPosition: {x: 0, y: 0}
@@ -280,9 +278,9 @@ MonoBehaviour:
   cottonDrop: {fileID: 5335850060171322549, guid: d12341d4347410448896b6d0af746cd0, type: 3}
   currentHealth: 0
   maxHealth: 20
-  dropRange: 3
   giveTear: 50
   pauseTearDecrease: 3
+  dropRange: 3
   enemyPos: {x: 0, y: 0}
   enemyDie:
   - {fileID: 8300000, guid: 22acbe9d35a02ab4bb6a3f949f4f8b7b, type: 3}

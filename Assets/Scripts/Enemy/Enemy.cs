@@ -3,13 +3,15 @@
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D enemyRB;
-    public GameObject player;
+    [HideInInspector] public GameObject player;
     public GameObject cottonDrop;
 
     public int currentHealth, maxHealth;
-    public int dropRange;
     public int giveTear = 20;
     public int pauseTearDecrease = 3;
+    
+    public int dropRange;
+    private float dropOffsetY = 0.75f;
   
     public Vector2 enemyPos;
 
@@ -53,7 +55,7 @@ public class Enemy : MonoBehaviour
 
         if(RandomNumber == dropRange)
         {
-            Instantiate(cottonDrop, new Vector2(enemyPos.x, enemyPos.y), Quaternion.identity);           
+            Instantiate(cottonDrop, new Vector2(enemyPos.x, enemyPos.y - dropOffsetY), Quaternion.identity);           
         }
         
     }

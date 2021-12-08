@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class GiveLife : MonoBehaviour
 {
-    private int rand;
     public Sprite[] cottonSprites;
+    private int rand;
     public int giveLife;
 
     [SerializeField] private AudioClip cottonPickupSound;
