@@ -4,7 +4,7 @@ public class EnemyStunState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
-        Debug.Log("stunned");
+
     }
 
     public override void UpdateState(EnemyStateManager enemy)
