@@ -118,15 +118,14 @@ public class EnemyStateManager : MonoBehaviour
         float t = 0;
         Vector2 dir;
 
+        //Knock directon depending on player position
         if (transform.position.x < player.transform.position.x)
         {
-            //Enemy is to the left side of the player so move right
             dir = Vector2.left;
         }
         else
         {
             dir = Vector2.right;
-
         }
 
         while (t < 1)
