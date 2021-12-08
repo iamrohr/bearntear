@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     public float comboInterval;
     public float slamTime;
     public float slamHeight;
+    public int comboTotal;
 
     [Header("Other")]
     public GameObject swipeAttack;
@@ -19,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject slamAttack;
     public AudioSource swingSound;
 
-    [NonSerialized] public int comboTotal, comboCurrent;
+    [NonSerialized] public int comboCurrent;
 
     private float attackTimer, prevComboTime;
     private bool canAttack = true, queuedAttack;
