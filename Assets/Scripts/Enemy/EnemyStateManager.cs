@@ -11,39 +11,33 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyReturnHomeState ReturnHomeState = new EnemyReturnHomeState();
     public EnemyPatrolState PatrolState = new EnemyPatrolState();
     public EnemyWaitState WaitState = new EnemyWaitState();
+    public EnemyStunState StunState = new EnemyStunState();
 
     [Header("Components")]
-    public GameObject player;
+    [HideInInspector] public GameObject player;
     public GameObject attackBox;
+    public Rigidbody2D rb;
 
     [Header("Attributes")]
+    [HideInInspector] public Vector2 newEnemyPosition;
+    [HideInInspector] public Vector2 enemyStartPosition;
+    [HideInInspector] public bool arrivedAtRandPos;
+    [HideInInspector] public bool moveToStart;
+
     public float agroRangeRand;
     public float agroRange = 5f;
     public float agroRangeMultiplier = 5f;
 
     public float attackRange = 2f;
     public float moveSpeed = 3f;
-    //public float reactionTime;
-    //public float reactionTimeRand;
     public bool canAttackPlayer = true;
     public float waitBetweenAttack = 0.25f;
 
-    public Rigidbody2D rb;
-
-    public Vector2 newEnemyPosition;
-
-    //Fetch Attributes
-    public Vector2 enemyStartPosition;
-
-    public bool arrivedAtRandPos;
-    public bool moveToStart;
-
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
 
-        //Find the player
-        player = GameObject.FindGameObjectWithTag("Player");
         //Starting state for the Enemy state machine
         currentState = IdleState;
         currentState.EnterState(this);
@@ -52,17 +46,8 @@ public class EnemyStateManager : MonoBehaviour
         enemyStartPosition = new Vector2(transform.position.x, transform.position.y);
         attackBox.SetActive(false);
 
-        //Set Random Reaction time
-        //reactionTimeRand = Random.Range(0.1f, 2f);
-        //reactionTime = reactionTimeRand;
-
-        //Set Random Agro Range
         agroRangeRand = Random.Range(agroRange, agroRange + agroRangeMultiplier);
         agroRange = agroRangeRand;
-
-        //Set first move to true (Idle move)
-
-
 }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -78,8 +63,6 @@ public class EnemyStateManager : MonoBehaviour
 
     public void SwitchState(EnemyBaseState state, float switchTime = 0)
     {
-        
-        //StopCoroutine(nameof(SwitchStateInTime));
         StartCoroutine(SwitchStateInTime(state, switchTime));
     }
 
@@ -107,6 +90,20 @@ public class EnemyStateManager : MonoBehaviour
         canAttackPlayer = true;
     }
 
+    public Vector2 EnemyRandPos(float distance)
+    {
+        return new Vector2((Random.Range(distance * -1, distance)),  Random.Range(distance * -1, distance)) + (Vector2)transform.position;
+    }
+}
+
+    //Set Random Reaction time
+    //public float reactionTime;
+    //public float reactionTimeRand;
+    //reactionTimeRand = Random.Range(0.1f, 2f);
+    //reactionTime = reactionTimeRand;
+
+    //Set Random Agro Range
+
     //public bool ReactionTime()
     //{
     //    reactionTime -= Time.deltaTime;
@@ -129,9 +126,3 @@ public class EnemyStateManager : MonoBehaviour
     //    }
     //    return false;
     //}
-
-    public Vector2 EnemyRandPos(float distance)
-    {
-        return new Vector2((Random.Range(distance * -1, distance)),  Random.Range(distance * -1, distance)) + (Vector2)transform.position;
-    }
-}
