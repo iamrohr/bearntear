@@ -51,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.Dashing:
                 break;
+            case PlayerState.Slamming:
+                rb.velocity *= 0;
+                break;
             default:
                 goto case PlayerState.Idle;
         }

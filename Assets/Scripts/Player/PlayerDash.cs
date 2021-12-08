@@ -29,8 +29,7 @@ public class PlayerDash : MonoBehaviour
         dashSound.Play();
 
         canDash = false;
-        player.EnterState(PlayerState.Dashing);
-        player.MakeInvulnerable(dashTime);
+        player.EnterState(PlayerState.Dashing, dashTime);
 
         Vector2 dashDirection;
         if (xInput > 0)

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum PlayerState { Idle, Moving, Attacking, Jumping, Dashing }
+public enum PlayerState { Idle, Moving, Attacking, Jumping, Dashing, Slamming }
 
 public class Player : MonoBehaviour
 {
@@ -54,6 +54,9 @@ public class Player : MonoBehaviour
 
     public void MakeInvulnerable(float time)
     {
+        if (invulnerable)
+            CancelInvoke(nameof(TurnOffInvulnerable));
+
         invulnerable = true;
         Invoke(nameof(TurnOffInvulnerable), time);
     }

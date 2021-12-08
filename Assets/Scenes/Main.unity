@@ -676,15 +676,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d23958eadaf06648889e4e765dd9a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
-  bashAttack: {fileID: 77544860683481084, guid: a76ea72f68964ee499cd8cfed5682a44, type: 3}
   attackOffSetX: 1.8
   swipeCooldown: 0.5
   bashCooldown: 0.5
   timeForBash: 0.2
   comboInterval: 0.8
-  comboTotal: 4
-  comboCurrent: 0
+  slamTime: 0.15
+  slamHeight: 0.2
+  swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
+  bashAttack: {fileID: 77544860683481084, guid: a76ea72f68964ee499cd8cfed5682a44, type: 3}
+  slamAttack: {fileID: 77544860683481084, guid: 5063c7f6fe34db148a9e95dc4a10c9b7, type: 3}
   swingSound: {fileID: 1120508442}
   cameraShake: {fileID: 1156334062}
 --- !u!114 &175791236

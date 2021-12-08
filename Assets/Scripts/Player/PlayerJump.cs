@@ -7,14 +7,15 @@ public class PlayerJump : MonoBehaviour
     public float jumpHeight, hangTime, jumpTime;
     public AudioSource jumpSound;
     [NonSerialized] public bool grounded = true;
+    [NonSerialized] public float groundedY;
 
-    private float defaultStartY;
     private Player player;
+    private IEnumerator jump;
 
     void Start()
     {
         player = GetComponent<Player>();
-        defaultStartY = transform.localPosition.y;
+        groundedY = transform.localPosition.y;
     }
 
     void Update()
@@ -23,8 +24,16 @@ public class PlayerJump : MonoBehaviour
         {
             grounded = false;
             if (jumpTime > 0)
-                StartCoroutine(Jump());
+            {
+                jump = Jump();
+                StartCoroutine(jump);
+            }
         }
+    }
+
+    public void CancelJump()
+    {
+        StopCoroutine(jump);
     }
 
     private IEnumerator Jump()
@@ -34,18 +43,18 @@ public class PlayerJump : MonoBehaviour
         jumpSound.Play();
 
         float t = 0;
-        float localStartY = defaultStartY;
+        float startY = groundedY;
 
         while (t < 1)
         {
-            float smoothFactor = SmoothStop(t);
+            float tween = 1 - (1 - t) * (1 - t) * (1 - t); //Smooth stop
             float y = transform.localPosition.y;
 
-            y = localStartY + jumpHeight * smoothFactor;
+            y = startY + jumpHeight * tween;
             transform.localPosition = new Vector2(transform.localPosition.x, y);
 
             t += Time.deltaTime / jumpTime;
-            yield return new WaitForEndOfFrame();
+            yield return null;
             if (player.state == PlayerState.Dashing)
                 break;
         }
@@ -53,36 +62,27 @@ public class PlayerJump : MonoBehaviour
         yield return new WaitForSeconds(hangTime);
 
         t = 0;
-        localStartY = transform.localPosition.y;
+        startY = transform.localPosition.y;
 
-        while (t < 1 && transform.localPosition.y > defaultStartY)
+        while (t < 1 && transform.localPosition.y > groundedY)
         {
             if (player.state != PlayerState.Dashing)
             {
-                float smoothFactor = SmoothStart(t);
+                float tween = t * t; //Smooth start
                 float y = transform.localPosition.y;
 
-                y = localStartY - jumpHeight * smoothFactor;
+                y = startY - jumpHeight * tween;
                 transform.localPosition = new Vector2(transform.localPosition.x, y);
 
                 t += Time.deltaTime / jumpTime;
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
 
-        transform.localPosition = new Vector2(transform.localPosition.x, defaultStartY);
+        transform.localPosition = new Vector2(transform.localPosition.x, groundedY);
         grounded = true;
         player.LeaveState(PlayerState.Jumping);
-    }
-
-    private float SmoothStart(float t)
-    {
-        return t * t;
-    }
-
-    private float SmoothStop(float t)
-    {
-        return 1 - (1 - t) * (1 - t) * (1 - t);
+        yield return null;
     }
 }
