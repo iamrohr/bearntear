@@ -92,6 +92,60 @@ public class EnemyStateManager : MonoBehaviour
     {
         return new Vector2((Random.Range(distance * -1, distance)),  Random.Range(distance * -1, distance)) + (Vector2)transform.position;
     }
+
+    public void EnemyStun(float timeStunned)
+    {
+
+        SwitchState(StunState);
+        StartCoroutine(EnemyTimeStunned(timeStunned));
+    }
+
+        public IEnumerator EnemyTimeStunned(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SwitchState(IdleState);
+    }
+
+    public void EnemyKnocked(float distanceKnocked)
+    {
+        StartCoroutine(EnemyKnockback(distanceKnocked));
+    }
+
+    public IEnumerator EnemyKnockback(float knockDistance)
+    {
+        Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.y);
+        float knockTime = 1f;
+        float t = 0;
+        Vector2 dir;
+
+        if (transform.position.x < player.transform.position.x)
+        {
+            //Enemy is to the left side of the player so move right
+            dir = Vector2.left;
+        }
+        else
+        {
+            dir = Vector2.right;
+
+        }
+
+        while (t < 1)
+        {
+            float smoothFactor = SmoothStop(t);
+            float x = transform.localPosition.x;
+
+            x = enemyPosition.x + knockDistance * smoothFactor * dir.x;
+            transform.localPosition = new Vector2(x, transform.localPosition.y);
+
+            t += Time.deltaTime / knockTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private float SmoothStop(float t)
+    {
+        return 1 - (1 - t) * (1 - t) * (1 - t) * (1 - t); // 1 - (1 - x)^4
+    }
 }
 
     //Set Random Reaction time

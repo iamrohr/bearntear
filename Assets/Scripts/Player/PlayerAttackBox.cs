@@ -8,6 +8,8 @@ public class PlayerAttackBox : MonoBehaviour
     public AttackType attackType;
     public float comboMultiplier;
     public bool comboFinal;
+    public float stunTime = 1.5f;
+    public float knockDistance = 2f;
 
     void Start()
     {
@@ -27,10 +29,15 @@ public class PlayerAttackBox : MonoBehaviour
 
         if (attackType == AttackType.Swipe && comboFinal)
         {
-            other.GetComponent<Enemy>().TakeDamage((int) (damage * comboMultiplier));
+            other.GetComponent<Enemy>().TakeDamage((int)(damage * comboMultiplier));
         }
         else
+        {
             other.GetComponent<Enemy>().TakeDamage(damage);
+            var stateManager = other.GetComponent<EnemyStateManager>();
+            stateManager.EnemyStun(stunTime);
+            stateManager.EnemyKnocked(knockDistance);
+        }
     }
 
 }
