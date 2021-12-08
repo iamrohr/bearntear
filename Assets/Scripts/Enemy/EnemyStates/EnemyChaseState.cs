@@ -5,10 +5,8 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void EnterState(EnemyStateManager enemy)
     {
-        enemy.attackBox.SetActive(false);
-        Debug.Log("Enemy Chase State");
-        
-}
+        enemy.attackBox.SetActive(false);   
+    }
 
     public override void UpdateState(EnemyStateManager enemy)
     {

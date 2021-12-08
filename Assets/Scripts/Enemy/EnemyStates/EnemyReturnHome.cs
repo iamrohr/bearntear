@@ -5,7 +5,6 @@ public class EnemyReturnHomeState : EnemyBaseState
     public override void EnterState(EnemyStateManager enemy)
     {
         enemy.attackBox.SetActive(false);
-        Debug.Log("Return Home State");
         //Flips the enemy towards the start position.
         if (enemy.transform.position.x < enemy.enemyStartPosition.x)
         {

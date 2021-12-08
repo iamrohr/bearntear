@@ -7,7 +7,6 @@ public class EnemyPatrolState : EnemyBaseState
     {
         enemy.attackBox.SetActive(false);
         enemy.newEnemyPosition = enemy.EnemyRandPos(3);
-        Debug.Log("Enemy Patrol State");
 
         if (enemy.transform.position.x < enemy.newEnemyPosition.x)
         {

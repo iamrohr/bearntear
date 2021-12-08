@@ -4,7 +4,7 @@ public class EnemyIdleState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
-        Debug.Log("Enemy Idle State");
+
     }
 
     public override void UpdateState(EnemyStateManager enemy)

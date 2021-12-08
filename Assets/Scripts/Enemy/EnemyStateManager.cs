@@ -92,7 +92,6 @@ public class EnemyStateManager : MonoBehaviour
         
         currentState = state;
         state.EnterState(this);
-        Debug.Log("coroutine??");
     }
 
     //State Machines can only be in one state at a time.
