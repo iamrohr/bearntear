@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public Vector2 enemyPos;
 
     [Header("Attributes")]
-    public int currentHealth, maxHealth;
+    public int currentHealth;
+    public int maxHealth;
     public int giveTear = 20;
     public int pauseTearDecrease = 3;
 
