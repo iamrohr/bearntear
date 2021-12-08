@@ -34,7 +34,6 @@ public class EnemyChaseState : EnemyBaseState
         {
             enemy.SwitchState(enemy.ReturnHomeState);
         }
-
     }
 
     public override void OnCollisionEnter2D(EnemyStateManager enemy, Collision2D collision)

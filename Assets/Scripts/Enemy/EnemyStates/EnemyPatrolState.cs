@@ -14,7 +14,6 @@ public class EnemyPatrolState : EnemyBaseState
         }
         else
             enemy.transform.localScale = new Vector2(-1, 1);
-
     }
 
     public override void UpdateState(EnemyStateManager enemy)

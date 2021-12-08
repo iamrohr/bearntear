@@ -1,24 +1,27 @@
- using UnityEngine;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D enemyRB;
     [HideInInspector] public GameObject player;
-    public GameObject cottonDrop;
+    [HideInInspector] public Vector2 enemyPos;
 
+    [Header("Attributes")]
     public int currentHealth, maxHealth;
     public int giveTear = 20;
     public int pauseTearDecrease = 3;
-    
+
+    [Header("Addons")]
+    public ParticleSystem psDie;
+
+    [Header("Drops")]
+    public GameObject cottonDrop;
     public int dropRange;
     private float dropOffsetY = 0.75f;
-  
-    public Vector2 enemyPos;
 
+    [Header("Sound")]
     public AudioClip [] enemyDie;
     public float enemyDieVolume = 1f;
-
-    public ParticleSystem psDie;
 
     private void Start()
     {
@@ -42,7 +45,7 @@ public class Enemy : MonoBehaviour
             InstansiateDrop();
             EnemyDieSound();
             psDie.gameObject.SetActive(true);
-            //psDie.transform.parent = null;
+            //psDie.transform.parent = null;  //Set Particle system parent to null so it does not destroys 
             player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
             player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
             Destroy(this.gameObject);

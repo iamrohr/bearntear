@@ -17,8 +17,8 @@ public class EnemyAttackState : EnemyBaseState
 
             enemy.StartCoroutine(enemy.AttackPlayer());
         }
-
-            if (distToPlayer > enemy.attackRange)
+        
+        if (distToPlayer > enemy.attackRange)
         {
             enemy.SwitchState(enemy.ChaseState);
         }
