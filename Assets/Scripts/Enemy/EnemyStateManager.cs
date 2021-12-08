@@ -23,10 +23,10 @@ public class EnemyStateManager : MonoBehaviour
 
     public float attackRange = 2f;
     public float moveSpeed = 3f;
-    public float reactionTime;
-    public float reactionTimeRand;
-    public float enemyWaitTime = 2f;
+    //public float reactionTime;
+    //public float reactionTimeRand;
     public bool canAttackPlayer = true;
+    public float waitBetweenAttack = 0.25f;
 
     public Rigidbody2D rb;
 
@@ -53,8 +53,8 @@ public class EnemyStateManager : MonoBehaviour
         attackBox.SetActive(false);
 
         //Set Random Reaction time
-        reactionTimeRand = Random.Range(0.1f, 2f);
-        reactionTime = reactionTimeRand;
+        //reactionTimeRand = Random.Range(0.1f, 2f);
+        //reactionTime = reactionTimeRand;
 
         //Set Random Agro Range
         agroRangeRand = Random.Range(agroRange, agroRange + agroRangeMultiplier);
@@ -99,12 +99,12 @@ public class EnemyStateManager : MonoBehaviour
 
     public IEnumerator AttackPlayer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(waitBetweenAttack);
         attackBox.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(waitBetweenAttack);
         attackBox.SetActive(false);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(waitBetweenAttack);
         canAttackPlayer = true;
     }
 
