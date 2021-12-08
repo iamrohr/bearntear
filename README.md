@@ -1,5 +1,2 @@
 # Bear 'n Tear
-
-https://docs.google.com/document/d/1G4xgOKOSExjyBzBb6y6wpE6qeBytUNdhCoaB94445ZI/edit#heading=h.p9lhk2c9b3mf
-
-https://docs.google.com/presentation/d/1VLReKkgJsPFNTeJZWum0v-9EjaX3lq_IcK-m110MkJA/edit?usp=sharing
+![startscreen](https://user-images.githubusercontent.com/65831893/145203087-49c2c70a-128d-4dab-882b-58f6a69253cf.png)
