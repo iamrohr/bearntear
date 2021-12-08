@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public int pauseTearDecrease = 3;
 
     [Header("Addons")]
-    public ParticleSystem psDie;
+    public ParticleSystem particleSystemEnemyDie;
 
     [Header("Drops")]
     public GameObject cottonDrop;
@@ -45,8 +45,9 @@ public class Enemy : MonoBehaviour
         {
             InstansiateDrop();
             EnemyDieSound();
-            psDie.gameObject.SetActive(true);
-            //psDie.transform.parent = null;  //Set Particle system parent to null so it does not destroys 
+            particleSystemEnemyDie.transform.parent = null; //Set Particle system parent to null so it does not destroy 
+            particleSystemEnemyDie.gameObject.SetActive(true);
+            Destroy(particleSystemEnemyDie, particleSystemEnemyDie.main.duration); //Deletes the particle system after played
             player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
             player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
             Destroy(this.gameObject);
