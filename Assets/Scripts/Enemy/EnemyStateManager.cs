@@ -48,7 +48,7 @@ public class EnemyStateManager : MonoBehaviour
 
         agroRangeRand = Random.Range(agroRange, agroRange + agroRangeMultiplier);
         agroRange = agroRangeRand;
-}
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -76,8 +76,6 @@ public class EnemyStateManager : MonoBehaviour
         currentState = state;
         state.EnterState(this);
     }
-
-    //State Machines can only be in one state at a time.
 
     public IEnumerator AttackPlayer()
     {

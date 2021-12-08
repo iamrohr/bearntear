@@ -60,8 +60,7 @@ public class Enemy : MonoBehaviour
         if(RandomNumber == dropRange)
         {
             Instantiate(cottonDrop, new Vector2(enemyPos.x, enemyPos.y - dropOffsetY), Quaternion.identity);           
-        }
-        
+        }  
     }
 
     void EnemyDieSound()
