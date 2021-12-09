@@ -8,9 +8,8 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject pauseControlsCanvas;
     public GameObject pauseCanvas;
-    public GameObject background;
-    public GameObject background1;
-    public GameObject background2;
+    public GameObject backgroundTransparent;
+    public GameObject backgroundTransparent2;
 
     public GameObject playerShadow;
     public GameObject player;
@@ -49,9 +48,8 @@ public class PauseManager : MonoBehaviour
     public void PauseControls()
     {
         buttonClickSound.Play();
-        background.SetActive(false);
-        background1.SetActive(false);
-        background2.SetActive(false);
+        backgroundTransparent.SetActive(false);
+        backgroundTransparent2.SetActive(false);
         pauseCanvas.SetActive(false);
         playerShadowSpriteRenderer.enabled = false;
         playerRenderer.enabled = false;
@@ -82,9 +80,8 @@ public class PauseManager : MonoBehaviour
         pauseControlsCanvas.SetActive(false);
         //playerShootScript.enabled = false;
         pauseCanvas.SetActive(true);
-        background.SetActive(true);
-        background1.SetActive(true);
-        background2.SetActive(true);
+        backgroundTransparent.SetActive(true);
+        backgroundTransparent2.SetActive(true);
         playerShadowSpriteRenderer.enabled = true;
         playerRenderer.enabled = true;
         healthBarCanvas.SetActive(true);
