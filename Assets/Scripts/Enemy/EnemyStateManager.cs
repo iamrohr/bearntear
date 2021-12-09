@@ -16,7 +16,6 @@ public class EnemyStateManager : MonoBehaviour
     [Header("Components")]
     [HideInInspector] public GameObject player;
     public GameObject attackBox;
-    public GameObject playerCenter;
     public Rigidbody2D rb;
 
     [Header("Attributes")]
