@@ -31,6 +31,10 @@ public class TearMode : MonoBehaviour
         Time.timeScale = 1;
         playerMovementScript.speed = 12;
 
+        yield return new WaitForSeconds(5f);
+
+        yield return null;
+
         // move faster
 
 
