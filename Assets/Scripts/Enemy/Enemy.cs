@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Addons")]
     public ParticleSystem particleSystemEnemyDie;
+    public GameObject particleGameObj;
 
     [Header("Drops")]
     public GameObject cottonDrop;
@@ -45,9 +46,11 @@ public class Enemy : MonoBehaviour
         {
             InstansiateDrop();
             EnemyDieSound();
-            particleSystemEnemyDie.transform.parent = null; //Set Particle system parent to null so it does not destroy 
+            particleSystemEnemyDie.transform.parent = null; //Set Particle system parent to null so it does not destroy
+            particleSystemEnemyDie.transform.localScale = new Vector3(1, 1, 1);
+            particleSystemEnemyDie.transform.position = new Vector3(transform.position.x, transform.position.y, 1);
             particleSystemEnemyDie.gameObject.SetActive(true);
-            Destroy(particleSystemEnemyDie, particleSystemEnemyDie.main.duration); //Deletes the particle system after played
+            Destroy(particleGameObj, particleSystemEnemyDie.main.duration); //Deletes the particle system after played
             player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
             player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
             Destroy(this.gameObject);
