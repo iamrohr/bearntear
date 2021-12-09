@@ -21,7 +21,6 @@ public class PlayerAttackBox : MonoBehaviour
         GetComponent<SpriteRenderer>().color = temp;
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Enemy"))
@@ -33,7 +32,6 @@ public class PlayerAttackBox : MonoBehaviour
         }
         else
         {
-            Debug.Log("Attack!");
             other.GetComponent<Enemy>().TakeDamage(damage);
             var stateManager = other.GetComponent<EnemyStateManager>();
             stateManager.EnemyStun(stunTime);
