@@ -6,6 +6,7 @@ public class EnemyPatrolState : EnemyBaseState
     public override void EnterState(EnemyStateManager enemy)
     {
         enemy.attackBox.SetActive(false);
+        //enemy.animator.SetTrigger("Walk");
         enemy.newEnemyPosition = enemy.EnemyRandPos(3);
 
         if (enemy.transform.position.x < enemy.newEnemyPosition.x)

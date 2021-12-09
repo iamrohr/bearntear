@@ -4,7 +4,7 @@ public class EnemyIdleState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
-
+        //enemy.animator.SetTrigger("Idle");
     }
 
     public override void UpdateState(EnemyStateManager enemy)

@@ -15,8 +15,9 @@ public class EnemyStateManager : MonoBehaviour
 
     [Header("Components")]
     [HideInInspector] public GameObject player;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public Animator animator;
     public GameObject attackBox;
-    public Rigidbody2D rb;
 
     [Header("Attributes")]
     [HideInInspector] public Vector2 newEnemyPosition;
@@ -37,6 +38,7 @@ public class EnemyStateManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
 
         //Starting state for the Enemy state machine
         currentState = IdleState;
@@ -48,6 +50,8 @@ public class EnemyStateManager : MonoBehaviour
 
         agroRangeRand = Random.Range(agroRange, agroRange + agroRangeMultiplier);
         agroRange = agroRangeRand;
+
+        //animator.SetTrigger("Idle");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

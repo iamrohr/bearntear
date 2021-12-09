@@ -5,7 +5,8 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void EnterState(EnemyStateManager enemy)
     {
-        enemy.attackBox.SetActive(false);   
+        enemy.attackBox.SetActive(false);
+        //enemy.animator.SetTrigger("Walk");
     }
 
     public override void UpdateState(EnemyStateManager enemy)
