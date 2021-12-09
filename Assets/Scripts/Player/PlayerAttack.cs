@@ -16,16 +16,18 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Other")]
     public GameObject swipeAttack;
+    public GameObject swipeFinalAttack;
     public GameObject bashAttack;
     public GameObject slamAttack;
     public AudioSource swingSound;
 
-    [NonSerialized] public int comboCurrent;
 
+    [SerializeField] private int comboCurrent;
     private float attackTimer, prevComboTime;
     private bool canAttack = true, queuedAttack;
     private PlayerMovement pm;
     private Player player;
+    private float attackPosY;
 
     public CameraShake cameraShake; // JAMES KALNINS
 
@@ -94,7 +96,7 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
 
-        Vector2 attackPos = new Vector2(transform.position.x, transform.position.y);
+        Vector2 attackPos = new Vector2(transform.position.x, transform.position.y + 1.2f);
 
         if (pm.horFacing == HorFacing.Left)
             attackPos += Vector2.left * attackOffSetX;
@@ -153,7 +155,8 @@ public class PlayerAttack : MonoBehaviour
 
         StartCoroutine(cameraShake.Shake(0.3f, 0.4f));
 
-        var attackObject = Instantiate(slamAttack, transform.position, Quaternion.identity);
+        Vector2 attackPos = new Vector2(transform.position.x, transform.position.y + 1.2f);
+        var attackObject = Instantiate(slamAttack, attackPos, Quaternion.identity);
         attackObject.transform.SetParent(gameObject.transform);
 
         yield return null;
@@ -161,9 +164,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void SwipeAttack(Vector2 attackPos)
     {
-        var attackObject = Instantiate(swipeAttack, attackPos, Quaternion.identity);
-        attackObject.transform.SetParent(gameObject.transform);
-
         if (comboCurrent > 1 && comboInterval < Time.time - prevComboTime)
             comboCurrent = 1;
 
@@ -171,29 +171,30 @@ public class PlayerAttack : MonoBehaviour
 
         if (comboCurrent >= comboTotal)
         {
-            swingSound.pitch = 1;
-            player.animator.SetTrigger("Swipe1");
+            var attackObject = Instantiate(swipeFinalAttack, attackPos, Quaternion.identity);
+            attackObject.transform.SetParent(gameObject.transform);
 
-            attackObject.GetComponent<PlayerAttackBox>().comboFinal = true;
-            attackObject.GetComponent<SpriteRenderer>().color = Color.cyan; //Temp check
             comboCurrent = 1;
         }
-        else if (comboCurrent % 2 == 0)
+        else
+        {
+            var attackObject = Instantiate(swipeAttack, attackPos, Quaternion.identity);
+            attackObject.transform.SetParent(gameObject.transform);
+
+            comboCurrent++;
+        }
+
+        if (comboCurrent % 2 == 0)
         {
             swingSound.pitch = 1.2f;
             player.animator.SetTrigger("Swipe1");
-
-            comboCurrent++;
         }
         else
         {
             swingSound.pitch = 1.1f;
             player.animator.SetTrigger("Swipe2");
-
-            attackObject.GetComponent<SpriteRenderer>().color = Color.blue; //Temp check
-            comboCurrent++;
         }
- 
+
         swingSound.Play();
         AttackCooldown(swipeCooldown);
     }
@@ -229,7 +230,7 @@ public class PlayerAttack : MonoBehaviour
             queuedAttack = false;
         }
     }
-
+    
     private void CanAttackToTrue()
     {
         if (!queuedAttack)

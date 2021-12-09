@@ -45,6 +45,5 @@ public class PlayerAttackBox : MonoBehaviour
         var stateManager = other.GetComponent<EnemyStateManager>();
         stateManager.EnemyStun(stunTime);
         stateManager.EnemyKnocked(knockDistance);
-        Debug.Log(other);
     }
 }

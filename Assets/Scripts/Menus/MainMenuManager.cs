@@ -76,9 +76,9 @@ public class MainMenuManager : MonoBehaviour
     public void MainMenuQuit()
     {
         buttonClickSound.Play();
-        UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
-
-        // Application.Quit(); to be added to build
+        
+        //UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
+        Application.Quit(); //to be added to build
     }
 
     private void Update()
