@@ -379,9 +379,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseControlsCanvas: {fileID: 1852824929}
   pauseCanvas: {fileID: 1744992213}
-  background: {fileID: 0}
-  background1: {fileID: 0}
-  background2: {fileID: 0}
+  backgroundTransparent: {fileID: 751333018}
+  backgroundTransparent2: {fileID: 840539987}
   playerShadow: {fileID: 2116937254}
   player: {fileID: 175791228}
   healthBarCanvas: {fileID: 1119809325}
@@ -818,6 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tearBarOnPlayerScript: {fileID: 175791232}
+  playerMovementScript: {fileID: 175791237}
   mainCamera: {fileID: 1107126504}
 --- !u!1 &194867873
 GameObject:
@@ -2648,7 +2648,7 @@ GameObject:
   - component: {fileID: 840539989}
   - component: {fileID: 840539988}
   m_Layer: 0
-  m_Name: BackgroundTransparent (1)
+  m_Name: BackgroundTransparent2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
