@@ -1,18 +1,23 @@
+using System;
 using UnityEngine;
 
-public enum AttackType {Swipe, Bash }
 
 public class PlayerAttackBox : MonoBehaviour
 {
+    [Serializable] private enum AttackType { Swipe, SwipeFinal, Bash, Slam }
+    
     public int damage;
-    public AttackType attackType;
-    public float comboMultiplier;
-    public bool comboFinal;
     public float stunTime = 1.5f;
     public float knockDistance = 2f;
+    [SerializeField] private AttackType attackType;
+    [NonSerialized] public float comboMultiplier;
+    [NonSerialized] public bool comboFinal;
+
+    private bool canDamage; 
 
     void Start()
     {
+        canDamage = true;
         Destroy(gameObject, 0.1f);
         
         //Temporary alpha change
@@ -23,20 +28,23 @@ public class PlayerAttackBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (!other.CompareTag("Enemy"))
             return;
 
-        if (attackType == AttackType.Swipe && comboFinal)
-        {
-            other.GetComponent<Enemy>().TakeDamage((int)(damage * comboMultiplier));
-        }
-        else
-        {
-            other.GetComponent<Enemy>().TakeDamage(damage);
-            var stateManager = other.GetComponent<EnemyStateManager>();
-            stateManager.EnemyStun(stunTime);
-            stateManager.EnemyKnocked(knockDistance);
-        }
+        if (canDamage)
+            Attack(other);
+
+        if (attackType == AttackType.Swipe)
+            canDamage = false;            
     }
 
+    private void Attack(Collider2D other)
+    {
+        other.GetComponent<Enemy>().TakeDamage(damage);
+        var stateManager = other.GetComponent<EnemyStateManager>();
+        stateManager.EnemyStun(stunTime);
+        stateManager.EnemyKnocked(knockDistance);
+        Debug.Log(other);
+    }
 }
