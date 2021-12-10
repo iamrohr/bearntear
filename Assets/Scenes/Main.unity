@@ -2574,7 +2574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788349067}
   m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: 125.45, y: -0.1, z: -1.7543263}
+  m_LocalPosition: {x: 42.26, y: -0.05, z: -1.7543263}
   m_LocalScale: {x: 11.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2657,7 +2657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &840539988
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3281,7 +3281,7 @@ MonoBehaviour:
   camWindowDimension: 1
   smoothFloat: 0.001
   clampedLeftPos: -30
-  clampedRightPos: 113
+  clampedRightPos: 30
 --- !u!81 &1107126506
 AudioListener:
   m_ObjectHideFlags: 0
