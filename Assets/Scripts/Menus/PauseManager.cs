@@ -109,8 +109,8 @@ public class PauseManager : MonoBehaviour
     {
         buttonClickSound.Play();
         //Invoke(nameof(Quit), 1f);
-        //UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
-        Application.Quit(); //to be added to build
+        UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
+        // Application.Quit(); to be added to build
     }
 
     public void Continue()

@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5335850060171322549}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.8179, y: 0.9011, z: 0}
   m_LocalScale: {x: 0.29800236, y: 0.29800236, z: 0.29800236}
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.5}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cottonSprites:
-  - {fileID: 21300000, guid: d1f6bfe954ecde8469a82c35f0ed7108, type: 3}
+  - {fileID: 21300000, guid: 2f442063485749744ae65f8ace424c3e, type: 3}
   - {fileID: 21300000, guid: d1f6bfe954ecde8469a82c35f0ed7108, type: 3}
   - {fileID: 21300000, guid: a5f21e70b1efa8b48883d6ab0874e484, type: 3}
   giveLife: 5

@@ -55,9 +55,9 @@ public class MenuManager : MonoBehaviour
     {
         scoreScript.ResetScore();
         buttonClickSound.Play();
+        UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
 
-        //UnityEditor.EditorApplication.isPlaying = false; // needs to be replaced when Built
-        Application.Quit(); //to be added to build
+        // Application.Quit(); to be added to build
     }
 
     public void Back()
