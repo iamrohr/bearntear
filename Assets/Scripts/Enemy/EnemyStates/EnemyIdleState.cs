@@ -4,7 +4,7 @@ public class EnemyIdleState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
-        //enemy.animator.SetTrigger("Idle");
+        enemy.animator.SetTrigger("Idle");
     }
 
     public override void UpdateState(EnemyStateManager enemy)
@@ -17,7 +17,7 @@ public class EnemyIdleState : EnemyBaseState
         }
         if (distToPlayer < enemy.agroRange)
         {
-            enemy.SwitchState(enemy.ChaseState, 0.5f);
+            enemy.SwitchState(enemy.ChaseState, enemy.reactionTime);
         }
 
     }

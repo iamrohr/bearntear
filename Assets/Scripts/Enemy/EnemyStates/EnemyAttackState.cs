@@ -4,7 +4,7 @@ public class EnemyAttackState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
-
+        enemy.animator.SetTrigger("Attack");
     }
 
     public override void UpdateState(EnemyStateManager enemy)

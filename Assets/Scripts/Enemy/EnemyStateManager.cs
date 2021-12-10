@@ -29,6 +29,7 @@ public class EnemyStateManager : MonoBehaviour
     public float agroRange = 5f;
     public float agroRangeMultiplier = 5f;
 
+    public float reactionTime = 0.15f;
     public float attackRange = 2f;
     public float moveSpeed = 3f;
     public bool canAttackPlayer = true;
