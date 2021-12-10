@@ -43,11 +43,11 @@ public class TearMode : MonoBehaviour
 
         private void Update()
     {
-        if (tearBarOnPlayerScript.currentTear == tearBarOnPlayerScript.maxTear)
+        //if (tearBarOnPlayerScript.currentTear == tearBarOnPlayerScript.maxTear)
 
-            if (Input.GetButton("TearMode"))
-            {
-                StartCoroutine(TearModeStart());
-            }
+            //if (Input.GetButton("TearMode"))
+            //{
+            //    StartCoroutine(TearModeStart());
+            //}
     }
 }
