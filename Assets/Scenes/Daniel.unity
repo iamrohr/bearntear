@@ -299,15 +299,23 @@ PrefabInstance:
     - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: waves.Array.data[0].enemy
       value: 
-      objectReference: {fileID: 4394604815340158462, guid: 45be29701a3f7ca4295b6c05c86bf9e1, type: 3}
+      objectReference: {fileID: 4394604815340158462, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
     - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: waves.Array.data[1].count
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
+      propertyPath: waves.Array.data[1].enemy
+      value: 
+      objectReference: {fileID: 4394604815340158462, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
+    - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: waves.Array.data[2].count
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 194471299876561926, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
+      propertyPath: waves.Array.data[2].enemy
+      value: 
+      objectReference: {fileID: 4394604815340158462, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
     - target: {fileID: 194471299876561927, guid: 07b6cb2baf5269d45a4a1159929e6650, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
@@ -4310,6 +4318,10 @@ PrefabInstance:
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 1156334062}
+    - target: {fileID: 2958104977341504260, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: turnDelay
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2958104977341504263, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: healthBar
       value: 

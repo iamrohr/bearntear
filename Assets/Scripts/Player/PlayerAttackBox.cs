@@ -10,8 +10,6 @@ public class PlayerAttackBox : MonoBehaviour
     public float stunTime = 1.5f;
     public float knockDistance = 2f;
     [SerializeField] private AttackType attackType;
-    [NonSerialized] public float comboMultiplier;
-    [NonSerialized] public bool comboFinal;
 
     private bool canDamage; 
 
@@ -45,6 +43,5 @@ public class PlayerAttackBox : MonoBehaviour
         var stateManager = other.GetComponent<EnemyStateManager>();
         stateManager.EnemyStun(stunTime);
         stateManager.EnemyKnocked(knockDistance);
-        Debug.Log(other);
     }
 }

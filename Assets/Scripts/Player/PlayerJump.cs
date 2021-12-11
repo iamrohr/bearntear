@@ -11,11 +11,13 @@ public class PlayerJump : MonoBehaviour
 
     private Player player;
     private IEnumerator jump;
+    private Transform _transform;
 
     void Start()
     {
+        _transform = transform;
         player = GetComponent<Player>();
-        groundedY = transform.localPosition.y;
+        groundedY = _transform.localPosition.y;
     }
 
     void Update()
@@ -48,10 +50,10 @@ public class PlayerJump : MonoBehaviour
         while (t < 1)
         {
             float tween = 1 - (1 - t) * (1 - t) * (1 - t); //Smooth stop
-            float y = transform.localPosition.y;
+            float y = _transform.localPosition.y;
 
             y = startY + jumpHeight * tween;
-            transform.localPosition = new Vector2(transform.localPosition.x, y);
+            _transform.localPosition = new Vector2(_transform.localPosition.x, y);
 
             t += Time.deltaTime / jumpTime;
             yield return null;
@@ -62,17 +64,17 @@ public class PlayerJump : MonoBehaviour
         yield return new WaitForSeconds(hangTime);
 
         t = 0;
-        startY = transform.localPosition.y;
+        startY = _transform.localPosition.y;
 
-        while (t < 1 && transform.localPosition.y > groundedY)
+        while (t < 1 && _transform.localPosition.y > groundedY)
         {
             if (player.state != PlayerState.Dashing)
             {
                 float tween = t * t; //Smooth start
-                float y = transform.localPosition.y;
+                float y = _transform.localPosition.y;
 
                 y = startY - jumpHeight * tween;
-                transform.localPosition = new Vector2(transform.localPosition.x, y);
+                _transform.localPosition = new Vector2(_transform.localPosition.x, y);
 
                 t += Time.deltaTime / jumpTime;
             }
@@ -80,7 +82,7 @@ public class PlayerJump : MonoBehaviour
             yield return null;
         }
 
-        transform.localPosition = new Vector2(transform.localPosition.x, groundedY);
+        _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
         grounded = true;
         player.LeaveState(PlayerState.Jumping);
         yield return null;

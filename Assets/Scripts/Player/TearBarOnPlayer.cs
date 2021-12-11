@@ -16,7 +16,6 @@ public class TearBarOnPlayer : MonoBehaviour
     public int maxTearTime;
 
     //Counter
-    float timeElapsed = 100; //Count time down from 100 
     public float timeSpeed = 1; //Acceleration
 
     void Start()

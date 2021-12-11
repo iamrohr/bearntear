@@ -24,16 +24,20 @@ public class PlayerAttack : MonoBehaviour
 
     private float attackTimer, prevComboTime;
     private bool canAttack = true, queuedAttack;
-    private PlayerMovement pm;
+    private PlayerMovement playerMovement;
     private Player player;
+    private PlayerJump playerJump;
+    private Transform _transform;
 
     public CameraShake cameraShake; // JAMES KALNINS
 
     void Start()
     {
+        _transform = transform;
         comboCurrent = 1;
-        pm = gameObject.GetComponent<PlayerMovement>();
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
         player = GetComponent<Player>();
+        playerJump = GetComponent<PlayerJump>();
     }
 
     void Update()
@@ -94,9 +98,9 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
 
-        Vector2 attackPos = new Vector2(transform.position.x, transform.position.y);
+        Vector2 attackPos = new Vector2(_transform.position.x, _transform.position.y);
 
-        if (pm.horFacing == HorFacing.Left)
+        if (playerMovement.horFacing == HorFacing.Left)
             attackPos += Vector2.left * attackOffSetX;
         else
             attackPos += Vector2.right * attackOffSetX;
@@ -111,19 +115,17 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator SlamAttack()
     {
-        var playerJump = GetComponent<PlayerJump>();
         playerJump.CancelJump();
         float groundedY = playerJump.groundedY;
-
-        float t = 0, startY = transform.localPosition.y;
+        float t = 0, startY = _transform.localPosition.y;
 
         while (t < 1)
         {
             float tween = t * t;
-            float y = transform.localPosition.y;
+            float y = _transform.localPosition.y;
 
             y = startY + slamHeight * tween;
-            transform.localPosition = new Vector2(transform.localPosition.x, y);
+            _transform.localPosition = new Vector2(_transform.localPosition.x, y);
 
             t += Time.deltaTime / slamTime;
             yield return null;
@@ -132,29 +134,29 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         t = 0;
-        startY = transform.localPosition.y;
+        startY = _transform.localPosition.y;
         float distance = startY - groundedY;
 
         while (t < 1)
         {
             float tween = t * t;
-            float y = transform.localPosition.y;
+            float y = _transform.localPosition.y;
 
             y = startY - distance * tween;
-            transform.localPosition = new Vector2(transform.localPosition.x, y);
+            _transform.localPosition = new Vector2(_transform.localPosition.x, y);
 
             t += Time.deltaTime / slamTime;
             yield return null;
         }
 
-        transform.localPosition = new Vector2(transform.localPosition.x, groundedY);
+        _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
         playerJump.grounded = true;
         player.LeaveState(PlayerState.Slamming);
 
         StartCoroutine(cameraShake.Shake(0.3f, 0.4f));
 
-        var attackObject = Instantiate(slamAttack, transform.position, Quaternion.identity);
-        attackObject.transform.SetParent(gameObject.transform);
+        var attackObject = Instantiate(slamAttack, _transform.position, Quaternion.identity);
+        attackObject.transform.SetParent(_transform);
 
         yield return null;
     }
@@ -162,7 +164,7 @@ public class PlayerAttack : MonoBehaviour
     private void SwipeAttack(Vector2 attackPos)
     {
         var attackObject = Instantiate(swipeAttack, attackPos, Quaternion.identity);
-        attackObject.transform.SetParent(gameObject.transform);
+        attackObject.transform.SetParent(_transform);
 
         if (comboCurrent > 1 && comboInterval < Time.time - prevComboTime)
             comboCurrent = 1;
@@ -174,7 +176,6 @@ public class PlayerAttack : MonoBehaviour
             swingSound.pitch = 1;
             player.animator.SetTrigger("Swipe1");
 
-            attackObject.GetComponent<PlayerAttackBox>().comboFinal = true;
             attackObject.GetComponent<SpriteRenderer>().color = Color.cyan; //Temp check
             comboCurrent = 1;
         }
@@ -207,7 +208,7 @@ public class PlayerAttack : MonoBehaviour
         AttackCooldown(bashCooldown);
 
         var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
-        attackObject.transform.SetParent(gameObject.transform);
+        attackObject.transform.SetParent(_transform);
 
         StartCoroutine(cameraShake.Shake(0.3f, 0.2f)); // JAMES KALNINS
 

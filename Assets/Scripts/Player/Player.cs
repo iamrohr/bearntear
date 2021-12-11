@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
         EnterState(PlayerState.Idle);
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        
     }
 
     public void TakeDamage(int damage)
