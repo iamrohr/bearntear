@@ -21,7 +21,7 @@ public class PlayerShoot : MonoBehaviour
         playerMovementScript = GetComponent<PlayerMovement>();
     }
 
-    void Update()
+    public void Shoot()
     {
         shootCoolDown += Time.deltaTime;
         lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -32,13 +32,12 @@ public class PlayerShoot : MonoBehaviour
         {
             // take damage
             playerHealthTestScript.TakeDamage(10);
-            Shoot();
+            ShootProjectile();
         }
 
     }
 
-    void Shoot()
-
+    void ShootProjectile()
     {
             shootCoolDown = 0;
 

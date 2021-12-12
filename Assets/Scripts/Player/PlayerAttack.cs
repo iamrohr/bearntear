@@ -28,38 +28,27 @@ public class PlayerAttack : MonoBehaviour
     private Player player;
     private PlayerJump playerJump;
     private Transform _transform;
+    private PlayerInput playerInput;
 
     public CameraShake cameraShake; // JAMES KALNINS
 
-    void Start()
+    private void Awake()
     {
-        _transform = transform;
-        comboCurrent = 1;
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         player = GetComponent<Player>();
         playerJump = GetComponent<PlayerJump>();
+        playerInput = GetComponent<PlayerInput>();
+        _transform = transform;
     }
 
-    void Update()
+    private void Start()
     {
-        switch (player.state)
-        {
-            case PlayerState.Idle:
-                break;
-            case PlayerState.Moving:
-                break;
-            case PlayerState.Attacking:
-                break;
-            case PlayerState.Jumping:
-                break;
-            default:
-                return;
-        }
+        comboCurrent = 1;
+    }
 
-        if (player.state == PlayerState.Dashing)
-            return;
-
-        if (Input.GetButtonDown("Fire1") && canAttack)
+    public void Attack()
+    {
+        if (playerInput.attackDown && canAttack)
         {
             if (player.state == PlayerState.Jumping)
             {
@@ -72,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
             player.EnterState(PlayerState.Attacking);
         }
 
-        if (Input.GetButton("Fire1") && canAttack)
+        if (playerInput.attackHold && canAttack)
         {
             if (player.state == PlayerState.Attacking)
                 attackTimer += Time.deltaTime;
@@ -80,12 +69,12 @@ public class PlayerAttack : MonoBehaviour
                 attackTimer = 0;
         }
         
-        if (Input.GetButtonUp("Fire1") && player.state == PlayerState.Attacking)
+        if (playerInput.attackUp && player.state == PlayerState.Attacking)
         {
             if (canAttack)
             {
                 CancelInvoke(nameof(AttackIfQueued));
-                Attack();
+                MeleeAttack();
             }
             else
                 queuedAttack = true;
@@ -94,8 +83,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-
-    private void Attack()
+    private void MeleeAttack()
     {
 
         Vector2 attackPos = new Vector2(_transform.position.x, _transform.position.y);
@@ -132,7 +120,6 @@ public class PlayerAttack : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.2f);
-
         t = 0;
         startY = _transform.localPosition.y;
         float distance = startY - groundedY;
@@ -151,12 +138,14 @@ public class PlayerAttack : MonoBehaviour
 
         _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
         playerJump.grounded = true;
-        player.LeaveState(PlayerState.Slamming);
 
         StartCoroutine(cameraShake.Shake(0.3f, 0.4f));
 
         var attackObject = Instantiate(slamAttack, _transform.position, Quaternion.identity);
         attackObject.transform.SetParent(_transform);
+
+        yield return new WaitForSeconds(0.5f);
+        player.LeaveState(PlayerState.Slamming);
 
         yield return null;
     }
@@ -226,7 +215,7 @@ public class PlayerAttack : MonoBehaviour
         if (queuedAttack)
         {
             player.EnterState(PlayerState.Attacking);
-            Attack();
+            MeleeAttack();
             queuedAttack = false;
         }
     }

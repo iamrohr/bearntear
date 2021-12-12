@@ -12,21 +12,26 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Player player;
     private SpriteRenderer sr;
+    private PlayerInput playerInput;
+
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+        rb = GetComponentInParent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     void Start()
     {
         canTurn = true;
         horFacing = HorFacing.Right;
-        player = GetComponent<Player>();
-        rb = GetComponentInParent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
     }
 
-
-    void Update()
+    public void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        float x = playerInput.xInput;
+        float y = playerInput.yInput;
 
         Vector2 newVelocity = new Vector2(x, y);
         newVelocity = newVelocity.normalized * speed;
@@ -41,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Moving:
                 rb.velocity = newVelocity;
                 if (rb.velocity.magnitude <= 0)
-                    player.EnterState(PlayerState.Idle);
+                    player.LeaveState(PlayerState.Moving);
                 break;
             case PlayerState.Attacking:
                 rb.velocity = newVelocity * speedMulWhenAttacking;
@@ -49,13 +54,11 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Jumping:
                 rb.velocity = newVelocity;
                 break;
-            case PlayerState.Dashing:
-                break;
             case PlayerState.Slamming:
                 rb.velocity *= 0;
                 break;
             default:
-                goto case PlayerState.Idle;
+                return;
         }
 
         if (canTurn && 

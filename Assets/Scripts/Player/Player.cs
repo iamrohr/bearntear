@@ -14,20 +14,22 @@ public class Player : MonoBehaviour
     public AudioSource damageSound;
 
     private PlayerFlash playerFlashScript;
+    private PlayerJump playerJump;
 
     [NonSerialized] public Animator animator;
 
-
-    void Start()
+    private void Awake()
     {
         playerFlashScript = GetComponent<PlayerFlash>();
+        playerJump = GetComponent<PlayerJump>();
         animator = GetComponent<Animator>();
+    }
 
+    private void Start()
+    {
         EnterState(PlayerState.Idle);
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-
-        
     }
 
     public void TakeDamage(int damage)
@@ -78,7 +80,7 @@ public class Player : MonoBehaviour
                 animator.SetTrigger("Idle");
                 break;
             case PlayerState.Moving:
-                animator.SetTrigger("Idle"); //Temp anim state
+                animator.SetTrigger("Idle"); //Temp animation
                 break;
             case PlayerState.Attacking:
                 break;
@@ -97,8 +99,7 @@ public class Player : MonoBehaviour
 
     public void LeaveState(PlayerState state)
     {
-        if (state != this.state)
-            return;
+        if (state != this.state) return;
 
         switch (state)
         {
@@ -110,8 +111,12 @@ public class Player : MonoBehaviour
             //    break;
             //case PlayerState.Jumping:
             //    break;
-            //case PlayerState.Dashing:
-            //    break;
+            case PlayerState.Dashing:
+                if (!playerJump.grounded)
+                    EnterState(PlayerState.Jumping);
+                else
+                    goto default;
+                break;
             default:
                 EnterState(PlayerState.Idle);
                 break;

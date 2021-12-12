@@ -9,23 +9,22 @@ public class PlayerDash : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerMovement pm;
     private Player player;
+    private PlayerInput playerInput;
 
-    void Start()
+    void Awake()
     {
+        playerInput = GetComponent<PlayerInput>();
         rb = GetComponentInParent<Rigidbody2D>();
         pm = GetComponent<PlayerMovement>();
         player = GetComponent<Player>();
     }
 
-    void Update()
-    {
-        float xInput = Input.GetAxisRaw("Horizontal");
-        if (Input.GetButtonDown("Fire3") && xInput != 0 && canDash)
-            Dash(xInput);
-    }
 
-    private void Dash(float xInput)
+    public void Dash()
     {
+        float xInput = playerInput.xInput;
+        if (!(playerInput.dash && xInput != 0 && canDash)) return;
+            
         dashSound.Play();
 
         canDash = false;

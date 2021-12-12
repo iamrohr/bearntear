@@ -12,22 +12,28 @@ public class PlayerJump : MonoBehaviour
     private Player player;
     private IEnumerator jump;
     private Transform _transform;
+    private PlayerInput playerInput;
+
+    private void Awake()
+    {
+        playerInput= GetComponent<PlayerInput>();
+        player = GetComponent<Player>();
+        _transform = transform;
+    }
 
     void Start()
     {
-        _transform = transform;
-        player = GetComponent<Player>();
         groundedY = _transform.localPosition.y;
     }
 
-    void Update()
+    public void Jump()
     {
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (playerInput.jump && grounded)
         {
             grounded = false;
             if (jumpTime > 0)
             {
-                jump = Jump();
+                jump = JumpCoroutine();
                 StartCoroutine(jump);
             }
         }
@@ -38,7 +44,7 @@ public class PlayerJump : MonoBehaviour
         StopCoroutine(jump);
     }
 
-    private IEnumerator Jump()
+    private IEnumerator JumpCoroutine()
     {
         player.EnterState(PlayerState.Jumping, jumpTime * 2);
 
