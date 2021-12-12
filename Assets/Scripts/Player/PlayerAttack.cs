@@ -9,9 +9,11 @@ public class PlayerAttack : MonoBehaviour
     public float swipeCooldown;
     public float bashCooldown;
     public float timeForBash;
+    public float bashRecoveryTime;
     public float comboInterval;
     public float slamTime;
     public float slamHeight;
+    public float slamRecoveryTime;
     public int comboTotal;
 
     [Header("Other")]
@@ -29,11 +31,14 @@ public class PlayerAttack : MonoBehaviour
     private PlayerJump playerJump;
     private Transform _transform;
     private PlayerInput playerInput;
+    private Rigidbody2D rb;
 
     public CameraShake cameraShake; // JAMES KALNINS
 
+
     private void Awake()
     {
+        rb = GetComponentInParent<Rigidbody2D>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         player = GetComponent<Player>();
         playerJump = GetComponent<PlayerJump>();
@@ -101,55 +106,6 @@ public class PlayerAttack : MonoBehaviour
         canAttack = false;
     }
 
-    private IEnumerator SlamAttack()
-    {
-        playerJump.CancelJump();
-        float groundedY = playerJump.groundedY;
-        float t = 0, startY = _transform.localPosition.y;
-
-        while (t < 1)
-        {
-            float tween = t * t;
-            float y = _transform.localPosition.y;
-
-            y = startY + slamHeight * tween;
-            _transform.localPosition = new Vector2(_transform.localPosition.x, y);
-
-            t += Time.deltaTime / slamTime;
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(0.2f);
-        t = 0;
-        startY = _transform.localPosition.y;
-        float distance = startY - groundedY;
-
-        while (t < 1)
-        {
-            float tween = t * t;
-            float y = _transform.localPosition.y;
-
-            y = startY - distance * tween;
-            _transform.localPosition = new Vector2(_transform.localPosition.x, y);
-
-            t += Time.deltaTime / slamTime;
-            yield return null;
-        }
-
-        _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
-        playerJump.grounded = true;
-
-        StartCoroutine(cameraShake.Shake(0.3f, 0.4f));
-
-        var attackObject = Instantiate(slamAttack, _transform.position, Quaternion.identity);
-        attackObject.transform.SetParent(_transform);
-
-        yield return new WaitForSeconds(0.5f);
-        player.LeaveState(PlayerState.Slamming);
-
-        yield return null;
-    }
-
     private void SwipeAttack(Vector2 attackPos)
     {
         var attackObject = Instantiate(swipeAttack, attackPos, Quaternion.identity);
@@ -190,6 +146,8 @@ public class PlayerAttack : MonoBehaviour
   
     private void BashAttack(Vector2 attackPos)
     {
+        player.animator.SetTrigger("Bash");
+        
         swingSound.pitch = 0.85f;
         swingSound.Play();
 
@@ -201,7 +159,57 @@ public class PlayerAttack : MonoBehaviour
 
         StartCoroutine(cameraShake.Shake(0.3f, 0.2f)); // JAMES KALNINS
 
-        player.animator.SetTrigger("Bash");
+        playerMovement.Immobilize(bashRecoveryTime);
+    }
+
+    private IEnumerator SlamAttack()
+    {
+        playerJump.CancelJump();
+        rb.velocity = Vector2.zero;
+        float groundedY = playerJump.groundedY;
+        float t = 0, startY = _transform.localPosition.y;
+
+        while (t < 1)
+        {
+            float tween = t * t;
+            float y = _transform.localPosition.y;
+
+            y = startY + slamHeight * tween;
+            _transform.localPosition = new Vector2(_transform.localPosition.x, y);
+
+            t += Time.deltaTime / slamTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.2f);
+        t = 0;
+        startY = _transform.localPosition.y;
+        float distance = startY - groundedY;
+
+        while (t < 1)
+        {
+            float tween = t * t;
+            float y = _transform.localPosition.y;
+
+            y = startY - distance * tween;
+            _transform.localPosition = new Vector2(_transform.localPosition.x, y);
+
+            t += Time.deltaTime / slamTime;
+            yield return null;
+        }
+
+        _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
+        playerJump.grounded = true;
+
+        StartCoroutine(cameraShake.Shake(0.3f, 0.4f));
+
+        var attackObject = Instantiate(slamAttack, _transform.position, Quaternion.identity);
+        attackObject.transform.SetParent(_transform);
+
+        yield return new WaitForSeconds(slamRecoveryTime);
+        player.LeaveState(PlayerState.Slamming);
+
+        yield return null;
     }
 
     private void AttackCooldown(float cooldownTime)

@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed, vertSpeedFactor, turnDelay, speedMulWhenAttacking;
     [NonSerialized] public HorFacing horFacing;
-
-    private bool canTurn;
+    
+    private bool canTurn, immobilized;
     private Rigidbody2D rb;
     private Player player;
     private SpriteRenderer sr;
@@ -33,6 +33,12 @@ public class PlayerMovement : MonoBehaviour
         float x = playerInput.xInput;
         float y = playerInput.yInput;
 
+        if (x == 0 && y == 0 && rb.velocity.magnitude > 0 || immobilized )
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         Vector2 newVelocity = new Vector2(x, y);
         newVelocity = newVelocity.normalized * speed;
         newVelocity = new Vector2(newVelocity.x, newVelocity.y * vertSpeedFactor);
@@ -54,9 +60,6 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Jumping:
                 rb.velocity = newVelocity;
                 break;
-            case PlayerState.Slamming:
-                rb.velocity *= 0;
-                break;
             default:
                 return;
         }
@@ -68,6 +71,18 @@ public class PlayerMovement : MonoBehaviour
             canTurn = false;
             Invoke(nameof(ChangeHorFacing), turnDelay);
         }
+    }
+
+    public void Immobilize(float seconds)
+    {
+        immobilized = true;
+        CancelInvoke(nameof(TurnOffImmobilized));
+        Invoke(nameof(TurnOffImmobilized), seconds);
+    }
+
+    private void TurnOffImmobilized()
+    {
+        immobilized = false;
     }
 
     private void ChangeHorFacing()

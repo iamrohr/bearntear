@@ -3,49 +3,44 @@ using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
 {
-    public PlayerState[] move, attack, jump, dash, shoot;
-
+    [SerializeField] private PlayerState[] moveStates, attackStates, jumpStates, dashStates, shootStates;
+    private Action move, attack, jump, dash, shoot;
     private Player player;
-    private PlayerMovement playerMovement;
-    private PlayerJump playerJump;
-    private PlayerDash playerDash;
-    private PlayerAttack playerAttack;
-    private PlayerShoot playerShoot;
-    private (PlayerState[], Action)[] stateFunctions;
-    
+    private (PlayerState[], Action)[] actionStates;
+
 
     void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement>();
-        playerJump = GetComponent<PlayerJump>();
-        playerDash = GetComponent<PlayerDash>();
-        playerAttack = GetComponent<PlayerAttack>();
-        playerShoot = GetComponent<PlayerShoot>();
+        move = () => GetComponent<PlayerMovement>().Move();
+        attack = () => GetComponent<PlayerAttack>().Attack();
+        jump = () => GetComponent<PlayerJump>().Jump();
+        dash = () => GetComponent<PlayerDash>().Dash();
+        shoot = () => GetComponent<PlayerShoot>().Shoot();
         player = GetComponent<Player>();
     }
 
     void Start()
     {
-        stateFunctions = new (PlayerState[], Action)[]
+        actionStates = new (PlayerState[], Action)[]
         {
-            (move, ()=> playerMovement.Move()),
-            (attack, ()=> playerAttack.Attack()),
-            (jump, ()=> playerJump.Jump()),
-            (dash, ()=> playerDash.Dash()),
-            (shoot, ()=> playerShoot.Shoot())
+            (moveStates, move),
+            (attackStates, attack),
+            (jumpStates, jump),
+            (dashStates, dash),
+            (shootStates, shoot)
         };
     }
 
     void Update()
     {
-        for (int i = 0; i < stateFunctions.Length; i++)
+        for (int i = 0; i < actionStates.Length; i++)
         {
-            for (int j = 0; j < stateFunctions[i].Item1.Length; j++)
+            for (int j = 0; j < actionStates[i].Item1.Length; j++)
             {
-                var stateFunction = stateFunctions[i];
-                if (player.state == stateFunction.Item1[j])
+                var actionState = actionStates[i];
+                if (player.state == actionState.Item1[j])
                 {
-                    stateFunction.Item2();
+                    actionState.Item2();
                     break;
                 }
             }

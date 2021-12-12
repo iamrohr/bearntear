@@ -854,16 +854,16 @@ GameObject:
   m_Component:
   - component: {fileID: 2958104977341504508}
   - component: {fileID: 2958104977341504262}
-  - component: {fileID: 758096537024601544}
-  - component: {fileID: 8528040021847231670}
   - component: {fileID: 2958104977341504263}
+  - component: {fileID: 758096537024601544}
   - component: {fileID: 2958104977341504260}
-  - component: {fileID: 2958104977341504261}
   - component: {fileID: 2958104977341504258}
-  - component: {fileID: 2958104977341504259}
+  - component: {fileID: 2958104977341504261}
   - component: {fileID: 2958104977341504256}
+  - component: {fileID: 2958104977341504259}
   - component: {fileID: 2958104977341504257}
   - component: {fileID: 2958104977341504265}
+  - component: {fileID: 8528040021847231670}
   - component: {fileID: 2958104977341504510}
   - component: {fileID: 2958104977341504511}
   m_Layer: 0
@@ -940,35 +940,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &758096537024601544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2958104977341504509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76268419f664e7c4b97d4ba37d13f92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  move: 0000000001000000030000000200000005000000
-  attack: 00000000010000000300000002000000
-  jump: 000000000100000002000000
-  dash: 00000000010000000300000002000000
-  shoot: 000000000100000003000000
---- !u!114 &8528040021847231670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2958104977341504509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58dca74e24118464d9070704e3e2abc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2958104977341504263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,6 +959,23 @@ MonoBehaviour:
   state: 0
   healthBar: {fileID: 0}
   damageSound: {fileID: 2958104976743126374}
+--- !u!114 &758096537024601544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958104977341504509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76268419f664e7c4b97d4ba37d13f92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveStates: 00000000010000000200000003000000
+  attackStates: 00000000010000000200000003000000
+  jumpStates: 000000000100000002000000
+  dashStates: 000000000100000003000000
+  shootStates: 0000000001000000
 --- !u!114 &2958104977341504260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,22 +992,6 @@ MonoBehaviour:
   vertSpeedFactor: 0.5
   turnDelay: 0.1
   speedMulWhenAttacking: 0.5
---- !u!114 &2958104977341504261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2958104977341504509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecbb49c3eac3464bbe5f95559e0e977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpHeight: 4
-  hangTime: 0.1
-  jumpTime: 0.5
-  jumpSound: {fileID: 2958104977010034949}
 --- !u!114 &2958104977341504258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,7 +1017,7 @@ MonoBehaviour:
   slamAttack: {fileID: 77544860683481084, guid: 5063c7f6fe34db148a9e95dc4a10c9b7, type: 3}
   swingSound: {fileID: 2958104976128384411}
   cameraShake: {fileID: 0}
---- !u!114 &2958104977341504259
+--- !u!114 &2958104977341504261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1054,12 +1026,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2958104977341504509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2431242866be5e4d9b1101d3827ca63, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ecbb49c3eac3464bbe5f95559e0e977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1474539451296381271, guid: 5db569fa1e95b884397f4a464e79391c, type: 3}
-  shootCoolDown: 0.4
-  shootSound: {fileID: 2958104976986839717}
+  jumpHeight: 4
+  hangTime: 0.1
+  jumpTime: 0.5
+  jumpSound: {fileID: 2958104977010034949}
 --- !u!114 &2958104977341504256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,6 +1049,21 @@ MonoBehaviour:
   dashTime: 0.18
   dashCooldown: 1
   dashSound: {fileID: 2958104976641592889}
+--- !u!114 &2958104977341504259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958104977341504509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2431242866be5e4d9b1101d3827ca63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1474539451296381271, guid: 5db569fa1e95b884397f4a464e79391c, type: 3}
+  shootCoolDown: 0.4
+  shootSound: {fileID: 2958104976986839717}
 --- !u!114 &2958104977341504257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,6 +1096,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpriteRenderer: {fileID: 2958104977341504262}
+--- !u!114 &8528040021847231670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958104977341504509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dca74e24118464d9070704e3e2abc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!70 &2958104977341504510
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
