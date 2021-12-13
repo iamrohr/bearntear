@@ -100,7 +100,6 @@ public class EnemyStateManager : MonoBehaviour
 
     public void EnemyStun(float timeStunned)
     {
-
         SwitchState(StunState);
         StartCoroutine(EnemyTimeStunned(timeStunned));
     }

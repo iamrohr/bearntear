@@ -22,9 +22,9 @@ public class EnemyPatrolState : EnemyBaseState
         float step = enemy.moveSpeed * Time.deltaTime;
         enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.newEnemyPosition, step);
 
-        if((enemy.newEnemyPosition - (Vector2)enemy.transform.position).magnitude < 0.1)
+        if ((enemy.newEnemyPosition - (Vector2)enemy.transform.position).magnitude < 0.1)
         {
-            enemy.SwitchState(enemy.ReturnHomeState, 3);
+            enemy.SwitchState(enemy.IdleState);
         }
 
         //Chase Player
