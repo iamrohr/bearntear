@@ -18,6 +18,9 @@ public class TearBarOnPlayer : MonoBehaviour
     //Counter
     public float timeSpeed = 1; //Acceleration
 
+    public TearMode tearModeScript;
+    public CameraShake cameraShake;
+
     void Start()
     {
         currentTear = maxTear;
@@ -49,6 +52,12 @@ public class TearBarOnPlayer : MonoBehaviour
         currentTear += tear;
         currentTear = Mathf.Clamp(currentTear, 0, 100);
         tearBar.SetTearLevel((int)currentTear);
+        if (currentTear == maxTear)
+        {
+            
+            StartCoroutine(tearModeScript.TearModeStart()); // to start Coroutine out of an Update
+
+        }
     }
 
     public void RemoveTear(int tear)
