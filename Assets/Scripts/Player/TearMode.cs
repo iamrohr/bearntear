@@ -40,7 +40,7 @@ public class TearMode : MonoBehaviour
         playerMovementScript.speed = 12f;
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 20;
 
-        StartCoroutine(BlinkingTearBar(39));
+        StartCoroutine(BlinkingTearBar(40));
     
         yield return new WaitForSeconds(20f);
 
@@ -54,9 +54,13 @@ public class TearMode : MonoBehaviour
     {
         for (int i = 0; i < loops; i++)
         {
+            tearBarOnPlayerScript.currentTear -= 2.5f;
+
             tearBarFill.GetComponent<Image>().color = Color.blue;
 
             yield return new WaitForSeconds(0.25f);
+
+            tearBarOnPlayerScript.currentTear -= 2.5f;
 
             tearBarFill.GetComponent<Image>().color = Color.red;
 
