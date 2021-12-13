@@ -29,7 +29,6 @@ public class EnemyStateManager : MonoBehaviour
 
     public float agroRange = 2f;
     public float agroRandomRange = 5f;
-
     public float reactionTime = 0.15f;
     public float attackRange = 2f;
     public float moveSpeed = 3f;
@@ -54,7 +53,8 @@ public class EnemyStateManager : MonoBehaviour
         agroRangeRand = Random.Range(agroRange, agroRandomRange);
         agroRange = agroRangeRand;
 
-        //animator.SetTrigger("Idle");
+        //Gives a little bit of randomness to the attackrange
+        attackRange = Random.Range(attackRange, attackRange + 0.5f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
