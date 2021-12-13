@@ -40,7 +40,6 @@ public class EnemyPatrolState : EnemyBaseState
         {
             enemy.SwitchState(enemy.IdleState, 0.5f);
         }
-
     }
 
     public override void OnCollisionEnter2D(EnemyStateManager enemy, Collision2D collision)
