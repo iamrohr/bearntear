@@ -54,9 +54,10 @@ public class TearBarOnPlayer : MonoBehaviour
         tearBar.SetTearLevel((int)currentTear);
         if (currentTear == maxTear)
         {
-            
-            StartCoroutine(tearModeScript.TearModeStart()); // to start Coroutine out of an Update
-
+            if(!tearModeScript.tearModeOn)
+            {
+                StartCoroutine(tearModeScript.TearModeStart()); // to start Coroutine out of an Update
+            }
         }
     }
 

@@ -7,8 +7,11 @@ public class TearMode : MonoBehaviour
     //public TearBarOnPlayer tearBarOnPlayerScript;
     public PlayerMovement playerMovementScript;
     Camera mainCamera;
-
     CameraShake cameraShake;
+
+    public GameObject swipeAttack;
+
+    public bool tearModeOn = false;
 
     private void Start()
     {
@@ -19,6 +22,7 @@ public class TearMode : MonoBehaviour
 
     public IEnumerator TearModeStart()
     {
+        tearModeOn = true;
         mainCamera.orthographicSize = 4.5f;
         StartCoroutine(cameraShake.Shake(0.5f, 0.4f));
         
@@ -26,11 +30,6 @@ public class TearMode : MonoBehaviour
         // knockBack effect
         // playSound
         // particleEffect
-
-        
-
-        
-
         // stop player from moving
         // stop enemies from moving
 
@@ -39,10 +38,13 @@ public class TearMode : MonoBehaviour
         mainCamera.orthographicSize = 5.382994f;
         Time.timeScale = 1f;
         playerMovementScript.speed = 12f;
+        swipeAttack.GetComponent<PlayerAttackBox>().damage = 16;
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(20f);
 
+        tearModeOn = false;
         playerMovementScript.speed = 6f;
+        swipeAttack.GetComponent<PlayerAttackBox>().damage = 8;
 
         //Time.timeScale = 1;
 
