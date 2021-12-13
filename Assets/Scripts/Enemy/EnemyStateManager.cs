@@ -6,7 +6,7 @@ public class EnemyStateManager : MonoBehaviour
 {
     public EnemyBaseState currentState;
     public EnemyIdleState IdleState = new EnemyIdleState();
-    public EnemyChaseState ChaseState = new  EnemyChaseState();
+    public EnemyChaseState ChaseState = new EnemyChaseState();
     public EnemyAttackState AttackState = new EnemyAttackState();
     public EnemyReturnHomeState ReturnHomeState = new EnemyReturnHomeState();
     public EnemyPatrolState PatrolState = new EnemyPatrolState();
@@ -20,20 +20,22 @@ public class EnemyStateManager : MonoBehaviour
     public GameObject attackBox;
 
     [Header("Attributes")]
+    [HideInInspector] public float forceIdleStateTimer = 2f;
     [HideInInspector] public Vector2 newEnemyPosition;
     [HideInInspector] public Vector2 enemyStartPosition;
     [HideInInspector] public bool arrivedAtRandPos;
     [HideInInspector] public bool moveToStart;
+    [HideInInspector] public float agroRangeRand;
 
-    public float agroRangeRand;
-    public float agroRange = 5f;
-    public float agroRangeMultiplier = 5f;
+    public float agroRange = 2f;
+    public float agroRandomRange = 5f;
 
     public float reactionTime = 0.15f;
     public float attackRange = 2f;
     public float moveSpeed = 3f;
     public bool canAttackPlayer = true;
     public float waitBetweenAttack = 0.25f;
+
 
     void Start()
     {
@@ -49,7 +51,7 @@ public class EnemyStateManager : MonoBehaviour
         enemyStartPosition = new Vector2(transform.position.x, transform.position.y);
         attackBox.SetActive(false);
 
-        agroRangeRand = Random.Range(agroRange, agroRange + agroRangeMultiplier);
+        agroRangeRand = Random.Range(agroRange, agroRandomRange);
         agroRange = agroRangeRand;
 
         //animator.SetTrigger("Idle");
@@ -77,7 +79,7 @@ public class EnemyStateManager : MonoBehaviour
         WaitState.EnterState(this);
 
         yield return new WaitForSeconds(switchTime);
-        
+
         currentState = state;
         state.EnterState(this);
     }
@@ -95,7 +97,7 @@ public class EnemyStateManager : MonoBehaviour
 
     public Vector2 EnemyRandPos(float distance)
     {
-        return new Vector2((Random.Range(distance * -1, distance)),  Random.Range(distance * -1, distance)) + (Vector2)transform.position;
+        return new Vector2((Random.Range(distance * -1, distance)), Random.Range(distance * -1, distance)) + (Vector2)transform.position;
     }
 
     public void EnemyStun(float timeStunned)
@@ -104,7 +106,7 @@ public class EnemyStateManager : MonoBehaviour
         StartCoroutine(EnemyTimeStunned(timeStunned));
     }
 
-        public IEnumerator EnemyTimeStunned(float time)
+    public IEnumerator EnemyTimeStunned(float time)
     {
         yield return new WaitForSeconds(time);
         SwitchState(IdleState);
@@ -149,35 +151,36 @@ public class EnemyStateManager : MonoBehaviour
     {
         return 1 - (1 - t) * (1 - t) * (1 - t) * (1 - t);
     }
+
 }
 
-    //Set Random Reaction time
-    //public float reactionTime;
-    //public float reactionTimeRand;
-    //reactionTimeRand = Random.Range(0.1f, 2f);
-    //reactionTime = reactionTimeRand;
+//Set Random Reaction time
+//public float reactionTime;
+//public float reactionTimeRand;
+//reactionTimeRand = Random.Range(0.1f, 2f);
+//reactionTime = reactionTimeRand;
 
-    //Set Random Agro Range
+//Set Random Agro Range
 
-    //public bool ReactionTime()
-    //{
-    //    reactionTime -= Time.deltaTime;
-    //    Debug.Log("Reaction time is " + reactionTime);
-    //    if (reactionTime <= 0f)
-    //    {
-    //        reactionTime = reactionTimeRand;
-    //        return true;
-    //    }
-    //    return false;
-    //}
+//public bool ReactionTime()
+//{
+//    reactionTime -= Time.deltaTime;
+//    Debug.Log("Reaction time is " + reactionTime);
+//    if (reactionTime <= 0f)
+//    {
+//        reactionTime = reactionTimeRand;
+//        return true;
+//    }
+//    return false;
+//}
 
-    //public bool WaitBeforeAttack(float wait)
-    //{
-    //    wait -= Time.deltaTime;
-    //    Debug.Log("Reaction time is " + wait);
-    //    if (wait <= 0f)
-    //    {
-    //        return true;
-    //    }
-    //    return false;
-    //}
+//public bool WaitBeforeAttack(float wait)
+//{
+//    wait -= Time.deltaTime;
+//    Debug.Log("Reaction time is " + wait);
+//    if (wait <= 0f)
+//    {
+//        return true;
+//    }
+//    return false;
+//}

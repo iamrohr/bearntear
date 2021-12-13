@@ -19,7 +19,6 @@ public class EnemyIdleState : EnemyBaseState
         {
             enemy.SwitchState(enemy.ChaseState, enemy.reactionTime);
         }
-
     }
 
     public override void OnCollisionEnter2D(EnemyStateManager enemy, Collision2D collision)

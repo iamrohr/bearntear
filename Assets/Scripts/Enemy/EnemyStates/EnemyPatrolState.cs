@@ -19,6 +19,13 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void UpdateState(EnemyStateManager enemy)
     {
+        enemy.forceIdleStateTimer -= Time.deltaTime;
+
+        if (enemy.forceIdleStateTimer <= 0)
+        {
+            enemy.SwitchState(enemy.IdleState);
+        }
+
         float step = enemy.moveSpeed * Time.deltaTime;
         enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.newEnemyPosition, step);
 
@@ -33,6 +40,7 @@ public class EnemyPatrolState : EnemyBaseState
         {
             enemy.SwitchState(enemy.IdleState, 0.5f);
         }
+
     }
 
     public override void OnCollisionEnter2D(EnemyStateManager enemy, Collision2D collision)
