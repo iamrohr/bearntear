@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TearBarOnPlayer : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class TearBarOnPlayer : MonoBehaviour
     [NonSerialized] public bool pauseTearDecrease;
  
     public TearBar tearBar;
+    public GameObject tearBarFill;
 
     public int maxTear = 100;
     public int startTearLevel = 0;
@@ -54,10 +56,12 @@ public class TearBarOnPlayer : MonoBehaviour
         tearBar.SetTearLevel((int)currentTear);
         if (currentTear == maxTear)
         {
-            if(!tearModeScript.tearModeOn)
-            {
-                StartCoroutine(tearModeScript.TearModeStart()); // to start Coroutine out of an Update
-            }
+            tearBarFill.GetComponent<Image>().color = Color.red;
+
+            //if (!tearModeScript.tearModeOn)
+            //{
+            //    StartCoroutine(tearModeScript.TearModeStart()); // to start Coroutine out of an Update
+            //}
         }
     }
 

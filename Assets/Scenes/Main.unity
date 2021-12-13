@@ -1214,6 +1214,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2958104977341504509, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
   m_PrefabInstance: {fileID: 967784175}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &477641378 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2958104977341504257, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+  m_PrefabInstance: {fileID: 967784175}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477641372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f1e7ebb7d445748b0c2aefd89072cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &492518208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2282,14 @@ PrefabInstance:
       propertyPath: swipeAttack
       value: 
       objectReference: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
+    - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: tearBarFill
+      value: 
+      objectReference: {fileID: 918743808}
+    - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: tearBarOnPlayerScript
+      value: 
+      objectReference: {fileID: 477641378}
     - target: {fileID: 2958104977341504257, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: tearBar
       value: 
@@ -2279,6 +2298,10 @@ PrefabInstance:
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 1156334062}
+    - target: {fileID: 2958104977341504257, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: tearBarFill
+      value: 
+      objectReference: {fileID: 918743808}
     - target: {fileID: 2958104977341504258, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: cameraShake
       value: 
