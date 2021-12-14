@@ -33,11 +33,11 @@ public class PlayerAttack : MonoBehaviour
     private PlayerInput playerInput;
     private Rigidbody2D rb;
 
-    public CameraShake cameraShake; // JAMES KALNINS
-
+    private CameraShake cameraShake; // JAMES KALNINS
 
     private void Awake()
     {
+        cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
         rb = GetComponentInParent<Rigidbody2D>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         player = GetComponent<Player>();
@@ -222,7 +222,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (queuedAttack)
         {
-            player.EnterState(PlayerState.Attacking);
+            //player.EnterState(PlayerState.Attacking);
             MeleeAttack();
             queuedAttack = false;
         }

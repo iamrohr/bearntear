@@ -955,10 +955,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  invulnerableTime: 0
+  invulnerableTime: 0.5
   invulnerable: 0
   state: 0
-  healthBar: {fileID: 0}
   damageSound: {fileID: 2958104976743126374}
 --- !u!114 &758096537024601544
 MonoBehaviour:
@@ -1009,11 +1008,11 @@ MonoBehaviour:
   swipeCooldown: 0.5
   bashCooldown: 0.5
   timeForBash: 0.2
-  bashRecoveryTime: 0
+  bashRecoveryTime: 0.5
   comboInterval: 0.8
   slamTime: 0.15
   slamHeight: 0.2
-  slamRecoveryTime: 0
+  slamRecoveryTime: 0.6
   comboTotal: 4
   swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
   bashAttack: {fileID: 77544860683481084, guid: a76ea72f68964ee499cd8cfed5682a44, type: 3}
@@ -1080,6 +1079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tearBar: {fileID: 0}
+  tearBarFill: {fileID: 0}
   maxTear: 100
   startTearLevel: 0
   currentTear: 0
@@ -1087,6 +1087,7 @@ MonoBehaviour:
   maxTearTime: 0
   timeSpeed: 1
   tearModeScript: {fileID: 2484288662646181550}
+  cameraShake: {fileID: 0}
 --- !u!114 &2958104977341504265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,7 +1125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c5e47dd277e3c47b34d89b33b38959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tearBarOnPlayerScript: {fileID: 2958104977341504257}
   playerMovementScript: {fileID: 2958104977341504260}
+  swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
+  tearBarFill: {fileID: 0}
+  tearModeOn: 0
 --- !u!70 &2958104977341504510
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

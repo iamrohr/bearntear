@@ -10,16 +10,17 @@ public class Player : MonoBehaviour
     public float invulnerableTime;
     public bool invulnerable = false;
     public PlayerState state;
-    public HealthBar healthBar;
     public AudioSource damageSound;
 
     private PlayerFlash playerFlashScript;
     private PlayerJump playerJump;
+    private HealthBar healthBar;
 
     [NonSerialized] public Animator animator;
 
     private void Awake()
     {
+        healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
         playerFlashScript = GetComponent<PlayerFlash>();
         playerJump = GetComponent<PlayerJump>();
         animator = GetComponent<Animator>();
