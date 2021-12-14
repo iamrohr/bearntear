@@ -4,28 +4,17 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [Header("Attributes")]
-    public float attackOffSetX;
-    public float swipeCooldown;
-    public float bashCooldown;
-    public float timeForBash;
-    public float bashRecoveryTime;
-    public float comboInterval;
-    public float slamTime;
-    public float slamHeight;
-    public float slamRecoveryTime;
+    [SerializeField] private float attackOffSetX, timeForBash, bashRecoveryTime, comboInterval;
+    public float swipeCooldown, bashCooldown;
     public int comboTotal;
 
-    [Header("Other")]
-    public GameObject swipeAttack;
-    public GameObject bashAttack;
-    public GameObject slamAttack;
+    public GameObject swipeAttack, bashAttack;
     public AudioSource swingSound;
 
     [NonSerialized] public int comboCurrent;
 
     private float attackTimer, prevComboTime;
-    private bool canAttack = true, queuedAttack;
+    public bool canAttack = true, queuedAttack;
     private PlayerMovement playerMovement;
     private Player player;
     private PlayerJump playerJump;
@@ -55,15 +44,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (playerInput.attackDown && canAttack)
         {
-            if (player.state == PlayerState.Jumping)
-            {
-                player.EnterState(PlayerState.Slamming);
-                StartCoroutine(SlamAttack());
-                return;
-            }
-
-            CancelInvoke(nameof(CanAttackToTrue));
-            player.EnterState(PlayerState.Attacking);
+            //CancelInvoke(nameof(CanAttackToTrue));
+            player.playerSM.EnterState(PlayerState.Attacking);
         }
 
         if (playerInput.attackHold && canAttack)
@@ -90,6 +72,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void MeleeAttack()
     {
+        if (!playerJump.grounded) return;
 
         Vector2 attackPos = new Vector2(_transform.position.x, _transform.position.y);
 
@@ -98,10 +81,10 @@ public class PlayerAttack : MonoBehaviour
         else
             attackPos += Vector2.right * attackOffSetX;
 
-        if (attackTimer < timeForBash)
-            SwipeAttack(attackPos);
-        else
+        if (player.stage > 0 && attackTimer >= timeForBash)
             BashAttack(attackPos);
+        else
+            SwipeAttack(attackPos);
 
         canAttack = false;
     }
@@ -162,56 +145,6 @@ public class PlayerAttack : MonoBehaviour
         playerMovement.Immobilize(bashRecoveryTime);
     }
 
-    private IEnumerator SlamAttack()
-    {
-        playerJump.CancelJump();
-        rb.velocity = Vector2.zero;
-        float groundedY = playerJump.groundedY;
-        float t = 0, startY = _transform.localPosition.y;
-
-        while (t < 1)
-        {
-            float tween = t * t;
-            float y = _transform.localPosition.y;
-
-            y = startY + slamHeight * tween;
-            _transform.localPosition = new Vector2(_transform.localPosition.x, y);
-
-            t += Time.deltaTime / slamTime;
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(0.2f);
-        t = 0;
-        startY = _transform.localPosition.y;
-        float distance = startY - groundedY;
-
-        while (t < 1)
-        {
-            float tween = t * t;
-            float y = _transform.localPosition.y;
-
-            y = startY - distance * tween;
-            _transform.localPosition = new Vector2(_transform.localPosition.x, y);
-
-            t += Time.deltaTime / slamTime;
-            yield return null;
-        }
-
-        _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
-        playerJump.grounded = true;
-
-        StartCoroutine(cameraShake.Shake(0.3f, 0.4f));
-
-        var attackObject = Instantiate(slamAttack, _transform.position, Quaternion.identity);
-        attackObject.transform.SetParent(_transform);
-
-        yield return new WaitForSeconds(slamRecoveryTime);
-        player.LeaveState(PlayerState.Slamming);
-
-        yield return null;
-    }
-
     private void AttackCooldown(float cooldownTime)
     {
         Invoke(nameof(CanAttackToTrue), cooldownTime);
@@ -222,7 +155,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (queuedAttack)
         {
-            //player.EnterState(PlayerState.Attacking);
             MeleeAttack();
             queuedAttack = false;
         }
@@ -233,7 +165,7 @@ public class PlayerAttack : MonoBehaviour
         if (!queuedAttack)
         {
             if (!Input.GetButton("Fire1"))
-                player.LeaveState(PlayerState.Attacking);
+                player.playerSM.LeaveState(PlayerState.Attacking);
 
             canAttack = true;
         }

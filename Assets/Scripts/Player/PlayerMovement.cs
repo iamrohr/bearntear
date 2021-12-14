@@ -47,12 +47,12 @@ public class PlayerMovement : MonoBehaviour
         {
             case PlayerState.Idle:
                 if (newVelocity.magnitude > 0)
-                    player.EnterState(PlayerState.Moving);
+                    player.playerSM.EnterState(PlayerState.Moving);
                 break;
             case PlayerState.Moving:
                 rb.velocity = newVelocity;
                 if (rb.velocity.magnitude <= 0)
-                    player.LeaveState(PlayerState.Moving);
+                    player.playerSM.LeaveState(PlayerState.Moving);
                 break;
             case PlayerState.Attacking:
                 rb.velocity = newVelocity * speedMulWhenAttacking;

@@ -46,7 +46,8 @@ public class PlayerJump : MonoBehaviour
 
     private IEnumerator JumpCoroutine()
     {
-        player.EnterState(PlayerState.Jumping, jumpTime * 2);
+        player.playerSM.EnterState(PlayerState.Jumping);
+        player.MakeInvulnerable(jumpTime * 2);
 
         jumpSound.Play();
 
@@ -90,7 +91,7 @@ public class PlayerJump : MonoBehaviour
 
         _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
         grounded = true;
-        player.LeaveState(PlayerState.Jumping);
+        player.playerSM.LeaveState(PlayerState.Jumping);
         yield return null;
     }
 }

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public int maxHealth = 100, currentHealth;
     public float invulnerableTime;
     public bool invulnerable = false;
+    public int stage;
     public PlayerState state;
     public AudioSource damageSound;
 
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     private PlayerJump playerJump;
     private HealthBar healthBar;
 
+    [NonSerialized] public PlayerStateManager playerSM;
     [NonSerialized] public Animator animator;
 
     private void Awake()
@@ -24,11 +26,12 @@ public class Player : MonoBehaviour
         playerFlashScript = GetComponent<PlayerFlash>();
         playerJump = GetComponent<PlayerJump>();
         animator = GetComponent<Animator>();
+        playerSM = GetComponent<PlayerStateManager>();
     }
 
     private void Start()
     {
-        EnterState(PlayerState.Idle);
+        playerSM.EnterState(PlayerState.Idle);
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -57,6 +60,11 @@ public class Player : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+    public void SetStage(int stage)
+    {
+        this.stage = stage;
+    }
+
     public void MakeInvulnerable(float time)
     {
         if (invulnerable)
@@ -71,56 +79,4 @@ public class Player : MonoBehaviour
         invulnerable = false;
     }
 
-    public void EnterState(PlayerState newState, float invTime = 0)
-    {
-        state = newState;
-
-        switch (state)
-        {
-            case PlayerState.Idle:
-                animator.SetTrigger("Idle");
-                break;
-            case PlayerState.Moving:
-                animator.SetTrigger("Idle"); //Temp animation
-                break;
-            case PlayerState.Attacking:
-                break;
-            case PlayerState.Jumping:
-                break;
-            case PlayerState.Dashing:
-                animator.SetTrigger("Dash");
-                break;
-            default:
-                goto case PlayerState.Idle;
-        }
-
-        if (invTime > 0)
-            MakeInvulnerable(invTime);
-    }
-
-    public void LeaveState(PlayerState state)
-    {
-        if (state != this.state) return;
-
-        switch (state)
-        {
-            //case PlayerState.Idle:
-            //    break;
-            //case PlayerState.Moving:
-            //    break;
-            //case PlayerState.Attacking:
-            //    break;
-            //case PlayerState.Jumping:
-            //    break;
-            case PlayerState.Dashing:
-                if (!playerJump.grounded)
-                    EnterState(PlayerState.Jumping);
-                else
-                    goto default;
-                break;
-            default:
-                EnterState(PlayerState.Idle);
-                break;
-        }
-    }
 }
