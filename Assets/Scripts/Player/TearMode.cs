@@ -11,10 +11,13 @@ public class TearMode : MonoBehaviour
     CameraShake cameraShake;
 
     public GameObject swipeAttack;
+    public GameObject bashAttack;
     public GameObject slamAttack;
+    public GameObject projectile;
     public GameObject tearBarFill;
     public AudioSource tearModeSound;
     public PlayerAttack playerAttackScript;
+    public PlayerShoot playerShootScript;
 
     public bool tearModeOn = false;
 
@@ -43,6 +46,12 @@ public class TearMode : MonoBehaviour
         slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f;
         playerAttackScript.swipeCooldown = 0.1f;
         playerAttackScript.bashCooldown = 0.1f;
+        playerShootScript.shootCoolDown = 0.1f;
+
+        swipeAttack.transform.localScale = new Vector3(3, 0.5f, 1);
+        bashAttack.transform.localScale = new Vector3(3, 0.4f, 1);
+        slamAttack.transform.localScale = new Vector3(7, 0.8f, 1);
+        projectile.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
 
         StartCoroutine(BlinkingTearBar(20));
     
@@ -55,6 +64,14 @@ public class TearMode : MonoBehaviour
         slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 0f;
         playerAttackScript.swipeCooldown = 0.5f;
         playerAttackScript.bashCooldown = 0.5f;
+        playerShootScript.shootCoolDown = 0.4f;
+
+        swipeAttack.transform.localScale = new Vector3(2, 0.5f, 1);
+        bashAttack.transform.localScale = new Vector3(2, 0.4f, 1);
+        slamAttack.transform.localScale = new Vector3(5, 0.8f, 1);
+        projectile.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+
     }
 
     private IEnumerator BlinkingTearBar(int loops)

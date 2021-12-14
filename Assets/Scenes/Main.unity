@@ -1260,6 +1260,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f1e7ebb7d445748b0c2aefd89072cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &477641379 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2958104977341504259, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+  m_PrefabInstance: {fileID: 967784175}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477641372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2431242866be5e4d9b1101d3827ca63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &477641382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2958104977341504258, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
@@ -2325,6 +2336,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: bashAttack
+      value: 
+      objectReference: {fileID: 77544860683481084, guid: a76ea72f68964ee499cd8cfed5682a44, type: 3}
+    - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1474539451296381271, guid: 5db569fa1e95b884397f4a464e79391c, type: 3}
+    - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: slamAttack
       value: 
       objectReference: {fileID: 77544860683481084, guid: 5063c7f6fe34db148a9e95dc4a10c9b7, type: 3}
@@ -2340,6 +2359,10 @@ PrefabInstance:
       propertyPath: tearModeSound
       value: 
       objectReference: {fileID: 1152923850}
+    - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: playerShootScript
+      value: 
+      objectReference: {fileID: 477641379}
     - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: playerAttackScript
       value: 
