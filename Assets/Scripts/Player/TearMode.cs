@@ -54,13 +54,13 @@ public class TearMode : MonoBehaviour
     {
         for (int i = 0; i < loops; i++)
         {
-            tearBarOnPlayerScript.currentTear -= 2.5f;
+            tearBarOnPlayerScript.currentTear -= 5f * Time.deltaTime;
 
             tearBarFill.GetComponent<Image>().color = Color.blue;
 
             yield return new WaitForSeconds(0.25f);
 
-            tearBarOnPlayerScript.currentTear -= 2.5f;
+            tearBarOnPlayerScript.currentTear -= 5f * Time.deltaTime;
 
             tearBarFill.GetComponent<Image>().color = Color.red;
 
