@@ -25,9 +25,12 @@ public class Enemy : MonoBehaviour
     public AudioClip [] enemyDie;
     public float enemyDieVolume = 1f;
 
+    TearMode tearModeScript;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        tearModeScript = player.GetComponent<TearMode>();
         enemyRB = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
@@ -49,8 +52,12 @@ public class Enemy : MonoBehaviour
             particleSystemEnemyDie.transform.parent = null; //Set Particle system parent to null so it does not destroy
             particleSystemEnemyDie.gameObject.SetActive(true);
             Destroy(particleGameObj, particleSystemEnemyDie.main.duration); //Deletes the particle system after played
-            player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
-            player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
+            if(!tearModeScript.tearModeOn)
+            {
+                player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);
+                player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
+            }
+            
             Destroy(this.gameObject);
         }
     }

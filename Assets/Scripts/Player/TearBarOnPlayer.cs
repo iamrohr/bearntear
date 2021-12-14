@@ -38,7 +38,11 @@ public class TearBarOnPlayer : MonoBehaviour
         {
             if (currentTear >= 0 && !pauseTearDecrease)
             {
-                currentTear -= timeSpeed * Time.deltaTime;
+                if(!tearModeScript.tearModeOn)
+                {
+                    currentTear -= timeSpeed * Time.deltaTime;
+                }
+                
                 tearBar.SetTearLevel((int)currentTear);
             }   
         }
