@@ -1230,6 +1230,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f1e7ebb7d445748b0c2aefd89072cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &477641382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2958104977341504258, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+  m_PrefabInstance: {fileID: 967784175}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477641372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d23958eadaf06648889e4e765dd9a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &492518208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,6 +2310,10 @@ PrefabInstance:
       propertyPath: tearModeSound
       value: 
       objectReference: {fileID: 1152923850}
+    - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: playerAttackScript
+      value: 
+      objectReference: {fileID: 477641382}
     - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: tearBarOnPlayerScript
       value: 

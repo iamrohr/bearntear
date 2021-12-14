@@ -14,9 +14,9 @@ public class TearMode : MonoBehaviour
     public GameObject slamAttack;
     public GameObject tearBarFill;
     public AudioSource tearModeSound;
+    public PlayerAttack playerAttackScript;
 
     public bool tearModeOn = false;
-    bool tearBarRed = false;
 
     private void Start()
     {
@@ -43,6 +43,8 @@ public class TearMode : MonoBehaviour
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 20;
         //swipeAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f; // enemies die after one swipe anyway
         slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f;
+        playerAttackScript.swipeCooldown = 0.1f;
+        playerAttackScript.bashCooldown = 0.1f;
 
         StartCoroutine(BlinkingTearBar(20));
     
@@ -53,7 +55,9 @@ public class TearMode : MonoBehaviour
         playerMovementScript.speed = 6f;
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 8;
         // swipeAttack.GetComponent<PlayerAttackBox>().knockDistance = 2f; // enemies die after one swipe anyway
-        slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f;
+        slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 0f;
+        playerAttackScript.swipeCooldown = 0.5f;
+        playerAttackScript.bashCooldown = 0.5f;
     }
 
     private IEnumerator BlinkingTearBar(int loops)
