@@ -32,7 +32,11 @@ public class TearMode : MonoBehaviour
         tearModeOn = true;
         mainCamera.orthographicSize = 4.5f;
         StartCoroutine(cameraShake.Shake(0.5f, 0.4f));
-        
+        slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f;
+        slamAttack.transform.localScale = new Vector3(7, 7, 1);
+        var attackObject = Instantiate(slamAttack, transform.position, Quaternion.identity);
+        attackObject.transform.SetParent(transform);
+
         Time.timeScale = 0.001f;
         // knockBack effect
         // particleEffect
