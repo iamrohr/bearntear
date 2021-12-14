@@ -1916,9 +1916,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   routes:
   - {fileID: 1741442651}
-  jumpTriggerCollider: {fileID: 1467751601}
+  jumpTriggerCollider: {fileID: 0}
   player: {fileID: 0}
   enemy: {fileID: 3056858631563146562, guid: d380fca9fbc2cac408229cb862ab3b0c, type: 3}
+--- !u!58 &1240824541
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240824535}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -40.73716, y: 4.0740385}
+  serializedVersion: 2
+  m_Radius: 6.532051
 --- !u!1001 &1283673377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2105,6 +2121,14 @@ PrefabInstance:
     - target: {fileID: 6684070167542886729, guid: f8c6271f1f5f98946ab4d230775abe24, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.8432051
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551224545035957883, guid: f8c6271f1f5f98946ab4d230775abe24, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5978738
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551224545035957883, guid: f8c6271f1f5f98946ab4d230775abe24, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000021345365
       objectReference: {fileID: 0}
     - target: {fileID: 7551224545035957883, guid: f8c6271f1f5f98946ab4d230775abe24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2518,7 +2542,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1467751600}
-  - component: {fileID: 1467751601}
   - component: {fileID: 1467751602}
   m_Layer: 0
   m_Name: ControlPoint3 (Trigger)
@@ -2535,28 +2558,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467751599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.98, y: -3.71, z: 0}
+  m_LocalPosition: {x: 8.84, y: -3.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1741442651}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1467751601
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467751599}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.031924725}
-  serializedVersion: 2
-  m_Radius: 1.5535111
 --- !u!50 &1467751602
 Rigidbody2D:
   serializedVersion: 4
