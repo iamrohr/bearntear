@@ -12,6 +12,8 @@ public class EnemyFollowPath : MonoBehaviour
     private float speedModifier;
     private bool coroutineAllowed;
 
+    public Collider2D jumpTriggerCollider;
+
     [Header("Components")]
     [HideInInspector] public GameObject player;
 
@@ -24,13 +26,15 @@ public class EnemyFollowPath : MonoBehaviour
 
     {
         player = GameObject.FindGameObjectWithTag("Player");
+   
 
-        routeToGo = 0;
+
+    routeToGo = 0;
         tParam = 0f;
         speedModifier = 1f;
         coroutineAllowed = true;
 
-        StartCoroutine(GoByTheRoute(routeToGo));
+
 
         //if (coroutineAllowed)
         //{
@@ -38,14 +42,14 @@ public class EnemyFollowPath : MonoBehaviour
         //}
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == player)
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("I am triggered");
+            StartCoroutine(GoByTheRoute(routeToGo));
         }
-
     }
+
     // Update is called once per frame
 
     void Update()
@@ -89,7 +93,7 @@ public class EnemyFollowPath : MonoBehaviour
 
         coroutineAllowed = false;
         Instantiate(enemy, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-        //enemy.transform.localscale = new vector3(-1, 1, 1);
+        enemy.transform.localScale = new Vector3(1, 1, 1);
         Destroy(gameObject);
 
 
