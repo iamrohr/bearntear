@@ -44,9 +44,9 @@ public class TearMode : MonoBehaviour
         //swipeAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f; // enemies die after one swipe anyway
         slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f;
 
-        StartCoroutine(BlinkingTearBar(40));
+        StartCoroutine(BlinkingTearBar(20));
     
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(10f);
 
         tearBarFill.GetComponent<Image>().color = new Color32(100, 196, 255, 255);
         tearModeOn = false;
@@ -85,7 +85,7 @@ public class TearMode : MonoBehaviour
 
         if(tearModeOn)
         {
-            tearBarOnPlayerScript.currentTear -= 5f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(20) after starting the Coroutine = 5
+            tearBarOnPlayerScript.currentTear -= 10f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(10) after starting the Coroutine = 5
 
         }
 
