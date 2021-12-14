@@ -12,6 +12,7 @@ public class TearMode : MonoBehaviour
 
     public GameObject swipeAttack;
     public GameObject tearBarFill;
+    public AudioSource tearModeSound;
 
     public bool tearModeOn = false;
     bool tearBarRed = false;
@@ -39,7 +40,7 @@ public class TearMode : MonoBehaviour
         Time.timeScale = 1f;
         playerMovementScript.speed = 12f;
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 20;
-
+        
         StartCoroutine(BlinkingTearBar(40));
     
         yield return new WaitForSeconds(20f);
@@ -54,13 +55,11 @@ public class TearMode : MonoBehaviour
     {
         for (int i = 0; i < loops; i++)
         {
-            tearBarOnPlayerScript.currentTear -= 130f * Time.deltaTime;
-
             tearBarFill.GetComponent<Image>().color = Color.blue;
 
             yield return new WaitForSeconds(0.25f);
 
-            tearBarOnPlayerScript.currentTear -= 130f * Time.deltaTime;
+            //tearBarOnPlayerScript.currentTear -= 130f * Time.deltaTime;
 
             tearBarFill.GetComponent<Image>().color = Color.red;
 
@@ -74,7 +73,16 @@ public class TearMode : MonoBehaviour
 
             if (Input.GetButton("TearMode") && !tearModeOn)
             {
+                tearModeSound.Play();
                 StartCoroutine(TearModeStart());
+                
             }
+
+        if(tearModeOn)
+        {
+            tearBarOnPlayerScript.currentTear -= 5f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(20) after starting the Coroutine = 5
+
+        }
+
     }
 }
