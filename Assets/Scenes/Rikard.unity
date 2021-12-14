@@ -1364,7 +1364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2958104977348130080, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2958104977348130085, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: m_RootOrder
@@ -2262,7 +2262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1424975521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2353,9 +2353,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1467751600}
+  - component: {fileID: 1467751601}
   - component: {fileID: 1467751602}
   - component: {fileID: 1467751603}
-  - component: {fileID: 1467751601}
   m_Layer: 0
   m_Name: ControlPoint3 (Trigger)
   m_TagString: Jump Collider
