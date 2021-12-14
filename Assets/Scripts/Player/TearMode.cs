@@ -32,7 +32,6 @@ public class TearMode : MonoBehaviour
         
         Time.timeScale = 0.001f;
         // knockBack effect
-        // playSound
         // particleEffect
 
         yield return new WaitForSeconds(0.001f);
@@ -41,7 +40,6 @@ public class TearMode : MonoBehaviour
         Time.timeScale = 1f;
         playerMovementScript.speed = 12f;
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 20;
-        //swipeAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f; // enemies die after one swipe anyway
         slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f;
         playerAttackScript.swipeCooldown = 0.1f;
         playerAttackScript.bashCooldown = 0.1f;
@@ -54,7 +52,6 @@ public class TearMode : MonoBehaviour
         tearModeOn = false;
         playerMovementScript.speed = 6f;
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 8;
-        // swipeAttack.GetComponent<PlayerAttackBox>().knockDistance = 2f; // enemies die after one swipe anyway
         slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 0f;
         playerAttackScript.swipeCooldown = 0.5f;
         playerAttackScript.bashCooldown = 0.5f;
@@ -67,8 +64,6 @@ public class TearMode : MonoBehaviour
             tearBarFill.GetComponent<Image>().color = Color.blue;
 
             yield return new WaitForSeconds(0.25f);
-
-            //tearBarOnPlayerScript.currentTear -= 130f * Time.deltaTime;
 
             tearBarFill.GetComponent<Image>().color = Color.red;
 
@@ -90,8 +85,6 @@ public class TearMode : MonoBehaviour
         if(tearModeOn)
         {
             tearBarOnPlayerScript.currentTear -= 10f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(10) after starting the Coroutine = 5
-
         }
-
     }
 }
