@@ -34,6 +34,8 @@ public class EnemyFollowPath : MonoBehaviour
         speedModifier = 1f;
         coroutineAllowed = true;
 
+
+
         //if (coroutineAllowed)
         //{
         //    StartCoroutine(GoByTheRoute(routeToGo));
