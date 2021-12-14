@@ -18,12 +18,11 @@ public class JumpTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("GameObject collided with " + other.name);
 
-        Debug.Log("GameObject1 collided with " + other.name);
-
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Jaharrrrr I will Jump on you");
+            Debug.Log("Trigger");
             enemyJumper.SetActive(true);
         }
     }
