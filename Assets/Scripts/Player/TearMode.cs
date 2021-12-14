@@ -12,6 +12,7 @@ public class TearMode : MonoBehaviour
 
     public GameObject swipeAttack;
     public GameObject tearBarFill;
+    public AudioSource tearModeSound;
 
     public bool tearModeOn = false;
     bool tearBarRed = false;
@@ -72,13 +73,14 @@ public class TearMode : MonoBehaviour
 
             if (Input.GetButton("TearMode") && !tearModeOn)
             {
+                tearModeSound.Play();
                 StartCoroutine(TearModeStart());
                 
             }
 
         if(tearModeOn)
         {
-            tearBarOnPlayerScript.currentTear -= 5f * Time.deltaTime; // 100 tearBar points / WaitForSeconds after starting the Coroutine
+            tearBarOnPlayerScript.currentTear -= 5f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(20) after starting the Coroutine = 5
 
         }
 
