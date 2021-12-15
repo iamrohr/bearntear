@@ -7,8 +7,8 @@ public class PlayerAttackBox : MonoBehaviour
     [Serializable] private enum AttackType { Swipe, SwipeFinal, Bash, Slam }
     
     public int damage;
-    public float stunTime = 1.5f;
-    public float knockDistance = 2f;
+    public float timeKnocked = 2f;
+    public float timeStunned = 2f;
     [SerializeField] private AttackType attackType;
 
     private bool canDamage; 
@@ -41,7 +41,6 @@ public class PlayerAttackBox : MonoBehaviour
     {
         other.GetComponent<Enemy>().TakeDamage(damage);
         var stateManager = other.GetComponent<EnemyStateManager>();
-        stateManager.EnemyStun(stunTime);
-        stateManager.EnemyKnocked(knockDistance);
+        stateManager.EnemyKnocked(timeKnocked, timeStunned);
     }
 }

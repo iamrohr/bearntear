@@ -15,24 +15,27 @@ public class EnemyChaseState : EnemyBaseState
         
         float step = enemy.moveSpeed * Time.deltaTime;
 
-        if (enemy.transform.position.x < enemy.player.transform.position.x)
+        Vector2 dir = enemy.player.transform.position - enemy.transform.position;
+        enemy.rbHolder.velocity = dir.normalized * enemy.moveSpeed;
+
+        if (dir.x < 0)
         {
             //Enemy is to the left side of the player so move right
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.player.transform.position, step);
-            enemy.transform.localScale = new Vector3(1, 1, 1);
-        }
-        if (enemy.transform.position.x > enemy.player.transform.position.x)
-        {
-            //Enemy is to the left side of the player so move left
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.player.transform.position, step);
             enemy.transform.localScale = new Vector3(-1, 1, 1);
         }
+        else if(dir.x > 0)
+        {
+            enemy.transform.localScale = new Vector3(1, 1, 1);
+        }
+
         if (distToPlayer <= enemy.attackRange)
         {
+            enemy.rbHolder.velocity = Vector2.zero;
             enemy.SwitchState(enemy.AttackState);
         }
         if (distToPlayer >= enemy.agroRange)
         {
+            enemy.rbHolder.velocity = Vector2.zero;
             enemy.SwitchState(enemy.ReturnHomeState);
         }
     }
