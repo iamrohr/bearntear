@@ -1,11 +1,10 @@
 using System;
 using UnityEngine;
 
+public enum AttackType { Swipe, SwipeFinal, Bash, Slam }
 
 public class PlayerAttackBox : MonoBehaviour
 {
-    [Serializable] private enum AttackType { Swipe, SwipeFinal, Bash, Slam }
-    
     public int damage;
     public float timeKnocked = 0.6f;
     public float timeStunned = 2f;
@@ -26,15 +25,20 @@ public class PlayerAttackBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (!other.CompareTag("Enemy"))
-            return;
-
-        if (canDamage)
-            Attack(other);
-
-        if (attackType == AttackType.Swipe)
-            canDamage = false;            
+        switch (other.tag)
+        {
+            case "Enemy":
+                if (canDamage)
+                    Attack(other);
+                if (attackType == AttackType.Swipe)
+                    canDamage = false;
+                break;
+            case "Barricade":
+                other.GetComponent<Barricade>().TakeDamage(damage, attackType);
+                break;
+            default:
+                break;
+        }
     }
 
     private void Attack(Collider2D other)
