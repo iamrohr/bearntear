@@ -7,7 +7,7 @@ public class Score : MonoBehaviour
 {
     public static Score instance; // singleton
 
-    public static int scoreValue = 0; // was "public static int"
+    public static int scoreValue = 0;
     public static int highScore;
 
     Text score;
@@ -20,15 +20,7 @@ public class Score : MonoBehaviour
     private void Start()
     {
         score = GetComponent<Text>();
-        
         highScore = PlayerPrefs.GetInt("High Score", highScore);
-
-        Debug.Log("Score");
-        Debug.Log(scoreValue);
-
-        Debug.Log("HighScore");
-        Debug.Log(highScore);
-
     }
 
     public void AddScore(int addScore)
@@ -64,5 +56,4 @@ public class Score : MonoBehaviour
     {
         score.text = "Score: " + scoreValue;
     }
-
 }
