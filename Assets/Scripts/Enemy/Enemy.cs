@@ -49,6 +49,17 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         Score.instance.AddScore(100);
 
+        if (transform.position.x < player.transform.position.x)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+
+
         if (currentHealth <= 0)
         {
             InstansiateDrop();

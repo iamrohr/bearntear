@@ -7,7 +7,7 @@ public class PlayerAttackBox : MonoBehaviour
     [Serializable] private enum AttackType { Swipe, SwipeFinal, Bash, Slam }
     
     public int damage;
-    public float timeKnocked = 2f;
+    public float timeKnocked = 0.6f;
     public float timeStunned = 2f;
     [SerializeField] private AttackType attackType;
 

@@ -121,11 +121,11 @@ public class EnemyStateManager : MonoBehaviour
         rbHolder.velocity *= 0;
         if (transform.position.x < player.transform.position.x)
         { 
-            rbHolder.AddForce(Vector2.left * 400);
+            rbHolder.AddForce(Vector2.left * 200);
         }
         else
         {
-            rbHolder.AddForce(Vector2.right * 400);
+            rbHolder.AddForce(Vector2.right * 200);
         }
 
         StartCoroutine(EnemyKnockback(timeKnocback, timeStunned));
@@ -133,10 +133,21 @@ public class EnemyStateManager : MonoBehaviour
 
     public IEnumerator EnemyKnockback(float timeKnocked, float timeStunned)
     {
+
         SwitchState(StunState);
-        yield return new WaitForSeconds(0.6f);
+        //Vector2 velocity = Vector2.right * 10;
+
+        //while (velocity.magnitude > 0.1f)
+        //{
+        //    velocity = rbHolder.velocity;
+        //    Debug.Log("Velocity is" + rbHolder.velocity.magnitude);
+        //    rbHolder.AddForce(rbHolder.velocity.normalized * -1000 * Time.deltaTime);
+        //    yield return null;
+        //}
+
+        yield return new WaitForSeconds(timeKnocked);
         rbHolder.velocity *= 0;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(timeStunned);
         SwitchState(IdleState);
         //    Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.y);
         //    float knockTime = 1f;
@@ -169,6 +180,13 @@ public class EnemyStateManager : MonoBehaviour
     private float SmoothStop(float t)
     {
         return 1 - (1 - t) * (1 - t) * (1 - t) * (1 - t);
+    }
+
+    public void StopWalking()
+    {
+        rbHolder.velocity = Vector2.zero;
+        animator.SetTrigger("Idle");
+        SwitchState(ReturnHomeState, 2);
     }
 
 }
