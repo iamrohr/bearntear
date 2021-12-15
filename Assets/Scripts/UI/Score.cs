@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class Score : MonoBehaviour
 {
@@ -53,13 +54,16 @@ public class Score : MonoBehaviour
     public void ResetScore()
     {
         scoreValue = 0;
-        // highScore = 0;
+        //highScore = 0;
     }
 
     private void OnDestroy()
     {
         if (scoreValue >= highScore)
         {
+            inputFieldGameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
             playerName = inputText.text;
             PlayerPrefs.SetString("Player Name", "Enter Name");
             PlayerPrefs.Save();
