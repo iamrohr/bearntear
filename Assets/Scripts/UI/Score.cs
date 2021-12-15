@@ -13,6 +13,7 @@ public class Score : MonoBehaviour
     public static int highScore;
 
     public GameObject inputFieldGameObject;
+
     public InputField inputText;
     string playerName;
 
@@ -34,6 +35,9 @@ public class Score : MonoBehaviour
         {
             inputFieldGameObject.SetActive(false);
         }
+
+        EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void AddScore(int addScore)
@@ -62,6 +66,7 @@ public class Score : MonoBehaviour
         if (scoreValue >= highScore)
         {
             inputFieldGameObject.SetActive(true);
+            inputFieldGameObject.GetComponent<Image>().color = new Color32(4, 226, 253, 150);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
             playerName = inputText.text;
@@ -71,6 +76,7 @@ public class Score : MonoBehaviour
 
         if (scoreValue < highScore)
         {
+            inputFieldGameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
             playerName = inputText.text;
             PlayerPrefs.SetString("Player Name", playerName);
             PlayerPrefs.Save();
