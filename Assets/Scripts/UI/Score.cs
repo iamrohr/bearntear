@@ -13,6 +13,7 @@ public class Score : MonoBehaviour
     public static int highScore;
 
     public GameObject inputFieldGameObject;
+    //public GameObject startButton;
 
     public InputField inputText;
     string playerName;
@@ -36,8 +37,32 @@ public class Score : MonoBehaviour
             inputFieldGameObject.SetActive(false);
         }
 
-        EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
-        EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
+        //EventSystem.current.SetSelectedGameObject(null);
+
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game Over"))
+        {
+            if (scoreValue >= highScore)
+            {
+                inputFieldGameObject.SetActive(true);
+                inputText.interactable = true;
+                inputFieldGameObject.GetComponent<Image>().color = new Color32(4, 226, 253, 150);
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
+                playerName = inputText.text;
+                PlayerPrefs.SetString("Player Name", "Enter Name");
+                PlayerPrefs.Save();
+            }
+
+            if (scoreValue < highScore)
+            {
+                inputText.interactable = false;
+                inputFieldGameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+                //playerName = inputText.text;
+                //PlayerPrefs.SetString("Player Name", playerName);
+                //PlayerPrefs.Save();
+            }
+        }
     }
 
     public void AddScore(int addScore)
@@ -63,25 +88,6 @@ public class Score : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (scoreValue >= highScore)
-        {
-            inputFieldGameObject.SetActive(true);
-            inputFieldGameObject.GetComponent<Image>().color = new Color32(4, 226, 253, 150);
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
-            playerName = inputText.text;
-            PlayerPrefs.SetString("Player Name", "Enter Name");
-            PlayerPrefs.Save();
-        }
-
-        if (scoreValue < highScore)
-        {
-            inputFieldGameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
-            playerName = inputText.text;
-            PlayerPrefs.SetString("Player Name", playerName);
-            PlayerPrefs.Save();
-        }
-
         PlayerPrefs.SetInt("Score", scoreValue);
         PlayerPrefs.Save();
 
@@ -93,15 +99,15 @@ public class Score : MonoBehaviour
     {
         score.text = "Score: " + scoreValue;
 
-        if (scoreValue > highScore)
-        {
-            inputText.interactable = true;
-        }
+        //if (scoreValue > highScore)
+        //{
+        //    inputText.interactable = true;
+        //}
 
-        if (scoreValue < highScore)
-        {
-            inputText.interactable = false;
-        }
+        //if (scoreValue < highScore)
+        //{
+        //    inputText.interactable = false;
+        //}
     }
 }
 
