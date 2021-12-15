@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class Score : MonoBehaviour
 
     public static int scoreValue = 0;
     public static int highScore;
+
+    public GameObject inputFieldGameObject;
+    public InputField inputText;
+    string playerName;
 
     Text score;
 
@@ -21,6 +26,13 @@ public class Score : MonoBehaviour
     {
         score = GetComponent<Text>();
         highScore = PlayerPrefs.GetInt("High Score", highScore);
+        playerName = PlayerPrefs.GetString("Player Name");
+        inputText.text = playerName;
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
+        {
+            inputFieldGameObject.SetActive(false);
+        }
     }
 
     public void AddScore(int addScore)
@@ -41,10 +53,14 @@ public class Score : MonoBehaviour
     public void ResetScore()
     {
         scoreValue = 0;
+        // highScore = 0;
     }
 
     private void OnDestroy()
     {
+        playerName = inputText.text;
+        PlayerPrefs.SetString("Player Name", playerName);
+
         PlayerPrefs.SetInt("Score", scoreValue);
         PlayerPrefs.Save();
 
@@ -55,5 +71,16 @@ public class Score : MonoBehaviour
     private void Update()
     {
         score.text = "Score: " + scoreValue;
+
+        if (scoreValue > highScore)
+        {
+            inputText.interactable = true;
+        }
+
+        if (scoreValue < highScore)
+        {
+            inputText.interactable = false;
+        }
     }
 }
+
