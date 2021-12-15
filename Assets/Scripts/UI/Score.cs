@@ -58,8 +58,19 @@ public class Score : MonoBehaviour
 
     private void OnDestroy()
     {
-        playerName = inputText.text;
-        PlayerPrefs.SetString("Player Name", playerName);
+        if (scoreValue >= highScore)
+        {
+            playerName = inputText.text;
+            PlayerPrefs.SetString("Player Name", "Enter Name");
+            PlayerPrefs.Save();
+        }
+
+        if (scoreValue < highScore)
+        {
+            playerName = inputText.text;
+            PlayerPrefs.SetString("Player Name", playerName);
+            PlayerPrefs.Save();
+        }
 
         PlayerPrefs.SetInt("Score", scoreValue);
         PlayerPrefs.Save();
