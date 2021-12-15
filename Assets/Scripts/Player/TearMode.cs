@@ -15,6 +15,7 @@ public class TearMode : MonoBehaviour
     public GameObject slamAttack;
     public GameObject projectile;
     public GameObject tearBarFill;
+    public GameObject tearModeAnimation;
     public AudioSource tearModeSound;
     public PlayerAttack playerAttackScript;
     public PlayerShoot playerShootScript;
@@ -36,6 +37,7 @@ public class TearMode : MonoBehaviour
         slamAttack.transform.localScale = new Vector3(7, 7, 1);
         var attackObject = Instantiate(slamAttack, transform.position, Quaternion.identity);
         attackObject.transform.SetParent(transform);
+        tearModeAnimation.SetActive(true);
 
         Time.timeScale = 0.001f;
         // knockBack effect
@@ -74,6 +76,7 @@ public class TearMode : MonoBehaviour
         bashAttack.transform.localScale = new Vector3(2, 0.4f, 1);
         slamAttack.transform.localScale = new Vector3(5, 0.8f, 1);
         projectile.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        tearModeAnimation.SetActive(false);
 
 
     }
