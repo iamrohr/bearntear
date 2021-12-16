@@ -37,32 +37,7 @@ public class Score : MonoBehaviour
             inputFieldGameObject.SetActive(false);
         }
 
-        //EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
-        //EventSystem.current.SetSelectedGameObject(null);
-
-        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game Over"))
-        {
-            if (scoreValue >= highScore)
-            {
-                inputFieldGameObject.SetActive(true);
-                inputText.interactable = true;
-                inputFieldGameObject.GetComponent<Image>().color = new Color32(4, 226, 253, 150);
-                EventSystem.current.SetSelectedGameObject(null);
-                EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
-                playerName = inputText.text;
-                PlayerPrefs.SetString("Player Name", "Enter Name");
-                PlayerPrefs.Save();
-            }
-
-            if (scoreValue < highScore)
-            {
-                inputText.interactable = false;
-                inputFieldGameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
-                //playerName = inputText.text;
-                //PlayerPrefs.SetString("Player Name", playerName);
-                //PlayerPrefs.Save();
-            }
-        }
+        
     }
 
     public void AddScore(int addScore)
@@ -83,7 +58,7 @@ public class Score : MonoBehaviour
     public void ResetScore()
     {
         scoreValue = 0;
-        //highScore = 0;
+        // highScore = 0;
     }
 
     private void OnDestroy()
@@ -93,21 +68,52 @@ public class Score : MonoBehaviour
 
         PlayerPrefs.SetInt("High Score", highScore);
         PlayerPrefs.Save();
+
+        if (scoreValue >= highScore)
+        {
+            PlayerPrefs.SetString("Player Name", "Enter Name");
+            PlayerPrefs.Save();
+
+        }
+
+
     }
 
     private void Update()
     {
         score.text = "Score: " + scoreValue;
 
-        //if (scoreValue > highScore)
-        //{
-        //    inputText.interactable = true;
-        //}
+        if (scoreValue >= highScore)
+        {
+            //if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game Over"))
+            //{
+            //    if (scoreValue >= highScore)
+            //    {
+            //        inputFieldGameObject.SetActive(true);
+            //        inputFieldGameObject.GetComponent<Image>().color = new Color32(4, 226, 253, 150);
+            //        EventSystem.current.SetSelectedGameObject(null);
+            //        EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
+            //    }
 
-        //if (scoreValue < highScore)
-        //{
-        //    inputText.interactable = false;
-        //}
+            //    if (scoreValue < highScore)
+            //    {
+            //        inputFieldGameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+            //    }
+            //}
+
+            inputText.interactable = true; // this line works
+
+            playerName = inputText.text;
+            PlayerPrefs.SetString("Player Name", playerName); // "Enter Name"
+            PlayerPrefs.Save();
+
+
+        }
+
+        if (scoreValue < highScore)
+        {
+            inputText.interactable = false; // this line works
+        }
     }
 }
 
