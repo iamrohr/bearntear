@@ -13,7 +13,6 @@ public class Score : MonoBehaviour
     public static int highScore;
 
     public GameObject inputFieldGameObject;
-    //public GameObject startButton;
 
     public InputField inputText;
     string playerName;
@@ -37,7 +36,11 @@ public class Score : MonoBehaviour
             inputFieldGameObject.SetActive(false);
         }
 
-        
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameOver") && scoreValue >= highScore)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
+        }
     }
 
     public void AddScore(int addScore)
@@ -58,7 +61,7 @@ public class Score : MonoBehaviour
     public void ResetScore()
     {
         scoreValue = 0;
-        // highScore = 0;
+        // highScore = 0; to reset when testing as necessary
     }
 
     private void OnDestroy()
@@ -73,10 +76,7 @@ public class Score : MonoBehaviour
         {
             PlayerPrefs.SetString("Player Name", "Enter Name");
             PlayerPrefs.Save();
-
         }
-
-
     }
 
     private void Update()
@@ -85,34 +85,16 @@ public class Score : MonoBehaviour
 
         if (scoreValue >= highScore)
         {
-            //if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game Over"))
-            //{
-            //    if (scoreValue >= highScore)
-            //    {
-            //        inputFieldGameObject.SetActive(true);
-            //        inputFieldGameObject.GetComponent<Image>().color = new Color32(4, 226, 253, 150);
-            //        EventSystem.current.SetSelectedGameObject(null);
-            //        EventSystem.current.SetSelectedGameObject(inputFieldGameObject);
-            //    }
-
-            //    if (scoreValue < highScore)
-            //    {
-            //        inputFieldGameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
-            //    }
-            //}
-
-            inputText.interactable = true; // this line works
-
+            inputText.interactable = true;
+            
             playerName = inputText.text;
-            PlayerPrefs.SetString("Player Name", playerName); // "Enter Name"
+            PlayerPrefs.SetString("Player Name", playerName);
             PlayerPrefs.Save();
-
-
         }
 
         if (scoreValue < highScore)
         {
-            inputText.interactable = false; // this line works
+            inputText.interactable = false;
         }
     }
 }
