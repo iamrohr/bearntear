@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
+        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
     public static float GetAngleFromVectorFloat(Vector3 dir)
