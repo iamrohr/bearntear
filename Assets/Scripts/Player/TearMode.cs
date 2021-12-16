@@ -108,7 +108,7 @@ public class TearMode : MonoBehaviour
 
         if(tearModeOn)
         {
-            tearBarOnPlayerScript.currentTear -= 10f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(10) after starting the Coroutine = 5
+            tearBarOnPlayerScript.currentTear -= 10f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(10) after starting the Coroutine = 10
         }
     }
 }
