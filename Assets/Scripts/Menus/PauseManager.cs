@@ -8,7 +8,7 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject pauseControlsCanvas;
     public GameObject pauseCanvas;
-    public GameObject backgroundTransparent;
+    //public GameObject backgroundTransparent;
     public GameObject backgroundTransparent2;
 
     public GameObject playerShadow;
@@ -48,7 +48,7 @@ public class PauseManager : MonoBehaviour
     public void PauseControls()
     {
         buttonClickSound.Play();
-        backgroundTransparent.SetActive(false);
+        //backgroundTransparent.SetActive(false);
         backgroundTransparent2.SetActive(false);
         pauseCanvas.SetActive(false);
         playerShadowSpriteRenderer.enabled = false;
@@ -80,7 +80,7 @@ public class PauseManager : MonoBehaviour
         pauseControlsCanvas.SetActive(false);
         //playerShootScript.enabled = false;
         pauseCanvas.SetActive(true);
-        backgroundTransparent.SetActive(true);
+        //backgroundTransparent.SetActive(true);
         backgroundTransparent2.SetActive(true);
         playerShadowSpriteRenderer.enabled = true;
         playerRenderer.enabled = true;
