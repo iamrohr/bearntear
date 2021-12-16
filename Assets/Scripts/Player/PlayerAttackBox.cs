@@ -22,7 +22,7 @@ public class PlayerAttackBox : MonoBehaviour
         temp.a = 0.4f;
         GetComponent<SpriteRenderer>().color = temp;
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.tag)

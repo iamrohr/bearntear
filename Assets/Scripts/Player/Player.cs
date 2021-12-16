@@ -12,13 +12,14 @@ public class Player : MonoBehaviour
     public int stage;
     public PlayerState state;
     public AudioSource damageSound;
+    
+    [NonSerialized] public PlayerStateManager playerSM;
+    [NonSerialized] public Animator animator;
 
     private PlayerFlash playerFlashScript;
     private PlayerJump playerJump;
     private HealthBar healthBar;
 
-    [NonSerialized] public PlayerStateManager playerSM;
-    [NonSerialized] public Animator animator;
 
     private void Awake()
     {
@@ -78,5 +79,4 @@ public class Player : MonoBehaviour
     {
         invulnerable = false;
     }
-
 }
