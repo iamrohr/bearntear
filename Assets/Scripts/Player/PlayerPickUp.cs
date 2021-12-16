@@ -27,6 +27,9 @@ public class PlayerPickUp : MonoBehaviour
                 sewing.PopUp();
                 Destroy(other.transform.parent.gameObject);
                 break;
+            case "NextLevel":
+                LevelManager.FadeToNextScene();
+                break;
             default:
                 break;
         }
