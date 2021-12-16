@@ -44,9 +44,10 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         MakeInvulnerable(invulnerableTime);
+        StartCoroutine(playerFlashScript.Flash(0.25f, 2));
 
         damageSound.Play();
-        StartCoroutine(playerFlashScript.Flash());
+        //StartCoroutine(playerFlashScript.Flash(0.5f, 1));
         animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
