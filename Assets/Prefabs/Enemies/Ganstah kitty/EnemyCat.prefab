@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  rb: {fileID: 0}
+  rbHolder: {fileID: 0}
   animator: {fileID: 0}
   attackBox: {fileID: 4394604815110055996}
   forceIdleStateTimer: 2
@@ -277,11 +277,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRB: {fileID: 0}
+  enemyTF: {fileID: 0}
   player: {fileID: 0}
   enemyPos: {x: 0, y: 0}
   currentHealth: 0
-  maxHealth: 20
-  giveTear: 50
+  maxHealth: 40
+  giveTear: 20
   pauseTearDecrease: 3
   particleSystemEnemyDie: {fileID: 4421422792078068561}
   particleGameObj: {fileID: 3286487048189768655}

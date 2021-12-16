@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         enemyRB = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
 
-        enemyTF = transform.parent;
+        enemyTF = this.transform.parent;
         enemyRB = enemyTF.GetComponent<Rigidbody2D>();
     }
 
