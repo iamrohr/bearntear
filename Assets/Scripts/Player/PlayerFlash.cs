@@ -15,6 +15,9 @@ public class PlayerFlash : MonoBehaviour
             yield return new WaitForSeconds(WaitForSeconds);
 
             playerSpriteRenderer.color = Color.white; // red
+
+            yield return new WaitForSeconds(WaitForSeconds);
+
         }
     }
 }
