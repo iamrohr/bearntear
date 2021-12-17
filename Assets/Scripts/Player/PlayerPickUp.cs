@@ -21,6 +21,15 @@ public class PlayerPickUp : MonoBehaviour
             case "Cotton":
                 other.GetComponent<GiveLife>().PickUp(player);
                 break;
+            case "Sewing":
+                var sewing = other.GetComponent<Sewing>();
+                player.SetStage(sewing.stage);
+                sewing.PopUp();
+                Destroy(other.transform.parent.gameObject);
+                break;
+            case "NextLevel":
+                LevelManager.FadeToNextScene();
+                break;
             default:
                 break;
         }

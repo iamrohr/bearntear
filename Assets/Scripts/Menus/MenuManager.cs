@@ -23,8 +23,12 @@ public class MenuManager : MonoBehaviour
         controlsCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(startButton);
+
+        if(Score.scoreValue == 0 || Score.scoreValue < Score.highScore)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(startButton);
+        }
     }
 
     public void StartNewGame()

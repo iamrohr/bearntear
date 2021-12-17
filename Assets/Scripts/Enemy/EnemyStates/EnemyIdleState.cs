@@ -4,6 +4,8 @@ public class EnemyIdleState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
+        Debug.Log("I am in idle");
+        enemy.rbHolder.velocity *= 0;
         enemy.animator.SetTrigger("Idle");
     }
 

@@ -4,6 +4,7 @@ public class EnemyReturnHomeState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
+        enemy.animator.SetTrigger("Walk");
         enemy.attackBox.SetActive(false);
         //Flips the enemy towards the start position.
         if (enemy.transform.position.x < enemy.enemyStartPosition.x)
@@ -12,15 +13,16 @@ public class EnemyReturnHomeState : EnemyBaseState
         }
         else
             enemy.transform.localScale = new Vector2(-1, 1);
+
+        Vector2 dir = enemy.enemyStartPosition - (Vector2)enemy.transform.position;
+        enemy.rbHolder.velocity = dir.normalized * enemy.moveSpeed;
     }
 
     public override void UpdateState(EnemyStateManager enemy)
     {
         Vector2 currentposition = enemy.transform.position;
-        float step = enemy.moveSpeed * Time.deltaTime;
-        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.enemyStartPosition, step);
 
-        if (currentposition.y == enemy.enemyStartPosition.y)
+        if ((currentposition - enemy.enemyStartPosition).magnitude < 0.1f)
         {
             enemy.SwitchState(enemy.IdleState);
         }

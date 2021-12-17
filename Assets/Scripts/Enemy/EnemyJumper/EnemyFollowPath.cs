@@ -12,8 +12,6 @@ public class EnemyFollowPath : MonoBehaviour
     private float speedModifier;
     private bool coroutineAllowed;
 
-    public Collider2D jumpTriggerCollider;
-
     [Header("Components")]
     [HideInInspector] public GameObject player;
 
@@ -26,25 +24,13 @@ public class EnemyFollowPath : MonoBehaviour
 
     {
         player = GameObject.FindGameObjectWithTag("Player");
-   
 
-
-    routeToGo = 0;
+        routeToGo = 0;
         tParam = 0f;
         speedModifier = 1f;
         coroutineAllowed = true;
 
-
-
-        //if (coroutineAllowed)
-        //{
-        //    StartCoroutine(GoByTheRoute(routeToGo));
-        //}
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        if (coroutineAllowed)
         {
             StartCoroutine(GoByTheRoute(routeToGo));
         }
@@ -58,10 +44,9 @@ public class EnemyFollowPath : MonoBehaviour
 
     }
 
-    private IEnumerator GoByTheRoute(int routeNum)
+    public IEnumerator GoByTheRoute(int routeNum)
 
     {
-
         coroutineAllowed = false;
         Vector2 p0 = routes[routeNum].GetChild(0).position;
         Vector2 p1 = routes[routeNum].GetChild(1).position;

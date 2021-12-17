@@ -6,15 +6,18 @@ public class PlayerFlash : MonoBehaviour
 {
     public SpriteRenderer playerSpriteRenderer;
 
-    public IEnumerator Flash()
+    public IEnumerator Flash(float WaitForSeconds, int NrTimesToRunScript)
     {
-        playerSpriteRenderer.color = Color.red; // red
+        for (int i = 0; i < NrTimesToRunScript; i++)
+        {
+            playerSpriteRenderer.color = Color.red; // red
 
-        yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(WaitForSeconds);
 
-        playerSpriteRenderer.color = Color.white; // red
+            playerSpriteRenderer.color = Color.white; // red
+
+            yield return new WaitForSeconds(WaitForSeconds);
+
+        }
     }
-
-        
-    
 }

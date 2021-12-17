@@ -11,12 +11,16 @@ public class TearMode : MonoBehaviour
     CameraShake cameraShake;
 
     public GameObject swipeAttack;
+    public GameObject bashAttack;
     public GameObject slamAttack;
+    public GameObject projectile;
     public GameObject tearBarFill;
+    public GameObject tearModeAnimation;
     public AudioSource tearModeSound;
+    public PlayerAttack playerAttackScript;
+    public PlayerShoot playerShootScript;
 
     public bool tearModeOn = false;
-    bool tearBarRed = false;
 
     private void Start()
     {
@@ -29,10 +33,14 @@ public class TearMode : MonoBehaviour
         tearModeOn = true;
         mainCamera.orthographicSize = 4.5f;
         StartCoroutine(cameraShake.Shake(0.5f, 0.4f));
-        
+        slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 4f;
+        slamAttack.transform.localScale = new Vector3(7, 7, 1);
+        var attackObject = Instantiate(slamAttack, transform.position, Quaternion.identity);
+        attackObject.transform.SetParent(transform);
+        tearModeAnimation.SetActive(true);
+
         Time.timeScale = 0.001f;
         // knockBack effect
-        // playSound
         // particleEffect
 
         yield return new WaitForSeconds(0.001f);
@@ -41,19 +49,36 @@ public class TearMode : MonoBehaviour
         Time.timeScale = 1f;
         playerMovementScript.speed = 12f;
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 20;
-        //swipeAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f; // enemies die after one swipe anyway
-        slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f;
+        slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 4f;
+        playerAttackScript.swipeCooldown = 0.1f;
+        playerAttackScript.bashCooldown = 0.1f;
+        playerShootScript.shootCoolDown = 0.1f;
 
-        StartCoroutine(BlinkingTearBar(40));
+        swipeAttack.transform.localScale = new Vector3(3, 0.5f, 1);
+        bashAttack.transform.localScale = new Vector3(3, 0.4f, 1);
+        slamAttack.transform.localScale = new Vector3(7, 0.8f, 1);
+        projectile.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+
+        StartCoroutine(BlinkingTearBar(20));
     
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(10f);
 
         tearBarFill.GetComponent<Image>().color = new Color32(100, 196, 255, 255);
         tearModeOn = false;
         playerMovementScript.speed = 6f;
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 8;
-        // swipeAttack.GetComponent<PlayerAttackBox>().knockDistance = 2f; // enemies die after one swipe anyway
-        slamAttack.GetComponent<PlayerAttackBox>().knockDistance = 4f;
+        slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 0f;
+        playerAttackScript.swipeCooldown = 0.5f;
+        playerAttackScript.bashCooldown = 0.5f;
+        playerShootScript.shootCoolDown = 0.4f;
+
+        swipeAttack.transform.localScale = new Vector3(2, 0.5f, 1);
+        bashAttack.transform.localScale = new Vector3(2, 0.4f, 1);
+        slamAttack.transform.localScale = new Vector3(5, 0.8f, 1);
+        projectile.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        tearModeAnimation.SetActive(false);
+
+
     }
 
     private IEnumerator BlinkingTearBar(int loops)
@@ -63,8 +88,6 @@ public class TearMode : MonoBehaviour
             tearBarFill.GetComponent<Image>().color = Color.blue;
 
             yield return new WaitForSeconds(0.25f);
-
-            //tearBarOnPlayerScript.currentTear -= 130f * Time.deltaTime;
 
             tearBarFill.GetComponent<Image>().color = Color.red;
 
@@ -85,9 +108,7 @@ public class TearMode : MonoBehaviour
 
         if(tearModeOn)
         {
-            tearBarOnPlayerScript.currentTear -= 5f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(20) after starting the Coroutine = 5
-
+            tearBarOnPlayerScript.currentTear -= 10f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(10) after starting the Coroutine = 10
         }
-
     }
 }

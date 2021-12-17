@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D enemyRB;
+    [HideInInspector] public Transform enemyTF;
     [HideInInspector] public GameObject player;
     [HideInInspector] public Vector2 enemyPos;
 
@@ -33,6 +34,9 @@ public class Enemy : MonoBehaviour
         tearModeScript = player.GetComponent<TearMode>();
         enemyRB = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+
+        enemyTF = this.transform.parent;
+        enemyRB = enemyTF.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -44,6 +48,17 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
         Score.instance.AddScore(100);
+
+        if (transform.position.x < player.transform.position.x)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+
 
         if (currentHealth <= 0)
         {
@@ -58,7 +73,8 @@ public class Enemy : MonoBehaviour
                 player.GetComponent<TearBarOnPlayer>().TearDecreaseOff(pauseTearDecrease);
             }
             
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 

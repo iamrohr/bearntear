@@ -9,25 +9,30 @@ public class Player : MonoBehaviour
     public int maxHealth = 100, currentHealth;
     public float invulnerableTime;
     public bool invulnerable = false;
+    public int stage;
     public PlayerState state;
-    public HealthBar healthBar;
     public AudioSource damageSound;
+    
+    [NonSerialized] public PlayerStateManager playerSM;
+    [NonSerialized] public Animator animator;
 
     private PlayerFlash playerFlashScript;
     private PlayerJump playerJump;
+    private HealthBar healthBar;
 
-    [NonSerialized] public Animator animator;
 
     private void Awake()
     {
+        healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
         playerFlashScript = GetComponent<PlayerFlash>();
         playerJump = GetComponent<PlayerJump>();
         animator = GetComponent<Animator>();
+        playerSM = GetComponent<PlayerStateManager>();
     }
 
     private void Start()
     {
-        EnterState(PlayerState.Idle);
+        playerSM.EnterState(PlayerState.Idle);
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -40,9 +45,9 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         MakeInvulnerable(invulnerableTime);
+        StartCoroutine(playerFlashScript.Flash(0.1f, 5)); // 1st float x 2nd interger must equal invunerbleTime
 
         damageSound.Play();
-        StartCoroutine(playerFlashScript.Flash());
         animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
@@ -54,6 +59,11 @@ public class Player : MonoBehaviour
         currentHealth += hp;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthBar.SetHealth(currentHealth);
+    }
+
+    public void SetStage(int stage)
+    {
+        this.stage = stage;
     }
 
     public void MakeInvulnerable(float time)
@@ -68,58 +78,5 @@ public class Player : MonoBehaviour
     private void TurnOffInvulnerable()
     {
         invulnerable = false;
-    }
-
-    public void EnterState(PlayerState newState, float invTime = 0)
-    {
-        state = newState;
-
-        switch (state)
-        {
-            case PlayerState.Idle:
-                animator.SetTrigger("Idle");
-                break;
-            case PlayerState.Moving:
-                animator.SetTrigger("Idle"); //Temp animation
-                break;
-            case PlayerState.Attacking:
-                break;
-            case PlayerState.Jumping:
-                break;
-            case PlayerState.Dashing:
-                animator.SetTrigger("Dash");
-                break;
-            default:
-                goto case PlayerState.Idle;
-        }
-
-        if (invTime > 0)
-            MakeInvulnerable(invTime);
-    }
-
-    public void LeaveState(PlayerState state)
-    {
-        if (state != this.state) return;
-
-        switch (state)
-        {
-            //case PlayerState.Idle:
-            //    break;
-            //case PlayerState.Moving:
-            //    break;
-            //case PlayerState.Attacking:
-            //    break;
-            //case PlayerState.Jumping:
-            //    break;
-            case PlayerState.Dashing:
-                if (!playerJump.grounded)
-                    EnterState(PlayerState.Jumping);
-                else
-                    goto default;
-                break;
-            default:
-                EnterState(PlayerState.Idle);
-                break;
-        }
     }
 }
