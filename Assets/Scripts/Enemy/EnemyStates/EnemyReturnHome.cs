@@ -31,7 +31,7 @@ public class EnemyReturnHomeState : EnemyBaseState
         float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.transform.position);
         if (distToPlayer < enemy.agroRange)
         {
-            enemy.SwitchState(enemy.IdleState, 3);
+            enemy.SwitchState(enemy.IdleState);
         }
     }
 

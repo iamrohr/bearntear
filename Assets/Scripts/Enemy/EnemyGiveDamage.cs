@@ -8,7 +8,7 @@ public class EnemyGiveDamage : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-                other.GetComponent<Player>().TakeDamage(giveDamage);
+                other.GetComponent<Player>().TakeDamage(10);
         }
     }
 }

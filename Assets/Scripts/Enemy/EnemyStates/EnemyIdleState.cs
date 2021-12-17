@@ -15,11 +15,11 @@ public class EnemyIdleState : EnemyBaseState
 
         if (distToPlayer > enemy.agroRange)
         {
-            enemy.SwitchState(enemy.PatrolState, 3);
+            enemy.SwitchState(enemy.PatrolState, 1.5f);
         }
         if (distToPlayer < enemy.agroRange)
         {
-            enemy.SwitchState(enemy.ChaseState, enemy.reactionTime);
+            enemy.SwitchState(enemy.ChaseState);
         }
     }
 
