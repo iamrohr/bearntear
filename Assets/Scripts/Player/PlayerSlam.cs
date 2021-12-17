@@ -26,7 +26,7 @@ public class PlayerSlam : MonoBehaviour
 
     public void SlamUpdate()
     {
-        if (player.stage < 3) return;
+        //if (player.stage < 3) return; //TODO: FIX
 
         if (playerInput.attackDown)
         {

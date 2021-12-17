@@ -22,7 +22,7 @@ public class PlayerDash : MonoBehaviour
 
     public void Dash()
     {
-        if (player.stage < 2) return;
+        //if (player.stage < 2) return; //TODO: FIX
         
         float xInput = playerInput.xInput;
         if (!(playerInput.dash && xInput != 0 && canDash)) return;
