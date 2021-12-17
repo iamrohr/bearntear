@@ -5,12 +5,13 @@ public enum AttackType { Swipe, SwipeFinal, Bash, Slam }
 
 public class PlayerAttackBox : MonoBehaviour
 {
-    public int damage;
+    public int damage, enemiesAffected;
     public float timeKnocked = 0.6f;
     public float timeStunned = 2f;
     [SerializeField] private AttackType attackType;
 
-    private bool canDamage; 
+    private bool canDamage;
+    private int enemyHitCount;
 
     void Start()
     {
@@ -28,10 +29,16 @@ public class PlayerAttackBox : MonoBehaviour
         switch (other.tag)
         {
             case "Enemy":
+                if (enemiesAffected > 0)
+                {
+                    if (enemyHitCount >= enemiesAffected)
+                        canDamage = false;
+                    
+                    enemyHitCount++;
+                }
+
                 if (canDamage)
                     Attack(other);
-                if (attackType == AttackType.Swipe)
-                    canDamage = false;
                 break;
             case "Barricade":
                 other.GetComponent<Barricade>().TakeDamage(damage, attackType);

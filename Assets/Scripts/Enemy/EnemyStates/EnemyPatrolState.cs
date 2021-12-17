@@ -43,8 +43,12 @@ public class EnemyPatrolState : EnemyBaseState
         float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.transform.position);
         if (distToPlayer < enemy.agroRange)
         {
-            enemy.SwitchState(enemy.IdleState, 0.5f);
+            enemy.SwitchState(enemy.IdleState);
         }
+        //else if (distToPlayer < enemy.attackRange)
+        //{
+        //    enemy.SwitchState(enemy.AttackState);
+        //}
     }
 
     public override void OnCollisionEnter2D(EnemyStateManager enemy, Collision2D collision)
