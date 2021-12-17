@@ -27,6 +27,7 @@ public class EnemyStateManager : MonoBehaviour
     [HideInInspector] public bool arrivedAtRandPos;
     [HideInInspector] public bool moveToStart;
     [HideInInspector] public float agroRangeRand;
+    [HideInInspector] public float offsetFollowPlayerY = 1.5f;
 
     public float agroRange = 2f;
     public float agroRandomRange = 5f;
@@ -40,7 +41,7 @@ public class EnemyStateManager : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("PlayerHolder");
 
         //enemyTF = transform.parent;
         rbHolder = GetComponentInParent<Rigidbody2D>();

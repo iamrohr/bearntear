@@ -14,6 +14,8 @@ public class EnemyChaseState : EnemyBaseState
         float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.transform.position);
         
         Vector2 dir = enemy.player.transform.position - enemy.transform.position;
+        dir.y += enemy.offsetFollowPlayerY;
+
         enemy.rbHolder.velocity = dir.normalized * enemy.moveSpeed;
 
         if (dir.x < 0)
