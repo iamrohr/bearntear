@@ -12,6 +12,7 @@ public class PlayerSlam : MonoBehaviour
     private Rigidbody2D rb;
     private CameraShake cameraShake;
     [SerializeField] private GameObject slamAttack;
+    [SerializeField] private AudioSource slamSound;
 
     private void Awake()
     {
@@ -70,6 +71,8 @@ public class PlayerSlam : MonoBehaviour
             t += Time.deltaTime / slamTime;
             yield return null;
         }
+
+        slamSound.Play();
 
         _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
         playerJump.grounded = true;
