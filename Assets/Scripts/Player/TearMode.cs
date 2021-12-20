@@ -99,13 +99,16 @@ public class TearMode : MonoBehaviour
     {
         for (int i = 0; i < loops; i++)
         {
-            tearBarFill.GetComponent<Image>().color = Color.white;
+            while(tearBarOnPlayerScript.currentTear == tearBarOnPlayerScript.maxTear)
+            {
+                tearBarFill.GetComponent<Image>().color = Color.white;
 
-            yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.1f);
 
-            tearBarFill.GetComponent<Image>().color = Color.red;
+                tearBarFill.GetComponent<Image>().color = Color.red;
 
-            yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.1f);
+            }
         }
     }
 
@@ -113,10 +116,7 @@ public class TearMode : MonoBehaviour
     private void Update()
     {
         if (tearBarOnPlayerScript.currentTear == tearBarOnPlayerScript.maxTear)
-        {
-            
-            StartCoroutine(BlinkingTearBarWarning(1));
-
+        
             if (Input.GetButton("TearMode") && !tearModeOn)
             {
                 tearModeSound.Play();
@@ -128,6 +128,8 @@ public class TearMode : MonoBehaviour
             {
             tearBarOnPlayerScript.currentTear -= 10f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(10) after starting the Coroutine = 10
             }
-        }
+
+            // StartCoroutine(BlinkingTearBarWarning(1));
+        
     }
 }
