@@ -72,7 +72,7 @@ public class PlayerSlam : MonoBehaviour
             yield return null;
         }
 
-        slamSound.Play();
+        // slamSound.Play();
 
         _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
         playerJump.grounded = true;
