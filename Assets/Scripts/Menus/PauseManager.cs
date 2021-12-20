@@ -17,6 +17,8 @@ public class PauseManager : MonoBehaviour
     PlayerShoot playerShootScript;
     PlayerJump playerJumpScript;
     PlayerAttack playerAttackScript;
+    PlayerMovement playerMovementScript;
+    PlayerInput playerInputScript;
 
     GameObject[] projectileGameObjects;
     GameObject[] enemyGameObjects;
@@ -34,6 +36,8 @@ public class PauseManager : MonoBehaviour
         playerShootScript = player.GetComponent<PlayerShoot>();
         playerJumpScript = player.GetComponent<PlayerJump>();
         playerAttackScript = player.GetComponent<PlayerAttack>();
+        playerMovementScript = player.GetComponent<PlayerMovement>();
+        playerInputScript = player.GetComponent<PlayerInput>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -54,15 +58,18 @@ public class PauseManager : MonoBehaviour
 
     public void Continue()
     {
-        Time.timeScale = 1; // ie. Not Paused
+        
         pauseCanvas.SetActive(false);
         playerShootScript.enabled = true;
-        playerJumpScript.enabled = true;
         playerAttackScript.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         backgroundMusic.SetActive(true);
         buttonClickSound.Play();
+        playerJumpScript.enabled = true;
+        playerMovementScript.enabled = true;
+        playerInputScript.enabled = true; // this is what causes jumping to occur after pressing pause
+        Time.timeScale = 1; // ie. Not Paused
     }
 
     private void Update()
@@ -76,6 +83,8 @@ public class PauseManager : MonoBehaviour
                 playerShootScript.enabled = false;
                 playerJumpScript.enabled = false;
                 playerAttackScript.enabled = false;
+                playerMovementScript.enabled = false;
+                playerInputScript.enabled = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 EventSystem.current.SetSelectedGameObject(null);
@@ -91,6 +100,8 @@ public class PauseManager : MonoBehaviour
                 playerShootScript.enabled = true;
                 playerJumpScript.enabled = true;
                 playerAttackScript.enabled = true;
+                playerMovementScript.enabled = true;
+                playerInputScript.enabled = true;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 backgroundMusic.SetActive(true);
