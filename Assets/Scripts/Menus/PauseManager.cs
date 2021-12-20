@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
-    public GameObject pauseControlsCanvas;
     public GameObject pauseCanvas;
     public GameObject playerShadow;
     public GameObject player;
@@ -23,15 +22,12 @@ public class PauseManager : MonoBehaviour
     GameObject[] enemyGameObjects;
 
     public GameObject continueButton;
-    public GameObject backButton;
 
     public GameObject backgroundMusic;
     public AudioSource buttonClickSound;
 
-
     private void Awake()
     {
-        pauseControlsCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
         playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
         playerRenderer = player.GetComponent<SpriteRenderer>();
@@ -40,56 +36,6 @@ public class PauseManager : MonoBehaviour
         playerAttackScript = player.GetComponent<PlayerAttack>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-
-    public void PauseControls()
-    {
-        buttonClickSound.Play();
-        pauseCanvas.SetActive(false);
-        playerShadowSpriteRenderer.enabled = false;
-        playerRenderer.enabled = false;
-        healthBarCanvas.SetActive(false);
-        //playerShootScript.enabled = false;
-        pauseControlsCanvas.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(backButton);
-
-        projectileGameObjects = GameObject.FindGameObjectsWithTag("Projectile");
-
-        foreach (var projectile in projectileGameObjects)
-        {
-            projectile.SetActive(false);
-        }
-
-        enemyGameObjects = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (var enemy in enemyGameObjects)
-        {
-            enemy.SetActive(false);
-        }
-    }
-
-    public void PauseBack()
-    {
-        buttonClickSound.Play();
-        pauseControlsCanvas.SetActive(false);
-        //playerShootScript.enabled = false;
-        pauseCanvas.SetActive(true);
-        playerShadowSpriteRenderer.enabled = true;
-        playerRenderer.enabled = true;
-        healthBarCanvas.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(continueButton);
-
-        foreach (var projectile in projectileGameObjects)
-        {
-            projectile.SetActive(true);
-        }
-
-        foreach (var enemy in enemyGameObjects)
-        {
-            enemy.SetActive(true);
-        }
     }
 
     public void PauseMainMenu()
@@ -121,7 +67,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !pauseControlsCanvas.activeSelf)
+        if (Input.GetButtonDown("Cancel"))
         {
             if (Time.timeScale == 1)
             {
@@ -149,11 +95,6 @@ public class PauseManager : MonoBehaviour
                 Cursor.visible = false;
                 backgroundMusic.SetActive(true);
             }
-        }
-
-        if (pauseControlsCanvas.activeSelf && Input.GetButtonDown("Cancel"))
-        {
-            PauseBack();
         }
     }
 }

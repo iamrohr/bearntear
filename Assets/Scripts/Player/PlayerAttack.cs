@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private float attackOffSetX, timeForBash, bashRecoveryTime, comboInterval;
-    public float swipeCooldown, bashCooldown;
+    public float swipeCooldown, bashCooldown, swipeFinalCooldown;
     public int comboTotal;
 
     public GameObject swipeAttack, bashAttack;
@@ -55,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
             else
                 attackTimer = 0;
         }
-        
+
         if (playerInput.attackUp && player.state == PlayerState.Attacking)
         {
             if (canAttack)
@@ -65,7 +65,7 @@ public class PlayerAttack : MonoBehaviour
             }
             else
                 queuedAttack = true;
-            
+
             attackTimer = 0;
         }
     }
@@ -106,6 +106,7 @@ public class PlayerAttack : MonoBehaviour
 
             attackObject.GetComponent<SpriteRenderer>().color = Color.cyan; //Temp check
             comboCurrent = 1;
+            AttackCooldown(swipeFinalCooldown);
         }
         else if (comboCurrent % 2 == 0)
         {
@@ -113,6 +114,7 @@ public class PlayerAttack : MonoBehaviour
             player.animator.SetTrigger("Swipe1");
 
             comboCurrent++;
+            AttackCooldown(swipeCooldown);
         }
         else
         {
@@ -121,16 +123,16 @@ public class PlayerAttack : MonoBehaviour
 
             attackObject.GetComponent<SpriteRenderer>().color = Color.blue; //Temp check
             comboCurrent++;
+            AttackCooldown(swipeCooldown);
         }
- 
+
         swingSound.Play();
-        AttackCooldown(swipeCooldown);
     }
-  
+
     private void BashAttack(Vector2 attackPos)
     {
         player.animator.SetTrigger("Bash");
-        
+
         swingSound.pitch = 0.85f;
         swingSound.Play();
 
