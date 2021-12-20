@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         horFacing = HorFacing.Right;
     }
 
-    public void Move()
+    public void MoveUpdate()
     {
         float x = playerInput.xInput;
         float y = playerInput.yInput;

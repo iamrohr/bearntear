@@ -20,7 +20,7 @@ public class PlayerDash : MonoBehaviour
     }
 
 
-    public void Dash()
+    public void DashUpdate()
     {
         //if (player.stage < 2) return; //TODO: FIX
         

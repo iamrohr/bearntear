@@ -26,7 +26,7 @@ public class PlayerJump : MonoBehaviour
         groundedY = _transform.localPosition.y;
     }
 
-    public void Jump()
+    public void JumpUpdate()
     {
         if (playerInput.jump && grounded)
         {

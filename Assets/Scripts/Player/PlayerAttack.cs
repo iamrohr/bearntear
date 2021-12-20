@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
         comboCurrent = 1;
     }
 
-    public void Attack()
+    public void AttackUpdate()
     {
         if (playerInput.attackDown && canAttack)
         {
