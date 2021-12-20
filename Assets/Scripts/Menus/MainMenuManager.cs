@@ -8,8 +8,10 @@ using UnityEngine.EventSystems;
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject backgroundCanvas;
+    public GameObject controlsCanvas;
     public GameObject creditsCanvas;
     public GameObject startButton;
+    public GameObject controlsBackButton;
     public GameObject creditsBackButton;
     public AudioSource buttonClickSound;
 
@@ -17,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
     {
         Score.scoreValue = 0;
         creditsCanvas.SetActive(false);
+        controlsCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
     }
@@ -29,6 +32,15 @@ public class MainMenuManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    public void MainMenuControls()
+    {
+        buttonClickSound.Play();
+        backgroundCanvas.SetActive(false);
+        controlsCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(controlsBackButton);
     }
 
     public void MainMenuCredits()
@@ -44,6 +56,7 @@ public class MainMenuManager : MonoBehaviour
     {
         buttonClickSound.Play();
         backgroundCanvas.SetActive(true);
+        controlsCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
     }
@@ -67,7 +80,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (creditsCanvas.activeSelf && Input.GetButtonDown("Cancel"))
+        if (controlsCanvas.activeSelf && Input.GetButtonDown("Cancel") || creditsCanvas.activeSelf && Input.GetButtonDown("Cancel"))
         {
             MainMenuBack();
         }
