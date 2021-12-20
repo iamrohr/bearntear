@@ -1658,6 +1658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40d1862b18f97bd418e2a9f8f3fb74e5, type: 3}
+--- !u!82 &222523265 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5955255086775913108, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+  m_PrefabInstance: {fileID: 967784175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &232661809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8177782304592104895, guid: 54ff81ed4189ddc48b35c9a46b2a69ea, type: 3}
@@ -7148,6 +7153,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1852287538744023841, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: slamSound
+      value: 
+      objectReference: {fileID: 222523265}
     - target: {fileID: 2484288662646181550, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: tearBarFill
       value: 

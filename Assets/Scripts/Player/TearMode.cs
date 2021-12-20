@@ -95,9 +95,27 @@ public class TearMode : MonoBehaviour
         }
     }
 
+    private IEnumerator BlinkingTearBarWarning(int loops)
+    {
+        for (int i = 0; i < loops; i++)
+        {
+            tearBarFill.GetComponent<Image>().color = Color.white;
+
+            yield return new WaitForSeconds(0.1f);
+
+            tearBarFill.GetComponent<Image>().color = Color.red;
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+
     private void Update()
     {
         if (tearBarOnPlayerScript.currentTear == tearBarOnPlayerScript.maxTear)
+        {
+            
+            StartCoroutine(BlinkingTearBarWarning(1));
 
             if (Input.GetButton("TearMode") && !tearModeOn)
             {
@@ -106,9 +124,10 @@ public class TearMode : MonoBehaviour
                 
             }
 
-        if(tearModeOn)
-        {
+            if(tearModeOn)
+            {
             tearBarOnPlayerScript.currentTear -= 10f * Time.deltaTime; // 100 tearBar points / WaitForSeconds(10) after starting the Coroutine = 10
+            }
         }
     }
 }
