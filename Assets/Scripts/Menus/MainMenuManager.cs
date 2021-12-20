@@ -31,13 +31,6 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
-    public void MainMenuControls()
-    {
-        buttonClickSound.Play();
-        backgroundCanvas.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(null);
-    }
-
     public void MainMenuCredits()
     {
         buttonClickSound.Play();
@@ -45,7 +38,6 @@ public class MainMenuManager : MonoBehaviour
         creditsCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(creditsBackButton);
-
     }
 
     public void MainMenuBack()
@@ -54,7 +46,6 @@ public class MainMenuManager : MonoBehaviour
         backgroundCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
-
     }
 
     public void MainMenuCreditsBack()
@@ -64,7 +55,6 @@ public class MainMenuManager : MonoBehaviour
         creditsCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
-
     }
 
     public void MainMenuQuit()
