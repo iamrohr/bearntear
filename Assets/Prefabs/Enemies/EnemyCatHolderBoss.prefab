@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 253053022, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
+      propertyPath: sewingHolder
+      value: 
+      objectReference: {fileID: 2105031967516216743, guid: e5e723a9dde9c5b49b84f742c8e5f1cb, type: 3}
     - target: {fileID: 627454892088384447, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -430,26 +434,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
---- !u!1 &5030519275085452513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4394604815340158448, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
-  m_PrefabInstance: {fileID: 8733389435190339857}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5030519275085452527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4394604815340158462, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
   m_PrefabInstance: {fileID: 8733389435190339857}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6065284080695565588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5030519275085452513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 414b7d22302a2ab49b31e5f5dc7dffdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sewingHolder: {fileID: 2105031967516216743, guid: e5e723a9dde9c5b49b84f742c8e5f1cb, type: 3}

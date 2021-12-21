@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
 
     TearMode tearModeScript;
 
+    public GameObject sewingHolder;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -65,6 +67,11 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            if(gameObject.name == "EnemyCatBoss")
+            {
+                Instantiate(sewingHolder, new Vector2(enemyPos.x, enemyPos.y - dropOffsetY), Quaternion.identity);
+            }
+
             InstansiateDrop();
             EnemyDieSound();
             particleSystemEnemyDie.transform.parent = null; //Set Particle system parent to null so it does not destroy
