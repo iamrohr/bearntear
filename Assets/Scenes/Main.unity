@@ -7635,7 +7635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2958104977348130085, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2958104977348130085, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8485,7 +8485,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2105031967516216742, guid: e5e723a9dde9c5b49b84f742c8e5f1cb, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2105031967516216742, guid: e5e723a9dde9c5b49b84f742c8e5f1cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8530,6 +8530,10 @@ PrefabInstance:
     - target: {fileID: 2105031967516216743, guid: e5e723a9dde9c5b49b84f742c8e5f1cb, type: 3}
       propertyPath: m_Name
       value: SewingHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105031967516216743, guid: e5e723a9dde9c5b49b84f742c8e5f1cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3628039090633167333, guid: e5e723a9dde9c5b49b84f742c8e5f1cb, type: 3}
       propertyPath: popUp
@@ -9909,7 +9913,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1232115642
 PrefabInstance:
@@ -10554,7 +10558,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.035688996, y: -0.07137884}
+  m_Offset: {x: -0.035688996, y: -0.38535786}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10565,7 +10569,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7566226, y: 0.71448517}
+  m_Size: {x: 1.7566226, y: 1.342443}
   m_EdgeRadius: 0
 --- !u!1001 &1346532633
 PrefabInstance:
@@ -11431,7 +11435,7 @@ RectTransform:
   - {fileID: 1107731991}
   - {fileID: 893825673}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12749,7 +12753,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.042603582, y: -0.021065831}
+  m_Offset: {x: 0.042603612, y: -0.30583727}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12760,7 +12764,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.82251, y: 0.81040776}
+  m_Size: {x: 1.82251, y: 1.3799508}
   m_EdgeRadius: 0
 --- !u!4 &1563939094 stripped
 Transform:
@@ -12972,7 +12976,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15432584, y: -0.09746921}
+  m_Offset: {x: -0.15432584, y: -0.3968445}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12983,7 +12987,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8176272, y: 0.82672656}
+  m_Size: {x: 1.8176272, y: 1.4254773}
   m_EdgeRadius: 0
 --- !u!1001 &1615220828
 PrefabInstance:
@@ -14377,7 +14381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3056858631563146562, guid: 380687bb101e590478cef48bf90958f3, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3056858631563146562, guid: 380687bb101e590478cef48bf90958f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14597,7 +14601,7 @@ RectTransform:
   - {fileID: 1841862251}
   - {fileID: 1984408990}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15714,7 +15718,7 @@ Transform:
   - {fileID: 470268421}
   - {fileID: 1886574872}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1914863222
 PrefabInstance:
@@ -15765,7 +15769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3056858631563146562, guid: 380687bb101e590478cef48bf90958f3, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3056858631563146562, guid: 380687bb101e590478cef48bf90958f3, type: 3}
       propertyPath: m_LocalPosition.x
