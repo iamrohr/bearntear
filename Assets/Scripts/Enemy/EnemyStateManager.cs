@@ -117,16 +117,16 @@ public class EnemyStateManager : MonoBehaviour
         return new Vector2((Random.Range(distance * -1, distance)), Random.Range(distance * -1, distance)) + (Vector2)transform.position;
     }
 
-    public void EnemyKnocked(float timeKnocback = 0, float knockBackPower = 0, float timeStunned = 0)
+    public void EnemyKnocked(float timeKnocback = 0, float timeStunned = 0)
     {
         rbHolder.velocity *= 0;
         if (transform.position.x < player.transform.position.x)
         { 
-            rbHolder.AddForce(Vector2.left * knockBackPower);
+            rbHolder.AddForce(Vector2.left * 200);
         }
         else
         {
-            rbHolder.AddForce(Vector2.right * knockBackPower);
+            rbHolder.AddForce(Vector2.right * 200);
         }
 
         StartCoroutine(EnemyKnockback(timeKnocback, timeStunned));
@@ -134,48 +134,12 @@ public class EnemyStateManager : MonoBehaviour
 
     public IEnumerator EnemyKnockback(float timeKnocked, float timeStunned)
     {
-
+        Debug.Log("time Knocked: " + timeKnocked + "time Stunned  " + timeStunned);
         SwitchState(StunState);
-        //Vector2 velocity = Vector2.right * 10;
-
-        //while (velocity.magnitude > 0.1f)
-        //{
-        //    velocity = rbHolder.velocity;
-        //    Debug.Log("Velocity is" + rbHolder.velocity.magnitude);
-        //    rbHolder.AddForce(rbHolder.velocity.normalized * -1000 * Time.deltaTime);
-        //    yield return null;
-        //}
-
         yield return new WaitForSeconds(timeKnocked);
         rbHolder.velocity *= 0;
         yield return new WaitForSeconds(timeStunned);
         SwitchState(IdleState);
-        //    Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.y);
-        //    float knockTime = 1f;
-        //    float t = 0;
-        //    Vector2 dir;
-
-        //    //Knock directon depending on player position
-        //    if (transform.position.x < player.transform.position.x)
-        //    {
-        //        dir = Vector2.left;
-        //    }
-        //    else
-        //    {
-        //        dir = Vector2.right;
-        //    }
-
-        //    while (t < 1)
-        //    {
-        //        float smoothFactor = SmoothStop(t);
-        //        float x = transform.localPosition.x;
-
-        //        x = enemyPosition.x + knockDistance * smoothFactor * dir.x;
-        //        transform.localPosition = new Vector2(x, transform.localPosition.y);
-
-        //        t += Time.deltaTime / knockTime;
-        //        yield return new WaitForEndOfFrame();
-        //    }
     }
 
     private float SmoothStop(float t)
