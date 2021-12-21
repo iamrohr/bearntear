@@ -7,6 +7,7 @@ public class PlayerAttackBox : MonoBehaviour
 {
     public int damage, enemiesAffected;
     public float timeKnocked = 0.6f;
+    public float knockBackPower = 200f;
     public float timeStunned = 2f;
     [SerializeField] private AttackType attackType;
 
@@ -53,6 +54,6 @@ public class PlayerAttackBox : MonoBehaviour
         Debug.Log("Attack " + attackType);
         other.GetComponent<Enemy>().TakeDamage(damage);
         var stateManager = other.GetComponent<EnemyStateManager>();
-        stateManager.EnemyKnocked(timeKnocked, timeStunned);
+        stateManager.EnemyKnocked(timeKnocked, knockBackPower, timeStunned);
     }
 }

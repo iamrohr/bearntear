@@ -4,7 +4,7 @@ public class EnemyStunState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
-        Debug.Log("I am in stun");
+        //Debug.Log("I am in stun");
         //enemy.rbHolder.velocity *= 0;
         enemy.animator.SetTrigger("Stunned");
     }

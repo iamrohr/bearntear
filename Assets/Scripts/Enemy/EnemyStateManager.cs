@@ -95,7 +95,7 @@ public class EnemyStateManager : MonoBehaviour
 
     private IEnumerator SwitchStateInTime(EnemyBaseState state, float switchTime)
     {
-        Debug.Log("State change");
+        //Debug.Log("State change");
         yield return new WaitForSeconds(switchTime);
         currentState = state;
         state.EnterState(this);
@@ -117,22 +117,22 @@ public class EnemyStateManager : MonoBehaviour
         return new Vector2((Random.Range(distance * -1, distance)), Random.Range(distance * -1, distance)) + (Vector2)transform.position;
     }
 
-    public void EnemyKnocked(float timeKnocback = 0, float timeStunned = 0)
+    public void EnemyKnocked(float timeKnocback = 0, float knockBackPower = 0, float timeStunned = 0)
     {
         rbHolder.velocity *= 0;
         if (transform.position.x < player.transform.position.x)
         { 
-            rbHolder.AddForce(Vector2.left * 200);
+            rbHolder.AddForce(Vector2.left * 400);
         }
         else
         {
-            rbHolder.AddForce(Vector2.right * 200);
+            rbHolder.AddForce(Vector2.right * 400);
         }
 
-        StartCoroutine(EnemyKnockback(timeKnocback, timeStunned));
+        StartCoroutine(EnemyKnockback(timeKnocback, knockBackPower, timeStunned));
     }
 
-    public IEnumerator EnemyKnockback(float timeKnocked, float timeStunned)
+    public IEnumerator EnemyKnockback(float timeKnocked, float knockBackPower, float timeStunned)
     {
         Debug.Log("time Knocked: " + timeKnocked + "time Stunned  " + timeStunned);
         SwitchState(StunState);
