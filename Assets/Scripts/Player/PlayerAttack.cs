@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     private PlayerInput playerInput;
     private Rigidbody2D rb;
 
-    private CameraShake cameraShake; // JAMES KALNINS
+    private CameraShake cameraShake;
 
     private void Awake()
     {
@@ -142,7 +142,7 @@ public class PlayerAttack : MonoBehaviour
         var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
         attackObject.transform.SetParent(_transform);
 
-        StartCoroutine(cameraShake.Shake(0.3f, 0.2f)); // JAMES KALNINS
+        StartCoroutine(cameraShake.Shake(0.3f, 0.2f));
 
         playerMovement.Immobilize(bashRecoveryTime);
     }
