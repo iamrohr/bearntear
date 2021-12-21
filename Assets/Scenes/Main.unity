@@ -8372,8 +8372,8 @@ MonoBehaviour:
   targetPosition: {fileID: 967784176}
   camWindowDimension: 1
   smoothFloat: 0.001
-  clampedLeftPos: -47.5
-  clampedRightPos: 140
+  clampedLeftPos: -50
+  clampedRightPos: 142
 --- !u!81 &1107126506
 AudioListener:
   m_ObjectHideFlags: 0
@@ -16719,6 +16719,10 @@ PrefabInstance:
     - target: {fileID: 1199278653662283977, guid: 380687bb101e590478cef48bf90958f3, type: 3}
       propertyPath: m_Name
       value: EnemyCatHolder (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199278653662283977, guid: 380687bb101e590478cef48bf90958f3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1441955799021608408, guid: 380687bb101e590478cef48bf90958f3, type: 3}
       propertyPath: m_LocalRotation.w
