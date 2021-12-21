@@ -6,14 +6,15 @@ public class EnemyFollowPath : MonoBehaviour
 {
 
     [SerializeField] private Transform[] routes;
+    [HideInInspector] public bool coroutineAllowed;
     private int routeToGo;
     private float tParam;
     private Vector2 objectPosition;
     private float speedModifier;
-    private bool coroutineAllowed;
 
     [Header("Components")]
     [HideInInspector] public GameObject player;
+
 
     // Spawn Enemy
     public Transform enemy;
@@ -28,12 +29,8 @@ public class EnemyFollowPath : MonoBehaviour
         routeToGo = 0;
         tParam = 0f;
         speedModifier = 1f;
-        coroutineAllowed = true;
+        coroutineAllowed = false;
 
-        if (coroutineAllowed)
-        {
-            StartCoroutine(GoByTheRoute(routeToGo));
-        }
     }
 
     // Update is called once per frame
@@ -41,7 +38,11 @@ public class EnemyFollowPath : MonoBehaviour
     void Update()
 
     {
-
+        Debug.Log("Coroutine is " + coroutineAllowed);
+        if (coroutineAllowed)
+        {
+            StartCoroutine(GoByTheRoute(routeToGo));
+        }
     }
 
     public IEnumerator GoByTheRoute(int routeNum)

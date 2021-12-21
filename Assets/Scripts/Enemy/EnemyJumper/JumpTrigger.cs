@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class JumpTrigger : MonoBehaviour
 {
-    public GameObject enemyJumper;
-    //private EnemyFollowPath enemyFollowPath;
-
     [Header("Components")]
     [HideInInspector] public GameObject player;
+    public EnemyFollowPath enemyFollowPath;
+    public GameObject enemyToJump;
+    private SpriteRenderer enemySprite;
 
     private void Start()
-    { 
-     //enemyFollowPath = enemyJumper.GetComponent<EnemyFollowPath>();
-     //player = GameObject.FindGameObjectWithTag("Player");
+    {
+       enemySprite = enemyToJump.GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,7 +23,8 @@ public class JumpTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Jaharrrrr I will Jump on you");
-            enemyJumper.SetActive(true);
+            enemyFollowPath.coroutineAllowed = true;
+            enemySprite.enabled = true;
         }
     }
 }
