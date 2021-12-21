@@ -12,12 +12,14 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyPatrolState PatrolState = new EnemyPatrolState();
     public EnemyWaitState WaitState = new EnemyWaitState();
     public EnemyStunState StunState = new EnemyStunState();
+    public EnemyInfiniteChase infiniteChaseState = new EnemyInfiniteChase();
 
     [Header("Components")]
     [HideInInspector] public GameObject player;
     //[HideInInspector] public Transform enemyTF;
     [HideInInspector] public Rigidbody2D rbHolder;
     [HideInInspector] public Animator animator;
+    [HideInInspector] public Enemy enemyScript;
     public GameObject attackBox;
 
     [Header("Attributes")]
@@ -46,6 +48,7 @@ public class EnemyStateManager : MonoBehaviour
         //enemyTF = transform.parent;
         rbHolder = GetComponentInParent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        enemyScript = GetComponent<Enemy>();
 
         //Starting state for the Enemy state machine
         currentState = IdleState;

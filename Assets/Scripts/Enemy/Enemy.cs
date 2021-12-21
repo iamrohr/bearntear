@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public Transform enemyTF;
     [HideInInspector] public GameObject player;
     [HideInInspector] public Vector2 enemyPos;
+    [HideInInspector] public bool infiniteChase = false;
 
     [Header("Attributes")]
     public int currentHealth;
@@ -44,8 +45,10 @@ public class Enemy : MonoBehaviour
         enemyPos = enemyRB.transform.localPosition;
     }
 
+
     public void TakeDamage(int damage)
     {
+        infiniteChase = true;
         currentHealth -= damage;
         Score.instance.AddScore(100);
 

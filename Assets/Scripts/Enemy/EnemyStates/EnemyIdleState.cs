@@ -13,13 +13,20 @@ public class EnemyIdleState : EnemyBaseState
     {
         float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.transform.position);
 
-        if (distToPlayer > enemy.agroRange)
-        {
-            enemy.SwitchState(enemy.PatrolState, 1.5f);
+        if (!enemy.enemyScript.infiniteChase)
+        { 
+            if (distToPlayer > enemy.agroRange)
+            {
+                enemy.SwitchState(enemy.PatrolState, 1.5f);
+            }
+            if (distToPlayer < enemy.agroRange)
+            {
+                enemy.SwitchState(enemy.ChaseState);
+            }
         }
-        if (distToPlayer < enemy.agroRange)
+        else if (enemy.enemyScript.infiniteChase)
         {
-            enemy.SwitchState(enemy.ChaseState);
+            enemy.SwitchState(enemy.infiniteChaseState);
         }
     }
 
