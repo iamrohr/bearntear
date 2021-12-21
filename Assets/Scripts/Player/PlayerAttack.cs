@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public float swipeCooldown, bashCooldown, swipeFinalCooldown;
     public int comboTotal;
 
-    public GameObject swipeAttack, bashAttack;
+    public GameObject swipeAttack, bashAttack, swipeFinalAttack;
     public AudioSource swingSound;
 
     [NonSerialized] public int comboCurrent;
@@ -91,9 +91,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void SwipeAttack(Vector2 attackPos)
     {
-        var attackObject = Instantiate(swipeAttack, attackPos, Quaternion.identity);
-        attackObject.transform.SetParent(_transform);
-
         if (comboCurrent > 1 && comboInterval < Time.time - prevComboTime)
             comboCurrent = 1;
 
@@ -101,28 +98,32 @@ public class PlayerAttack : MonoBehaviour
 
         if (comboCurrent >= comboTotal)
         {
+            var attackObject = Instantiate(swipeFinalAttack, attackPos, Quaternion.identity);
+            attackObject.transform.SetParent(_transform);
+
             swingSound.pitch = 1;
             player.animator.SetTrigger("Swipe1");
 
-            attackObject.GetComponent<SpriteRenderer>().color = Color.cyan; //Temp check
             comboCurrent = 1;
             AttackCooldown(swipeFinalCooldown);
         }
-        else if (comboCurrent % 2 == 0)
-        {
-            swingSound.pitch = 1.2f;
-            player.animator.SetTrigger("Swipe1");
-
-            comboCurrent++;
-            AttackCooldown(swipeCooldown);
-        }
         else
         {
-            swingSound.pitch = 1.1f;
-            player.animator.SetTrigger("Swipe2");
-
-            attackObject.GetComponent<SpriteRenderer>().color = Color.blue; //Temp check
+            var attackObject = Instantiate(swipeAttack, attackPos, Quaternion.identity);
+            attackObject.transform.SetParent(_transform);
             comboCurrent++;
+
+            if (comboCurrent % 2 == 0)
+            {
+                swingSound.pitch = 1.2f;
+                player.animator.SetTrigger("Swipe1");
+            }
+            else
+            {
+                swingSound.pitch = 1.1f;
+                player.animator.SetTrigger("Swipe2");
+                attackObject.GetComponent<SpriteRenderer>().color = Color.blue; //Temp check
+            }
             AttackCooldown(swipeCooldown);
         }
 
