@@ -275,6 +275,7 @@ MonoBehaviour:
   player: {fileID: 0}
   rbHolder: {fileID: 0}
   animator: {fileID: 0}
+  enemyScript: {fileID: 0}
   attackBox: {fileID: 4394604815110055996}
   forceIdleStateTimer: 2
   newEnemyPosition: {x: 0, y: 0}
@@ -282,6 +283,7 @@ MonoBehaviour:
   arrivedAtRandPos: 0
   moveToStart: 0
   agroRangeRand: 0
+  offsetFollowPlayerY: 1.5
   agroRange: 5
   agroRandomRange: 10
   reactionTime: 0.15
@@ -305,6 +307,7 @@ MonoBehaviour:
   enemyTF: {fileID: 0}
   player: {fileID: 0}
   enemyPos: {x: 0, y: 0}
+  infiniteChase: 0
   currentHealth: 0
   maxHealth: 20
   giveTear: 15
