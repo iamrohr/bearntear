@@ -22,6 +22,11 @@ public class EnemyReturnHomeState : EnemyBaseState
     {
         Vector2 currentposition = enemy.transform.position;
 
+        if (enemy.enemyScript.infiniteChase)
+        {
+            enemy.SwitchState(enemy.infiniteChaseState);
+        }
+
         if ((currentposition - enemy.enemyStartPosition).magnitude < 0.1f)
         {
             enemy.SwitchState(enemy.IdleState);
