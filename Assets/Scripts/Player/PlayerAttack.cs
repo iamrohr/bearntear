@@ -1,27 +1,22 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private float attackOffSetX, timeForBash, bashRecoveryTime, comboInterval;
     public float swipeCooldown, bashCooldown, swipeFinalCooldown;
-    public int comboTotal;
+    public bool canAttack, queuedAttack;
+    [SerializeField] private float attackOffSetX, timeForBash, bashRecoveryTime, comboInterval;
+    [SerializeField] private int comboTotal;
+    [SerializeField] private GameObject swipeAttack, bashAttack, swipeFinalAttack;
+    [SerializeField] private AudioSource swingSound;
 
-    public GameObject swipeAttack, bashAttack, swipeFinalAttack;
-    public AudioSource swingSound;
-
-    [NonSerialized] public int comboCurrent;
-
-    private float attackTimer, prevComboTime;
-    public bool canAttack = true, queuedAttack;
+    private int comboCurrent;
+    private float attackTimer, prevComboTime, cooldown;
     private PlayerMovement playerMovement;
     private Player player;
     private PlayerJump playerJump;
     private Transform _transform;
     private PlayerInput playerInput;
     private Rigidbody2D rb;
-
     private CameraShake cameraShake;
 
     private void Awake()
@@ -37,16 +32,26 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
+        canAttack = true;
+        cooldown = 0;
         comboCurrent = 1;
+    }
+
+    private void Update()
+    {
+        if (cooldown > 0)
+            cooldown -= Time.deltaTime;
+        else if (!canAttack)
+            canAttack = true;
     }
 
     public void AttackUpdate()
     {
+        if (queuedAttack && canAttack)
+            AttackIfQueued();
+
         if (playerInput.attackDown && canAttack)
-        {
-            //CancelInvoke(nameof(CanAttackToTrue));
             player.playerSM.EnterState(PlayerState.Attacking);
-        }
 
         if (playerInput.attackHold && canAttack)
         {
@@ -56,14 +61,11 @@ public class PlayerAttack : MonoBehaviour
                 attackTimer = 0;
         }
 
-        if (playerInput.attackUp && player.state == PlayerState.Attacking)
+        if (playerInput.attackUp)
         {
             if (canAttack)
-            {
-                CancelInvoke(nameof(AttackIfQueued));
                 MeleeAttack();
-            }
-            else
+            else if (cooldown < 0.3f)
                 queuedAttack = true;
 
             attackTimer = 0;
@@ -72,6 +74,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void MeleeAttack()
     {
+        CancelInvoke(nameof(LeaveAttacking));
+
         if (!playerJump.grounded) return;
 
         Vector2 attackPos = new Vector2(_transform.position.x, _transform.position.y);
@@ -105,7 +109,8 @@ public class PlayerAttack : MonoBehaviour
             player.animator.SetTrigger("Swipe1");
 
             comboCurrent = 1;
-            AttackCooldown(swipeFinalCooldown);
+            cooldown = swipeFinalCooldown;
+            Invoke(nameof(LeaveAttacking), swipeFinalCooldown);
         }
         else
         {
@@ -124,7 +129,9 @@ public class PlayerAttack : MonoBehaviour
                 player.animator.SetTrigger("Swipe2");
                 attackObject.GetComponent<SpriteRenderer>().color = Color.blue; //Temp check
             }
-            AttackCooldown(swipeCooldown);
+
+            cooldown = swipeCooldown;
+            Invoke(nameof(LeaveAttacking), swipeCooldown);
         }
 
         swingSound.Play();
@@ -138,7 +145,7 @@ public class PlayerAttack : MonoBehaviour
         swingSound.Play();
 
         comboCurrent = 1;
-        AttackCooldown(bashCooldown);
+        cooldown = bashCooldown;
 
         var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
         attackObject.transform.SetParent(_transform);
@@ -146,12 +153,8 @@ public class PlayerAttack : MonoBehaviour
         StartCoroutine(cameraShake.Shake(0.3f, 0.2f));
 
         playerMovement.Immobilize(bashRecoveryTime);
-    }
 
-    private void AttackCooldown(float cooldownTime)
-    {
-        Invoke(nameof(CanAttackToTrue), cooldownTime);
-        Invoke(nameof(AttackIfQueued), cooldownTime);
+        Invoke(nameof(LeaveAttacking), bashCooldown);
     }
 
     private void AttackIfQueued()
@@ -160,17 +163,15 @@ public class PlayerAttack : MonoBehaviour
         {
             MeleeAttack();
             queuedAttack = false;
+
+            if (player.state != PlayerState.Attacking)
+                player.playerSM.EnterState(PlayerState.Attacking);
         }
     }
-
-    private void CanAttackToTrue()
+ 
+    private void LeaveAttacking()
     {
         if (!queuedAttack)
-        {
-            if (!Input.GetButton("Fire1"))
-                player.playerSM.LeaveState(PlayerState.Attacking);
-
-            canAttack = true;
-        }
+            player.playerSM.LeaveState(PlayerState.Attacking);
     }
 }

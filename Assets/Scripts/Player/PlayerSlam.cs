@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSlam : MonoBehaviour
 {
-    [SerializeField] private float slamHeight, slamTime, slamRecoveryTime; 
+    [SerializeField] private float slamHeight, slamTime, slamRecoveryTime, hangTime; 
     private Player player;
     private PlayerJump playerJump;
     private PlayerInput playerInput;
@@ -38,6 +38,7 @@ public class PlayerSlam : MonoBehaviour
 
     private IEnumerator SlamAttack()
     {
+        player.MakeInvulnerable(slamTime * 2 + hangTime);
         playerJump.CancelJump();
         rb.velocity = Vector2.zero;
         float groundedY = playerJump.groundedY;
@@ -55,7 +56,7 @@ public class PlayerSlam : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(hangTime);
         t = 0;
         startY = _transform.localPosition.y;
         float distance = startY - groundedY;
