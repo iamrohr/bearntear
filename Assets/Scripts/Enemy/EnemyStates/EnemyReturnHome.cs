@@ -5,7 +5,7 @@ public class EnemyReturnHomeState : EnemyBaseState
     public override void EnterState(EnemyStateManager enemy)
     {
         enemy.animator.SetTrigger("Walk");
-        enemy.attackBox.SetActive(false);
+        //enemy.attackBox.SetActive(false);
         //Flips the enemy towards the start position.
         if (enemy.transform.position.x < enemy.enemyStartPosition.x)
         {

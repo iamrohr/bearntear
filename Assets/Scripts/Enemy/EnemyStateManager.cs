@@ -20,7 +20,7 @@ public class EnemyStateManager : MonoBehaviour
     [HideInInspector] public Rigidbody2D rbHolder;
     [HideInInspector] public Animator animator;
     [HideInInspector] public Enemy enemyScript;
-    public GameObject attackBox;
+    //public GameObject attackBox;
 
     [Header("Attributes")]
     [HideInInspector] public float forceIdleStateTimer = 2f;
@@ -56,7 +56,7 @@ public class EnemyStateManager : MonoBehaviour
 
         //Get enemy start position
         enemyStartPosition = new Vector2(transform.position.x, transform.position.y);
-        attackBox.SetActive(false);
+        //attackBox.SetActive(false);
 
         agroRangeRand = Random.Range(agroRange, agroRandomRange);
         agroRange = agroRangeRand;
