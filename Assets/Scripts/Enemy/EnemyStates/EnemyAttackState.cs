@@ -11,12 +11,12 @@ public class EnemyAttackState : EnemyBaseState
     {
         float distToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.transform.position);
 
-        if (enemy.canAttackPlayer && distToPlayer < enemy.attackRange)
-        {
-            enemy.canAttackPlayer = false;
+        //if (enemy.canAttackPlayer && distToPlayer < enemy.attackRange)
+        //{
+        //    enemy.canAttackPlayer = false;
 
-            enemy.StartCoroutine(enemy.AttackPlayer());
-        }
+        //    enemy.StartCoroutine(enemy.AttackPlayer());
+        //}
         
         if (distToPlayer > enemy.attackRange && !enemy.enemyScript.infiniteChase)
         {
