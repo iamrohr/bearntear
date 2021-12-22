@@ -125,11 +125,11 @@ public class EnemyStateManager : MonoBehaviour
         rbHolder.velocity *= 0;
         if (transform.position.x < player.transform.position.x)
         { 
-            rbHolder.AddForce(Vector2.left * knockBackPower);
+            rbHolder.AddForce(Vector2.left * 400);
         }
         else
         {
-            rbHolder.AddForce(Vector2.right * knockBackPower);
+            rbHolder.AddForce(Vector2.right * 400);
         }
 
         StartCoroutine(EnemyKnockback(timeKnocback, knockBackPower, timeStunned));
