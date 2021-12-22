@@ -5,6 +5,7 @@ public class PlayerInput : MonoBehaviour
 {
     [NonSerialized] public float xInput, yInput;
     [NonSerialized] public bool attackDown, attackHold, attackUp, jump, dash, shoot;
+    private bool prolongedAttackUp;
 
     void Update()
     {
