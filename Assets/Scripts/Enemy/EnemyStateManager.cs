@@ -104,16 +104,16 @@ public class EnemyStateManager : MonoBehaviour
         state.EnterState(this);
     }
 
-    public IEnumerator AttackPlayer()
-    {
-        yield return new WaitForSeconds(waitBetweenAttack);
-        attackBox.SetActive(true);
-        yield return new WaitForSeconds(waitBetweenAttack);
-        attackBox.SetActive(false);
+    //public IEnumerator AttackPlayer()
+    //{
+    //    yield return new WaitForSeconds(waitBetweenAttack);
+    //    attackBox.SetActive(true);
+    //    yield return new WaitForSeconds(waitBetweenAttack);
+    //    attackBox.SetActive(false);
 
-        yield return new WaitForSeconds(waitBetweenAttack);
-        canAttackPlayer = true;
-    }
+    //    yield return new WaitForSeconds(waitBetweenAttack);
+    //    canAttackPlayer = true;
+    //}
 
     public Vector2 EnemyRandPos(float distance)
     {
