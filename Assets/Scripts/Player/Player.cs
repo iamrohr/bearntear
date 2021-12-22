@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (invulnerable)
+        if (invulnerable || !playerJump.grounded)
             return;
 
         currentHealth -= damage;
