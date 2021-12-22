@@ -6,10 +6,18 @@ public class WaveSpawner : MonoBehaviour
 {
     public enum SpawnState {spawning, waiting, counting};
     [HideInInspector] public bool ableToSpawn; 
+        
+    //Objects
+    public GameObject bars;
+    public GameObject bars2;
+    private SpriteRenderer barsSprite;
+    private SpriteRenderer barsSprite2;
 
     [System.Serializable]
     public class Wave
     {
+
+
         public string name;
         public Transform enemy;
         public int count;
@@ -30,6 +38,9 @@ public class WaveSpawner : MonoBehaviour
 
     private void Start()
     {
+        barsSprite = bars.GetComponent<SpriteRenderer>();
+        barsSprite2 = bars2.GetComponent<SpriteRenderer>();
+
         ableToSpawn = false;
 
         waveCountDown = timeBetweenWaves;
@@ -79,8 +90,15 @@ public class WaveSpawner : MonoBehaviour
 
         if(nextWave + 1 > waves.Length - 1)
         {
-            nextWave = 0;
+            Debug.Log("All waves completed");
+            barsSprite.enabled = true;
+            barsSprite2.enabled = true;
+            ableToSpawn = false;
+            Destroy(this);
+            //nextWave = 0;
             //Could add on stat multiplier here or something else that makes it harder.
+            //End wave here
+
         }
         else
         {
