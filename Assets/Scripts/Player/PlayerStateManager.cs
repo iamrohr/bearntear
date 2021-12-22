@@ -56,6 +56,8 @@ public class PlayerStateManager : MonoBehaviour
 
     public void EnterState(PlayerState newState)
     {
+        if (newState == player.state) return;
+
         player.state = newState;
 
         switch (player.state)

@@ -1228,7 +1228,7 @@ MonoBehaviour:
   moveStates: 00000000010000000200000003000000
   attackStates: 000000000100000002000000
   jumpStates: 000000000100000002000000
-  dashStates: 000000000100000003000000
+  dashStates: 00000000010000000300000002000000
   shootStates: 0000000001000000
   slamStates: 03000000
 --- !u!114 &2958104977341504260
@@ -1259,20 +1259,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d23958eadaf06648889e4e765dd9a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swipeCooldown: 0.5
+  bashCooldown: 0.5
+  swipeFinalCooldown: 1
+  canAttack: 1
+  queuedAttack: 0
   attackOffSetX: 1.8
   timeForBash: 0.2
   bashRecoveryTime: 0.5
   comboInterval: 0.8
-  swipeCooldown: 0.5
-  bashCooldown: 0.5
-  swipeFinalCooldown: 1
   comboTotal: 3
   swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
   bashAttack: {fileID: 77544860683481084, guid: a76ea72f68964ee499cd8cfed5682a44, type: 3}
   swipeFinalAttack: {fileID: 77544860683481084, guid: a7d79323c2a2f184bbf0b9b42a4b2d0f, type: 3}
   swingSound: {fileID: 2958104976128384411}
-  canAttack: 1
-  queuedAttack: 0
 --- !u!114 &2958104977341504261
 MonoBehaviour:
   m_ObjectHideFlags: 0
