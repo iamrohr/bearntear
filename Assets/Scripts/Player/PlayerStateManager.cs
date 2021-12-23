@@ -66,12 +66,12 @@ public class PlayerStateManager : MonoBehaviour
                 player.animator.SetTrigger("Idle");
                 break;
             case PlayerState.Moving:
-                player.animator.SetTrigger("Idle"); //Temp animation
+                player.animator.SetTrigger("Walk");
                 break;
             case PlayerState.Attacking:
                 break;
             case PlayerState.Jumping:
-                player.animator.SetTrigger("Idle"); //Temp animation
+                player.animator.SetTrigger("Jump");
                 playerAttack.canAttack = true;
                 playerAttack.queuedAttack = false;
                 break;

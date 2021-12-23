@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
         playerFlashScript = GetComponent<PlayerFlash>();
         playerJump = GetComponent<PlayerJump>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         playerSM = GetComponent<PlayerStateManager>();
     }
 

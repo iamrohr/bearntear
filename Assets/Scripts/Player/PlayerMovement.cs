@@ -13,9 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private Player player;
     private SpriteRenderer sr;
     private PlayerInput playerInput;
+    private Transform _transform;
 
     private void Awake()
     {
+        _transform = GetComponentInParent<Transform>();
         player = GetComponent<Player>();
         rb = GetComponentInParent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -90,12 +92,14 @@ public class PlayerMovement : MonoBehaviour
         if (horFacing == HorFacing.Left)
         {
             horFacing = HorFacing.Right;
-            sr.flipX = false;
+            var x = Mathf.Abs(_transform.localScale.x);
+            _transform.localScale = new Vector2(x, _transform.localScale.y);
         }
         else
         {
             horFacing = HorFacing.Left;
-            sr.flipX = true;
+            var x = Mathf.Abs(_transform.localScale.x) * -1; 
+            _transform.localScale = new Vector2(x , _transform.localScale.y);
         }
         canTurn = true;
     }

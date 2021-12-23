@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject swipeAttack, bashAttack, swipeFinalAttack;
     [SerializeField] private AudioSource swingSound;
 
+    private Vector2 attackPos;
     private int comboCurrent;
     private float attackTimer, prevComboTime, cooldown;
     private PlayerMovement playerMovement;
@@ -78,7 +79,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (!playerJump.grounded) return;
 
-        Vector2 attackPos = new Vector2(_transform.position.x, _transform.position.y);
+        attackPos = new Vector2(_transform.position.x, _transform.position.y);
 
         if (playerMovement.horFacing == HorFacing.Left)
             attackPos += Vector2.left * attackOffSetX;
@@ -86,14 +87,14 @@ public class PlayerAttack : MonoBehaviour
             attackPos += Vector2.right * attackOffSetX;
 
         if (player.stage > 0 && attackTimer >= timeForBash)
-            BashAttack(attackPos);
+            player.animator.SetTrigger("Bash");
         else
-            SwipeAttack(attackPos);
+            SwipeAttack();
 
         canAttack = false;
     }
 
-    private void SwipeAttack(Vector2 attackPos)
+    private void SwipeAttack()
     {
         if (comboCurrent > 1 && comboInterval < Time.time - prevComboTime)
             comboCurrent = 1;
@@ -137,9 +138,14 @@ public class PlayerAttack : MonoBehaviour
         swingSound.Play();
     }
 
-    private void BashAttack(Vector2 attackPos)
+    public void BashAttack()
     {
-        player.animator.SetTrigger("Bash");
+        attackPos = new Vector2(_transform.position.x, _transform.position.y);
+
+        if (playerMovement.horFacing == HorFacing.Left)
+            attackPos += Vector2.left * attackOffSetX;
+        else
+            attackPos += Vector2.right * attackOffSetX;
 
         swingSound.pitch = 0.85f;
         swingSound.Play();
