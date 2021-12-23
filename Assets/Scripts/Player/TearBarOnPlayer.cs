@@ -61,11 +61,6 @@ public class TearBarOnPlayer : MonoBehaviour
         if (currentTear == maxTear)
         {
             tearBarFill.GetComponent<Image>().color = Color.red;
-
-            //if (!tearModeScript.tearModeOn)
-            //{
-            //    StartCoroutine(tearModeScript.TearModeStart()); // to start Coroutine out of an Update
-            //}
         }
     }
 

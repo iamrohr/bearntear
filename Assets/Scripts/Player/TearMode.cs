@@ -116,7 +116,12 @@ public class TearMode : MonoBehaviour
     private void Update()
     {
         if (tearBarOnPlayerScript.currentTear == tearBarOnPlayerScript.maxTear)
-        
+
+            if(!tearModeOn)
+            {
+
+            }
+
             if (Input.GetButton("TearMode") && !tearModeOn)
             {
                 tearModeSound.Play();
