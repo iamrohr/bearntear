@@ -60,7 +60,7 @@ public class TearBarOnPlayer : MonoBehaviour
         tearBar.SetTearLevel((int)currentTear);
         if (currentTear == maxTear)
         {
-            tearBarFill.GetComponent<Image>().color = Color.red;
+            // tearBarFill.GetComponent<Image>().color = Color.red;
         }
     }
 

@@ -119,7 +119,7 @@ public class TearMode : MonoBehaviour
 
             if(!tearModeOn)
             {
-
+                StartCoroutine(BlinkingTearBarWarning(5));
             }
 
             if (Input.GetButton("TearMode") && !tearModeOn)
