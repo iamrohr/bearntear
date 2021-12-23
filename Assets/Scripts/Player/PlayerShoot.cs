@@ -5,19 +5,18 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    //public GameObject player;
     Vector2 lookDirection;
     float lookAngle;
     public float shootCoolDown = 0.4f;
 
-    Player playerHealthTestScript;
+    Player playerScript;
     PlayerMovement playerMovementScript;
 
     public AudioSource shootSound;
 
     private void Start()
     {
-        playerHealthTestScript = GetComponent<Player>();
+        playerScript = GetComponent<Player>();
         playerMovementScript = GetComponent<PlayerMovement>();
     }
 
@@ -31,16 +30,14 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetButton("Shoot") && shootCoolDown > 0.4f)
         {
             // take damage
-            playerHealthTestScript.TakeDamage(10);
+            playerScript.TakeDamage(5);
             ShootProjectile();
         }
-
     }
 
     void ShootProjectile()
     {
             shootCoolDown = 0;
-
 
         if (playerMovementScript.horFacing == HorFacing.Left)
         {
@@ -59,13 +56,5 @@ public class PlayerShoot : MonoBehaviour
 
             shootSound.Play();
         }
-
-
-
-        //GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
-        //Vector3 shootDir = new Vector3(lookDirection.x, lookDirection.y, 0);
-        //newProjectile.GetComponent<Projectile>().Setup(shootDir);
-
-        //shootSound.Play();
     }
 }
