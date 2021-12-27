@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 
-public enum AttackType { Swipe, SwipeFinal, Bash, Slam }
-
 public class PlayerAttackBox : MonoBehaviour
 {
     public int damage, enemiesAffected;
