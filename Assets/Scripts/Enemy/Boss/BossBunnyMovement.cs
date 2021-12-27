@@ -19,12 +19,6 @@ public class BossBunnyMovement : MonoBehaviour
         Facing = LeftRight.Left;
     }
 
-    [ContextMenu("Test")]
-    public void Test()
-    {
-
-    }
-
     public void MoveTowards(GameObject gameObj, float? speed = null)
     {
         var targetPos = gameObj.transform.position;
@@ -58,5 +52,10 @@ public class BossBunnyMovement : MonoBehaviour
             var x = Mathf.Abs(holderTransform.localScale.x);
             holderTransform.localScale = new Vector2(x, holderTransform.localScale.y);
         }
+    }
+
+    public void StopMoving()
+    {
+        rb.velocity *= 0;
     }
 }

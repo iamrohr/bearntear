@@ -1,13 +1,26 @@
+using System;
 using UnityEngine;
 
 public class BossBunnyStateManager : MonoBehaviour
 {
-    BossBunnyBaseState currentState;
+    private BossBunnyBaseState currentState;
     public BossBunnyIdleState IdleState = new BossBunnyIdleState();
+    public BossBunnyChaseState ChaseState = new BossBunnyChaseState();
+
+    [NonSerialized] public Animator animator;
+    [NonSerialized] public BossBunnyMovement movement;
+    [NonSerialized] public Vector2 playerPos;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        movement = GetComponent<BossBunnyMovement>();
+        playerPos = GameObject.FindGameObjectWithTag("PlayerHolder").transform.position;
+    }
 
     private void Start()
     {
-        currentState = IdleState;
+        currentState = ChaseState;
         currentState.EnterState(this);
     }
 
