@@ -13,8 +13,6 @@ public class WaveSpawner : MonoBehaviour
     [System.Serializable]
     public class Wave
     {
-
-
         public string name;
         public Transform enemy;
         public int count;
@@ -35,7 +33,6 @@ public class WaveSpawner : MonoBehaviour
 
     private void Start()
     {
-
         ableToSpawn = false;
 
         waveCountDown = timeBetweenWaves;
@@ -86,7 +83,6 @@ public class WaveSpawner : MonoBehaviour
         if(nextWave + 1 > waves.Length - 1)
         {
             //All waves completed
-
             foreach (GameObject bars in barsList)
             {
                 bars.GetComponent<SpriteRenderer>().enabled = true;
