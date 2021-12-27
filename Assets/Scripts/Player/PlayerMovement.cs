@@ -1,12 +1,10 @@
 using System;
 using UnityEngine;
 
-public enum HorFacing {Right, Left};
-
 public class PlayerMovement : MonoBehaviour
 {
     public float speed, vertSpeedFactor, turnDelay, speedMulWhenAttacking;
-    [NonSerialized] public HorFacing horFacing;
+    [NonSerialized] public LeftRight facing;
     
     private bool canTurn, immobilized;
     private Rigidbody2D rb;
@@ -27,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         canTurn = true;
-        horFacing = HorFacing.Right;
+        facing = LeftRight.Right;
     }
 
     public void MoveUpdate()
@@ -67,8 +65,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (canTurn && 
-            (x > 0 && horFacing == HorFacing.Left 
-            || x < 0 && horFacing == HorFacing.Right))
+            (x > 0 && facing == LeftRight.Left 
+            || x < 0 && facing == LeftRight.Right))
         {
             canTurn = false;
             Invoke(nameof(ChangeHorFacing), turnDelay);
@@ -89,15 +87,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChangeHorFacing()
     {
-        if (horFacing == HorFacing.Left)
+        if (facing == LeftRight.Left)
         {
-            horFacing = HorFacing.Right;
+            facing = LeftRight.Right;
             var x = Mathf.Abs(_transform.localScale.x);
             _transform.localScale = new Vector2(x, _transform.localScale.y);
         }
         else
         {
-            horFacing = HorFacing.Left;
+            facing = LeftRight.Left;
             var x = Mathf.Abs(_transform.localScale.x) * -1; 
             _transform.localScale = new Vector2(x , _transform.localScale.y);
         }

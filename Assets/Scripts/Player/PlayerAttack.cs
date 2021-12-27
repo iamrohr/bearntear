@@ -81,7 +81,7 @@ public class PlayerAttack : MonoBehaviour
 
         attackPos = new Vector2(_transform.position.x, _transform.position.y);
 
-        if (playerMovement.horFacing == HorFacing.Left)
+        if (playerMovement.facing == LeftRight.Left)
             attackPos += Vector2.left * attackOffSetX;
         else
             attackPos += Vector2.right * attackOffSetX;
@@ -142,7 +142,7 @@ public class PlayerAttack : MonoBehaviour
     {
         attackPos = new Vector2(_transform.position.x, _transform.position.y);
 
-        if (playerMovement.horFacing == HorFacing.Left)
+        if (playerMovement.facing == LeftRight.Left)
             attackPos += Vector2.left * attackOffSetX;
         else
             attackPos += Vector2.right * attackOffSetX;

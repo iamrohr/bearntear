@@ -3,6 +3,12 @@ using UnityEngine;
 public class BossBunny : MonoBehaviour
 {
     [SerializeField] private int health, maxHealth;
+    public GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("PlayerHolder");
+    }
 
     private void Start()
     {

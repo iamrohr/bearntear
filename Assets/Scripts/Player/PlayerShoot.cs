@@ -39,7 +39,7 @@ public class PlayerShoot : MonoBehaviour
     {
             shootCoolDown = 0;
 
-        if (playerMovementScript.horFacing == HorFacing.Left)
+        if (playerMovementScript.facing == LeftRight.Left)
         {
             GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
             Vector3 shootDir = new Vector3(-1, 0, 0);
@@ -48,7 +48,7 @@ public class PlayerShoot : MonoBehaviour
             shootSound.Play();
         }
 
-        if (playerMovementScript.horFacing == HorFacing.Right)
+        if (playerMovementScript.facing == LeftRight.Right)
         {
             GameObject newProjectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
             Vector3 shootDir = new Vector3(1, 0, 0);
