@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public Transform enemyTF;
     [HideInInspector] public GameObject player;
     [HideInInspector] public Vector2 enemyPos;
-    [HideInInspector] public bool infiniteChase = false;
+     public bool infiniteChase = false;
 
     [Header("Attributes")]
     public int currentHealth;

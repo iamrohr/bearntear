@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3056858631563146562}
   - component: {fileID: 2015202375483325387}
   - component: {fileID: 1087686866822127532}
+  - component: {fileID: 4715061364783266235}
   m_Layer: 8
   m_Name: EnemyCatHolderSpawner
   m_TagString: Enemy Spawned
@@ -65,6 +66,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4715061364783266235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199278653662283977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd9db65ab9cbb84889f29b7bc4a8a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8900442667806561529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85,12 +98,20 @@ PrefabInstance:
       value: 0.7181372
       objectReference: {fileID: 0}
     - target: {fileID: 1079799076120431907, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079799076120431907, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000006452203
+      value: -0.0000066131115
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490359371929514609, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1490359371929514609, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000020213423
+      value: 0.000020252513
       objectReference: {fileID: 0}
     - target: {fileID: 2339929753331672708, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -181,8 +202,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4728648941152057489, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728648941152057489, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000020705162
+      value: 0.000020728305
       objectReference: {fileID: 0}
     - target: {fileID: 4806181974005088437, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
       propertyPath: m_LocalRotation.w

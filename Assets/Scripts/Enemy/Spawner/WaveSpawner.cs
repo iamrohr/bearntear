@@ -8,10 +8,7 @@ public class WaveSpawner : MonoBehaviour
     [HideInInspector] public bool ableToSpawn; 
         
     //Objects
-    public GameObject bars;
-    public GameObject bars2;
-    private SpriteRenderer barsSprite;
-    private SpriteRenderer barsSprite2;
+    public GameObject[] barsList;
 
     [System.Serializable]
     public class Wave
@@ -38,8 +35,6 @@ public class WaveSpawner : MonoBehaviour
 
     private void Start()
     {
-        barsSprite = bars.GetComponent<SpriteRenderer>();
-        barsSprite2 = bars2.GetComponent<SpriteRenderer>();
 
         ableToSpawn = false;
 
@@ -90,15 +85,15 @@ public class WaveSpawner : MonoBehaviour
 
         if(nextWave + 1 > waves.Length - 1)
         {
-            Debug.Log("All waves completed");
-            barsSprite.enabled = true;
-            barsSprite2.enabled = true;
-            ableToSpawn = false;
-            Destroy(this);
-            //nextWave = 0;
-            //Could add on stat multiplier here or something else that makes it harder.
-            //End wave here
+            //All waves completed
 
+            foreach (GameObject bars in barsList)
+            {
+                bars.GetComponent<SpriteRenderer>().enabled = true;
+            }
+
+            ableToSpawn = false;
+            Destroy(transform.parent.gameObject);
         }
         else
         {
@@ -129,10 +124,8 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < _wave.count; i++)
         {
             SpawnEnemy(_wave.enemy);
-
             yield return new WaitForSeconds(_wave.rate);
         }
-
         state = SpawnState.waiting;
 
         yield break;
@@ -142,6 +135,7 @@ public class WaveSpawner : MonoBehaviour
     {
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);
+        _enemy.GetComponentInChildren<Enemy>().infiniteChase = true;
     }
 
 }
