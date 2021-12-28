@@ -45,7 +45,7 @@ public class CameraSpawnLock : MonoBehaviour
             moveCameraScript.enabled = false;
             spawnPoint2LeftCollider.SetActive(true);
             spawnPoint2RightCollider.SetActive(true);
-            // enable left (x pos 88.46) & right (x pos 110.37) collider from first spawn position
+            
         }
 
         if (transform.position.x > 99.5 && !waveSpawner2Script.ableToSpawn)
