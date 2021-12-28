@@ -10,7 +10,7 @@ public class SpawnTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("triggered");
+            //Debug.Log("triggered");
             spawner.ableToSpawn = true;
         }
     }

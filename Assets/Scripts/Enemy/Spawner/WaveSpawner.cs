@@ -39,7 +39,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (spawnPoints.Length == 0)
         {
-            Debug.Log("Error, No Spawn Points Available");
+            //Debug.Log("Error, No Spawn Points Available");
         }
     }
 
