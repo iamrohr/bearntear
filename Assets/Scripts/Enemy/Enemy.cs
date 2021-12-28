@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
         {
             if(gameObject.name == "EnemyCatBoss")
             {
-                Instantiate(sewingHolder, new Vector2(enemyPos.x, enemyPos.y - dropOffsetY), Quaternion.identity);
+                Instantiate(sewingHolder, new Vector2(enemyPos.x, enemyPos.y), Quaternion.identity);
             }
 
             InstansiateDrop();
