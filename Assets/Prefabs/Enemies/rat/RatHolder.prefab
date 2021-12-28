@@ -200,6 +200,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.36422098
       objectReference: {fileID: 0}
+    - target: {fileID: 6860218693969764841, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: particleGameObj
+      value: 
+      objectReference: {fileID: 4262518752457191699}
+    - target: {fileID: 6860218693969764841, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: particleSystemEnemyDie
+      value: 
+      objectReference: {fileID: 3161663471016348045}
     - target: {fileID: 8248472788569084028, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.010714218
@@ -221,5 +229,15 @@ PrefabInstance:
 --- !u!4 &9039633518825316830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4593618891950495121, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+  m_PrefabInstance: {fileID: 4813480219714761807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4262518752457191699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8785230918883296604, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+  m_PrefabInstance: {fileID: 4813480219714761807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3161663471016348045 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7578598218619272642, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
   m_PrefabInstance: {fileID: 4813480219714761807}
   m_PrefabAsset: {fileID: 0}
