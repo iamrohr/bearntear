@@ -90,8 +90,8 @@ MonoBehaviour:
   moveToStart: 0
   agroRangeRand: 0
   offsetFollowPlayerY: 1.5
-  agroRange: 10
-  agroRandomRange: 5
+  agroRange: 5
+  agroRandomRange: 10
   reactionTime: 0.15
   attackRange: 2.5
   moveSpeed: 5
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 1000067671828809639}
   - component: {fileID: 8748724153189708067}
   - component: {fileID: 8509113510431760717}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
