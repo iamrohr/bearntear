@@ -3,14 +3,14 @@ using UnityEngine;
 public class BossBunnyMovement : MonoBehaviour
 {
     [SerializeField] public LeftRight Facing { get; private set; }
+    public Transform holderTransform;
     
     [SerializeField] private float speed;
     private Rigidbody2D rb;
-    private Transform holderTransform;
 
     private void Awake()
     {
-        holderTransform = GetComponentInParent<Transform>();
+        holderTransform = transform.parent.transform;
         rb = GetComponentInParent<Rigidbody2D>();
     }
 
@@ -31,7 +31,7 @@ public class BossBunnyMovement : MonoBehaviour
             speed = this.speed;
 
         Vector2 direction = (targetPos - (Vector2)holderTransform.position).normalized;
-        speed -= direction.y * 0.5f * speed;
+        speed -= Mathf.Abs(direction.y) * 0.5f * speed;
         Vector2 velocity = direction * (float)speed;
 
         rb.velocity = velocity;

@@ -2,8 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum PlayerState { Idle, Moving, Attacking, Jumping, Dashing, Slamming }
-
 public class Player : MonoBehaviour
 {
     public int maxHealth = 100, currentHealth;
