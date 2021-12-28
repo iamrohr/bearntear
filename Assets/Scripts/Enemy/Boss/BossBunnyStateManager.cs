@@ -7,15 +7,18 @@ public class BossBunnyStateManager : MonoBehaviour
     public BossBunnyIdleState IdleState = new BossBunnyIdleState();
     public BossBunnyChaseState ChaseState = new BossBunnyChaseState();
 
+
     [NonSerialized] public Animator animator;
+    [NonSerialized] public Transform playerTransform;
     [NonSerialized] public BossBunnyMovement movement;
-    [NonSerialized] public Vector2 playerPos;
+    [NonSerialized] public BossBunnyAttack attack;
 
     private void Awake()
     {
+        attack = GetComponent<BossBunnyAttack>();
         animator = GetComponent<Animator>();
         movement = GetComponent<BossBunnyMovement>();
-        playerPos = GameObject.FindGameObjectWithTag("PlayerHolder").transform.position;
+        playerTransform = GameObject.FindGameObjectWithTag("PlayerHolder").transform;
     }
 
     private void Start()

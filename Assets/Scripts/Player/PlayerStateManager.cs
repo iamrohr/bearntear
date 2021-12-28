@@ -13,13 +13,6 @@ public class PlayerStateManager : MonoBehaviour
 
     private void Awake()
     {
-        move = () => GetComponent<PlayerMovement>().MoveUpdate();
-        attack = () => GetComponent<PlayerAttack>().AttackUpdate();
-        jump = () => GetComponent<PlayerJump>().JumpUpdate();
-        dash = () => GetComponent<PlayerDash>().DashUpdate();
-        shoot = () => GetComponent<PlayerShoot>().Shoot();
-        slam = () => GetComponent<PlayerSlam>().SlamUpdate();
-
         player = GetComponent<Player>();
         playerJump = GetComponent<PlayerJump>();
         playerAttack = GetComponent<PlayerAttack>();
@@ -27,6 +20,13 @@ public class PlayerStateManager : MonoBehaviour
 
     private void Start()
     {
+        move = () => GetComponent<PlayerMovement>().MoveUpdate();
+        attack = () => GetComponent<PlayerAttack>().AttackUpdate();
+        jump = () => GetComponent<PlayerJump>().JumpUpdate();
+        dash = () => GetComponent<PlayerDash>().DashUpdate();
+        shoot = () => GetComponent<PlayerShoot>().Shoot();
+        slam = () => GetComponent<PlayerSlam>().SlamUpdate();
+
         actionStates = new (PlayerState[], Action)[]
         {
             (moveStates, move),

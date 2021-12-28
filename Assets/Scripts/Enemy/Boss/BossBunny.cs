@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossBunny : MonoBehaviour
+public class BossBunny : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health, maxHealth;
 
