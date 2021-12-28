@@ -137,7 +137,7 @@ public class EnemyStateManager : MonoBehaviour
 
     public IEnumerator EnemyKnockback(float timeKnocked, float knockBackPower, float timeStunned)
     {
-        Debug.Log("time Knocked: " + timeKnocked + "time Stunned  " + timeStunned);
+        //Debug.Log("time Knocked: " + timeKnocked + "time Stunned  " + timeStunned);
         SwitchState(StunState);
         yield return new WaitForSeconds(timeKnocked);
         rbHolder.velocity *= 0;

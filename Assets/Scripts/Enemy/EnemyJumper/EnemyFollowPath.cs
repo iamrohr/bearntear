@@ -38,7 +38,7 @@ public class EnemyFollowPath : MonoBehaviour
     void Update()
 
     {
-        Debug.Log("Coroutine is " + coroutineAllowed);
+        //Debug.Log("Coroutine is " + coroutineAllowed);
         if (coroutineAllowed)
         {
             StartCoroutine(GoByTheRoute(routeToGo));
