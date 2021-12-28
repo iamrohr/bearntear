@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().TakeDamage(bulletDamage);
+            other.GetComponent<IDamageable>().TakeDamage(bulletDamage);
             StartCoroutine(cameraShake.Shake(0.3f, 0.2f));
             gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
             projectileIsMoving = false;

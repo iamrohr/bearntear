@@ -21,7 +21,7 @@ public class PlayerStateManager : MonoBehaviour
     private void Start()
     {
         move = () => GetComponent<PlayerMovement>().MoveUpdate();
-        attack = () => GetComponent<PlayerAttack>().AttackUpdate();
+        attack = () => playerAttack.AttackUpdate();
         jump = () => GetComponent<PlayerJump>().JumpUpdate();
         dash = () => GetComponent<PlayerDash>().DashUpdate();
         shoot = () => GetComponent<PlayerShoot>().Shoot();

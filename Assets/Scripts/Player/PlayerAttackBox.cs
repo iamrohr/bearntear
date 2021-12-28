@@ -37,7 +37,7 @@ public class PlayerAttackBox : MonoBehaviour
                 }
 
                 if (canDamage)
-                    Attack(other);
+                    Attack(other);  
                 break;
             case "Barricade":
                 other.GetComponent<Barricade>().TakeDamage(damage, attackType);

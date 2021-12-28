@@ -20,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
     private Rigidbody2D rb;
     private CameraShake cameraShake;
 
+
     private void Awake()
     {
         cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
@@ -134,7 +135,6 @@ public class PlayerAttack : MonoBehaviour
             cooldown = swipeCooldown;
             Invoke(nameof(LeaveAttacking), swipeCooldown);
         }
-
         swingSound.Play();
     }
 
