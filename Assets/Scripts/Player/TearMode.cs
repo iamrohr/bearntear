@@ -40,9 +40,7 @@ public class TearMode : MonoBehaviour
         tearModeAnimation.SetActive(true);
 
         Time.timeScale = 0.001f;
-        // knockBack effect
-        // particleEffect
-
+        
         yield return new WaitForSeconds(0.001f);
 
         mainCamera.orthographicSize = 5.382994f;
