@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5490252685243995691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 124.62, y: -3.37, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2012412590426208229}
   m_Father: {fileID: 0}
@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: sewingHolder
       value: 
       objectReference: {fileID: 2105031967516216743, guid: e5e723a9dde9c5b49b84f742c8e5f1cb, type: 3}
+    - target: {fileID: 253053022, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
+      propertyPath: infiniteChase
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 627454892088384447, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
       propertyPath: m_Color.b
       value: 0
