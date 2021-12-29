@@ -1,29 +1,22 @@
-using UnityEngine;
-
 public class BossBunnyChaseState : BossBunnyBaseState
 {
     private float attackRange;
 
-    public override void EnterState(BossBunnyStateManager bossBunny)
+    public override void EnterState(BossBunnyStateManager stateManager, float? timeInState = null)
     {
-        attackRange = bossBunny.attack.attackRange;
-
-        if (bossBunny.playerTransform == null)
-        {
-            bossBunny.playerTransform = GameObject.FindGameObjectWithTag("PlayerHolder").transform;
-        }
-        bossBunny.animator.SetTrigger("Walk");
+        attackRange = stateManager.attack.attackRange;
+        stateManager.animator.SetTrigger("Walk");
     }
 
-    public override void UpdateState(BossBunnyStateManager bossBunny)
+    public override void UpdateState(BossBunnyStateManager stateManager)
     {
-        var distance = bossBunny.playerTransform.position - bossBunny.movement.holderTransform.position;
-        bossBunny.movement.MoveTowards(bossBunny.playerTransform.position);
+        stateManager.movement.MoveTowards(stateManager.playerTransform.position);
 
-        if (attackRange > distance.x && (attackRange / 2) > distance.y)
+        var distances = stateManager.movement.AxesDistancesToPlayer();
+        if (attackRange > distances.x && (attackRange / 2) > distances.y)
         {
-            bossBunny.movement.StopMoving();
-            bossBunny.SwitchState(bossBunny.IdleState);
+            stateManager.movement.StopMoving();
+            stateManager.SwitchState(stateManager.AttackState);
         }
     }
 }

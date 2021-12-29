@@ -3,10 +3,11 @@ using UnityEngine;
 public class BossBunny : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health, maxHealth;
+    private BossBunnyStateManager stateManager;
 
     private void Awake()
     {
-    
+        stateManager = GetComponent<BossBunnyStateManager>();
     }
 
     private void Start()
@@ -18,8 +19,8 @@ public class BossBunny : MonoBehaviour, IDamageable
     {
         health -= damage;
         if (health <= 0)
-        {
             Destroy(gameObject);
-        }
+        else
+            stateManager.SwitchState(stateManager.HurtState);
     }
 }

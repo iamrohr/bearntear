@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516119414197524882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8229752, y: -1.3926679, z: -10.816361}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7672840786208774504}
@@ -78,7 +78,7 @@ GameObject:
   m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -105,7 +105,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5378710927862879684, guid: 776b8fd5f5fcc1a448b50d1ae4ae1263, type: 3}
       propertyPath: m_Name
-      value: spr_boss_bunny_idle
+      value: BossBunny
+      objectReference: {fileID: 0}
+    - target: {fileID: -5378710927862879684, guid: 776b8fd5f5fcc1a448b50d1ae4ae1263, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -5378710927862879684, guid: 776b8fd5f5fcc1a448b50d1ae4ae1263, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 9183189945526627968, guid: 776b8fd5f5fcc1a448b50d1ae4ae1263, type: 3}
       propertyPath: m_RootOrder
@@ -216,6 +224,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &858476883457351778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2328550654235074004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94770f2c38353544f9771824ac1d1ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 2.5
+  attackPoint: {fileID: 7259879020719600955}
+  punchAttack: {fileID: 77544860683481084, guid: 90b44e8083e5bda4eb1bdafced08f33c, type: 3}
 --- !u!114 &7213315361216008160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,17 +276,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d72e37194ac30f2489377820158bd310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &858476883457351778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2328550654235074004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94770f2c38353544f9771824ac1d1ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

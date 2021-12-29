@@ -6,12 +6,18 @@ public class BossBunnyStateManager : MonoBehaviour
     private BossBunnyBaseState currentState;
     public BossBunnyIdleState IdleState = new BossBunnyIdleState();
     public BossBunnyChaseState ChaseState = new BossBunnyChaseState();
+    public BossBunnyAttackState AttackState = new BossBunnyAttackState();
+    public BossBunnyShootState ShootState = new BossBunnyShootState();
+    public BossBunnyHurtState HurtState = new BossBunnyHurtState();
 
+    public float idleWaitTime = 1;
 
     [NonSerialized] public Animator animator;
     [NonSerialized] public Transform playerTransform;
     [NonSerialized] public BossBunnyMovement movement;
     [NonSerialized] public BossBunnyAttack attack;
+    [NonSerialized] public BossBunny bossBunny;
+
 
     private void Awake()
     {
@@ -19,6 +25,7 @@ public class BossBunnyStateManager : MonoBehaviour
         animator = GetComponent<Animator>();
         movement = GetComponent<BossBunnyMovement>();
         playerTransform = GameObject.FindGameObjectWithTag("PlayerHolder").transform;
+        bossBunny = GetComponent<BossBunny>();
     }
 
     private void Start()
@@ -32,9 +39,14 @@ public class BossBunnyStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void SwitchState(BossBunnyBaseState state)
+    public void EnterIdleState(float timeInState)
+    {
+        SwitchState(IdleState, timeInState);
+    }
+
+    public void SwitchState(BossBunnyBaseState state, float? timeInState = null)
     {
         currentState = state;
-        state.EnterState(this);
+        state.EnterState(this, timeInState);
     }
 }
