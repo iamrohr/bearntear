@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5143838429696582953}
   - component: {fileID: 6020687488084853070}
   m_Layer: 8
-  m_Name: EnemyCatHolderBoss
+  m_Name: SewerCat
   m_TagString: Enemy
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4394604815340158448, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
       propertyPath: m_Name
-      value: EnemyCatBoss
+      value: SewerEnemyCatBoss
       objectReference: {fileID: 0}
     - target: {fileID: 4394604815340158461, guid: 9b44191d6637fde4db6e155a2e9bb9f7, type: 3}
       propertyPath: m_Color.b
