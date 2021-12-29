@@ -31,7 +31,7 @@ public class Score : MonoBehaviour
         playerName = PlayerPrefs.GetString("Player Name");
         inputText.text = playerName;
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main") || SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Sewer"))
         {
             inputFieldGameObject.SetActive(false);
         }
