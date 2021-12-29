@@ -20,12 +20,16 @@ public class TearMode : MonoBehaviour
     public PlayerAttack playerAttackScript;
     public PlayerShoot playerShootScript;
 
+    public GameObject lunanewmodel;
+    Animator animator;
+
     public bool tearModeOn = false;
 
     private void Start()
     {
         mainCamera = Camera.main;
         cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
+        animator = lunanewmodel.GetComponent<Animator>();
     }
 
     public IEnumerator TearModeStart()
@@ -38,6 +42,8 @@ public class TearMode : MonoBehaviour
         var attackObject = Instantiate(slamAttack, transform.position, Quaternion.identity);
         attackObject.transform.SetParent(transform);
         tearModeAnimation.SetActive(true);
+
+        animator.SetTrigger("TearMode");
 
         Time.timeScale = 0.001f;
         
