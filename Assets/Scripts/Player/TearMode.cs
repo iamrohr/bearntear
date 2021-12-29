@@ -43,10 +43,12 @@ public class TearMode : MonoBehaviour
         attackObject.transform.SetParent(transform);
         tearModeAnimation.SetActive(true);
 
-        animator.SetTrigger("TearMode");
+        
 
         Time.timeScale = 0.001f;
-        
+
+        animator.SetTrigger("TearMode");
+
         yield return new WaitForSeconds(0.001f);
 
         mainCamera.orthographicSize = 5.382994f;
