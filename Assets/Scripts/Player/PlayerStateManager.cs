@@ -22,7 +22,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         move = () => GetComponent<PlayerMovement>().MoveUpdate();
         attack = () => playerAttack.AttackUpdate();
-        jump = () => GetComponent<PlayerJump>().JumpUpdate();
+        jump = () => playerJump.JumpUpdate();
         dash = () => GetComponent<PlayerDash>().DashUpdate();
         shoot = () => GetComponent<PlayerShoot>().Shoot();
         slam = () => GetComponent<PlayerSlam>().SlamUpdate();
@@ -77,6 +77,9 @@ public class PlayerStateManager : MonoBehaviour
                 break;
             case PlayerState.Dashing:
                 player.animator.SetTrigger("Dash");
+                break;
+            case PlayerState.Slamming:
+                player.animator.SetTrigger("Jump");
                 break;
             default:
                 goto case PlayerState.Idle;

@@ -50,8 +50,8 @@ public class PlayerAttackBox : MonoBehaviour
     private void Attack(Collider2D other)
     {
         other.GetComponent<IDamageable>().TakeDamage(damage);
-        var stateManager = other.GetComponent<EnemyStateManager>();
 
+        var stateManager = other.GetComponent<EnemyStateManager>();
         if (stateManager != null)
             stateManager.EnemyKnocked(timeKnocked, knockBackPower, timeStunned);
     }

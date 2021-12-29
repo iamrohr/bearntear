@@ -70,6 +70,11 @@ public class PlayerSlam : MonoBehaviour
             _transform.localPosition = new Vector2(_transform.localPosition.x, y);
 
             t += Time.deltaTime / slamTime;
+
+            if (t > 1 - 0.15f / slamTime)
+            {
+                player.animator.SetTrigger("Slam");
+            }
             yield return null;
         }
 
