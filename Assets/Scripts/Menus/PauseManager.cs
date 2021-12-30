@@ -49,10 +49,7 @@ public class PauseManager : MonoBehaviour
     {
         buttonClickSound.Play();
         pauseCanvas.SetActive(false);
-        playerShadowSpriteRenderer.enabled = false;
-        playerRenderer.enabled = false;
         healthBarCanvas.SetActive(false);
-        //playerShootScript.enabled = false;
         pauseControlsCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(backButton);
@@ -76,10 +73,7 @@ public class PauseManager : MonoBehaviour
     {
         buttonClickSound.Play();
         pauseControlsCanvas.SetActive(false);
-        //playerShootScript.enabled = false;
         pauseCanvas.SetActive(true);
-        playerShadowSpriteRenderer.enabled = true;
-        playerRenderer.enabled = true;
         healthBarCanvas.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(continueButton);
