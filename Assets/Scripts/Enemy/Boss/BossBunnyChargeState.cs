@@ -4,11 +4,13 @@ public class BossBunnyChargeState : BossBunnyBaseState
 {
     public override void EnterState(BossBunnyStateManager stateManager, float? timeInState = null)
     {
-        Debug.Log("Im gonna charge!", stateManager.gameObject);
+        stateManager.animator.SetTrigger("Charge");
     }
 
     public override void UpdateState(BossBunnyStateManager stateManager)
     {
+        if (!stateManager.attack.isCharging) return;
 
+        stateManager.movement.MoveTowards(stateManager.playerTransform.position, stateManager.attack.chargeSpeed);
     }
 }

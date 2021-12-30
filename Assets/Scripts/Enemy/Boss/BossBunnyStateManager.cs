@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BossBunnyStateManager : MonoBehaviour
 {
-    private BossBunnyBaseState currentState;
+    public BossBunnyBaseState currentState;
     public BossBunnyIdleState IdleState = new BossBunnyIdleState();
     public BossBunnyChaseState ChaseState = new BossBunnyChaseState();
     public BossBunnyAttackState AttackState = new BossBunnyAttackState();
@@ -17,7 +17,6 @@ public class BossBunnyStateManager : MonoBehaviour
     [NonSerialized] public BossBunnyAttack attack;
     [NonSerialized] public BossBunny bossBunny;
 
-
     private void Awake()
     {
         attack = GetComponent<BossBunnyAttack>();
@@ -29,7 +28,7 @@ public class BossBunnyStateManager : MonoBehaviour
 
     private void Start()
     {
-        currentState = ChaseState;
+        currentState = IdleState;
         currentState.EnterState(this);
     }
 

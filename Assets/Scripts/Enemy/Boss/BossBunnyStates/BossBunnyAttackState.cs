@@ -4,9 +4,4 @@ public class BossBunnyAttackState : BossBunnyBaseState
     {
         stateManager.animator.SetTrigger("Hit");
     }
-
-    public override void UpdateState(BossBunnyStateManager bossBunny)
-    {
-
-    }
 }
