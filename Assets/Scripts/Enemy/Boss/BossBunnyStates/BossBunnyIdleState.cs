@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class BossBunnyIdleState : BossBunnyBaseState
 {
-    private float waitTimer;
+    private float stateTimer;
     private float? timeInState;
 
     public override void EnterState(BossBunnyStateManager stateManager, float? timeInState = null)
     {
         stateManager.movement.StopMoving();
-        this.timeInState = timeInState;
-        waitTimer = 0;
         stateManager.animator.SetTrigger("Idle");
+        stateTimer = 0;
+        this.timeInState = timeInState;
     }
 
     public override void UpdateState(BossBunnyStateManager stateManager)
@@ -18,12 +18,11 @@ public class BossBunnyIdleState : BossBunnyBaseState
         if (timeInState == null)
         {
             NextState(stateManager);
-            return;
         }
         else
         {
-            if (waitTimer < timeInState)
-                waitTimer += Time.deltaTime;
+            if (stateTimer < timeInState)
+                stateTimer += Time.deltaTime;
             else
                 NextState(stateManager);
         }
@@ -33,16 +32,22 @@ public class BossBunnyIdleState : BossBunnyBaseState
     {
         var distances = stateManager.movement.AxesDistancesToPlayer();
         var attackRange = stateManager.attack.attackRange;
+        var aggroRange = stateManager.attack.aggroRange;
+        var chaseTimeMin = stateManager.bossBunny.chaseTimeMin;
+        var chaseTimeMax = stateManager.bossBunny.chaseTimeMax;
+        var timeInNextState = Random.Range(chaseTimeMax, chaseTimeMin);
 
         switch (distances)
         {
             case var value when value.x <= attackRange && value.y <= attackRange / 2:
                 stateManager.SwitchState(stateManager.AttackState);
                 break;
-            case var value when value.x > attackRange || value.y > attackRange / 2:
-                stateManager.SwitchState(stateManager.ChaseState);
+            case var value when value.x <= aggroRange && value.y <= aggroRange / 2:
+                stateManager.SwitchState(stateManager.ChaseState, timeInNextState);
                 break;
             default:
+                if (stateManager.bossBunny.aggro)
+                    stateManager.SwitchState(stateManager.ChaseState, timeInNextState);
                 break;
         }
     }

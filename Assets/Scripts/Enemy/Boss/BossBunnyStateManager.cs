@@ -8,9 +8,8 @@ public class BossBunnyStateManager : MonoBehaviour
     public BossBunnyChaseState ChaseState = new BossBunnyChaseState();
     public BossBunnyAttackState AttackState = new BossBunnyAttackState();
     public BossBunnyShootState ShootState = new BossBunnyShootState();
+    public BossBunnyChargeState ChargeState = new BossBunnyChargeState();
     public BossBunnyHurtState HurtState = new BossBunnyHurtState();
-
-    public float idleWaitTime = 1;
 
     [NonSerialized] public Animator animator;
     [NonSerialized] public Transform playerTransform;

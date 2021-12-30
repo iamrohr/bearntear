@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BossBunnyAttack : MonoBehaviour
 {
-    public float attackRange;
+    public float attackRange, aggroRange;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject punchAttack;
     private BossBunnyMovement movement;
