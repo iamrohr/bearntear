@@ -5,7 +5,7 @@ public class BossBunnyAttack : MonoBehaviour
     public float attackRange, aggroRange, chargeSpeed, chargeRecoveryTime;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject punchAttack;
-    [SerializeField] private GameObject chargeAttack;
+    [SerializeField] private GameObject chargeCollider;
     private BossBunnyMovement movement;
     public bool isCharging;
 
@@ -28,13 +28,13 @@ public class BossBunnyAttack : MonoBehaviour
 
     public void StartCharge()
     {
-        chargeAttack.SetActive(true);
+        chargeCollider.SetActive(true);
         isCharging = true;
     }
 
     public void StopCharge()
     {
-        chargeAttack.SetActive(false);
+        chargeCollider.SetActive(false);
         isCharging = false;
 
         var stateManager = GetComponent<BossBunnyStateManager>();
