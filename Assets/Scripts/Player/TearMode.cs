@@ -84,6 +84,7 @@ public class TearMode : MonoBehaviour
         projectile.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         tearModeAnimation.SetActive(false);
 
+        tearBarOnPlayerScript.currentTear = 0; // to make TearBar 0 after TearMode
 
     }
 
