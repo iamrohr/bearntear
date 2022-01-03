@@ -7617,6 +7617,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1673362664}
+    - target: {fileID: 1052769222, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: m_SortingOrder
+      value: -139
+      objectReference: {fileID: 0}
     - target: {fileID: 1157020850, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -13442,7 +13446,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 101
   m_TargetDisplay: 0
 --- !u!224 &1744992217
 RectTransform:
