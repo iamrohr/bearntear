@@ -123,6 +123,8 @@ public class TearMode : MonoBehaviour
     {
         if (tearBarOnPlayerScript.currentTear == tearBarOnPlayerScript.maxTear)
 
+        { 
+
             if(!tearModeOn)
             {
                 StartCoroutine(BlinkingTearBarWarning(5));
@@ -141,6 +143,6 @@ public class TearMode : MonoBehaviour
             }
 
             // StartCoroutine(BlinkingTearBarWarning(1));
-        
+        }
     }
 }
