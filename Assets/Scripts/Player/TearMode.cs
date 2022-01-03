@@ -36,7 +36,7 @@ public class TearMode : MonoBehaviour
     {
         tearModeOn = true;
         mainCamera.orthographicSize = 4.5f;
-        StartCoroutine(cameraShake.Shake(0.5f, 0.4f));
+        StartCoroutine(cameraShake.ShakeCoroutine(0.5f, 0.4f));
         slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 4f;
         slamAttack.transform.localScale = new Vector3(7, 7, 1);
         var attackObject = Instantiate(slamAttack, transform.position, Quaternion.identity);
