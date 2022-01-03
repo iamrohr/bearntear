@@ -156,7 +156,7 @@ public class PlayerAttack : MonoBehaviour
         var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
         attackObject.transform.SetParent(_transform);
 
-        StartCoroutine(cameraShake.Shake(0.3f, 0.2f));
+        StartCoroutine(cameraShake.ShakeCoroutine(0.3f, 0.2f));
 
         playerMovement.Immobilize(bashRecoveryTime);
 

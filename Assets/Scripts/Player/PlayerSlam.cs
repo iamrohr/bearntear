@@ -83,7 +83,7 @@ public class PlayerSlam : MonoBehaviour
         _transform.localPosition = new Vector2(_transform.localPosition.x, groundedY);
         playerJump.grounded = true;
 
-        StartCoroutine(cameraShake.Shake(0.3f, 0.4f));
+        StartCoroutine(cameraShake.ShakeCoroutine(0.3f, 0.4f));
 
         var attackObject = Instantiate(slamAttack, _transform.position, Quaternion.identity);
         attackObject.transform.SetParent(_transform);
