@@ -8,9 +8,11 @@ public class BossBunny : MonoBehaviour, IDamageable
 
     [NonSerialized] public bool aggro;
     private BossBunnyStateManager stateManager;
+    [NonSerialized] public Animator animator;
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         stateManager = GetComponent<BossBunnyStateManager>();
     }
 

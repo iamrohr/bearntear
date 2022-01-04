@@ -20,7 +20,7 @@ public class BossBunnyStateManager : MonoBehaviour
     private void Awake()
     {
         attack = GetComponent<BossBunnyAttack>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<BossBunny>().animator;
         movement = GetComponent<BossBunnyMovement>();
         playerTransform = GameObject.FindGameObjectWithTag("PlayerHolder").transform;
         bossBunny = GetComponent<BossBunny>();
