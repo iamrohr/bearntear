@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2849036560916337933}
   - component: {fileID: 494428321185239586}
   m_Layer: 8
-  m_Name: RatHolder
-  m_TagString: Enemy
+  m_Name: RatMiniBossHolder
+  m_TagString: MiniBoss
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6354549213818161362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 9039633518825316830}
   m_Father: {fileID: 0}
@@ -118,7 +118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5509779415262325123, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
       propertyPath: m_Name
-      value: Rat
+      value: EnemyCatBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860218693969764841, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: maxHealth
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
