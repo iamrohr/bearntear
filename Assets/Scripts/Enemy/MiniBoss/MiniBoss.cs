@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MiniBoss : MonoBehaviour
 {
@@ -22,8 +23,11 @@ public class MiniBoss : MonoBehaviour
         nextLevel = GameObject.FindGameObjectWithTag("NextLevel");
         nextLevel.SetActive(false);
 
-        elevator = GameObject.FindGameObjectWithTag("Elevator");
-        elevatorAnimator = elevator.GetComponent<Animator>();
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
+        {
+            elevator = GameObject.FindGameObjectWithTag("Elevator");
+            elevatorAnimator = elevator.GetComponent<Animator>();
+        }
 
     }
 
@@ -40,8 +44,13 @@ public class MiniBoss : MonoBehaviour
         {
             miniBossMusic.SetActive(false);
             backgroundMusic.SetActive(true);
-            elevatorAnimator.SetTrigger("Open Doors");
+            
             nextLevel.SetActive(true);
+        }
+
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
+        {
+            elevatorAnimator.SetTrigger("Open Doors");
         }
     }
 
