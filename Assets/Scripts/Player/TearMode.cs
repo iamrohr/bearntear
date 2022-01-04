@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TearMode : MonoBehaviour
 {
-    public TearBarOnPlayer tearBarOnPlayerScript;
-    public PlayerMovement playerMovementScript;
+    TearBarOnPlayer tearBarOnPlayerScript;
+    PlayerMovement playerMovementScript;
     Camera mainCamera;
     CameraShake cameraShake;
 
@@ -14,13 +14,14 @@ public class TearMode : MonoBehaviour
     public GameObject bashAttack;
     public GameObject slamAttack;
     public GameObject projectile;
-    public GameObject tearBarFill;
-    public GameObject tearModeAnimation;
-    public AudioSource tearModeSound;
-    public PlayerAttack playerAttackScript;
-    public PlayerShoot playerShootScript;
 
-    public GameObject lunanewmodel;
+    GameObject tearBarFill;
+    GameObject tearModeAnimation;
+    AudioSource tearModeSound;
+    PlayerAttack playerAttackScript;
+    PlayerShoot playerShootScript;
+
+    GameObject lunanewmodel;
     Animator animator;
 
     public bool tearModeOn = false;
@@ -29,7 +30,16 @@ public class TearMode : MonoBehaviour
     {
         mainCamera = Camera.main;
         cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
+        lunanewmodel = GameObject.Find("lunanewmodel");
         animator = lunanewmodel.GetComponent<Animator>();
+
+        playerShootScript = gameObject.GetComponent<PlayerShoot>();
+        playerAttackScript = gameObject.GetComponent<PlayerAttack>();
+        playerMovementScript = gameObject.GetComponent<PlayerMovement>();
+        tearBarOnPlayerScript = gameObject.GetComponent<TearBarOnPlayer>();
+        tearBarFill = GameObject.FindGameObjectWithTag("TearBarFill");
+        tearModeAnimation = GameObject.FindGameObjectWithTag("TearModeAnimation");
+        tearModeSound = GameObject.FindGameObjectWithTag("TearModeSound").GetComponent<AudioSource>();
     }
 
     public IEnumerator TearModeStart()
