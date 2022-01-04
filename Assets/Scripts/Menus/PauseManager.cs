@@ -11,6 +11,7 @@ public class PauseManager : MonoBehaviour
     GameObject playerShadow;
     GameObject player;
     GameObject healthBarCanvas;
+    GameObject cameraHolder;
 
     SpriteRenderer playerShadowSpriteRenderer;
     SpriteRenderer playerRenderer;
@@ -36,6 +37,7 @@ public class PauseManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         healthBarCanvas = GameObject.FindGameObjectWithTag("HealthBarCanvas");
         backgroundMusic = GameObject.FindGameObjectWithTag("BackgroundMusic");
+        cameraHolder = GameObject.Find("CameraHolder");
 
         pauseControlsCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
@@ -99,6 +101,9 @@ public class PauseManager : MonoBehaviour
     public void PauseMainMenu()
     {
         buttonClickSound.Play();
+        Destroy(player);
+        Destroy(healthBarCanvas);
+        Destroy(cameraHolder);
         SceneManager.LoadScene("MainMenu");
     }
 
