@@ -43,7 +43,7 @@ public class BossBunnyChaseState : BossBunnyBaseState
 
     private void NextState(BossBunnyStateManager stateManager)
     {
-        BossBunnyBaseState[] nextAttacks = { stateManager.ShootState, stateManager.ChargeState };
+        BossBunnyBaseState[] nextAttacks = {/* stateManager.ShootState,*/ stateManager.ChargeState }; //TODO: fix charge
         int randomAttack = Random.Range(0, nextAttacks.Length);
 
         stateManager.movement.StopMoving();
