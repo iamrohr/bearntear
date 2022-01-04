@@ -49,7 +49,7 @@ public class TearMode : MonoBehaviour
         tearModeOn = true;
         mainCamera.orthographicSize = 4.5f;
         StartCoroutine(cameraShake.ShakeCoroutine(0.5f, 0.4f));
-        slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 4f;
+        //slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 4f;
         slamAttack.GetComponent<SpriteRenderer>().enabled = false;
         slamAttack.transform.localScale = new Vector3(7, 7, 1);
         var attackObject = Instantiate(slamAttack, transform.position, Quaternion.identity);
@@ -68,7 +68,7 @@ public class TearMode : MonoBehaviour
         Time.timeScale = 1f;
         playerMovementScript.speed = 12f;
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 20;
-        slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 4f;
+        //slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 4f;
         
         playerAttackScript.swipeCooldown = 0.1f;
         playerAttackScript.bashCooldown = 0.1f;
@@ -87,7 +87,7 @@ public class TearMode : MonoBehaviour
         tearModeOn = false;
         playerMovementScript.speed = 6f;
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 8;
-        slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 0f;
+        //slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 0f;
         playerAttackScript.swipeCooldown = 0.5f;
         playerAttackScript.bashCooldown = 0.5f;
         playerShootScript.shootCoolDown = 0.4f;
