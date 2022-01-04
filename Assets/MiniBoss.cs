@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MiniBoss : MonoBehaviour
 {
-    public GameObject sewerCatBoss;
-    public GameObject sewerRatBoss;
-    public GameObject sewerBearBoss;
-
     public GameObject backgroundMusic;
     public GameObject miniBossMusic;
 
