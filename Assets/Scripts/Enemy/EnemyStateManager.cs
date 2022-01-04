@@ -166,14 +166,14 @@ public class EnemyStateManager : MonoBehaviour
 
     public bool EnemyStackPush()
     {
-        float randomForceDirection = Random.Range(-400, 400);
+        float randomForceDirection = Random.Range(-500, 500);
         stackPushCountdown -= Time.deltaTime;
 
         if (stackPushCountdown <= 0f)
         {
             Debug.Log("I Got pushed by ", gameObject);
-            rbHolder.AddForce(transform.up * randomForceDirection);
-            rbHolder.AddForce(transform.right * randomForceDirection);
+            rbHolder.AddForce(transform.up * randomForceDirection, ForceMode2D.Impulse);
+            rbHolder.AddForce(transform.right * randomForceDirection, ForceMode2D.Impulse);
             stackPushCountdown = 1f;
             return false;
         }
