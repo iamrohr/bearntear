@@ -27,7 +27,10 @@ public class MoveCamera : MonoBehaviour
             clampedLeftPos = -49.5f;
             clampedRightPos = 142f;
         }
+    }
 
+    private void Update()
+    {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
         {
             clampedLeftPos = -43.6f;
@@ -38,7 +41,6 @@ public class MoveCamera : MonoBehaviour
         }
     }
 
-    
     void FixedUpdate()
     {
         //convert target pos to 2D
