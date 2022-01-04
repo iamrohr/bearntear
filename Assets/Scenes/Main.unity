@@ -7413,7 +7413,7 @@ GameObject:
   - component: {fileID: 916142435}
   - component: {fileID: 916142434}
   m_Layer: 6
-  m_Name: CatMiniBoss
+  m_Name: RatMiniBossTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7427,7 +7427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916142432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 25.93, y: -1.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1498774676}
@@ -7442,11 +7442,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 916142432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880d8ae2b8ed8954b926e23e17de8ce7, type: 3}
+  m_Script: {fileID: 11500000, guid: 06044119ce5ddf0408b774b820741f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catMiniBoss: {fileID: 5490252685243995691, guid: b565bc11ee39fb8458df85d4fb35d9f0, type: 3}
-  player: {fileID: 0}
+  ratMiniBoss: {fileID: 6354549213818161362, guid: 52d5b7b078777b54c9c33588e5d34812, type: 3}
+  player: {fileID: 477641372}
 --- !u!50 &916142435
 Rigidbody2D:
   serializedVersion: 4
@@ -7481,7 +7481,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -3.5380592, y: -0.64424515}
+  m_Offset: {x: -3.5380592, y: 0.069892526}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7492,7 +7492,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.467171, y: 4.101921}
+  m_Size: {x: 15.467171, y: 6.1361303}
   m_EdgeRadius: 0
 --- !u!1 &918743808
 GameObject:
@@ -23842,7 +23842,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1251886161771349022
 MonoBehaviour:
   m_ObjectHideFlags: 0
