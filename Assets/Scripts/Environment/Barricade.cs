@@ -12,6 +12,9 @@ public class Barricade : MonoBehaviour
     private BoxCollider2D bc2d;
     private bool alive;
 
+    public Sprite[] barricadeSprites;
+    private int rand;
+
     private void Awake()
     {
         _transform = transform;
@@ -23,6 +26,8 @@ public class Barricade : MonoBehaviour
     {
         alive = true;
         health = maxHealth;
+        rand = UnityEngine.Random.Range(0, barricadeSprites.Length);
+        GetComponent<SpriteRenderer>().sprite = barricadeSprites[rand];
     }
 
     public void TakeDamage(float damage, AttackType attackType)

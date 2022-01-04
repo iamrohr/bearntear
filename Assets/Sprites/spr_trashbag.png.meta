@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: 5bbb2679cc9df3b4eae790ef67838063
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5951574885959886920
+    second: spr_trashbag_0
+  - first:
+      213: 2909320224690071434
+    second: spr_trashbag_1
+  - first:
+      213: -3135680606266740917
+    second: spr_trashbag_2
+  - first:
+      213: -4285033595225455160
+    second: spr_trashbag_3
+  - first:
+      213: -7343238809696732661
+    second: spr_trashbag_4
+  - first:
+      213: -3714965588428244651
+    second: spr_trashbag_5
+  - first:
+      213: -8756908844200635183
+    second: spr_trashbag_6
+  - first:
+      213: -8479646204317356367
+    second: spr_trashbag_7
+  - first:
+      213: -204268165443140561
+    second: spr_trashbag_8
+  - first:
+      213: -59736175576087828
+    second: spr_trashbag_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +71,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -65,7 +95,31 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -77,7 +131,217 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: spr_trashbag_0
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 3343
+        width: 777
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84866c373dd389250800000000000000
+      internalID: 5951574885959886920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_trashbag_1
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 3250
+        width: 446
+        height: 646
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a87e282845bff5820800000000000000
+      internalID: 2909320224690071434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_trashbag_2
+      rect:
+        serializedVersion: 2
+        x: 1857
+        y: 3222
+        width: 648
+        height: 649
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4fa3662a13db74d0800000000000000
+      internalID: -3135680606266740917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_trashbag_3
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 2477
+        width: 533
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5c8f1f5a08884c0800000000000000
+      internalID: -4285033595225455160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_trashbag_4
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 2299
+        width: 630
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0af92f6533971a90800000000000000
+      internalID: -7343238809696732661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_trashbag_5
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 2463
+        width: 578
+        height: 545
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5593fe4ea7ac17cc0800000000000000
+      internalID: -3714965588428244651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_trashbag_6
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 1316
+        width: 650
+        height: 959
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4d1f26dc5397680800000000000000
+      internalID: -8756908844200635183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_trashbag_7
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 1153
+        width: 727
+        height: 985
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1beacaa44be325a80800000000000000
+      internalID: -8479646204317356367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_trashbag_8
+      rect:
+        serializedVersion: 2
+        x: 2039
+        y: 1403
+        width: 703
+        height: 812
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2447df8f2b4a2df0800000000000000
+      internalID: -204268165443140561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_trashbag_9
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 296
+        width: 595
+        height: 799
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce20c8ac346cb2ff0800000000000000
+      internalID: -59736175576087828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
