@@ -39,6 +39,17 @@ public class MoveCamera : MonoBehaviour
             cameraSpawnLock = gameObject.GetComponent<CameraSpawnLock>();
             cameraSpawnLock.enabled = false;
         }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Sewer"))
+        {
+            clampedLeftPos = -65.8909f;
+            clampedRightPos = -20f;
+            transform.position = new Vector3(transform.position.x, -1.08f, transform.position.z);
+            cameraSpawnLock = gameObject.GetComponent<CameraSpawnLock>();
+            cameraSpawnLock.enabled = false;
+        }
+
+
     }
 
     void FixedUpdate()
