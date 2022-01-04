@@ -44,6 +44,10 @@ public class EnemyStateManager : MonoBehaviour
 
     void Start()
     {
+        //Random movement speed
+        float randomSpeed = Random.Range(1f, 1.3f);
+        moveSpeed = moveSpeed * randomSpeed;
+
         player = GameObject.FindGameObjectWithTag("PlayerHolder");
 
         //enemyTF = transform.parent;
