@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 1052769222}
   m_Layer: 11
   m_Name: TearModeAnimation
-  m_TagString: Untagged
+  m_TagString: TearModeAnimation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1052769224
 Transform:
   m_ObjectHideFlags: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052769221}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3199997, y: 5.08, z: 0}
-  m_LocalScale: {x: 160, y: 160, z: 20}
+  m_LocalPosition: {x: -1.73, y: 3.93, z: 0}
+  m_LocalScale: {x: 3.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2958104977341504508}
   m_RootOrder: 3
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -39
+  m_SortingOrder: -1
   m_Sprite: {fileID: 1745469810470029301, guid: d5331b66957349640ade387c9ab5afdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 1152923850}
   m_Layer: 11
   m_Name: TearModeSound
-  m_TagString: Untagged
+  m_TagString: TearModeSound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 2958104976466305451}
   m_Layer: 7
   m_Name: PlayerShadow
-  m_TagString: Untagged
+  m_TagString: PlayerShadow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1397,18 +1397,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c5e47dd277e3c47b34d89b33b38959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tearBarOnPlayerScript: {fileID: 2958104977341504257}
-  playerMovementScript: {fileID: 2958104977341504260}
   swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
   bashAttack: {fileID: 77544860683481084, guid: a76ea72f68964ee499cd8cfed5682a44, type: 3}
   slamAttack: {fileID: 77544860683481084, guid: 5063c7f6fe34db148a9e95dc4a10c9b7, type: 3}
   projectile: {fileID: 1474539451296381271, guid: 5db569fa1e95b884397f4a464e79391c, type: 3}
-  tearBarFill: {fileID: 0}
-  tearModeAnimation: {fileID: 1052769221}
-  tearModeSound: {fileID: 1152923850}
-  playerAttackScript: {fileID: 2958104977341504258}
-  playerShootScript: {fileID: 2958104977341504259}
-  lunanewmodel: {fileID: 3638162436215408878}
   tearModeOn: 0
 --- !u!70 &2958104977341504510
 CapsuleCollider2D:
@@ -1493,7 +1485,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 0
 --- !u!114 &896887835
 MonoBehaviour:
   m_ObjectHideFlags: 0
