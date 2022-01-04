@@ -7,9 +7,9 @@ public class CatMiniBoss : MonoBehaviour
     public GameObject catMiniBoss;
     public GameObject player;
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+        if(other.CompareTag("Player"))
         {
             Instantiate(catMiniBoss, new Vector3(125.31f, -2.63f, 0f), player.transform.rotation);
         }
