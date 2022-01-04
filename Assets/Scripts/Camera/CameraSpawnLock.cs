@@ -12,6 +12,8 @@ public class CameraSpawnLock : MonoBehaviour
     public GameObject spawnPoint2LeftCollider;
     public GameObject spawnPoint2RightCollider;
 
+    public GameObject backgroundMusic;
+
     MoveCamera moveCameraScript;
     WaveSpawner waveSpawner1Script;
     WaveSpawner waveSpawner2Script;
