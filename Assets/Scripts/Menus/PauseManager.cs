@@ -8,9 +8,9 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject pauseControlsCanvas;
     public GameObject pauseCanvas;
-    public GameObject playerShadow;
-    public GameObject player;
-    public GameObject healthBarCanvas;
+    GameObject playerShadow;
+    GameObject player;
+    GameObject healthBarCanvas;
 
     SpriteRenderer playerShadowSpriteRenderer;
     SpriteRenderer playerRenderer;
@@ -27,11 +27,16 @@ public class PauseManager : MonoBehaviour
     public GameObject continueButton;
     public GameObject backButton;
 
-    public GameObject backgroundMusic;
+    GameObject backgroundMusic;
     public AudioSource buttonClickSound;
 
     private void Awake()
     {
+        playerShadow = GameObject.FindGameObjectWithTag("PlayerShadow");
+        player = GameObject.FindGameObjectWithTag("Player");
+        healthBarCanvas = GameObject.FindGameObjectWithTag("HealthBarCanvas");
+        backgroundMusic = GameObject.FindGameObjectWithTag("BackgroundMusic");
+
         pauseControlsCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
         playerShadowSpriteRenderer = playerShadow.GetComponent<SpriteRenderer>();
@@ -43,6 +48,8 @@ public class PauseManager : MonoBehaviour
         playerInputScript = player.GetComponent<PlayerInput>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+
     }
 
     public void PauseControls()

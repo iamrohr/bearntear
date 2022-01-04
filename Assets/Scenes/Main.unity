@@ -1586,9 +1586,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseControlsCanvas: {fileID: 1240576990}
   pauseCanvas: {fileID: 1744992213}
-  playerShadow: {fileID: 714903957}
-  player: {fileID: 477641372}
-  healthBarCanvas: {fileID: 1119809325}
   continueButton: {fileID: 368257156}
   backButton: {fileID: 475360390}
   backgroundMusic: {fileID: 1230713809}
@@ -5884,11 +5881,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 094241ebdc8038e49bd2beca09e17467, type: 3}
---- !u!1 &714903957 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2958104976466305447, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
-  m_PrefabInstance: {fileID: 967784175}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &716563515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8193,6 +8185,10 @@ PrefabInstance:
       propertyPath: tearBarFill
       value: 
       objectReference: {fileID: 918743808}
+    - target: {fileID: 2958104976466305447, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
+      propertyPath: m_TagString
+      value: PlayerShadow
+      objectReference: {fileID: 0}
     - target: {fileID: 2958104977341504257, guid: 392a6367e38b34c44bcdf6cd59ced84f, type: 3}
       propertyPath: tearBar
       value: 
@@ -9354,7 +9350,7 @@ GameObject:
   - component: {fileID: 1119809330}
   m_Layer: 5
   m_Name: HealthBarCanvas
-  m_TagString: Untagged
+  m_TagString: HealthBarCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10466,7 +10462,7 @@ GameObject:
   - component: {fileID: 1230713810}
   m_Layer: 0
   m_Name: BackgroundMusic
-  m_TagString: Untagged
+  m_TagString: BackgroundMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

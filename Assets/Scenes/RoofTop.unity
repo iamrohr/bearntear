@@ -1173,6 +1173,7 @@ MonoBehaviour:
   arrivedAtRandPos: 0
   moveToStart: 0
   agroRangeRand: 0
+  stackPushCountdown: 1
   offsetFollowPlayerY: 1.5
   agroRange: 5
   agroRandomRange: 10
@@ -2793,9 +2794,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseControlsCanvas: {fileID: 1800858420}
   pauseCanvas: {fileID: 1385547206}
-  playerShadow: {fileID: 0}
-  player: {fileID: 0}
-  healthBarCanvas: {fileID: 0}
   continueButton: {fileID: 2033832886}
   backButton: {fileID: 1833222616}
   backgroundMusic: {fileID: 961663929}
@@ -5002,7 +5000,7 @@ GameObject:
   - component: {fileID: 961663930}
   m_Layer: 0
   m_Name: BackgroundMusic
-  m_TagString: Untagged
+  m_TagString: BackgroundMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
