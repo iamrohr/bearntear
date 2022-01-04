@@ -16,11 +16,6 @@ public class PlayerAttackBox : MonoBehaviour
     {
         canDamage = true;
         Destroy(gameObject, 0.1f);
-        
-        //Temporary alpha change
-        Color temp = GetComponent<SpriteRenderer>().color;
-        temp.a = 0.4f;
-        GetComponent<SpriteRenderer>().color = temp;
     }
     
     private void OnTriggerEnter2D(Collider2D other)

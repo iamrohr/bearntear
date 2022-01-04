@@ -20,6 +20,5 @@ public class ResetAttackValues : MonoBehaviour
 
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 8;
         slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 0f;
-        slamAttack.GetComponent<SpriteRenderer>().enabled = true;
     }
 }
