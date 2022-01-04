@@ -8,6 +8,15 @@ public class ParallaxManagerSewer : MonoBehaviour
 
     Transform cameraTransform;
 
+    GameObject parallaxBack;
+    GameObject parallaxBACK2;
+    GameObject parallaxFRONT;
+    GameObject parallaxFRONT2;
+    GameObject parallaxMID;
+    GameObject parallaxMID2;
+    
+
+
     GameObject parallaxBACK3;
     GameObject parallaxBACK4;
     GameObject parallaxBACK5;
@@ -33,6 +42,13 @@ public class ParallaxManagerSewer : MonoBehaviour
         parallaxMID4 = GameObject.Find("ParallaxMID (4)");
         parallaxMID5 = GameObject.Find("ParallaxMID (5)");
 
+        parallaxBack = GameObject.Find("ParallaxBACK");
+        parallaxBACK2 = GameObject.Find("ParallaxBACK (2)");
+        parallaxFRONT = GameObject.Find("ParallaxFRONT");
+        parallaxFRONT2 = GameObject.Find("ParallaxFRONT (2)");
+        parallaxMID = GameObject.Find("ParallaxMID");
+        parallaxMID2 = GameObject.Find("ParallaxMID (2)");
+
         parallaxBACK3.SetActive(false);
         parallaxBACK4.SetActive(false);
         parallaxBACK5.SetActive(false);
@@ -42,6 +58,14 @@ public class ParallaxManagerSewer : MonoBehaviour
         parallaxMID3.SetActive(false);
         parallaxMID4.SetActive(false);
         parallaxMID5.SetActive(false);
+
+        parallaxBack.SetActive(false);
+        parallaxBACK2.SetActive(false);
+        parallaxFRONT.SetActive(false);
+        parallaxFRONT2.SetActive(false);
+        parallaxMID.SetActive(false);
+        parallaxMID2.SetActive(false);
+
 
 
     }
