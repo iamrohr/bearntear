@@ -8,6 +8,13 @@ public class ParallaxManager : MonoBehaviour
 
     Transform cameraTransform;
 
+    GameObject parallaxBack;
+    GameObject parallaxBACK2;
+    GameObject parallaxFRONT;
+    GameObject parallaxFRONT2;
+    GameObject parallaxMID;
+    GameObject parallaxMID2;
+
     GameObject parallaxBACK3;
     GameObject parallaxBACK4;
     GameObject parallaxBACK5;
@@ -22,6 +29,20 @@ public class ParallaxManager : MonoBehaviour
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         cameraTransform = mainCamera.transform;
+
+        parallaxBack = GameObject.Find("ParallaxBACK");
+        parallaxBACK2 = GameObject.Find("ParallaxBACK (2)");
+        parallaxFRONT = GameObject.Find("ParallaxFRONT");
+        parallaxFRONT2 = GameObject.Find("ParallaxFRONT (2)");
+        parallaxMID = GameObject.Find("ParallaxMID");
+        parallaxMID2 = GameObject.Find("ParallaxMID (2)");
+
+        parallaxBack.SetActive(false);
+        parallaxBACK2.SetActive(false);
+        parallaxFRONT.SetActive(false);
+        parallaxFRONT2.SetActive(false);
+        parallaxMID.SetActive(false);
+        parallaxMID2.SetActive(false);
 
         parallaxBACK3 = GameObject.Find("ParallaxBACK (3)");
         parallaxBACK4 = GameObject.Find("ParallaxBACK (4)");
