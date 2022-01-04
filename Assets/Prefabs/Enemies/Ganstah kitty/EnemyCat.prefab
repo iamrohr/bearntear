@@ -137,6 +137,7 @@ MonoBehaviour:
   arrivedAtRandPos: 0
   moveToStart: 0
   agroRangeRand: 0
+  stackPushCountdown: 1
   offsetFollowPlayerY: 1.5
   agroRange: 5
   agroRandomRange: 10
@@ -145,6 +146,11 @@ MonoBehaviour:
   moveSpeed: 4
   canAttackPlayer: 1
   waitBetweenAttack: 0.5
+  takeDamageSound:
+  - {fileID: 8300000, guid: a441141aaecf67343bf291ecebfd736c, type: 3}
+  - {fileID: 8300000, guid: 6044d42e7f0e8944eaa4f5651399e5f4, type: 3}
+  - {fileID: 8300000, guid: 408ba1d2f840b0f48afa05c418061740, type: 3}
+  takeDamageVolume: 1
 --- !u!114 &253053022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +180,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 22acbe9d35a02ab4bb6a3f949f4f8b7b, type: 3}
   - {fileID: 8300000, guid: b8f77d448c38b4a499bc0bd317dfb06d, type: 3}
   - {fileID: 8300000, guid: 0eecc845bc4d3e24eaa85aef47fb8347, type: 3}
-  enemyDieVolume: 1
+  enemyDieVolume: 0.6
   sewingHolder: {fileID: 0}
 --- !u!50 &6829292859692643681
 Rigidbody2D:

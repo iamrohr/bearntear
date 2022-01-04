@@ -1225,8 +1225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76268419f664e7c4b97d4ba37d13f92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveStates: 00000000010000000200000003000000
-  attackStates: 000000000100000002000000
+  moveStates: 000000000100000003000000
+  attackStates: 000000000200000001000000
   jumpStates: 000000000100000002000000
   dashStates: 00000000010000000300000002000000
   shootStates: 0000000001000000
@@ -1475,7 +1475,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 4
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

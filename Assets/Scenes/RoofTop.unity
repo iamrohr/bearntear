@@ -1173,6 +1173,7 @@ MonoBehaviour:
   arrivedAtRandPos: 0
   moveToStart: 0
   agroRangeRand: 0
+  stackPushCountdown: 1
   offsetFollowPlayerY: 1.5
   agroRange: 5
   agroRandomRange: 10
@@ -2793,12 +2794,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseControlsCanvas: {fileID: 1800858420}
   pauseCanvas: {fileID: 1385547206}
-  playerShadow: {fileID: 0}
-  player: {fileID: 0}
-  healthBarCanvas: {fileID: 0}
   continueButton: {fileID: 2033832886}
   backButton: {fileID: 1833222616}
-  backgroundMusic: {fileID: 961663929}
   buttonClickSound: {fileID: 10667471}
 --- !u!4 &519307119
 Transform:
@@ -4453,6 +4450,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4573809209669288304, guid: d263336f8a2542e499701258084c77dc, type: 3}
   m_PrefabInstance: {fileID: 776380765}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &785798009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 785798011}
+  - component: {fileID: 785798010}
+  m_Layer: 0
+  m_Name: HealthReset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &785798010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785798009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f43cdf17150d894b9d668cb286273dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &785798011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785798009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 103.98374, y: -7.5842156, z: -7.6222076}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788401808
 GameObject:
   m_ObjectHideFlags: 0
@@ -5002,7 +5042,7 @@ GameObject:
   - component: {fileID: 961663930}
   m_Layer: 0
   m_Name: BackgroundMusic
-  m_TagString: Untagged
+  m_TagString: BackgroundMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

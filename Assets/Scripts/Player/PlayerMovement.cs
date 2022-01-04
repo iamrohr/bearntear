@@ -73,6 +73,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void StopMoving()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
     public void Immobilize(float seconds)
     {
         immobilized = true;
@@ -100,5 +105,17 @@ public class PlayerMovement : MonoBehaviour
             _transform.localScale = new Vector2(x , _transform.localScale.y);
         }
         canTurn = true;
+    }
+
+    public void Thrust()
+    {
+        Vector2 direction;
+
+        if (facing == LeftRight.Left)
+            direction = Vector2.left;
+        else
+            direction = Vector2.right;
+
+        rb.AddForce(direction * 200);
     }
 }

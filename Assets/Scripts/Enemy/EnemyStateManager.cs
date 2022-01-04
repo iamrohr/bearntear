@@ -31,7 +31,6 @@ public class EnemyStateManager : MonoBehaviour
     [HideInInspector] public float agroRangeRand;
     [HideInInspector] public float stackPushCountdown = 1f;
     public float offsetFollowPlayerY = 1.5f;
-
     public float agroRange = 2f;
     public float agroRandomRange = 5f;
     public float reactionTime = 0.15f;
@@ -40,10 +39,18 @@ public class EnemyStateManager : MonoBehaviour
     public bool canAttackPlayer = true;
     public float waitBetweenAttack = 0.25f;
 
+    [Header("Sound")]
+    public AudioClip[] takeDamageSound;
+    public float takeDamageVolume = 1f;
+
     private Coroutine currentSwitchState;
 
     void Start()
     {
+        //Random movement speed
+        float randomSpeed = Random.Range(1f, 1.3f);
+        moveSpeed = moveSpeed * randomSpeed;
+
         player = GameObject.FindGameObjectWithTag("PlayerHolder");
 
         //enemyTF = transform.parent;
@@ -166,19 +173,25 @@ public class EnemyStateManager : MonoBehaviour
 
     public bool EnemyStackPush()
     {
-        float randomForceDirection = Random.Range(-400, 400);
+        float randomForceDirection = Random.Range(-500, 500);
         stackPushCountdown -= Time.deltaTime;
 
         if (stackPushCountdown <= 0f)
         {
-            rbHolder.AddForce(transform.up * randomForceDirection);
-            rbHolder.AddForce(transform.right * randomForceDirection);
+            rbHolder.AddForce(transform.up * randomForceDirection, ForceMode2D.Impulse);
+            rbHolder.AddForce(transform.right * randomForceDirection, ForceMode2D.Impulse);
             stackPushCountdown = 1f;
             return false;
         }
         return true;
 
     }
+
+    public void TakeDamageSound()
+    {
+        AudioManager.Instance.sfxAudioSource.PlayOneShot(takeDamageSound[Random.Range(0, takeDamageSound.Length)], takeDamageVolume);
+    }
+
 }
 
 //Set Random Reaction time

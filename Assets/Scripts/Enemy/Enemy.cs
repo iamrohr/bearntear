@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
-            if(gameObject.name == "EnemyCatBoss")
+            if(gameObject.name == "RatMiniBoss")
             {
                 Instantiate(sewingHolder, new Vector2(enemyPos.x, enemyPos.y), Quaternion.identity);
             }

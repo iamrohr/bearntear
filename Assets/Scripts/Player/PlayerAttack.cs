@@ -18,12 +18,10 @@ public class PlayerAttack : MonoBehaviour
     private Transform _transform;
     private PlayerInput playerInput;
     private Rigidbody2D rb;
-    private CameraShake cameraShake;
 
 
     private void Awake()
     {
-        cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
         rb = GetComponentInParent<Rigidbody2D>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         player = GetComponent<Player>();
@@ -97,6 +95,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void SwipeAttack()
     {
+        playerMovement.StopMoving();
+        playerMovement.Thrust();
+
         if (comboCurrent > 1 && comboInterval < Time.time - prevComboTime)
             comboCurrent = 1;
 
@@ -156,7 +157,7 @@ public class PlayerAttack : MonoBehaviour
         var attackObject = Instantiate(bashAttack, attackPos, Quaternion.identity);
         attackObject.transform.SetParent(_transform);
 
-        StartCoroutine(cameraShake.ShakeCoroutine(0.3f, 0.2f));
+        CameraShake.Instance.Shake(0.3f, 0.2f);
 
         playerMovement.Immobilize(bashRecoveryTime);
 
