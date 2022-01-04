@@ -9969,6 +9969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1156334061}
   - component: {fileID: 1156334062}
+  - component: {fileID: 1156334063}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -10001,6 +10002,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7088e1feeb11bdd499240fcce3d259de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1156334063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156334060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 524c761969cbcee408d6822e9359954e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1157371027 stripped

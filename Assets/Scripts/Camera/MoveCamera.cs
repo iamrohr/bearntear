@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveCamera : MonoBehaviour
 {
@@ -24,6 +25,18 @@ public class MoveCamera : MonoBehaviour
     void FixedUpdate()
     {
         //convert target pos to 2D
+
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
+        {
+            clampedLeftPos = 49.5f;
+            clampedRightPos = 142f;
+        }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
+        {
+            clampedLeftPos = -43.6f;
+            clampedRightPos = 131f;
+        }
 
         targetScreenPos = Camera.main.WorldToScreenPoint(targetPosition.position);
         
