@@ -17,7 +17,7 @@ public class MoveCamera : MonoBehaviour
 
     void Start()
     {
-        
+        targetPosition = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     
