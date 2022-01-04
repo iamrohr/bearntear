@@ -18,13 +18,13 @@ public class MiniBoss : MonoBehaviour
 
     private void Update()
     {
-        if (sewerCatBoss.activeInHierarchy || sewerRatBoss.activeInHierarchy || sewerBearBoss.activeInHierarchy)
+        if (GameObject.FindGameObjectsWithTag("MiniBoss").Length > 0)
         {
             miniBossMusic.SetActive(true);
             backgroundMusic.SetActive(false);
         }
 
-        if (!sewerCatBoss.activeInHierarchy || !sewerRatBoss.activeInHierarchy || !sewerBearBoss.activeInHierarchy)
+        if (GameObject.FindGameObjectsWithTag("MiniBoss").Length <= 0)
         {
             miniBossMusic.SetActive(false);
             backgroundMusic.SetActive(true);
