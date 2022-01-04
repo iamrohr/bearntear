@@ -171,6 +171,7 @@ public class EnemyStateManager : MonoBehaviour
 
         if (stackPushCountdown <= 0f)
         {
+            Debug.Log("I Got pushed by ", gameObject);
             rbHolder.AddForce(transform.up * randomForceDirection);
             rbHolder.AddForce(transform.right * randomForceDirection);
             stackPushCountdown = 1f;
