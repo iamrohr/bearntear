@@ -16,4 +16,10 @@ public class EnemyWaitState : EnemyBaseState
     {
 
     }
+
+    public override void OnTriggerStay2D(EnemyStateManager enemy, Collider2D collision)
+    {
+
+    }
+
 }
