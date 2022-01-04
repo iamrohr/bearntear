@@ -29,7 +29,7 @@ public class CameraSpawnLock : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x > 34 && waveSpawner1Script.ableToSpawn)
+        if (transform.position.x > 34 && transform.position.x < 90 && waveSpawner1Script.ableToSpawn)
         {
             moveCameraScript.enabled = false;
             spawnPoint1LeftCollider.SetActive(true);
@@ -38,7 +38,7 @@ public class CameraSpawnLock : MonoBehaviour
             enemyWaveMusic.SetActive(true);
         }
 
-        if(transform.position.x > 34 && !waveSpawner1Script.ableToSpawn)
+        if(transform.position.x > 34 && transform.position.x < 90 && !waveSpawner1Script.ableToSpawn)
         {
             moveCameraScript.enabled = true;
             spawnPoint1LeftCollider.SetActive(false);
