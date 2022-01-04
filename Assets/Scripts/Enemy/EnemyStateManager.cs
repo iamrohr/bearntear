@@ -29,6 +29,7 @@ public class EnemyStateManager : MonoBehaviour
     [HideInInspector] public bool arrivedAtRandPos;
     [HideInInspector] public bool moveToStart;
     [HideInInspector] public float agroRangeRand;
+    [HideInInspector] public float stackPushCountdown = 1f;
     public float offsetFollowPlayerY = 1.5f;
 
     public float agroRange = 2f;
@@ -68,6 +69,11 @@ public class EnemyStateManager : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         currentState.OnCollisionEnter2D(this, collision);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        currentState.OnTriggerStay2D(this, collision);
     }
 
     // Update is called once per frame
@@ -124,7 +130,7 @@ public class EnemyStateManager : MonoBehaviour
     {
         rbHolder.velocity *= 0;
         if (transform.position.x < player.transform.position.x)
-        { 
+        {
             rbHolder.AddForce(Vector2.left * 400);
         }
         else
@@ -157,6 +163,23 @@ public class EnemyStateManager : MonoBehaviour
         SwitchState(ReturnHomeState, 2);
     }
 
+
+    public bool EnemyStackPush()
+    {
+        float randomForceDirection = Random.Range(-500, 500);
+        stackPushCountdown -= Time.deltaTime;
+
+        if (stackPushCountdown <= 0f)
+        {
+            Debug.Log("I Got pushed by ", gameObject);
+            rbHolder.AddForce(transform.up * randomForceDirection, ForceMode2D.Impulse);
+            rbHolder.AddForce(transform.right * randomForceDirection, ForceMode2D.Impulse);
+            stackPushCountdown = 1f;
+            return false;
+        }
+        return true;
+
+    }
 }
 
 //Set Random Reaction time
