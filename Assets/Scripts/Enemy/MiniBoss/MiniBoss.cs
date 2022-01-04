@@ -20,7 +20,7 @@ public class MiniBoss : MonoBehaviour
             backgroundMusic.SetActive(false);
         }
 
-        if (GameObject.FindGameObjectsWithTag("MiniBoss").Length <= 0)
+        if (GameObject.FindGameObjectsWithTag("MiniBoss").Length <= 0 && Time.timeScale == 1)
         {
             miniBossMusic.SetActive(false);
             backgroundMusic.SetActive(true);

@@ -8,7 +8,6 @@ public class BossBunnyChaseState : BossBunnyBaseState
 
     public override void EnterState(BossBunnyStateManager stateManager, float? timeInState = null)
     {
-        Debug.Log(stateManager.currentState);
         stateTimer = 0;
         this.timeInState = timeInState;
         attackRange = stateManager.attack.attackRange;
