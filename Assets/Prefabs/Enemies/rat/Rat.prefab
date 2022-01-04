@@ -116,6 +116,7 @@ MonoBehaviour:
   arrivedAtRandPos: 0
   moveToStart: 0
   agroRangeRand: 0
+  stackPushCountdown: 1
   offsetFollowPlayerY: 0
   agroRange: 5
   agroRandomRange: 10
@@ -124,6 +125,11 @@ MonoBehaviour:
   moveSpeed: 3
   canAttackPlayer: 1
   waitBetweenAttack: 0
+  takeDamageSound:
+  - {fileID: 8300000, guid: da4a1714e9fa5024298777335608c806, type: 3}
+  - {fileID: 8300000, guid: da4a1714e9fa5024298777335608c806, type: 3}
+  - {fileID: 8300000, guid: e09e3b1e8223570469f9c9a14289de24, type: 3}
+  takeDamageVolume: 1
 --- !u!114 &6860218693969764841
 MonoBehaviour:
   m_ObjectHideFlags: 0

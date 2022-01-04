@@ -31,7 +31,6 @@ public class EnemyStateManager : MonoBehaviour
     [HideInInspector] public float agroRangeRand;
     [HideInInspector] public float stackPushCountdown = 1f;
     public float offsetFollowPlayerY = 1.5f;
-
     public float agroRange = 2f;
     public float agroRandomRange = 5f;
     public float reactionTime = 0.15f;
@@ -39,6 +38,10 @@ public class EnemyStateManager : MonoBehaviour
     public float moveSpeed = 3f;
     public bool canAttackPlayer = true;
     public float waitBetweenAttack = 0.25f;
+
+    [Header("Sound")]
+    public AudioClip[] takeDamageSound;
+    public float takeDamageVolume = 1f;
 
     private Coroutine currentSwitchState;
 
@@ -183,6 +186,12 @@ public class EnemyStateManager : MonoBehaviour
         return true;
 
     }
+
+    public void TakeDamageSound()
+    {
+        AudioManager.Instance.sfxAudioSource.PlayOneShot(takeDamageSound[Random.Range(0, takeDamageSound.Length)], takeDamageVolume);
+    }
+
 }
 
 //Set Random Reaction time

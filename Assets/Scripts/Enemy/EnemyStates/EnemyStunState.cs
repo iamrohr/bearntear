@@ -6,6 +6,7 @@ public class EnemyStunState : EnemyBaseState
     {
         //Debug.Log("I am in stun");
         //enemy.rbHolder.velocity *= 0;
+        enemy.TakeDamageSound();
         enemy.animator.SetTrigger("Stunned");
     }
 
