@@ -20,9 +20,19 @@ public class Parallax : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float distance = (mainCameraGameObject.transform.position.x * parallaxEffect);
+        if(mainCameraGameObject == null)
+        {
+            return;
+        }
 
-        transform.position = new Vector3(startPos + distance, transform.position.y, transform.position.z);
+        if (mainCameraGameObject.activeSelf)
+        {
+            float distance = (mainCameraGameObject.transform.position.x * parallaxEffect);
+
+            transform.position = new Vector3(startPos + distance, transform.position.y, transform.position.z);
+        }
+
+        
     }
 
 }

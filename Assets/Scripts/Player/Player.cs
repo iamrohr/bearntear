@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, IDamageable
     private PlayerJump playerJump;
     private HealthBar healthBar;
 
+    GameObject persistentObject;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour, IDamageable
         playerJump = GetComponent<PlayerJump>();
         animator = GetComponentInChildren<Animator>();
         playerSM = GetComponent<PlayerStateManager>();
+        persistentObject = GameObject.Find("PersistentObject");
     }
 
     private void Start()
@@ -49,7 +51,11 @@ public class Player : MonoBehaviour, IDamageable
         animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
+        {
+            Destroy(persistentObject);
             SceneManager.LoadScene("GameOver");
+        }
+            
     }
 
     public void GetLife(int hp)

@@ -12,6 +12,7 @@ public class PauseManager : MonoBehaviour
     GameObject player;
     GameObject healthBarCanvas;
     GameObject cameraHolder;
+    GameObject playerHolder;
 
     SpriteRenderer playerShadowSpriteRenderer;
     SpriteRenderer playerRenderer;
@@ -24,6 +25,8 @@ public class PauseManager : MonoBehaviour
 
     GameObject[] projectileGameObjects;
     GameObject[] enemyGameObjects;
+
+    GameObject persistentObject;
 
     public GameObject continueButton;
     public GameObject backButton;
@@ -38,6 +41,8 @@ public class PauseManager : MonoBehaviour
         healthBarCanvas = GameObject.FindGameObjectWithTag("HealthBarCanvas");
         backgroundMusic = GameObject.FindGameObjectWithTag("BackgroundMusic");
         cameraHolder = GameObject.Find("CameraHolder");
+        playerHolder = GameObject.Find("PlayerHolder");
+        persistentObject = GameObject.Find("PersistentObject");
 
         pauseControlsCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
@@ -101,9 +106,13 @@ public class PauseManager : MonoBehaviour
     public void PauseMainMenu()
     {
         buttonClickSound.Play();
-        Destroy(player);
-        Destroy(healthBarCanvas);
-        Destroy(cameraHolder);
+        Destroy(persistentObject);
+        //Destroy(playerHolder);
+        //Destroy(healthBarCanvas);
+        //Destroy(cameraHolder);
+        //playerHolder.GetComponent<MakePersistent>().enabled = false;
+        //healthBarCanvas.GetComponent<MakePersistent>().enabled = false;
+        //cameraHolder.GetComponent<MakePersistent>().enabled = false;
         SceneManager.LoadScene("MainMenu");
     }
 
