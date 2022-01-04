@@ -5,7 +5,6 @@ using UnityEngine;
 public class RatMiniBoss : MonoBehaviour
 {
     public GameObject ratMiniBoss;
-    public GameObject player;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
