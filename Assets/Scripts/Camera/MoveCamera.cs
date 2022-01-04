@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
-    public Transform targetPosition;
+    Transform targetPosition;
     public float camWindowDimension;
 
     Vector2 targetScreenPos;
