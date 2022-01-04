@@ -16,19 +16,15 @@ public class MoveCamera : MonoBehaviour
     public float clampedLeftPos;
     public float clampedRightPos;
 
+    CameraSpawnLock cameraSpawnLock;
+
     void Start()
     {
         targetPosition = GameObject.FindGameObjectWithTag("Player").transform;
-    }
 
-    
-    void FixedUpdate()
-    {
-        //convert target pos to 2D
-
-        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
         {
-            clampedLeftPos = 49.5f;
+            clampedLeftPos = -49.5f;
             clampedRightPos = 142f;
         }
 
@@ -36,7 +32,16 @@ public class MoveCamera : MonoBehaviour
         {
             clampedLeftPos = -43.6f;
             clampedRightPos = 131f;
+            transform.position = new Vector3(transform.position.x, 0.3f, transform.position.z);
+            cameraSpawnLock = gameObject.GetComponent<CameraSpawnLock>();
+            cameraSpawnLock.enabled = false;
         }
+    }
+
+    
+    void FixedUpdate()
+    {
+        //convert target pos to 2D
 
         targetScreenPos = Camera.main.WorldToScreenPoint(targetPosition.position);
         
