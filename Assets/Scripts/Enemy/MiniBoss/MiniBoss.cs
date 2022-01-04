@@ -7,7 +7,10 @@ public class MiniBoss : MonoBehaviour
     public GameObject backgroundMusic;
     public GameObject miniBossMusic;
 
+    GameObject elevator;
+
     GameObject nextLevel;
+    Animator elevatorAnimator;
 
     private void Awake()
     {
@@ -18,6 +21,10 @@ public class MiniBoss : MonoBehaviour
     {
         nextLevel = GameObject.FindGameObjectWithTag("NextLevel");
         nextLevel.SetActive(false);
+
+        elevator = GameObject.FindGameObjectWithTag("Elevator");
+        elevatorAnimator = elevator.GetComponent<Animator>();
+
     }
 
     private void Update()
@@ -33,6 +40,7 @@ public class MiniBoss : MonoBehaviour
         {
             miniBossMusic.SetActive(false);
             backgroundMusic.SetActive(true);
+            elevatorAnimator.SetTrigger("Open Doors");
             nextLevel.SetActive(true);
         }
     }
