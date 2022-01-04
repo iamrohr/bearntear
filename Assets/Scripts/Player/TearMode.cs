@@ -28,7 +28,7 @@ public class TearMode : MonoBehaviour
 
     private void Start()
     {
-        mainCamera = Camera.main;
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
         lunanewmodel = GameObject.Find("lunanewmodel");
         animator = lunanewmodel.GetComponent<Animator>();
@@ -40,6 +40,8 @@ public class TearMode : MonoBehaviour
         tearBarFill = GameObject.FindGameObjectWithTag("TearBarFill");
         tearModeAnimation = GameObject.FindGameObjectWithTag("TearModeAnimation");
         tearModeSound = GameObject.FindGameObjectWithTag("TearModeSound").GetComponent<AudioSource>();
+
+        tearModeAnimation.SetActive(false);
     }
 
     public IEnumerator TearModeStart()
