@@ -33,4 +33,9 @@ public class EnemyAttackState : EnemyBaseState
 
     }
 
+    public override void OnTriggerStay2D(EnemyStateManager enemy, Collider2D collision)
+    {
+
+    }
+
 }
