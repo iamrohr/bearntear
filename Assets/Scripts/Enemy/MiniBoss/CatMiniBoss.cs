@@ -11,7 +11,7 @@ public class CatMiniBoss : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Instantiate(catMiniBoss, new Vector3(125.31f, -2.63f, 0f), player.transform.rotation);
+            Instantiate(catMiniBoss, new Vector3(125.31f, -2.63f, 0f), transform.rotation);
         }
     }
 }
