@@ -5,26 +5,38 @@ using UnityEngine.SceneManagement;
 
 public class CameraScroll : MonoBehaviour
 {
-    public float smoothFloat;
-    float yOffset;
+    Camera mainCamera;
 
+    public float smoothFloat;
+    public float duration = 5f;
+
+    float yOffset;
+    float elapsed = 0.0f;
 
     void Start()
     {
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         yOffset = 50f;
     }
 
     
     void FixedUpdate()
     {
-        //transform.position.y <= -0.38f &&
-
         if (transform.position.y >= -54.57f)
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y - yOffset, transform.position.z), smoothFloat);
         }
 
-        if(transform.position.y <= - 54.5f)
+        if(transform.position.y >= -54.57f && transform.position.y <= -51f)
+        {
+            elapsed += Time.deltaTime / duration;
+
+            mainCamera.orthographicSize = Mathf.Lerp(5.397272f, 4.5f, elapsed);
+
+            //mainCamera.orthographicSize = 5.2f;
+        }
+
+        if (transform.position.y <= - 54.5f)
         {
             SceneManager.LoadScene("Main");
             if (Time.timeScale == 0)
