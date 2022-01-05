@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainSceneMiniBoss : MonoBehaviour
+public class MiniBoss : MonoBehaviour
 {
     public GameObject backgroundMusic;
     public GameObject miniBossMusic;
@@ -20,10 +20,10 @@ public class MainSceneMiniBoss : MonoBehaviour
     {
         nextLevel = GameObject.FindGameObjectWithTag("NextLevel");
         elevatorBlocker = GameObject.Find("ElevatorBlocker");
-        //if(nextLevel != null)
-        //{
-        //    nextLevel.SetActive(false);
-        //}
+        if (nextLevel != null)
+        {
+            nextLevel.SetActive(false);
+        }
     }
 
     private void Update()
@@ -32,22 +32,34 @@ public class MainSceneMiniBoss : MonoBehaviour
         {
             miniBossMusic.SetActive(true);
             backgroundMusic.SetActive(false);
-            elevatorBlocker.SetActive(true);
-            //if (nextLevel != null)
-            //{
-            //    nextLevel.SetActive(false);
-            //}
+
+            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
+            {
+                elevatorBlocker.SetActive(true);
+
+            }
+
+            if (nextLevel != null)
+            {
+                nextLevel.SetActive(false);
+            }
         }
 
         if (GameObject.FindGameObjectsWithTag("MiniBoss").Length <= 0 && Time.timeScale == 1)
         {
             miniBossMusic.SetActive(false);
             backgroundMusic.SetActive(true);
-            elevatorBlocker.SetActive(false);
-            //if (nextLevel != null)
-            //{
-            //    nextLevel.SetActive(true);
-            //}
+
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
+            {
+                elevatorBlocker.SetActive(false);
+
+            }
+
+            if (nextLevel != null)
+            {
+                nextLevel.SetActive(true);
+            }
         }
     }
 }
