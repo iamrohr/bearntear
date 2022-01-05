@@ -7,11 +7,9 @@ public class MainSceneMiniBoss : MonoBehaviour
 {
     public GameObject backgroundMusic;
     public GameObject miniBossMusic;
-
-    GameObject elevator;
+    GameObject elevatorBlocker;
 
     GameObject nextLevel;
-    Animator elevatorAnimator;
 
     private void Awake()
     {
@@ -21,18 +19,11 @@ public class MainSceneMiniBoss : MonoBehaviour
     private void Start()
     {
         nextLevel = GameObject.FindGameObjectWithTag("NextLevel");
-
+        elevatorBlocker = GameObject.Find("ElevatorBlocker");
         //if(nextLevel != null)
         //{
         //    nextLevel.SetActive(false);
         //}
-
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
-        {
-            elevator = GameObject.FindGameObjectWithTag("Elevator");
-            elevatorAnimator = elevator.GetComponent<Animator>();
-            
-        }
     }
 
     private void Update()
@@ -41,7 +32,7 @@ public class MainSceneMiniBoss : MonoBehaviour
         {
             miniBossMusic.SetActive(true);
             backgroundMusic.SetActive(false);
-
+            elevatorBlocker.SetActive(true);
             //if (nextLevel != null)
             //{
             //    nextLevel.SetActive(false);
@@ -52,8 +43,7 @@ public class MainSceneMiniBoss : MonoBehaviour
         {
             miniBossMusic.SetActive(false);
             backgroundMusic.SetActive(true);
-            elevatorAnimator.SetTrigger("Open Doors");
-
+            elevatorBlocker.SetActive(false);
             //if (nextLevel != null)
             //{
             //    nextLevel.SetActive(true);
