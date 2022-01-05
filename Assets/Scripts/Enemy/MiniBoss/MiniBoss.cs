@@ -21,7 +21,12 @@ public class MiniBoss : MonoBehaviour
     private void Start()
     {
         nextLevel = GameObject.FindGameObjectWithTag("NextLevel");
-        nextLevel.SetActive(false);
+
+        if(nextLevel != null)
+        {
+            nextLevel.SetActive(false);
+        }
+
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
         {
@@ -37,15 +42,22 @@ public class MiniBoss : MonoBehaviour
         {
             miniBossMusic.SetActive(true);
             backgroundMusic.SetActive(false);
-            nextLevel.SetActive(false);
+
+            if (nextLevel != null)
+            {
+                nextLevel.SetActive(false);
+            }
         }
 
         if (GameObject.FindGameObjectsWithTag("MiniBoss").Length <= 0 && Time.timeScale == 1)
         {
             miniBossMusic.SetActive(false);
             backgroundMusic.SetActive(true);
-            
-            nextLevel.SetActive(true);
+
+            if (nextLevel != null)
+            {
+                nextLevel.SetActive(true);
+            }
         }
 
         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
