@@ -27,11 +27,7 @@ public class MainMenuManager : MonoBehaviour
     public void MainMenuStart()
     {
         buttonClickSound.Play();
-        SceneManager.LoadScene("Main");
-        if (Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-        }
+        SceneManager.LoadScene("Intro");
     }
 
     public void MainMenuControls()
