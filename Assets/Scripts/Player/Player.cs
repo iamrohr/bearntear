@@ -20,6 +20,8 @@ public class Player : MonoBehaviour, IDamageable
 
     GameObject persistentObject;
 
+    public bool diedOnRoofTop;
+
     private void Awake()
     {
         healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
@@ -50,8 +52,16 @@ public class Player : MonoBehaviour, IDamageable
         damageSound.Play();
         animator.SetTrigger("Hurt");
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
         {
+            diedOnRoofTop = true;
+            Destroy(persistentObject);
+            SceneManager.LoadScene("GameOver");
+        }
+
+        if (currentHealth <= 0 && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("RoofTop"))
+        {
+            diedOnRoofTop = false;
             Destroy(persistentObject);
             SceneManager.LoadScene("GameOver");
         }
