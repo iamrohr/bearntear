@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MiniBoss : MonoBehaviour
+public class MainSceneMiniBoss : MonoBehaviour
 {
     public GameObject backgroundMusic;
     public GameObject miniBossMusic;
@@ -22,18 +22,17 @@ public class MiniBoss : MonoBehaviour
     {
         nextLevel = GameObject.FindGameObjectWithTag("NextLevel");
 
-        if(nextLevel != null)
-        {
-            nextLevel.SetActive(false);
-        }
-
+        //if(nextLevel != null)
+        //{
+        //    nextLevel.SetActive(false);
+        //}
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
         {
             elevator = GameObject.FindGameObjectWithTag("Elevator");
             elevatorAnimator = elevator.GetComponent<Animator>();
+            
         }
-
     }
 
     private void Update()
@@ -43,27 +42,22 @@ public class MiniBoss : MonoBehaviour
             miniBossMusic.SetActive(true);
             backgroundMusic.SetActive(false);
 
-            if (nextLevel != null)
-            {
-                nextLevel.SetActive(false);
-            }
+            //if (nextLevel != null)
+            //{
+            //    nextLevel.SetActive(false);
+            //}
         }
 
         if (GameObject.FindGameObjectsWithTag("MiniBoss").Length <= 0 && Time.timeScale == 1)
         {
             miniBossMusic.SetActive(false);
             backgroundMusic.SetActive(true);
-
-            if (nextLevel != null)
-            {
-                nextLevel.SetActive(true);
-            }
-        }
-
-        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
-        {
             elevatorAnimator.SetTrigger("Open Doors");
+
+            //if (nextLevel != null)
+            //{
+            //    nextLevel.SetActive(true);
+            //}
         }
     }
-
 }
