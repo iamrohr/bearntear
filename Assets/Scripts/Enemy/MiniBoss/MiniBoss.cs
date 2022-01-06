@@ -7,6 +7,9 @@ public class MiniBoss : MonoBehaviour
 {
     public GameObject backgroundMusic;
     public GameObject miniBossMusic;
+    public GameObject swipeAttack;
+    public GameObject swipeFinalAttack;
+
     GameObject elevatorBlocker;
 
     GameObject nextLevel;
@@ -32,8 +35,14 @@ public class MiniBoss : MonoBehaviour
         {
             miniBossMusic.SetActive(true);
             backgroundMusic.SetActive(false);
+            swipeAttack.GetComponent<PlayerAttackBox>().timeStunned = 0.1f;
+            swipeAttack.GetComponent<PlayerAttackBox>().timeKnocked = 0.05f;
+            swipeAttack.GetComponent<PlayerAttackBox>().knockBackPower = 50f;
 
-            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
+            swipeFinalAttack.GetComponent<PlayerAttackBox>().knockBackPower = 200f;
+            swipeFinalAttack.GetComponent<PlayerAttackBox>().timeKnocked = 0.1f;
+            swipeFinalAttack.GetComponent<PlayerAttackBox>().timeStunned = 0.5f;
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
             {
                 elevatorBlocker.SetActive(true);
 
@@ -49,6 +58,13 @@ public class MiniBoss : MonoBehaviour
         {
             miniBossMusic.SetActive(false);
             backgroundMusic.SetActive(true);
+            swipeAttack.GetComponent<PlayerAttackBox>().timeStunned = 0.25f;
+            swipeAttack.GetComponent<PlayerAttackBox>().timeKnocked = 0.1f;
+            swipeAttack.GetComponent<PlayerAttackBox>().knockBackPower = 100f;
+
+            swipeFinalAttack.GetComponent<PlayerAttackBox>().knockBackPower = 600f;
+            swipeFinalAttack.GetComponent<PlayerAttackBox>().timeKnocked = 1.5f;
+            swipeFinalAttack.GetComponent<PlayerAttackBox>().timeStunned = 1f;
 
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
             {

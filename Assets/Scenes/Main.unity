@@ -4222,6 +4222,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475360390}
   m_CullTransparentMesh: 1
+--- !u!1001 &479671370
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 508685600523018712, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 112.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842861642585020899, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842861642585020899, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
 --- !u!1 &487367415
 GameObject:
   m_ObjectHideFlags: 0
@@ -12610,6 +12675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 1230713809}
   miniBossMusic: {fileID: 1591150458}
+  swipeAttack: {fileID: 77544860683481084, guid: ac7c6971dd3ebec448f330128a692828, type: 3}
+  swipeFinalAttack: {fileID: 77544860683481084, guid: a7d79323c2a2f184bbf0b9b42a4b2d0f, type: 3}
 --- !u!4 &1498774676
 Transform:
   m_ObjectHideFlags: 0
@@ -15401,6 +15468,10 @@ PrefabInstance:
     - target: {fileID: 5842861642585020899, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
       propertyPath: m_Name
       value: SpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842861642585020899, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
@@ -32479,6 +32550,7 @@ MonoBehaviour:
   rbHolder: {fileID: 0}
   animator: {fileID: 0}
   enemyScript: {fileID: 0}
+  stackForceScript: {fileID: 0}
   forceIdleStateTimer: 2
   newEnemyPosition: {x: 0, y: 0}
   enemyStartPosition: {x: 0, y: 0}
