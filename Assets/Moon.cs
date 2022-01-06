@@ -15,5 +15,11 @@ public class Moon : MonoBehaviour
             darkMoon.SetActive(true);
         }
 
+        if (GameObject.FindGameObjectsWithTag("MiniBoss").Length > 0 && Time.timeScale == 1)
+        {
+            lightMoon.SetActive(true);
+            darkMoon.SetActive(false);
+        }
+
     }
 }
