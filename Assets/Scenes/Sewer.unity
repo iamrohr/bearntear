@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3382502154960210441, guid: b3e671a6a871687479ee0bd366a9c1a9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1732,13 +1732,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 476886107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29c1997380061554d93849e4dd8c39fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ec53efc17063ae4e9160fe84865d731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 299648066}
   miniBossMusic: {fileID: 282856205}
-  swipeAttack: {fileID: 0}
-  swipeFinalAttack: {fileID: 0}
 --- !u!4 &476886109
 Transform:
   m_ObjectHideFlags: 0
