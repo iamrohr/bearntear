@@ -12,7 +12,6 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-
     }
 
     private void Start()
@@ -49,11 +48,4 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
-    [ContextMenu("FadeToNextScene")]
-    public void Test()
-    {
-        FadeToNextScene();
-    }
-
 }
