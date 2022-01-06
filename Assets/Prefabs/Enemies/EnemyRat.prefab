@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ad4a0bd7358b34db0a9532343b65eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  giveDamage: 5
+  damage: 0
 --- !u!50 &7056720038364219948
 Rigidbody2D:
   serializedVersion: 4
@@ -248,19 +248,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  attackBox: {fileID: 4394604815110055996}
-  rb: {fileID: 0}
+  rbHolder: {fileID: 0}
+  animator: {fileID: 0}
+  enemyScript: {fileID: 0}
+  stackForceScript: {fileID: 0}
+  forceIdleStateTimer: 2
   newEnemyPosition: {x: 0, y: 0}
   enemyStartPosition: {x: 0, y: 0}
   arrivedAtRandPos: 0
   moveToStart: 0
   agroRangeRand: 0
+  stackPushCountdown: 1
+  offsetFollowPlayerY: 1.5
   agroRange: 8
-  agroRangeMultiplier: 5
-  attackRange: 2
+  agroRandomRange: 5
+  reactionTime: 0.15
+  attackRange: 3
   moveSpeed: 2
   canAttackPlayer: 1
   waitBetweenAttack: 0.5
+  takeDamageSound: []
+  takeDamageVolume: 1
 --- !u!114 &4394604815340158451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,8 +282,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRB: {fileID: 0}
+  enemyTF: {fileID: 0}
   player: {fileID: 0}
   enemyPos: {x: 0, y: 0}
+  infiniteChase: 0
   currentHealth: 0
   maxHealth: 20
   giveTear: 50
@@ -289,6 +299,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b8f77d448c38b4a499bc0bd317dfb06d, type: 3}
   - {fileID: 8300000, guid: 0eecc845bc4d3e24eaa85aef47fb8347, type: 3}
   enemyDieVolume: 1
+  sewingHolder: {fileID: 0}
 --- !u!50 &4394604815340158450
 Rigidbody2D:
   serializedVersion: 4
