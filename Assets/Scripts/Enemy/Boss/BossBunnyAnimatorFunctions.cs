@@ -4,6 +4,7 @@ public class BossBunnyAnimatorFunctions : MonoBehaviour
 {
     private BossBunnyAttack attack;
     private BossBunnyStateManager stateManager;
+    [SerializeField] private Animator healthAnimator;
 
     private void Awake()
     {
@@ -39,5 +40,10 @@ public class BossBunnyAnimatorFunctions : MonoBehaviour
         {
             spawner.GetComponent<WaveSpawner>().ableToSpawn = true;
         }
+    }
+
+    public void FadeOutHealthBar()
+    {
+        healthAnimator.SetTrigger("FadeOut");
     }
 }

@@ -6898,6 +6898,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.6497494
       objectReference: {fileID: 0}
+    - target: {fileID: 2528641477813660401, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
+      propertyPath: healthAnimator
+      value: 
+      objectReference: {fileID: 5828657406659449766}
     - target: {fileID: 2734863828570475171, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.0025638868
@@ -6942,6 +6946,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.0048686406
       objectReference: {fileID: 0}
+    - target: {fileID: 7213315361216008160, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 5828657406659449787}
+    - target: {fileID: 7213315361216008160, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
+      propertyPath: healthBarObj
+      value: 
+      objectReference: {fileID: 5828657406659449765}
+    - target: {fileID: 7213315361216008160, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
+      propertyPath: healthAnimator
+      value: 
+      objectReference: {fileID: 5828657406659449766}
     - target: {fileID: 7255313607707324371, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.0306812
@@ -6949,6 +6965,14 @@ PrefabInstance:
     - target: {fileID: 7255313607707324371, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.9995293
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463527174475422331, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463527174475422331, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7963022905511266154, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7005,6 +7029,10 @@ PrefabInstance:
     - target: {fileID: 7963022907221180486, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.025817456
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623718230239313784, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9033685671607975693, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34411,6 +34439,41 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!1 &5828657406659449765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5808233661945526061, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
+  m_PrefabInstance: {fileID: 659023320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5828657406659449766
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828657406659449765}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 10d5c781da69df241947b0514031d2ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5828657406659449787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8318818403705084379, guid: 77c1ad5cada2e034280e6d6a631e676e, type: 3}
+  m_PrefabInstance: {fileID: 659023320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828657406659449765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd398d67a5a5414881d58bbd95601c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6105094307183932433
 Transform:
   m_ObjectHideFlags: 0

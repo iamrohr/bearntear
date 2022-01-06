@@ -10,6 +10,10 @@ public class BossBunny : MonoBehaviour, IDamageable
     [NonSerialized] public bool aggro;
     private BossBunnyStateManager stateManager;
 
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] public GameObject healthBarObj;
+    [SerializeField] public Animator healthAnimator;
+
     private void Awake()
     {
         stateManager = GetComponent<BossBunnyStateManager>();
@@ -18,12 +22,14 @@ public class BossBunny : MonoBehaviour, IDamageable
     private void Start()
     {
         health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(int damage)
     {
         if (!alive) return;
 
+        healthBar.SetHealth(health);
         health -= damage;
         if (health <= 0)
             Die();

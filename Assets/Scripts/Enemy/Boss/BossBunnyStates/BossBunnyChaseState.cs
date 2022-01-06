@@ -12,7 +12,13 @@ public class BossBunnyChaseState : BossBunnyBaseState
         this.timeInState = timeInState;
         attackRange = stateManager.attack.attackRange;
         stateManager.animator.SetTrigger("Walk");
-        stateManager.bossBunny.aggro = true;
+
+        if (!stateManager.bossBunny.aggro)
+        {
+            var animator = stateManager.bossBunny.healthAnimator;
+            animator.SetTrigger("FadeIn");
+            stateManager.bossBunny.aggro = true;
+        }
     }
 
     public override void UpdateState(BossBunnyStateManager stateManager)
