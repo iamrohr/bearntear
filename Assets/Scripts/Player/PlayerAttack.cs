@@ -130,7 +130,6 @@ public class PlayerAttack : MonoBehaviour
             {
                 swingSound.pitch = 1.1f;
                 player.animator.SetTrigger("Swipe2");
-                attackObject.GetComponent<SpriteRenderer>().color = Color.blue; //Temp check
             }
 
             cooldown = swipeCooldown;
