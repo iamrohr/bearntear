@@ -30,7 +30,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetButton("Shoot") && shootCoolDown > 0.4f)
         {
             // take damage
-            playerScript.TakeDamage(5);
+            playerScript.TakeDamage(4);
             ShootProjectile();
         }
     }
