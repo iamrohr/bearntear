@@ -5,6 +5,7 @@ public class BossBunny : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health, maxHealth;
     public float chaseTimeMin, chaseTimeMax;
+    public bool alive = true;
 
     [NonSerialized] public bool aggro;
     private BossBunnyStateManager stateManager;
@@ -21,9 +22,14 @@ public class BossBunny : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
+        if (!alive) return;
+
         health -= damage;
         if (health <= 0)
-            Destroy(gameObject);
+        {
+            stateManager.SwitchState(stateManager.DeadState);
+            alive = false;
+        }
         else
             stateManager.SwitchState(stateManager.HurtState);
     }

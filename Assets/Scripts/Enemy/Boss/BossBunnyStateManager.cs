@@ -4,6 +4,7 @@ using UnityEngine;
 public class BossBunnyStateManager : MonoBehaviour
 {
     public BossBunnyBaseState currentState;
+    public BossBunnyDeadState DeadState = new BossBunnyDeadState();
     public BossBunnyIdleState IdleState = new BossBunnyIdleState();
     public BossBunnyChaseState ChaseState = new BossBunnyChaseState();
     public BossBunnyAttackState AttackState = new BossBunnyAttackState();
@@ -44,6 +45,8 @@ public class BossBunnyStateManager : MonoBehaviour
 
     public void SwitchState(BossBunnyBaseState state, float? timeInState = null)
     {
+        if (currentState == DeadState) return;
+
         currentState = state;
         state.EnterState(this, timeInState);
     }
