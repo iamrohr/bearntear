@@ -20,10 +20,10 @@ public class MiniBoss : MonoBehaviour
     {
         nextLevel = GameObject.FindGameObjectWithTag("NextLevel");
         elevatorBlocker = GameObject.Find("ElevatorBlocker");
-        if (nextLevel != null)
-        {
-            nextLevel.SetActive(false);
-        }
+        //if (nextLevel != null)
+        //{
+        //    nextLevel.SetActive(false);
+        //}
     }
 
     private void Update()
@@ -39,10 +39,10 @@ public class MiniBoss : MonoBehaviour
 
             }
 
-            if (nextLevel != null)
-            {
-                nextLevel.SetActive(false);
-            }
+            //if (nextLevel != null)
+            //{
+            //    nextLevel.SetActive(false);
+            //}
         }
 
         if (GameObject.FindGameObjectsWithTag("MiniBoss").Length <= 0 && Time.timeScale == 1)
@@ -56,10 +56,10 @@ public class MiniBoss : MonoBehaviour
 
             }
 
-            if (nextLevel != null)
-            {
-                nextLevel.SetActive(true);
-            }
+            //if (nextLevel != null)
+            //{
+            //    nextLevel.SetActive(true);
+            //}
         }
     }
 }
