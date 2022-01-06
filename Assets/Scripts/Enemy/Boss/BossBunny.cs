@@ -26,11 +26,15 @@ public class BossBunny : MonoBehaviour, IDamageable
 
         health -= damage;
         if (health <= 0)
-        {
-            stateManager.SwitchState(stateManager.DeadState);
-            alive = false;
-        }
+            Die();
         else
             stateManager.SwitchState(stateManager.HurtState);
+    }
+
+    private void Die()
+    {
+        stateManager.movement.StopMoving();
+        stateManager.SwitchState(stateManager.DeadState);
+        alive = false;
     }
 }

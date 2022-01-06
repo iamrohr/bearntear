@@ -30,4 +30,14 @@ public class BossBunnyAnimatorFunctions : MonoBehaviour
     {
         attack.StopCharge();
     }
+
+    public void TriggerSpawners()
+    {
+        var spawners = GameObject.FindGameObjectsWithTag("EnemySpawner");
+
+        foreach (var spawner in spawners)
+        {
+            spawner.GetComponent<WaveSpawner>().ableToSpawn = true;
+        }
+    }
 }
