@@ -50,7 +50,7 @@ public class TearMode : MonoBehaviour
         mainCamera.orthographicSize = 4.5f;
         StartCoroutine(cameraShake.ShakeCoroutine(0.5f, 0.4f));
         //slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 4f;
-        slamAttack.GetComponent<SpriteRenderer>().enabled = false;
+        //slamAttack.GetComponent<SpriteRenderer>().enabled = false;
         slamAttack.transform.localScale = new Vector3(7, 7, 1);
         var attackObject = Instantiate(slamAttack, transform.position, Quaternion.identity);
         attackObject.transform.SetParent(transform);
@@ -100,7 +100,7 @@ public class TearMode : MonoBehaviour
 
         tearBarOnPlayerScript.currentTear = 0; // to make TearBar 0 after TearMode
 
-        slamAttack.GetComponent<SpriteRenderer>().enabled = true;
+        //slamAttack.GetComponent<SpriteRenderer>().enabled = true;
 
     }
 
