@@ -16,11 +16,10 @@ public class EnemyStateManager : MonoBehaviour
 
     [Header("Components")]
     [HideInInspector] public GameObject player;
-    //[HideInInspector] public Transform enemyTF;
     [HideInInspector] public Rigidbody2D rbHolder;
     [HideInInspector] public Animator animator;
     [HideInInspector] public Enemy enemyScript;
-    //public GameObject attackBox;
+    [HideInInspector] public StackForce stackForceScript;
 
     [Header("Attributes")]
     [HideInInspector] public float forceIdleStateTimer = 2f;
@@ -57,6 +56,7 @@ public class EnemyStateManager : MonoBehaviour
         rbHolder = GetComponentInParent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         enemyScript = GetComponent<Enemy>();
+        stackForceScript = GetComponentInParent<StackForce>();
 
         //Starting state for the Enemy state machine
         currentState = IdleState;
@@ -64,7 +64,6 @@ public class EnemyStateManager : MonoBehaviour
 
         //Get enemy start position
         enemyStartPosition = new Vector2(transform.position.x, transform.position.y);
-        //attackBox.SetActive(false);
 
         agroRangeRand = Random.Range(agroRange, agroRandomRange);
         agroRange = agroRangeRand;
@@ -83,7 +82,6 @@ public class EnemyStateManager : MonoBehaviour
         currentState.OnTriggerStay2D(this, collision);
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentState.UpdateState(this);
@@ -111,22 +109,10 @@ public class EnemyStateManager : MonoBehaviour
 
     private IEnumerator SwitchStateInTime(EnemyBaseState state, float switchTime)
     {
-        //Debug.Log("State change");
         yield return new WaitForSeconds(switchTime);
         currentState = state;
         state.EnterState(this);
     }
-
-    //public IEnumerator AttackPlayer()
-    //{
-    //    yield return new WaitForSeconds(waitBetweenAttack);
-    //    attackBox.SetActive(true);
-    //    yield return new WaitForSeconds(waitBetweenAttack);
-    //    attackBox.SetActive(false);
-
-    //    yield return new WaitForSeconds(waitBetweenAttack);
-    //    canAttackPlayer = true;
-    //}
 
     public Vector2 EnemyRandPos(float distance)
     {
@@ -150,7 +136,6 @@ public class EnemyStateManager : MonoBehaviour
 
     public IEnumerator EnemyKnockback(float timeKnocked, float knockBackPower, float timeStunned)
     {
-        //Debug.Log("time Knocked: " + timeKnocked + "time Stunned  " + timeStunned);
         SwitchState(StunState);
         yield return new WaitForSeconds(timeKnocked);
         rbHolder.velocity *= 0;
@@ -170,57 +155,9 @@ public class EnemyStateManager : MonoBehaviour
         SwitchState(ReturnHomeState, 2);
     }
 
-
-    public bool EnemyStackPush()
-    {
-        float randomForceDirection = Random.Range(-500, 500);
-        stackPushCountdown -= Time.deltaTime;
-
-        if (stackPushCountdown <= 0f)
-        {
-            rbHolder.AddForce(transform.up * randomForceDirection, ForceMode2D.Impulse);
-            rbHolder.AddForce(transform.right * randomForceDirection, ForceMode2D.Impulse);
-            stackPushCountdown = 1f;
-            return false;
-        }
-        return true;
-
-    }
-
     public void TakeDamageSound()
     {
         AudioManager.Instance.sfxAudioSource.PlayOneShot(takeDamageSound[Random.Range(0, takeDamageSound.Length)], takeDamageVolume);
     }
 
 }
-
-//Set Random Reaction time
-//public float reactionTime;
-//public float reactionTimeRand;
-//reactionTimeRand = Random.Range(0.1f, 2f);
-//reactionTime = reactionTimeRand;
-
-//Set Random Agro Range
-
-//public bool ReactionTime()
-//{
-//    reactionTime -= Time.deltaTime;
-//    Debug.Log("Reaction time is " + reactionTime);
-//    if (reactionTime <= 0f)
-//    {
-//        reactionTime = reactionTimeRand;
-//        return true;
-//    }
-//    return false;
-//}
-
-//public bool WaitBeforeAttack(float wait)
-//{
-//    wait -= Time.deltaTime;
-//    Debug.Log("Reaction time is " + wait);
-//    if (wait <= 0f)
-//    {
-//        return true;
-//    }
-//    return false;
-//}

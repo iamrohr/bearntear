@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2735933054704942591}
+  - component: {fileID: 6417166860479417511}
   - component: {fileID: 2849036560916337933}
   - component: {fileID: 494428321185239586}
+  - component: {fileID: 2156248189518788045}
   m_Layer: 8
   m_Name: RatHolder
   m_TagString: Enemy
@@ -33,6 +35,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &6417166860479417511
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6354549213818161362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.010249823, y: 1.5942773}
+  serializedVersion: 2
+  m_Radius: 0.15705764
 --- !u!210 &2849036560916337933
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -65,6 +83,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2156248189518788045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6354549213818161362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3320e881e32b354db09d65d6a4fa904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4813480219714761807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,6 +102,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2735933054704942591}
     m_Modifications:
+    - target: {fileID: 1013951439560173858, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.54555595
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013951439560173858, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.8380744
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957174107013654009, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.08788233
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957174108413700855, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99994457
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957174108413700855, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.010535032
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736984858024867579, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.93929785
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736984858024867579, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.343103
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123342405153259290, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.021556119
+      objectReference: {fileID: 0}
     - target: {fileID: 4593618891950495121, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -119,6 +181,14 @@ PrefabInstance:
     - target: {fileID: 5509779415262325123, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
       propertyPath: m_Name
       value: Rat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379881711294408422, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9313126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379881711294408422, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.36422098
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48383565d6c3a0942b4d136d826cc1da, type: 3}

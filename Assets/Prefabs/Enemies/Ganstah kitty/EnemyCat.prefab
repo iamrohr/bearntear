@@ -131,6 +131,7 @@ MonoBehaviour:
   rbHolder: {fileID: 0}
   animator: {fileID: 0}
   enemyScript: {fileID: 0}
+  stackForceScript: {fileID: 0}
   forceIdleStateTimer: 2
   newEnemyPosition: {x: 0, y: 0}
   enemyStartPosition: {x: 0, y: 0}
@@ -142,7 +143,7 @@ MonoBehaviour:
   agroRange: 5
   agroRandomRange: 10
   reactionTime: 0.15
-  attackRange: 2.5
+  attackRange: 2.8
   moveSpeed: 4
   canAttackPlayer: 1
   waitBetweenAttack: 0.5
