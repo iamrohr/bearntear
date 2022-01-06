@@ -7,6 +7,8 @@ public class CameraScroll : MonoBehaviour
 {
     Camera mainCamera;
 
+    public IntroFadeInOut introFadeInOut;
+
     public float smoothFloat;
     public float duration = 5f;
 
@@ -17,6 +19,8 @@ public class CameraScroll : MonoBehaviour
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         yOffset = 50f;
+        introFadeInOut.IntroFadeIn();
+
     }
 
     
@@ -32,7 +36,7 @@ public class CameraScroll : MonoBehaviour
             elapsed += Time.deltaTime / duration;
 
             mainCamera.orthographicSize = Mathf.Lerp(5.397272f, 4.5f, elapsed);
-
+            introFadeInOut.IntroFadeOut();
             //mainCamera.orthographicSize = 5.2f;
         }
 

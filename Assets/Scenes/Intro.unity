@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 633039318}
   - component: {fileID: 633039317}
   - component: {fileID: 633039319}
+  - component: {fileID: 633039320}
   m_Layer: 0
   m_Name: IntroComic
   m_TagString: Untagged
@@ -225,6 +226,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &633039320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633039316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d22a9671554eee428f86f6cfb060010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 633039319}
 --- !u!1 &752155752
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d89bd7c1bc301145acea7dc3d8aed0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introFadeInOut: {fileID: 633039320}
   smoothFloat: 0.001
   duration: 5
 --- !u!1 &1097955089
