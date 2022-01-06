@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 633039318}
   - component: {fileID: 633039317}
+  - component: {fileID: 633039319}
   m_Layer: 0
   m_Name: IntroComic
   m_TagString: Untagged
@@ -205,6 +206,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &633039319
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633039316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b077b90fe32baf144ba550c02f9232fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &752155752
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothFloat: 0.001
+  duration: 5
 --- !u!1 &1097955089
 GameObject:
   m_ObjectHideFlags: 0
