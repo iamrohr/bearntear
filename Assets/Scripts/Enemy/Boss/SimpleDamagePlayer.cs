@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossBunnyMeleeAttackBox : MonoBehaviour
+public class SimpleDamagePlayer : MonoBehaviour
 {
     [SerializeField] private int damage;
 

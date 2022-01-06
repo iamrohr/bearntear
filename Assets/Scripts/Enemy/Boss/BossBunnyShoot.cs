@@ -12,6 +12,6 @@ public class BossBunnyShoot : MonoBehaviour
 
     private void Update()
     {
-        lr.SetPositions(new Vector3[] { hand.localPosition, needle.localPosition });
+        lr.SetPositions(new Vector3[] { hand.position, needle.position });
     }
 }
