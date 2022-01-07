@@ -31,16 +31,16 @@ public class CameraScroll : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y - yOffset, transform.position.z), smoothFloat);
         }
 
-        if(transform.position.y >= -54.57f && transform.position.y <= -51f)
+        if (transform.position.y >= -54.57f && transform.position.y <= -51f)
         {
             elapsed += Time.deltaTime / duration;
 
             mainCamera.orthographicSize = Mathf.Lerp(5.397272f, 4.5f, elapsed);
             introFadeInOut.IntroFadeOut();
-            //mainCamera.orthographicSize = 5.2f;
+            mainCamera.orthographicSize = 5.2f;
         }
 
-        if (transform.position.y <= - 54.5f)
+        if (transform.position.y <= -54.5f)
         {
             SceneManager.LoadScene("Main");
             if (Time.timeScale == 0)
