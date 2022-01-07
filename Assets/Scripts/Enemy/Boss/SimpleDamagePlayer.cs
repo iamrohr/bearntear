@@ -3,6 +3,7 @@ using UnityEngine;
 public class SimpleDamagePlayer : MonoBehaviour
 {
     [SerializeField] private int damage;
+    [SerializeField] private AudioClip hitSound;
 
     private void Start()
     {
@@ -14,6 +15,8 @@ public class SimpleDamagePlayer : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<IDamageable>().TakeDamage(damage);
+            if (hitSound != null)
+                AudioManager.Instance.sfxAudioSource.PlayOneShot(hitSound);
         }
     }
 }
