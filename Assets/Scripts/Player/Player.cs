@@ -50,7 +50,19 @@ public class Player : MonoBehaviour, IDamageable
         damageSound.Play();
         animator.SetTrigger("Hurt");
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
+        {
+            Destroy(persistentObject);
+            SceneManager.LoadScene("GameOver");
+        }
+
+        if (currentHealth <= 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Sewer"))
+        {
+            Destroy(persistentObject);
+            SceneManager.LoadScene("GameOver");
+        }
+
+        if (currentHealth <= 0 && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Sewer") && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("RoofTop"))
         {
             Destroy(persistentObject);
             SceneManager.LoadScene("GameOver");
