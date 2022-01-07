@@ -8,6 +8,7 @@ public class GiveLife : MonoBehaviour
 
     [SerializeField] private AudioClip cottonPickupSound;
     [SerializeField] private float cottonPickupSoundVolume= 1f;
+    public GameObject animationPickup;
 
     public GameObject audioManager;
     public AudioManager audioManagerScript;
@@ -23,6 +24,7 @@ public class GiveLife : MonoBehaviour
         if(cottonPickupSound) 
             AudioManager.Instance.sfxAudioSource.PlayOneShot(cottonPickupSound, cottonPickupSoundVolume);
 
+        Instantiate(animationPickup, new Vector2(transform.position.x, transform.position.y + 1f), Quaternion.identity);
         player.GetLife(giveLife);
         Destroy(gameObject);
     }
