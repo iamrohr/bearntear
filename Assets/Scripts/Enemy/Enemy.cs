@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         infiniteChase = true;
         currentHealth -= damage;
-        Score.instance.AddScore(100);
+        Score.Instance.AddScore(100);
 
         if (transform.position.x < player.transform.position.x)
         {

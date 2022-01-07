@@ -51,24 +51,6 @@ public class Player : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
             Die();
-
-        //if (currentHealth <= 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
-        //{
-        //    Destroy(persistentObject);
-        //    SceneManager.LoadScene("GameOver");
-        //}
-
-        //if (currentHealth <= 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Sewer"))
-        //{
-        //    Destroy(persistentObject);
-        //    SceneManager.LoadScene("GameOver");
-        //}
-
-        //if (currentHealth <= 0 && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Sewer") && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("RoofTop"))
-        //{
-        //    Destroy(persistentObject);
-        //    SceneManager.LoadScene("GameOver");
-        //}
     }
 
     private void Die()

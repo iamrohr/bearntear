@@ -23,6 +23,8 @@ public class PlayerAttackBox : MonoBehaviour
         switch (other.tag)
         {
             case "Enemy":
+                if (other.GetComponent<IDamageable>() == null) return;
+
                 if (enemiesAffected > 0)
                 {
                     if (enemyHitCount >= enemiesAffected)

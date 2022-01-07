@@ -47,7 +47,6 @@ public class MenuManager : MonoBehaviour
 
         int lastScene = PersistentObject.Instance.lastScene;
         
-
         if (lastScene > 1)
         {
             SceneManager.LoadScene(lastScene);
