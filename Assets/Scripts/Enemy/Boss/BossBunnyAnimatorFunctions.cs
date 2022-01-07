@@ -5,6 +5,7 @@ public class BossBunnyAnimatorFunctions : MonoBehaviour
     private BossBunnyAttack attack;
     private BossBunnyStateManager stateManager;
     [SerializeField] private Animator healthAnimator;
+    [SerializeField] private AudioClip needleWoosh, needleWooshReversed;
 
     private void Awake()
     {
@@ -45,5 +46,15 @@ public class BossBunnyAnimatorFunctions : MonoBehaviour
     public void FadeOutHealthBar()
     {
         healthAnimator.SetTrigger("FadeOut");
+    }
+
+    public void PlayNeedleSound()
+    {
+        AudioManager.Instance.sfxAudioSource.PlayOneShot(needleWoosh);
+    }
+
+    public void PlayNeedleReversedSound()
+    {
+        AudioManager.Instance.sfxAudioSource.PlayOneShot(needleWooshReversed);
     }
 }

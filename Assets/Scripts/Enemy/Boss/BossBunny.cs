@@ -1,11 +1,15 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BossBunny : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health, maxHealth;
     public float chaseTimeMin, chaseTimeMax;
     public bool alive = true;
+    [SerializeField] private AudioClip[] takeDamageSound;
+    [SerializeField] private AudioClip deathSound;
+
 
     [NonSerialized] public bool aggro;
     private BossBunnyStateManager stateManager;
@@ -29,6 +33,7 @@ public class BossBunny : MonoBehaviour, IDamageable
     {
         if (!alive) return;
 
+        AudioManager.Instance.sfxAudioSource.PlayOneShot(takeDamageSound[Random.Range(0, takeDamageSound.Length)], 0.8f);
         healthBar.SetHealth(health);
         health -= damage;
         if (health <= 0)
@@ -39,7 +44,7 @@ public class BossBunny : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        stateManager.movement.StopMoving();
+        AudioManager.Instance.sfxAudioSource.PlayOneShot(deathSound, 0.8f);
         stateManager.SwitchState(stateManager.DeadState);
         alive = false;
     }

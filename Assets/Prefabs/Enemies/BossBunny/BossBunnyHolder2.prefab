@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 12
+  impactSound: {fileID: 8300000, guid: da5c6f4dc56c21548b1510e5a7908ae8, type: 3}
 --- !u!1 &1516119414197524882
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,9 +407,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 200
-  chaseTimeMin: 1
-  chaseTimeMax: 3
+  chaseTimeMin: 0.2
+  chaseTimeMax: 1.5
   alive: 1
+  takeDamageSound:
+  - {fileID: 8300000, guid: 408ba1d2f840b0f48afa05c418061740, type: 3}
+  - {fileID: 8300000, guid: 6044d42e7f0e8944eaa4f5651399e5f4, type: 3}
+  - {fileID: 8300000, guid: a441141aaecf67343bf291ecebfd736c, type: 3}
+  deathSound: {fileID: 8300000, guid: 747872d5d4502fe40840ce3d9add4697, type: 3}
   healthBar: {fileID: 8318818403705084379}
   healthBarObj: {fileID: 5808233661945526061}
   healthAnimator: {fileID: 5828657406659449766}
@@ -1342,3 +1348,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAnimator: {fileID: 5828657406659449766}
+  needleWoosh: {fileID: 8300000, guid: 0d22c3fb6bb87d247a8f7b3eb0d3cc90, type: 3}
+  needleWooshReversed: {fileID: 8300000, guid: afe984eb598ae0548a51a82f207fad9d, type: 3}
