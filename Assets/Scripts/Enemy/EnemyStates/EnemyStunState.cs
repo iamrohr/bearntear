@@ -4,9 +4,11 @@ public class EnemyStunState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager enemy)
     {
+        int rnd = Random.Range(0, enemy.animationHurt.Length);
         //Debug.Log("I am in stun");
         //enemy.rbHolder.velocity *= 0;
         enemy.TakeDamageSound();
+        enemy.animationHurt[rnd].SetActive(true);
         enemy.animator.SetTrigger("Stunned");
     }
 

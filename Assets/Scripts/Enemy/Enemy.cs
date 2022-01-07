@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public int pauseTearDecrease = 3;
 
     [Header("Addons")]
+    public GameObject animationDie;
     public ParticleSystem particleSystemEnemyDie;
     public GameObject particleGameObj;
 
@@ -76,7 +77,10 @@ public class Enemy : MonoBehaviour, IDamageable
             EnemyDieSound();
             particleSystemEnemyDie.transform.parent = null; //Set Particle system parent to null so it does not destroy
             particleSystemEnemyDie.gameObject.SetActive(true);
+            animationDie.transform.parent = null;
+            animationDie.SetActive(true);
             Destroy(particleGameObj, particleSystemEnemyDie.main.duration); //Deletes the particle system after played
+            Destroy(animationDie, 1f); //Delete Animation Die 
             if(!tearModeScript.tearModeOn)
             {
                 player.GetComponent<TearBarOnPlayer>().GetTear(giveTear);

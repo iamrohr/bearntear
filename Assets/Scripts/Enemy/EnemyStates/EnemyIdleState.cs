@@ -6,6 +6,14 @@ public class EnemyIdleState : EnemyBaseState
     {
         //Debug.Log("I am in idle");
         enemy.rbHolder.velocity *= 0;
+        
+        //Set all hurt animations to false
+        for (int i = 0; i < enemy.animationHurt.Length; i++)
+        {
+            enemy.animationHurt[i].SetActive(false);
+
+        }
+
         enemy.animator.SetTrigger("Idle");
     }
 
