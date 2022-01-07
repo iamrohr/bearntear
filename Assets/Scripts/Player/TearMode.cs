@@ -46,6 +46,9 @@ public class TearMode : MonoBehaviour
 
     public IEnumerator TearModeStart()
     {
+        if (mainCamera == null)
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
         tearModeOn = true;
         mainCamera.orthographicSize = 4.5f;
         StartCoroutine(cameraShake.ShakeCoroutine(0.5f, 0.4f));
