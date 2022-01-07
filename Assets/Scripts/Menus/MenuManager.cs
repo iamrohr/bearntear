@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
+    private static MenuManager instance;
+    public static MenuManager Instance { get { return instance; } }
+
     public GameObject imageControlsGUI;
     public GameObject controlsCanvas;
     public GameObject gameOverCanvas;
@@ -16,9 +19,15 @@ public class MenuManager : MonoBehaviour
     public AudioSource buttonClickSound;
     public Score scoreScript;
     public GameObject scoreCanvas;
+    public GameObject player;
 
     void Start()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
         scoreCanvas.SetActive(true);
         controlsCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
@@ -35,7 +44,21 @@ public class MenuManager : MonoBehaviour
     {
         scoreScript.ResetScore();
         buttonClickSound.Play();
-        SceneManager.LoadScene("Main");
+
+        int lastScene = PersistentObject.Instance.lastScene;
+        
+
+        if (lastScene > 1)
+        {
+            SceneManager.LoadScene(lastScene);
+            PersistentObject.Instance.gameObject.SetActive(true);
+            Instantiate(player);
+        }
+        else
+        {
+            GameObject.Destroy(PersistentObject.Instance.gameObject);
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void ControlsMenu()
@@ -73,9 +96,4 @@ public class MenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
     }
-
-    
-
-
-
 }

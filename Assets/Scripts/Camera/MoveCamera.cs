@@ -31,6 +31,9 @@ public class MoveCamera : MonoBehaviour
 
     private void Update()
     {
+        if (targetPosition == null)
+            targetPosition = GameObject.FindGameObjectWithTag("Player").transform;
+
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("RoofTop"))
         {
             clampedLeftPos = -43.6f;
