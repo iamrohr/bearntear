@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 6239904957009805732}
   - component: {fileID: 6860218693969764841}
   - component: {fileID: 6608799027468955481}
+  - component: {fileID: 173148495708015300}
   m_Layer: 8
   m_Name: Kitty Jumper New
   m_TagString: Enemy
@@ -194,6 +195,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1997246, y: 3.3120022}
   m_EdgeRadius: 0
+--- !u!114 &173148495708015300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509779415262325123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ad4a0bd7358b34db0a9532343b65eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
 --- !u!1001 &1713650456491899579
 PrefabInstance:
   m_ObjectHideFlags: 0
