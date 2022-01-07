@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PersistentObject : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class PersistentObject : MonoBehaviour
     public static PersistentObject Instance { get { return instance; } }
 
     public static Transform _transform;
+    public int lastScene;
 
     private void Awake()
     {
