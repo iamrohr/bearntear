@@ -80,6 +80,6 @@ public class EnemyFollowPath : MonoBehaviour
         coroutineAllowed = false;
         Instantiate(enemy, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         enemy.transform.localScale = new Vector3(1, 1, 1);
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }
