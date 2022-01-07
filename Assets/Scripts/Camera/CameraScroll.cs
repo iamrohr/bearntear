@@ -10,7 +10,7 @@ public class CameraScroll : MonoBehaviour
     public IntroFadeInOut introFadeInOut;
 
     public float smoothFloat;
-    public float duration = 5f;
+    public float duration;
 
     float yOffset;
     float elapsed = 0.0f;

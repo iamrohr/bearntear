@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossBunnyAnimatorFunctions : MonoBehaviour
 {
@@ -61,5 +62,11 @@ public class BossBunnyAnimatorFunctions : MonoBehaviour
     public void PlaySwingSound()
     {
         AudioManager.Instance.sfxAudioSource.PlayOneShot(swingSound);
+    }
+
+    public void LoadOutro()
+    {
+        Destroy(PersistentObject.Instance.gameObject);
+        LevelManager.FadeToNextScene();
     }
 }
