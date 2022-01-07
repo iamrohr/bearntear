@@ -9,7 +9,7 @@ public class BossBunny : MonoBehaviour, IDamageable
     public bool alive = true;
     [SerializeField] private AudioClip[] takeDamageSound;
     [SerializeField] private AudioClip deathSound;
-
+    public GameObject[] animationHurt;
 
     [NonSerialized] public bool aggro;
     private BossBunnyStateManager stateManager;

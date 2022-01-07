@@ -11,6 +11,12 @@ public class BossBunnyIdleState : BossBunnyBaseState
         stateManager.animator.SetTrigger("Idle");
         stateTimer = 0;
         this.timeInState = timeInState;
+
+        var hurtAnimations = stateManager.bossBunny.animationHurt;
+        foreach (var hurtAnimation in hurtAnimations)
+        {
+            hurtAnimation.SetActive(false);
+        }
     }
 
     public override void UpdateState(BossBunnyStateManager stateManager)
