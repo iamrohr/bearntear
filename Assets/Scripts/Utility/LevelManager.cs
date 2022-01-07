@@ -24,6 +24,12 @@ public class LevelManager : MonoBehaviour
         MovePlayerToSpawnPoint();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+            FadeToNextScene();
+    }
+
     private void MovePlayerToSpawnPoint()
     {
         var spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
