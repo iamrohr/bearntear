@@ -15,6 +15,13 @@ public class BossBunnyChaseState : BossBunnyBaseState
 
         if (!stateManager.bossBunny.aggro)
         {
+            var spawners = GameObject.FindGameObjectsWithTag("EnemySpawner");
+
+            foreach (var spawner in spawners)
+            {
+                spawner.GetComponent<WaveSpawner>().ableToSpawn = true;
+            }
+
             var animator = stateManager.bossBunny.healthAnimator;
             animator.SetTrigger("FadeIn");
             stateManager.bossBunny.aggro = true;
