@@ -67,6 +67,7 @@ public class TearMode : MonoBehaviour
         mainCamera.orthographicSize = 5.382994f;
         Time.timeScale = 1f;
         playerMovementScript.speed = 12f;
+        animator.SetFloat("Multiplier", 2);
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 20;
         //slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 4f;
         
@@ -86,6 +87,7 @@ public class TearMode : MonoBehaviour
         tearBarFill.GetComponent<Image>().color = new Color32(100, 196, 255, 255);
         tearModeOn = false;
         playerMovementScript.speed = 6f;
+        animator.SetFloat("Multiplier", 1);
         swipeAttack.GetComponent<PlayerAttackBox>().damage = 8;
         //slamAttack.GetComponent<PlayerAttackBox>().timeKnocked = 0f;
         playerAttackScript.swipeCooldown = 0.5f;
