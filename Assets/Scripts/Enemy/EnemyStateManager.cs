@@ -20,6 +20,8 @@ public class EnemyStateManager : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public Enemy enemyScript;
     [HideInInspector] public StackForce stackForceScript;
+    public GameObject animationDie;
+    public GameObject []animationHurt;
 
     [Header("Attributes")]
     [HideInInspector] public float forceIdleStateTimer = 2f;
