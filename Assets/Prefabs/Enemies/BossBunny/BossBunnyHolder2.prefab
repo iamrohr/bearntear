@@ -406,10 +406,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 200
-  healthBar: {fileID: 0}
   chaseTimeMin: 1
   chaseTimeMax: 3
   alive: 1
+  healthBar: {fileID: 8318818403705084379}
+  healthBarObj: {fileID: 5808233661945526061}
+  healthAnimator: {fileID: 5828657406659449766}
 --- !u!114 &858476883457351778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +645,7 @@ GameObject:
   - component: {fileID: 8730860870692568163}
   - component: {fileID: 8318818403705084379}
   - component: {fileID: 8623718230239313784}
+  - component: {fileID: 5828657406659449766}
   m_Layer: 5
   m_Name: BossHealthBar
   m_TagString: Untagged
@@ -743,10 +746,29 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5808233661945526061}
   m_Enabled: 1
-  m_Alpha: 0.9
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!95 &5828657406659449766
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808233661945526061}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 10d5c781da69df241947b0514031d2ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6692764442980286347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,3 +1341,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a674fc14d362f8e42b8dec3c26e2376d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthAnimator: {fileID: 5828657406659449766}
