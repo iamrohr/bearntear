@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class Score : MonoBehaviour
 {
     public static Score instance; // singleton
+    public static Score Instance { get { return instance; } }
 
     public static int scoreValue = 0;
     public static int highScore;
@@ -17,11 +18,14 @@ public class Score : MonoBehaviour
     public InputField inputText;
     string playerName;
 
-    Text score;
+    public Text score;
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
     }
 
     private void Start()
@@ -45,6 +49,9 @@ public class Score : MonoBehaviour
 
     public void AddScore(int addScore)
     {
+        if (score == null)
+            score = GetComponent<Text>();
+
         scoreValue += addScore;
         score.text = "Score: " + scoreValue;
         UpdateHighScore();
