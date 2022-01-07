@@ -1306,6 +1306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputFieldGameObject: {fileID: 1570077184}
   inputText: {fileID: 1570077186}
+  score: {fileID: 0}
 --- !u!114 &347559466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33659,7 +33660,7 @@ PrefabInstance:
     - target: {fileID: 5389480300404678176, guid: 2e2c64e0a60e71740b0d65717d86fb7d, type: 3}
       propertyPath: waves.Array.data[7].enemy
       value: 
-      objectReference: {fileID: 4593618891950495121, guid: 008b0689ed9fd2945ad276bf34f92150, type: 3}
+      objectReference: {fileID: 2735933054704942591, guid: b1cb3c98877668a49aa86215b6d44151, type: 3}
     - target: {fileID: 5389480300404678176, guid: 2e2c64e0a60e71740b0d65717d86fb7d, type: 3}
       propertyPath: waves.Array.data[8].count
       value: 7
@@ -33755,7 +33756,7 @@ PrefabInstance:
     - target: {fileID: 5389480300404678176, guid: 2e2c64e0a60e71740b0d65717d86fb7d, type: 3}
       propertyPath: waves.Array.data[19].enemy
       value: 
-      objectReference: {fileID: 4593618891950495121, guid: 008b0689ed9fd2945ad276bf34f92150, type: 3}
+      objectReference: {fileID: 2735933054704942591, guid: b1cb3c98877668a49aa86215b6d44151, type: 3}
     - target: {fileID: 5389480300404678176, guid: 2e2c64e0a60e71740b0d65717d86fb7d, type: 3}
       propertyPath: waves.Array.data[20].count
       value: 16
