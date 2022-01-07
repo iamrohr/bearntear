@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4394604815340158449}
   - component: {fileID: 253053021}
   - component: {fileID: 253053022}
-  - component: {fileID: 6829292859692643681}
   m_Layer: 8
   m_Name: EnemyCat
   m_TagString: Enemy
@@ -132,6 +131,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   enemyScript: {fileID: 0}
   stackForceScript: {fileID: 0}
+  animationHurt: []
   forceIdleStateTimer: 2
   newEnemyPosition: {x: 0, y: 0}
   enemyStartPosition: {x: 0, y: 0}
@@ -173,6 +173,7 @@ MonoBehaviour:
   maxHealth: 20
   giveTear: 15
   pauseTearDecrease: 3
+  animationDie: {fileID: 0}
   particleSystemEnemyDie: {fileID: 4421422792078068561}
   particleGameObj: {fileID: 3286487048189768655}
   cottonDrop: {fileID: 5335850060171322549, guid: d12341d4347410448896b6d0af746cd0, type: 3}
@@ -183,27 +184,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0eecc845bc4d3e24eaa85aef47fb8347, type: 3}
   enemyDieVolume: 0.6
   sewingHolder: {fileID: 0}
---- !u!50 &6829292859692643681
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4394604815340158448}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &5034389674759282009
 GameObject:
   m_ObjectHideFlags: 0
