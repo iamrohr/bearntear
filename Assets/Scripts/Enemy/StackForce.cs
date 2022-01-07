@@ -11,7 +11,6 @@ public class StackForce : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log(rb);
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -30,7 +29,6 @@ public class StackForce : MonoBehaviour
 
         if (timeBeforeForce <= 0f)
         {
-            Debug.Log("Pushed");
             rb.AddForce(transform.up * randomForceDirection, ForceMode2D.Force);
             rb.AddForce(transform.right * randomForceDirection, ForceMode2D.Force);
             timeBeforeForce = 1f;
